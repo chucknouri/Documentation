@@ -36,7 +36,7 @@ A module is a block of code which is able to communicate with any other modules 
 
 For example, the [Dynamixel board](/board/dxl) provided by Luos Robotics can dynamically create and manage Dynamixel modules depending on the number of Dynamixel motors linked to it. Any Dynamixel module can get or set values to other Dynamixel modules on the same node or to any other module in any other node of the network.
 
-![feature-module-node-board](/assets/img/feature-module-node-board.jpg)
+<a href="/assets/img/feature-module-node-board.jpg" target="_blank"><img src="/assets/img/feature-module-node-board.jpg" width="800px" /></a>
 
 ## Module basic properties
 To properly work, each module owns some properties allowing to other modules to recognize and access it:
