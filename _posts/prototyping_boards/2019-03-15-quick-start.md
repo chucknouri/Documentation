@@ -13,12 +13,6 @@ wip: 0
 Quick tutorials to get started with Luos products.
 
 ## Tutorial \#1
-The following video shows a basic tutorial explaining how to make a LED and a servomotor be responsive to a potentiometer.
-
-<iframe width="800" height="450" src="https://www.youtube.com/embed/ula16zdZgDk?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br /><br />
-
----
-## Tutorial \#2
 
 On the following steps, you will learn how to make a simple behavior with a LED board and a Button board step-by-step.
 
@@ -122,7 +116,14 @@ Test your behavior by executing the code.
 
 ![LED board](/assets/img/quickstart-3.png)
 
+---
+## Tutorial \#2
+The following video shows a basic tutorial explaining how to make a LED and a servomotor be responsive to a potentiometer.
 
+<iframe width="800" height="450" src="https://www.youtube.com/embed/ula16zdZgDk?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br /><br />
+
+
+---
 ## What’s next?
 
 This was a really simple tutorial to get you on tracks.
