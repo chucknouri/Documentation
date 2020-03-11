@@ -10,7 +10,7 @@ wip: 0
 
 # General guide to Luos technology
 
-Luos is a simple and lightweight [distributed operating system](https://en.wikipedia.org/wiki/Distributed_operating_system) dedicated to embedded systems. It's a powerful tool using modularity to simplify and link any component or application code together as a [single system image](https://en.wikipedia.org/wiki/Single_system_image).
+Luos is a simple and lightweight [distributed operating system](https://en.wikipedia.org/wiki/Distributed_operating_system) dedicated to embedded systems and enabling microservices architecture for electronics. It's a powerful tool using modularity to simplify and link any hardware component or application code together as a [single system image](https://en.wikipedia.org/wiki/Single_system_image).
 This guide contains all the basic notions you will need to use, create and understand Luos technology.
 
 Luos is a low-level software technology uploaded into every [**nodes**](#node) of a device. It's composed of two main parts: 
@@ -19,12 +19,12 @@ Luos is a low-level software technology uploaded into every [**nodes**](#node) o
  
 Luos is composed as well of **code subdivisions** called [**modules**](#module). Modules are distributed into the nodes.
  
-Luos allows a real-time communication between every electronic part of a device. The technology implements a **plug-and-play network** into any robotic device.
+Luos allows a real-time communication between every electronic part of an embedded system device. The technology implements a **plug-and-play network** into any electronics device.
 
 ## <a name="node"></a>What is a node
 A node is a physical component (hardware) running Luos and hosting one or several modules. In a Luos network, nodes are all connected together using Robus, the Luos communication technology.<br/>In other words, **a node is a microcontroler** connected to other microcontrolers and running Luos.
 
-A **Luos prototyping board** hosts a single node. Each one provides a robotic function (gate, sensor, actuation, etc.).
+A **Luos prototyping board** hosts a single node. Each one provides a particular electronic function (gate, sensor, actuation, etc.).
 
 In the Luos philosophy, each node has to carry the necessary programs (modules) allowing to manage the boards and devices hosting it.
 
