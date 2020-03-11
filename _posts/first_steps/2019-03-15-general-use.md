@@ -13,11 +13,11 @@ wip: 0
 Luos is a simple and lightweight [distributed operating system](https://en.wikipedia.org/wiki/Distributed_operating_system) dedicated to embedded systems and enabling microservices architecture for electronics. It's a powerful tool using modularity to simplify and link any hardware component or application code together as a [single system image](https://en.wikipedia.org/wiki/Single_system_image).
 This guide contains all the basic notions you will need to use, create and understand Luos technology.
 
-Luos is a low-level software technology uploaded into every [**nodes**](#node) of a device. It's composed of two main parts: 
+Luos is a low-level software technology uploaded into every <span class="tooltip">[**nodes**](#node)<span class="tooltiptext">{{ node_def }}</span></span> of a device. It's composed of two main parts: 
  * A **communication bus protocol** part.
  * An **API** part.
  
-Luos is composed as well of **code subdivisions** called [**modules**](#module). Modules are distributed into the nodes.
+Luos is composed as well of **code subdivisions** called <span class="tooltip">[**modules**](#module)<span class="tooltiptext">{{ module_def }}</span></span>. Modules are distributed into the nodes.
  
 Luos allows a real-time communication between every electronic part of an embedded system device. The technology implements a **plug-and-play network** into any electronics device.
 
