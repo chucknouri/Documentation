@@ -3,14 +3,14 @@ layout: post
 title: "Quick start"
 categories: 3_prototyping_boards
 desc: Getting started with Luos prototyping boards
-order: 0 
+order: 1 
 wip: 0
 ---
 {% include var.md %}
 
 # Getting started
 
-Quick tutorials to get started with Luos products.
+This page provides quick and easy tutorials to get started with Luos prototyping boards.
 
 ## Tutorial \#1
 
