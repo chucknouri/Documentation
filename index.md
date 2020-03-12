@@ -9,11 +9,11 @@ layout: default
 
 We started designing Luos with the conviction that building electronic systems should be made easier than it is today. Most of the time should be spent on designing the applications and behaviors instead of on complex and time-and-money-eating technicalities. To give a simple example, adding a new sensor &mdash;for instance a lidar&mdash; to an electronic device in conception should not take more than a few minutes. So you can try, test and iterate fast on a project to truly design what users want.
 
-**Today, Luos is exactly like a [microservices architecture](https://en.wikipedia.org/wiki/Microservices){:target="_blank"}: it encapsulates any software or hardware function to make it communicate and work with any other encapsulated module, however it was developed.**
+**Today, Luos is exactly like a [<span class="tooltip">microservices<span class="tooltiptext">{{ microservices_def }}</span></span> architecture](https://en.wikipedia.org/wiki/Microservices){:target="_blank"}: it encapsulates any software or hardware function to make it communicate and work with any other encapsulated module, however it was developed.**
 
 We have imagined Luos around three key concepts:
  * **Luos Core:** a tiny library that can be added to the MCU of an embedded board to make it seamlessly communicate with other boards. When conceiving electronic devices, you should be able to compose it from multiple functional parts and not think about communication issues between these parts.
- * **Luos Driver:** a hardware abstraction to make the integration of a sensor, an effector or a function as easy at it should be &mdash;that is, with one line of code! Drivers must use standardized APIs to let you switch from one type of sensors to another without breaking anything. For example, all types of distance sensors should return a distance in meters using a same function `get_distance()`.
+ * **Luos Driver:** a hardware abstraction to make the integration of a sensor, an effector or a software function as easy at it should be &mdash;that is, with one line of code! Drivers must use standardized APIs to let you switch from one type of sensors to another without breaking anything. For example, all types of distance sensors should return a distance in meters using a same function `get_distance()`.
  * **Robus:** A communication bus dedicated to embedded system communication, to make all the above natural and simple. 
 
 <hr class="hr_top">
@@ -25,8 +25,8 @@ We have imagined Luos around three key concepts:
 {%- assign category = cat | first -%}
 {% if category contains "modules_list" or category contains "boards_list" %}{% continue %}{% endif %}
 ## {{ cat | first | slice: 2, 30 | replace:"_", " " | capitalize }}
-{% if category == "prototyping_boards" %}
-Luos provides [prototyping boards]("https://www.generationrobots.com/fr/256_luos") to start understanding and using the technology.
+{% if category == "3_prototyping_boards" %}
+Luos provides [prototyping boards](https://www.generationrobots.com/fr/256_luos){:target="_blank"} to start understanding and using the technology.
 {% endif %}
 <ul>
 {% assign sorted = cat.last | sort: "order" %}

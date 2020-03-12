@@ -8,6 +8,7 @@
 {% assign node_def = "Hardware element (MCU) hosting and running Luos and hosting one or several modules." %}
 {% assign module_def = "Software element ran by Luos that can communicate with other modules. Can be driver or app, or both in the same time." %}
 {% assign od_def = "Set of typical objects that can be transmitted through Luos messages. Any object can easily be converted in other units." %}
+{% assign microservices_def = "Microservices are a software development technique that arranges an application as a collection of loosely coupled services." %}
 
 
 {% assign act_title = "Actuation" %}
