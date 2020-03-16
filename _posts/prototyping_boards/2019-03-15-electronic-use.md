@@ -3,16 +3,40 @@ layout: post
 title: "Boards general use"
 categories: 3_prototyping_boards
 desc: How to use Luos prototyping boards.
-order: 1
+order: 0
 wip: 0
 ---
 {% include var.md %}
 
 # General guide to Luos electronic boards
 
-Luos Robotics provides simple electronic boards to start prototyping using Luos modular technology.
-This guide contains all the basic notions you will need to use Luos electronic boards.
+Luos provides simple electronic boards to start prototyping using Luos modular technology.
 
+Luos library has been designed to run on low-cost hardware. It works with all Arm microcontrollers, starting with the smallest and cheapest one: the [Cortex-M0](https://developer.arm.com/ip-products/processors/cortex-m/cortex-m0){:target="_blank"}. 
+
+The prototyping boards are a set or small electronic boards, each one hosting Luos and providing with an electronic function (motor, distance sensor, battery, LED, potentiometer, etc.). These boards can be used to quickly develop an electronic device prototype in order to prove a concept without any knowledge in electronics: prototype boards are connected together with cables, behaviors can be programmed through a [gate](/boards_list/usb) board on a computer, and the device can be tested in a matter of minutes!
+
+## Boards general specifications
+
+Almost every prototyping board is composed of a motherboard and a shield board. The motherboard, called L0, has a {{ node_def }} that hosts Luos. The shield board is added to a L0 to type it with an electronic function.
+
+![](/assets/img/assembly.png){:style="height:200px;"}
+
+> Note: Power category boards don't include L0 motherboard as they provide only with power functions and don't need communication. However. he communication data pass through their connectors to other communicating boards.
+
+Here are the specifications of this motherboard:
+
+ - Board name: L0
+ - MCU: STM32f0
+ - Dimensions: 20 x 26 mm
+ - Supply Voltage: 5 V to 24 V
+ - Output Voltage: 5 V
+ - Connectors: 2x Robus connectors ([*DF11-8DP-2DS(24)*](https://octopart.com/df11-8dp-2ds%2824%29-hirose-39521447))
+ - Sockets: 2x 6 connectors ([826926-3](https://octopart.com/826926-3-te+connectivity-40939547)) 
+ - Other Output: 1x micro-USB
+ - USB Serial Speed: 1 Mbaud/s
+
+![L0 dimensions](/assets/img/l0-dimensions.png){:style="height:300px;"}
 
 ## Boards categories
 
