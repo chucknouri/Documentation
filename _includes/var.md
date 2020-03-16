@@ -10,6 +10,8 @@
 {% assign od_def = "Set of typical objects that can be transmitted through Luos messages. Any object can easily be converted in other units." %}
 {% assign microservices_def = "Microservices are a software development technique that arranges an application as a collection of loosely coupled services." %}
 
+{% assign node_def = "<span class='tooltip'>**node**<span class='tooltiptext'>Hardware element (MCU) hosting and running Luos and hosting one or several modules.</span></span>" %}
+
 
 {% assign act_title = "Actuation" %}
 {% assign sen_title = "Sensor" %}
