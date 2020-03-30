@@ -155,9 +155,9 @@
                     <main>
                         <h1><a class="header" href="#modules" id="modules">Modules</a></h1>
 <p>A module is a block of code which is able to communicate with any other modules in the Luos network. Each module provides a particular set of tasks such as managing a motor, handling a laser range finder, or compute an inverse-kinematics.
-Each module is hosted in a single <span class="cust_tooltip"><strong>node</strong><span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several modules.</span></span> (MCU), but a node can handle several modules at the same time and manage communication between them and between other modules hosted in other nodes, using the same interface.</p>
+Each module is hosted in a single <span class="cust_tooltip">node<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several modules.</span></span> (MCU), but a node can handle several modules at the same time and manage communication between them and between other modules hosted in other nodes, using the same interface.</p>
 <p>A module can be a <a href="/_pages/low/modules/drivers.html">drivers</a> (managing hardware) or an <a href="/_pages/low/modules/apps.html">app</a> (managing software items).</p>
-<p><strong>As a developer you will always develop your functionalities into modules, and never into the main program.</strong> The only information that should be put on the main code are MCU setup data and modules' run functions.</p>
+<p><strong>As a developer you will always develop your functionalities into modules, and never into the <code>main()</code> program.</strong> The only information that should be put on the <code>main()</code> code are MCU setup parameters and modules' run functions.</p>
 <h2><a class="header" href="#module-properties" id="module-properties">Module properties</a></h2>
 <p>To properly work, each module owns some properties allowing to other modules to recognize and access it:</p>
 <table><thead><tr><th align="center">Name</th><th align="center">Description</th><th align="center">Format</th></tr></thead><tbody>

@@ -361,9 +361,9 @@ At Luos, we use Platformio to share all our examples and to make our lib integra
 <div class="cust_edit_page"><a href="https://github.com/Luos-io/doc/tree/master/src/_pages/low/electronic-design.md">Edit this page</a></div>
 <h1><a class="header" href="#modules" id="modules">Modules</a></h1>
 <p>A module is a block of code which is able to communicate with any other modules in the Luos network. Each module provides a particular set of tasks such as managing a motor, handling a laser range finder, or compute an inverse-kinematics.
-Each module is hosted in a single <span class="cust_tooltip"><strong>node</strong><span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several modules.</span></span> (MCU), but a node can handle several modules at the same time and manage communication between them and between other modules hosted in other nodes, using the same interface.</p>
+Each module is hosted in a single <span class="cust_tooltip">node<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several modules.</span></span> (MCU), but a node can handle several modules at the same time and manage communication between them and between other modules hosted in other nodes, using the same interface.</p>
 <p>A module can be a <a href="_pages/low//_pages/low/modules/drivers.html">drivers</a> (managing hardware) or an <a href="_pages/low//_pages/low/modules/apps.html">app</a> (managing software items).</p>
-<p><strong>As a developer you will always develop your functionalities into modules, and never into the main program.</strong> The only information that should be put on the main code are MCU setup data and modules' run functions.</p>
+<p><strong>As a developer you will always develop your functionalities into modules, and never into the <code>main()</code> program.</strong> The only information that should be put on the <code>main()</code> code are MCU setup parameters and modules' run functions.</p>
 <h2><a class="header" href="#module-properties" id="module-properties">Module properties</a></h2>
 <p>To properly work, each module owns some properties allowing to other modules to recognize and access it:</p>
 <table><thead><tr><th align="center">Name</th><th align="center">Description</th><th align="center">Format</th></tr></thead><tbody>
@@ -374,9 +374,9 @@ Each module is hosted in a single <span class="cust_tooltip"><strong>node</stron
 <div class="cust_edit_page"><a href="https://github.com/Luos-io/doc/tree/master/src/_pages/low/modules.md">Edit this page</a></div>
 <h1><a class="header" href="#create-luos-projects" id="create-luos-projects">Create Luos Projects</a></h1>
 <h2><a class="header" href="#how-to-properly-organize-your-luos-projects" id="how-to-properly-organize-your-luos-projects">How to properly organize your Luos projects</a></h2>
-<h3><a class="header" href="#how-to-make-luos-run" id="how-to-make-luos-run">How to make Luos run</a></h3>
-<p>Luos is like a task that you will have to run regularly. So you will have to make it run by adding <code>luos_init()</code> and <code>luos_loop()</code> in the main of your program.<br/>
-Basically your main will look like :</p>
+<h3><a class="header" href="#how-to-run-luos" id="how-to-run-luos">How to run Luos</a></h3>
+<p>Luos is like a task that has to be ran regularly. So you will have to mrun it by adding <code>luos_init()</code> and <code>luos_loop()</code> in the <code>main()</code> of your program.<br/>
+Basically, your <code>main()</code> will look like this:</p>
 <pre><code class="language-C">#include &quot;luos.h&quot;
 
 int main(void)
@@ -390,14 +390,14 @@ int main(void)
 }
 
 </code></pre>
-<p>Putting this code on your node make it able to react to a Luos network. It's now ready to host your modules.</p>
-<p><strong>As a developer you will ALWAYS develop your functionalities into modules and NEVER into the main program.</strong></p>
+<p>Putting this code into a <span class="cust_tooltip">node<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several modules.</span></span> makes it able to react to a Luos network. It's now ready to host your modules.</p>
+<p><strong>As a developer you will always develop your functionalities into modules and never into the <code>main()</code> program.</strong></p>
 <blockquote>
-<p><strong>Note:</strong> The only things that should be put on the main code are MCU setup things and modules run functions.</p>
+<p><strong>Note:</strong> The only information that should be put on the <code>main()</code> code are MCU setup parameters and modules' run functions.</p>
 </blockquote>
-<h3><a class="header" href="#how-to-put-modules-in-your-project" id="how-to-put-modules-in-your-project">How to put modules in your project</a></h3>
-<p>A node can host multiple modules, and we want a module as portable as possible. To do that modules have to be independent code folders that can be easily copy and paste in another project.<br/>
-To make it at Luos we always use the same way to organize our projects. We put modules on a <code>modules</code> folder and name modules code files with the name of the module :</p>
+<h3><a class="header" href="#how-to-add-modules-in-your-project" id="how-to-add-modules-in-your-project">How to add modules in your project</a></h3>
+<p>A node can host multiple modules, and a module has to be as portable as possible. In order to do that, modules have to be independent code folders that can be easily copied and pasted in another project.<br/>
+To make it at Luos we always use the same way to organize our projects: we put the modules into a <code>modules</code> folder and name the modules' code files with the name of each module:</p>
 <pre><code class="language-AsciiDoc"> Project
     │
     ├─── modules
@@ -416,8 +416,8 @@ To make it at Luos we always use the same way to organize our projects. We put m
          └─── Main.c
 </code></pre>
 <h3><a class="header" href="#basic-modules-functions" id="basic-modules-functions">Basic modules functions</a></h3>
-<p>At Luos we make our modules always expose the same functions in the <code>module.h</code> file. The same as Luos need it, modules are like tasks that you will have to run regularly, so we choose to use the exact same stategy as presented for Luos functions by exposing a <code>module_init()</code> and <code>module_loop()</code> functions and to add it on the main.
-Following the previous folder organization our main code looks like :</p>
+<p>We choose to put the public functions of our modules in the <code>module.h</code> file. Like Luos, modules are similar to tasks that need to be run regularly, so we choose to use the exact same stategy as presented for Luos functions by providing a <code>module_init()</code> and a <code>module_loop()</code> functions and to add them in the <code>main()</code>.
+Following the previous folder organization, the <code>main()</code> code looks like this:</p>
 <pre><code class="language-C">#include &quot;luos.h&quot;
 #include &quot;module_1.h&quot;
 #include &quot;module_2.h&quot;
@@ -437,14 +437,15 @@ int main(void)
 }
 
 </code></pre>
-<p>This way it's easy to manage all your modules and to add it on your main file as you want.</p>
+<p>This way, it's easy to manage all your modules and to add as many of them in the <code>main()</code> file as you want.</p>
+<div class="cust_edit_page"><a href="https://github.com/Luos-io/doc/tree/master/src/_pages/low/modules/create-project.md">Edit this page</a></div>
 <h1><a class="header" href="#create-luos-modules" id="create-luos-modules">Create Luos modules</a></h1>
-<p><strong>As a developer you will always develop your functionalities into modules and never into the main program.</strong></p>
+<p><strong>As a developer you will always develop your functionalities into modules and never into the <code>main()</code> program.</strong></p>
 <blockquote>
 <p><strong>Warning:</strong> Make sure to read and understand how to <a href="_pages/low/modules//_pages/low/modules/create-project.html">Create Luos projects</a> before reading this page.</p>
 </blockquote>
 <h2><a class="header" href="#how-to-create-and-initialize-a-module" id="how-to-create-and-initialize-a-module">How to create and initialize a module</a></h2>
-<p>To create a module you simply have to call this function :</p>
+<p>To create a module, you have to call this function:</p>
 <pre><code class="language-c">module_t* luos_module_create(void* callback, module_type_t type, char* default_alias);
 </code></pre>
 <p>The returned <code>module_t*</code> is a module structure pointer that will be useful to make your module act in the network after this initialization.</p>
@@ -554,7 +555,7 @@ python get-pip.py
 <p><strong>Note:</strong> Feel free to consult <a href="https://jupyter.readthedocs.io/en/latest/content-quickstart.html" target="_blank"><em>Jupyter Notebook</em>'s</a>.</p>
 </blockquote>
 <h3><a class="header" href="#installing-or-updating-pyluos-library" id="installing-or-updating-pyluos-library">Installing or updating Pyluos library</a></h3>
-<p>You are now ready to install Pyluos. <strong>The last Pyluos version is <code>0.6.0</code>.</strong></p>
+<p>You are now ready to install Pyluos. <strong>The last Pyluos version is <code>1.2.0</code>.</strong></p>
 <p>In a console, the following command will install the <em>Pyluos</em> library using the <em>Pip packet manager</em>:</p>
 <pre><code class="language-bash">pip install pyluos
 </code></pre>

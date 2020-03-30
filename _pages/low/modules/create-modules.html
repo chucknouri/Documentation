@@ -154,12 +154,12 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#create-luos-modules" id="create-luos-modules">Create Luos modules</a></h1>
-<p><strong>As a developer you will always develop your functionalities into modules and never into the main program.</strong></p>
+<p><strong>As a developer you will always develop your functionalities into modules and never into the <code>main()</code> program.</strong></p>
 <blockquote>
 <p><strong>Warning:</strong> Make sure to read and understand how to <a href="/_pages/low/modules/create-project.html">Create Luos projects</a> before reading this page.</p>
 </blockquote>
 <h2><a class="header" href="#how-to-create-and-initialize-a-module" id="how-to-create-and-initialize-a-module">How to create and initialize a module</a></h2>
-<p>To create a module you simply have to call this function :</p>
+<p>To create a module, you have to call this function:</p>
 <pre><code class="language-c">module_t* luos_module_create(void* callback, module_type_t type, char* default_alias);
 </code></pre>
 <p>The returned <code>module_t*</code> is a module structure pointer that will be useful to make your module act in the network after this initialization.</p>
