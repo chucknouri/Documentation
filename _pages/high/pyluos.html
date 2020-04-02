@@ -215,19 +215,58 @@ python get-pip.py
 <code>Waiting for first state...</code><br />
 <code>Device setup.</code></p>
 <p>Only once the connection is set it is possible to start programming behaviors.</p>
-<h3><a class="header" href="#list-available-modules-of-your-device" id="list-available-modules-of-your-device">List available modules of your device</a></h3>
-<p>The following line of code refers to the listing of all the modules available in your device.</p>
+<h3><a class="header" href="#routing-table-display" id="routing-table-display">Routing table display</a></h3>
+<p><a href="/_pages/low/modules/routing-table.html">Routing table</a> can be easily displayed using Pyluos.</p>
+<p>Pyluos can displays a list of all the modules by filtering the route table, and their associated characteristics (type, alias and ID).
+To display it, use the following command:</p>
 <pre><code class="language-python">device.modules
 </code></pre>
-<p>For example if you have an RGB LED and a button in your system, it should display the following table:</p>
+<blockquote>
+<p><strong>Note:</strong> <code>device</code> is the name of the network.</p>
+</blockquote>
+<p>Pyluos will give you a list of all modules without any topological informations :</p>
 <pre><code class="language-AsciiDoc">-------------------------------------------------
 Type                Alias               ID
 -------------------------------------------------
 Gate                gate                1
-Button              button_mod          2
-Led                 rgb_led_mod         3
+Voltage             analog_read_P1      2
+Voltage             analog_read_P7      3
+Voltage             analog_read_P8      4
+Voltage             analog_read_P9      5
+State               digit_read_P5       6
+State               digit_read_P6       7
+State               digit_write_P2      8
+State               digit_write_P3      9
+State               digit_write_P4      10
+Angle               potentiometer_m     11
 </code></pre>
-<p>This retrieves the <em>module type</em>, the <em>alias</em> (name), and <em>id</em> of each module.</p>
+<p>Pyluos also can interpreate route_table and transform it into a tree. This way we can display a lot more complete information usinig the following command :</p>
+<pre><code class="language-python">device.nodes
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> <code>device</code> is the name of the network.</p>
+</blockquote>
+<p>Based on the previous example Pyluos will give you all informations about modules and topological informations :</p>
+<pre><code class="language-AsciiDoc"> root : [4653093, 1194612501, 540554032]
+        |  Type                Alias               ID
+        └&gt; Gate                gate                1
+└── 1&lt;=&gt;0 : [4456498, 1347571976, 540555569]
+            |  Type                Alias               ID
+            └&gt; Voltage             analog_read_P1      2
+            └&gt; Voltage             analog_read_P7      3
+            └&gt; Voltage             analog_read_P8      4
+            └&gt; Voltage             analog_read_P9      5
+            └&gt; State               digit_read_P5       6
+            └&gt; State               digit_read_P6       7
+            └&gt; State               digit_write_P2      8
+            └&gt; State               digit_write_P3      9
+            └&gt; State               digit_write_P4      10
+    └── 1&lt;=&gt;0 : [4653107, 1347571976, 540555569]
+                |  Type                Alias               ID
+                └&gt; Angle               potentiometer_m     11
+</code></pre>
+<p>In this example, 3 nodes (MCU) and their associated UUID are listed, along with their modules and associated characteristics (type, alias and ID).
+The characters after each set of node's modules and before the UUID's next node specify which connector is used. For example, <code>1&lt;=&gt;0</code> means the first node is connected from it's second connector (1) to the first connector (0) of the next node.</p>
 <h3><a class="header" href="#module-type" id="module-type">Module type</a></h3>
 <p>Each module has a type (eg. <code>Button</code>, <code>Led</code>, ...).
 You can either retrieve your module's type from the previous code, or with the following line:</p>

@@ -153,11 +153,85 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#routing-table" id="routing-table">Routing table</a></h1>
+                        <h1><a class="header" href="#routing-table" id="routing-table">Routing Table</a></h1>
 <blockquote>
-<p><strong>We are working on this page</strong></p>
-<p>It will be available soon...</p>
+<p><strong>Warning:</strong> Make sure to read and understand how to <a href="/_pages/low/modules/create-modules.html">Create Luos modules</a> before reading this page.</p>
 </blockquote>
+<p>The routing table is a feature of Luos allowing every <span class="cust_tooltip"><a href="/_pages/overview/general-basics.html#module">modules</a><span class="cust_tooltiptext">Software element ran by Luos that can communicate with other modules. Can be driver or app.</span></span> to own a &quot;map&quot; (or topology) of the entire network of your device. This map allows modules to know their physical position and to search and interact with other modules easily.<br/>
+This feature is particularly used by apps modules to find other modules they need to interact with.</p>
+<h2><a class="header" href="#modes" id="modes">Modes</a></h2>
+<p>As explained in <a href="/_pages/overview/general-basics.html#what-is-a-node">this page</a>, <span class="cust_tooltip">nodes<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several modules.</span></span> can host multiple modules. To get the topology of your device, the routing table references physical connexions between your nodes and lists all the modules in each one of them.</p>
+<p>The routing table is a table of a <code>routing_table_t</code> structure containing nodes or modules information.
+The maximum number of modules and nodes are managed by the precompilation constant <code>MAX_MODULES_NUMBER</code> (set to 40 by default).</p>
+<pre><code class="language-c">route_table_t route_table[MAX_MODULES_NUMBER];
+</code></pre>
+<p>The routing table structure has two modes: <em>module entry mode</em> and <em>node entry mode</em>.</p>
+<pre><code class="language-c">typedef struct __attribute__((__packed__)){
+    entry_mode_t mode;
+    union {
+        struct __attribute__((__packed__)){ // MODULE entry mode
+            unsigned short id; // Module ID
+            unsigned char type; /*!&lt; Module type. */
+            char alias[MAX_ALIAS_SIZE]; /*!&lt; Module alias. */
+        };
+        struct __attribute__((__packed__)){ // NODE entry mode
+            luos_uuid_t uuid; // Node UUID
+            unsigned short port_table[4]; // Node link table
+        };
+    };
+}routing_table_t;
+</code></pre>
+<h3><a class="header" href="#module-entry-mode" id="module-entry-mode">Module entry mode</a></h3>
+<p>This mode allows <code>route_table</code> to contain:</p>
+<ul>
+<li>id: module's unique id</li>
+<li>type: module's type</li>
+<li>alias: module's alias</li>
+</ul>
+<p>For more information, please refer to the <a href="/_pages/low/modules.html">Modules</a> page of this documentation.</p>
+<h3><a class="header" href="#node-entry-mode" id="node-entry-mode">Node entry mode</a></h3>
+<p>This mode gives physical information of your devices.</p>
+<p>The <strong>uuid</strong> is the serial number of the microcontroler hosting Luos. This number is unique, you can use it to identify each one of your nodes.</p>
+<p>The <strong>port_table</strong> allows to share topological information of your network. Each element of this table corresponds to a physical Luos port of the node and indicates which node is connected to it by sharing a module's <code>id</code>.</p>
+<p>Here is an example:</p>
+<img src="/_assets/img/routing-table.png" title="Routing table">
+<p>As shown on this image, elements of the <code>port_table</code> indicate the first or last module id of the connected node through a given port.</p>
+<p>Specific values taken by <code>port_table</code>:</p>
+<ul>
+<li><strong>0</strong>: this port is waiting to discover who is connected with. You should never see this value.</li>
+<li><strong>0x0FFF</strong>: this port is not connected to any other Node.</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> Routing tables can be easily displayed using <a href="/_pages/high/pyluos.html">Pyluos</a> through a <a href="/_pages/high/modules_list/gate.html">USB gate</a>. Please refer to the <a href="/_pages/high/pyluos.html#routing-table-display">Pyluos routing table section</a> for more information.</p>
+</blockquote>
+<h2><a class="header" href="#search-tools" id="search-tools">Search tools</a></h2>
+<p>The routing table library provides the following search tools to find modules and nodes' information into a Luos network:</p>
+<table><thead><tr><th align="center">Description</th><th align="center">Function</th><th align="center">Return</th></tr></thead><tbody>
+<tr><td align="center">Find a module's id from its alias</td><td align="center"><code>id_from_alias(char* alias);</code></td><td align="center"><code>int</code></td></tr>
+<tr><td align="center">Find a module's id from its type (return the first of the list)</td><td align="center"><code>id_from_type(module_type_t type);</code></td><td align="center"><code>int</code></td></tr>
+<tr><td align="center">Find a module's string from its type (return the first of the list)</td><td align="center"><code>string_from_type(module_type_t type);</code></td><td align="center"><code>char*</code></td></tr>
+<tr><td align="center">Find a module's alias from its id (return the first of the list)</td><td align="center"><code>alias_from_id(uint16_t id);</code></td><td align="center"><code>char*</code></td></tr>
+<tr><td align="center">Find a module's type from its id</td><td align="center"><code>type_from_id(uint16_t id);</code></td><td align="center"><code>module_type_t</code></td></tr>
+<tr><td align="center">Find a module's type from its alias</td><td align="center"><code>type_from_alias(char* alias);</code></td><td align="center"><code>module_type_t</code></td></tr>
+<tr><td align="center">Test if a module's type is a sensor</td><td align="center"><code>is_sensor(module_type_t type);</code></td><td align="center"><code>uint8_t</code></td></tr>
+<tr><td align="center">Get a node's id</td><td align="center"><code>get_node_id(unsigned short index);</code></td><td align="center"><code>int</code></td></tr>
+<tr><td align="center">Get the number of nodes in a Luos network</td><td align="center"><code>get_node_nb(void);</code></td><td align="center"><code>int</code></td></tr>
+<tr><td align="center">Get the list of all the nodes in a Luos network</td><td align="center"><code>get_node_list(unsigned short* list);</code></td><td align="center"><code>void</code></td></tr>
+</tbody></table>
+<h2><a class="header" href="#management-tools" id="management-tools">Management tools</a></h2>
+<p>Here are the management tools provided by the routing table library:</p>
+<table><thead><tr><th align="center">Description</th><th align="center">Function</th><th align="center">Return</th></tr></thead><tbody>
+<tr><td align="center">Compute the rooting table</td><td align="center"><code>compute_route_table_entry_nb(void);</code></td><td align="center"><code>void</code></td></tr>
+<tr><td align="center">Detect the modules in a Luos network</td><td align="center"><code>detect_modules(module_t* module);</code></td><td align="center"><code>void</code></td></tr>
+<tr><td align="center">Convert a node to a routing table entry</td><td align="center"><code>convert_board_to_route_table(route_table_t* entry, luos_uuid_t uuid, unsigned short* port_table, int branch_nb);</code></td><td align="center"><code>void</code></td></tr>
+<tr><td align="center">Convert a module to a routing table entry</td><td align="center"><code>convert_module_to_route_table(route_table_t* entry, module_t* module);</code></td><td align="center"><code>void</code></td></tr>
+<tr><td align="center">Insert an entry into the routing table</td><td align="center"><code>insert_on_route_table(route_table_t* entry);</code></td><td align="center"><code>void</code></td></tr>
+<tr><td align="center">Remove an entry in the routing table (by id)</td><td align="center"><code>remove_on_route_table(int id);</code></td><td align="center"><code>void</code></td></tr>
+<tr><td align="center">Erase routing table</td><td align="center"><code>flush_route_table(void);</code></td><td align="center"><code>void</code></td></tr>
+<tr><td align="center">Get the routing table</td><td align="center"><code>get_route_table(void);</code></td><td align="center"><code>route_table_t*</code></td></tr>
+<tr><td align="center">Get the last module in a Luos network</td><td align="center"><code>get_last_module(void);</code></td><td align="center"><code>int</code></td></tr>
+<tr><td align="center">Get the last entry in a Luos network</td><td align="center"><code>get_last_entry(void);</code></td><td align="center"><code>int</code></td></tr>
+</tbody></table>
 <div class="cust_edit_page"><a href="https://github.com/Luos-io/doc/tree/master/src/_pages/low/modules/routing-table.md">Edit this page</a></div>
 
                         <br />
