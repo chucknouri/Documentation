@@ -170,6 +170,9 @@ In the Luos philosophy, each node has to carry the necessary programs (modules) 
 <strong>Each module is hosted in a single node</strong>, but a node can handle several modules at the same time and manage communication between them and between other modules hosted in other nodes, using the same interface.</p>
 <p>For example, the <a href="/_pages/prototyping_boards/boards_list/dxl.html">Dynamixel board</a> provided by Luos can dynamically create and manage Dynamixel modules depending on the number of Dynamixel motors linked to it. Any Dynamixel modules can get or set values to other Dynamixel modules on the same node or to any other modules in any other nodes in the network.</p>
 <p><a href="/_pages/low/modules.html">Go to Modules page</a>.</p>
+<h2><a class="header" href="#messages" id="messages">Messages</a></h2>
+<p>All modules can share and receive datas using messages.</p>
+<p><a href="/_pages/low/modules/msg-handling.html">Go to Messages handling page</a>.</p>
 <h2><a class="header" href="#routing-table" id="routing-table">Routing table</a></h2>
 <p>A routing table is a &quot;service&quot; managed by the Luos network and available for any modules in any nodes. This service lists all the modules and allows to any modules to get and use basic information of any other modules. The routing table's data can be loaded or auto-generated during detection.</p>
 <p><a href="/_pages/low/modules/routing-table.html">Go to Routing table page</a>.</p>
