@@ -411,10 +411,74 @@ Apps can be placed in any <span class="cust_tooltip"><a href="_pages/low/modules
 </ul>
 <p>Apps are the embedded smartness of your device, and at least one of them should run a network detection in order to map every modules in every nodes in your device and make it work properly. Go to <a href="_pages/low/modules//_pages/low/modules/routing-table.html">Routing table</a> page for more informations.</p>
 <div class="cust_edit_page"><a href="https://github.com/Luos-io/doc/tree/master/src/_pages/low/modules/create-modules.md">Edit this page</a></div>
-<h1><a class="header" href="#object-dictionary" id="object-dictionary">Object dictionary</a></h1>
+<h1><a class="header" href="#object-dictionary" id="object-dictionary">Object Dictionary</a></h1>
+<p>To keep interoperability between <span class="cust_tooltip">modules<span class="cust_tooltiptext">Software element ran by Luos that can communicate with other modules. Can be driver or app.</span></span>, Luos provides an Object Dictionary (OD).</p>
+<h2><a class="header" href="#what-is-od" id="what-is-od">What is OD?</a></h2>
+<p>An Object Dictionary (OD) allows different developers of different modules to make them interoperate regardless of the unit they uses on the module.</p>
+<p>Let's take an example: If module1 uses an angle as radians and module2 uses degrees, what is the unit they should use to share the angle information?</p>
+<p>An Object Dictionary defines a set of typical objects that can be transmitted through Luos messages. It allows to send these objects with a predefined type and to use it in the units the user want.</p>
+<h2><a class="header" href="#how-is-it-managed-in-luos" id="how-is-it-managed-in-luos">How is it managed in Luos?</a></h2>
+<p>Luos defines objects based on physical values following the SI standard.</p>
+<h3><a class="header" href="#object-and-types" id="object-and-types">Object and types</a></h3>
+<p>Each object in the Object Dictionary has a specific Type. For example:</p>
+<pre><code class="language-c">// Define object angular_position as an angular_position_t type
+angular_position_t angular_position; 
+</code></pre>
+<p>You can create your variables using these objects but <strong>never set OD variables directly with a value</strong>. Instead, you have to use functions available on the Luos OD:</p>
+<pre><code class="language-c">// Set object angular_position
+angular_position_t angular_position = angular_position_from_deg (12.0); 
+</code></pre>
+<p>Following this rule, everybody will be able to use your values.</p>
+<p>All the types are listed in the <a href="_pages/low/modules/od.html#types-and-units-table-summary">table summary</a> at the end of this page.</p>
+<h2><a class="header" href="#conversions" id="conversions">Conversions</a></h2>
+<p>As many units exist, many conversion functions are available. As a result, they follow a <strong>logic naming rules</strong> in order to easily find a desired function without having to search for it.</p>
+<h3><a class="header" href="#unit-conversions" id="unit-conversions">Unit conversions</a></h3>
+<p>There are two types of unit conversion: in one way (OD type from desired unit), and in the other way (OD type to desired unit):</p>
+<ul>
+<li><strong><code>from</code> conversion:</strong> Converts a value with a defined unit into a desired OD type. Format:  <code>[type_var] = [type]_from_[unit]([value])</code></li>
+</ul>
+<pre><code class="language-c">// save a linear_position from a mm value
+linear_position_t linear_position_from_mm(float mm); 
+</code></pre>
+<ul>
+<li><strong><code>to</code> conversion:</strong> Converts a type to a unit. Format: <code>[value] = [type]_to_[unit]([type_var])</code></li>
+</ul>
+<pre><code class="language-c">// convert the variable linear_position into a mm
+float linear_position_to_mm(linear_position_t linear_position); 
+</code></pre>
+<h3><a class="header" href="#messages-conversions" id="messages-conversions">Messages conversions</a></h3>
+<p>The same both way of conversion are available for messages (OD type from message and OD type to message):</p>
+<ul>
+<li><strong><code>from</code> conversion:</strong> Gets a type from a message. Format: <code>[type]_from_msg([type_var], msg)</code></li>
+</ul>
+<pre><code class="language-C">// get the linear_position from the message msg
+void linear_position_from_msg(linear_position_t* linear_position, msg_t* msg); 
+</code></pre>
+<ul>
+<li><strong><code>to</code> conversion:</strong> Inserts a desired type into a message. Format: <code>[type]_to_msg(type_var], msg)</code></li>
+</ul>
+<pre><code class="language-c">// insert the linear_position into the message msg
+void linear_position_to_msg(linear_position_t* linear_position, msg_t* msg);
+</code></pre>
+<h2><a class="header" href="#types-and-units-table-summary" id="types-and-units-table-summary">Types and units table summary</a></h2>
+<p>Here are listed the existing types:</p>
+<table><thead><tr><th align="center">Type</th><th align="center">Available prefix and other units</th></tr></thead><tbody>
+<tr><td align="center">linear_position</td><td align="center">nm, μm, mm, cm, m, km, in, ft, mi</td></tr>
+<tr><td align="center">linear_speed</td><td align="center">mm/s, m/s, km/h, in/s, mi/h</td></tr>
+<tr><td align="center">angular_position</td><td align="center">deg, revolution, rad</td></tr>
+<tr><td align="center">angular_speed</td><td align="center">deg/s, revolution/s, revolution/min, rad/s</td></tr>
+<tr><td align="center">force</td><td align="center">N, kgf, ozf, lbf</td></tr>
+<tr><td align="center">moment</td><td align="center">N.mm, N.cm, N.m, kgf.mm, kgf.cm, kgf.m, ozf.in, lbf.in</td></tr>
+<tr><td align="center">voltage</td><td align="center">mV, V</td></tr>
+<tr><td align="center">current</td><td align="center">mA, A</td></tr>
+<tr><td align="center">power</td><td align="center">mW, W</td></tr>
+<tr><td align="center">ratio</td><td align="center">percentage</td></tr>
+<tr><td align="center">temperature</td><td align="center">deg_c, deg_f, deg_k</td></tr>
+<tr><td align="center">color</td><td align="center">8bit_RGB unsigned char [3]</td></tr>
+</tbody></table>
 <blockquote>
-<p><strong>We are working on this page</strong></p>
-<p>It will be available soon...</p>
+<p><strong>Note:</strong> to find out a conversion function, replace the characters <code>/</code> or <code>.</code> in the units by the character <code>_</code>. The character <code>µ</code> is replaced by <code>u</code>, and <code>revolution</code> is replaced by <code>rev</code>.</p>
+<p>Examples: convert a linear speed to mm/s: <code>linear_speed_to_mm_s()</code>; convert a value in μm to a linear position: <code>linear_position_from_um()</code>; convert a value in revolutions/s to an angular speed: <code>angular_speed_from_rev_s()</code>;</p>
 </blockquote>
 <div class="cust_edit_page"><a href="https://github.com/Luos-io/doc/tree/master/src/_pages/low/modules/od.md">Edit this page</a></div>
 <h1><a class="header" href="#routing-table-1" id="routing-table-1">Routing Table</a></h1>
