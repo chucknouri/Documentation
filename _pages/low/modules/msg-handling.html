@@ -223,6 +223,9 @@
     }
 }
 </code></pre>
+<h2><a class="header" href="#module-exclusion" id="module-exclusion">Module exclusion</a></h2>
+<p>Luos includes an acknowledgement management using the <strong>ID_ACK</strong> target_mode. This mode guaranties the proper reception of critical messages.</p>
+<p>If Luos fails to reach its target using ID_ACK, it will retries 10 times. If the acknowledgement still fails, the targeted module is declared excluded. Excluded modules are removed from the routing table to avoid any messaging by any modules, preserving bandwidth for the rest of the system.</p>
 <h2><a class="header" href="#large-data" id="large-data">Large data</a></h2>
 <p>You will sometimes have to deal with large data that could be larger than the maximum 128-byte data on a Luos message. Fortunately, Luos is able to automatically fragment and de-fragment the data above this side. To do that, you will have to use another send function that will take care of setting the messages' size, and the data fields.</p>
 <p>For example, here is how to send a picture:</p>

@@ -154,10 +154,243 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#json-api" id="json-api">JSON API</a></h1>
+<p>The <a href="https://en.wikipedia.org/wiki/JSON" target="blank_">JSON formated data</a> is very common and widely used by many programming languages. Luos allows you to convert low-level Luos information into JSON objects, enabling conventional programming languages to interact with you device easily.<br/>
+To do that, you must add a specific app module called <a href="/_pages/high/modules_list/gate.html">Gate</a> on your device.</p>
+<p>The <a href="/_pages/high/modules_list/gate.html">Gate module</a> is an app that converts Luos messages from a device's network into JSON data format, and the other way from JSON to Luos messages.<br/>
+The Gate module can be hosted into different kinds of <span class="cust_tooltip">nodes<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several modules.</span></span> allowing you to choose the communication way fitting with your project (USB, Wifi, Bluetooth, etc.)</p>
 <blockquote>
-<p><strong>We are working on this page</strong></p>
-<p>It will be available soon...</p>
+<p><strong>Warning:</strong>: The Gate module refreshes sensors information as fast as it can, so that can be intensive to Luos bandwidth.</p>
 </blockquote>
+<h2><a class="header" href="#how-to-start-using-the-json-api" id="how-to-start-using-the-json-api">How to start using the JSON API</a></h2>
+<p>Before using your device through JSON, you have to be connected to the communication flow depending on the node type hosting your Gate module.<br/>
+Then you can start the Gate by sending:</p>
+<pre><code class="language-JSON">{&quot;detection&quot;: {}}\r
+</code></pre>
+<p>This command asks the Gate to start a topological detection, create a routing table, convert it into JSON and send it back to you.</p>
+<h2><a class="header" href="#routing-table-messages" id="routing-table-messages">Routing table messages</a></h2>
+<blockquote>
+<p><strong>Warning:</strong> Make sure to read and understand how <a href="/_pages/low/modules/routing-table.html">routing table</a> works before reading this part.</p>
+</blockquote>
+<p>After the Gate starts, the first message you receive is a routing table.<br/>
+This first message is really important, because it contains all the information allowing you to create a code object for your device, containing all its features.</p>
+<h3><a class="header" href="#routing-table-structure" id="routing-table-structure">Routing table structure</a></h3>
+<p>A routing table in JSON consists in a list of the nodes present in the Luos network:</p>
+<pre><code class="language-JSON">{
+   &quot;route_table&quot;:[
+      {
+         // node 1
+      },
+      {
+         // node 2
+      },
+      {
+         // node 3
+      }
+      // ...
+   ]
+}
+</code></pre>
+<h4><a class="header" href="#nodes-information" id="nodes-information">Nodes information</a></h4>
+<p>Each listed node of the network has basic node information and a list of hosted modules:</p>
+<pre><code class="language-JSON">{ // node 1
+   &quot;uuid&quot;:[1, 2, 3],
+   &quot;port_table&quot;:[1, 2],
+   &quot;modules&quot;:[
+      {
+         // module 1
+      },
+      {
+         // module 2
+      }
+      // ...
+   ]
+}
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> To understand the meanings of <em>uuid</em> and <em>port_table</em>, please refer to the <a href="/_pages/low/modules/routing-table.html">routing table page</a>.</p>
+</blockquote>
+<h4><a class="header" href="#modules" id="modules">Modules</a></h4>
+<p>Each listed module of a node has basics modules information:</p>
+<pre><code class="language-JSON">{ // module 1
+   &quot;type&quot;:&quot;Type&quot;,
+   &quot;id&quot;:1,
+   &quot;alias&quot;:&quot;Alias&quot;
+}
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> To understand the meanings of <em>type</em>, <em>id</em> and <em>alias</em>, please refer to the <a href="/_pages/low/modules.html">module page</a>.</p>
+</blockquote>
+<h4><a class="header" href="#full-routing-table-example" id="full-routing-table-example">Full routing table example</a></h4>
+<pre><code class="language-JSON">{
+   &quot;route_table&quot;:[
+      {
+         &quot;uuid&quot;:[2031684, 1112756496, 540423216],
+         &quot;port_table&quot;:[2, 65535],
+         &quot;modules&quot;:[
+            {
+               &quot;type&quot;:&quot;Gate&quot;,
+               &quot;id&quot;:1,
+               &quot;alias&quot;:&quot;r_right_arm&quot;
+            }
+         ]
+      },
+      {
+         &quot;uuid&quot;:[4915239, 1194612503, 540554032],
+         &quot;port_table&quot;:[4, 1],
+         &quot;modules&quot;:[
+            {
+               &quot;type&quot;:&quot;State&quot;,
+               &quot;id&quot;:2,
+               &quot;alias&quot;:&quot;lock&quot;
+            },
+            {
+               &quot;type&quot;:&quot;Unknown&quot;,
+               &quot;id&quot;:3,
+               &quot;alias&quot;:&quot;start_control&quot;
+            }
+         ]
+      },
+      {
+         &quot;uuid&quot;:[2818086, 1194612503, 540554032],
+         &quot;port_table&quot;:[5, 3],
+         &quot;modules&quot;:[
+            {
+               &quot;type&quot;:&quot;Imu&quot;,
+               &quot;id&quot;:4,
+               &quot;alias&quot;:&quot;gps&quot;
+            }
+         ]
+      },
+      {
+         &quot;uuid&quot;:[2097186, 1194612503, 540554032],
+         &quot;port_table&quot;:[65535, 4],
+         &quot;modules&quot;:[
+            {
+               &quot;type&quot;:&quot;Color&quot;,
+               &quot;id&quot;:5,
+               &quot;alias&quot;:&quot;alarm&quot;
+            },
+            {
+               &quot;type&quot;:&quot;Unknown&quot;,
+               &quot;id&quot;:6,
+               &quot;alias&quot;:&quot;alarm_control&quot;
+            }
+         ]
+      }
+   ]
+}
+</code></pre>
+<p>Below is a visual representation of this routing table:</p>
+<p><img src="/_assets/img/luos-network-ex.png" alt="" /></p>
+<h3><a class="header" href="#modules-information-messages" id="modules-information-messages">Module's information messages</a></h3>
+<p>When the JSON routing table is transmitted, the Gate starts to update and stream your network data with <strong>modules information</strong>.</p>
+<p>This JSON is a &quot;module&quot; object listing all the modules by their alias and the values they send:</p>
+<pre><code class="language-JSON">{
+   &quot;modules&quot;:{
+      &quot;module_alias1&quot;:{
+         &quot;value1&quot;:12.5
+      },
+      &quot;module_alias2&quot;:{
+         &quot;value1&quot;:13.6,
+         &quot;value2&quot;:[1, 2, 3, 4]
+      }
+   }
+}
+</code></pre>
+<p>You can use the exact same JSON object structure to send data to modules.</p>
+<p>Here is the list of all values that can be used by modules:</p>
+<table><thead><tr><th align="center">Value name</th><th align="center">Definition</th></tr></thead><tbody>
+<tr><td align="center">power_ratio</td><td align="center">Percentage of power of an actuator (-100% to 100%)</td></tr>
+<tr><td align="center">target_rot_position</td><td align="center">Actuator's target angular position (can be a number or an array)</td></tr>
+<tr><td align="center">limit_rot_position</td><td align="center">Actuator's limit angular position</td></tr>
+<tr><td align="center">limit_trans_position</td><td align="center">Actuator's limit angular position</td></tr>
+<tr><td align="center">limit_power</td><td align="center">Limit ratio of an actuator's reduction</td></tr>
+<tr><td align="center">limit_current</td><td align="center">Limit current value</td></tr>
+<tr><td align="center">target_rot_speed</td><td align="center">Actuator's target rotation speed</td></tr>
+<tr><td align="center">target_trans_position</td><td align="center">Actuator's target linear position (can be a number or an array)</td></tr>
+<tr><td align="center">target_trans_speed</td><td align="center">Actuator's target linear speed</td></tr>
+<tr><td align="center">time</td><td align="center">Time value</td></tr>
+<tr><td align="center">compliant</td><td align="center">Actuator's compliance status</td></tr>
+<tr><td align="center">pid</td><td align="center">Set of PID values (proportionnal, integral, derivative)</td></tr>
+<tr><td align="center">resolution</td><td align="center">Sensor's resolution value</td></tr>
+<tr><td align="center">offset</td><td align="center">Offset value</td></tr>
+<tr><td align="center">reduction</td><td align="center">Ratio of an actuator's reduction</td></tr>
+<tr><td align="center">dimension</td><td align="center">Dimension value</td></tr>
+<tr><td align="center">volt</td><td align="center">Voltage value</td></tr>
+<tr><td align="center">current</td><td align="center">Electric current value</td></tr>
+<tr><td align="center">reinit</td><td align="center">Reinitialisation command</td></tr>
+<tr><td align="center">control</td><td align="center">Control command (play, pause, stop, rec)</td></tr>
+<tr><td align="center">color</td><td align="center">Color value</td></tr>
+<tr><td align="center">io_state</td><td align="center">IO state</td></tr>
+<tr><td align="center">led</td><td align="center">Board's LED</td></tr>
+<tr><td align="center">L0_temperature</td><td align="center">Node's temperature</td></tr>
+<tr><td align="center">L0_voltage</td><td align="center">Node's voltage</td></tr>
+<tr><td align="center">uuid</td><td align="center">Module's uuid</td></tr>
+<tr><td align="center">rename</td><td align="center">Renaming an alias</td></tr>
+<tr><td align="center">revision</td><td align="center">Firmware revision</td></tr>
+<tr><td align="center">trans_position</td><td align="center">Translation position value</td></tr>
+<tr><td align="center">trans_speed</td><td align="center">Translation speed value</td></tr>
+<tr><td align="center">rot_position</td><td align="center">Rotation position value</td></tr>
+<tr><td align="center">rot_speed</td><td align="center">Rotation speed value</td></tr>
+<tr><td align="center">lux</td><td align="center">Lux (light intensity) value</td></tr>
+<tr><td align="center">temperature</td><td align="center">Temperature value</td></tr>
+<tr><td align="center">force</td><td align="center">Force value</td></tr>
+<tr><td align="center">moment</td><td align="center">Torque value</td></tr>
+<tr><td align="center">power</td><td align="center">Power value</td></tr>
+<tr><td align="center">linear_accel</td><td align="center">Linear acceleration value</td></tr>
+<tr><td align="center">gravity_vector</td><td align="center">Gravity vector value</td></tr>
+<tr><td align="center">compass</td><td align="center">Compass value</td></tr>
+<tr><td align="center">gyro</td><td align="center">Gyroscope value</td></tr>
+<tr><td align="center">accel</td><td align="center">Acceleration value</td></tr>
+<tr><td align="center">euler</td><td align="center">Euler angle value</td></tr>
+<tr><td align="center">quaternion</td><td align="center">Quaternion values</td></tr>
+<tr><td align="center">rotational_matrix</td><td align="center">Rotational matrix values</td></tr>
+<tr><td align="center">heading</td><td align="center">Heading</td></tr>
+<tr><td align="center">pedometer</td><td align="center">Steps number value</td></tr>
+<tr><td align="center">walk_time</td><td align="center">Walk time value</td></tr>
+</tbody></table>
+<p>Here is an exemple of a message sent by a Potentiometer module about the rotation angle of the associated potentiometer:</p>
+<pre><code class="language-JSON">{
+   &quot;modules&quot;:{
+      &quot;potentiometer_m&quot;:{
+         &quot;rot_position&quot;:12.5
+      }
+   }
+}
+</code></pre>
+<h5><a class="header" href="#specific-messages" id="specific-messages">Specific messages</a></h5>
+<p>Some messages are specifically handled:</p>
+<!-- - If the type is `VOID_MOD`, the module is empty and no message is converted.-->
+<ul>
+<li>For<a href="/_pages/high/modules_list/dxl.html">Dynamixel</a> and void modules:</li>
+</ul>
+<table><thead><tr><th align="center">Object</th><th align="center">Definition</th></tr></thead><tbody>
+<tr><td align="center">register</td><td align="center">Motor memory register filed with [register_number, value]</td></tr>
+<tr><td align="center">set_id</td><td align="center">A set id command</td></tr>
+<tr><td align="center">wheel_mode</td><td align="center">The wheel mode parameter for Dynamixel servomotors True or False</td></tr>
+</tbody></table>
+<ul>
+<li>For <a href="/_pages/high/modules_list/stepper.html">Stepper</a>, <a href="/_pages/high/modules_list/controlled-motor.html">Controlled-motor</a> and <a href="/_pages/high/modules_list/servo.html">Servo</a> modules:</li>
+</ul>
+<table><thead><tr><th align="center">Object</th><th align="center">Definition</th></tr></thead><tbody>
+<tr><td align="center">parameters</td><td align="center">enabling or disabling some measurement</td></tr>
+</tbody></table>
+<ul>
+<li>For <a href="/_pages/high/modules_list/imu.html">Imu</a> module:</li>
+</ul>
+<table><thead><tr><th align="center">Object</th><th align="center">Definition</th></tr></thead><tbody>
+<tr><td align="center">parameters</td><td align="center">enabling or disabling some measurement</td></tr>
+</tbody></table>
+<ul>
+<li>For <a href="/_pages/high/modules_list/gate.html">Gate</a> module:</li>
+</ul>
+<table><thead><tr><th align="center">Object</th><th align="center">Definition</th></tr></thead><tbody>
+<tr><td align="center">delay</td><td align="center">reduce modules refresh rate</td></tr>
+</tbody></table>
+<h3><a class="header" href="#module-exclusion-messages" id="module-exclusion-messages">Module exclusion messages</a></h3>
+<p>Module can be excluded of the network if a problem occurs (See <a href="/_pages/low/modules/msg-handling.html#module-exclusion">message handling</a> for more information). In this case, the Gate sends an exclusion message indicating that this module is no longer available:</p>
+<pre><code class="language-JSON">{&quot;dead_module&quot;: &quot;module_alias&quot;}
+</code></pre>
 <div class="cust_edit_page"><a href="https://github.com/Luos-io/doc/tree/master/src/_pages/high/json-api.md">Edit this page</a></div>
 
                         <br />
