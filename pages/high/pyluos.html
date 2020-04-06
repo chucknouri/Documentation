@@ -1,0 +1,408 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Pyluos - Luos.io - Documentation</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Luos official documentation pages">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="../../src/_assets/css/custom.css">
+        
+
+        
+    </head>
+    <body>
+	
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+		
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+		<nav id="sidebar" class="sidebar" aria-label="Table of contents">
+			<div id="sidebar-scrollbox" class="sidebar-scrollbox">
+				<!--<a href="https://www.luos.io"><img src="/_assets/img/luos_logo_100px.png" height="50px" />--><ol class="chapter"><li class="chapter-item affix "><a href="../../index.html">Home</a></li><li class="chapter-item "><a href="../../pages/overview/general-basics.html"><strong aria-hidden="true">1.</strong> Basics</a></li><li class="chapter-item "><a href="../../pages/low/low-level.html"><strong aria-hidden="true">2.</strong> Low level</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../pages/low/dev-env.html"><strong aria-hidden="true">2.1.</strong> Development environment</a></li><li class="chapter-item "><a href="../../pages/low/electronic-design.html"><strong aria-hidden="true">2.2.</strong> Electronic design</a></li><li class="chapter-item "><a href="../../pages/low/modules.html"><strong aria-hidden="true">2.3.</strong> Modules</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../pages/low/modules/create-project.html"><strong aria-hidden="true">2.3.1.</strong> Create Luos projects</a></li><li class="chapter-item "><a href="../../pages/low/modules/create-modules.html"><strong aria-hidden="true">2.3.2.</strong> Create Luos modules</a></li><li class="chapter-item "><a href="../../pages/low/modules/od.html"><strong aria-hidden="true">2.3.3.</strong> Object dictionary</a></li><li class="chapter-item "><a href="../../pages/low/modules/routing-table.html"><strong aria-hidden="true">2.3.4.</strong> Routing table</a></li><li class="chapter-item "><a href="../../pages/low/modules/msg-handling.html"><strong aria-hidden="true">2.3.5.</strong> Messages handling</a></li><li class="chapter-item "><a href="../../pages/low/modules/rt-config.html"><strong aria-hidden="true">2.3.6.</strong> Real-time configuration</a></li><li class="chapter-item "><a href="../../pages/low/modules/examples.html"><strong aria-hidden="true">2.3.7.</strong> Codes Examples</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../pages/high/high-level.html"><strong aria-hidden="true">3.</strong> High level</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../pages/high/json-api.html"><strong aria-hidden="true">3.1.</strong> JSON API</a></li><li class="chapter-item expanded "><a href="../../pages/high/pyluos.html" class="active"><strong aria-hidden="true">3.2.</strong> Pyluos</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../pages/high/modules_list/gate.html"><strong aria-hidden="true">3.2.1.</strong> Gate</a></li><li class="chapter-item "><a href="../../pages/high/modules_list/angle.html"><strong aria-hidden="true">3.2.2.</strong> Angle</a></li><li class="chapter-item "><a href="../../pages/high/modules_list/color.html"><strong aria-hidden="true">3.2.3.</strong> Color</a></li><li class="chapter-item "><a href="../../pages/high/modules_list/controlled-motor.html"><strong aria-hidden="true">3.2.4.</strong> Controlled motor</a></li><li class="chapter-item "><a href="../../pages/high/modules_list/dc-motor.html"><strong aria-hidden="true">3.2.5.</strong> DC motor</a></li><li class="chapter-item "><a href="../../pages/high/modules_list/distance.html"><strong aria-hidden="true">3.2.6.</strong> Distance</a></li><li class="chapter-item "><a href="../../pages/high/modules_list/dxl.html"><strong aria-hidden="true">3.2.7.</strong> Dynamixel motor</a></li><li class="chapter-item "><a href="../../pages/high/modules_list/imu.html"><strong aria-hidden="true">3.2.8.</strong> IMU</a></li><li class="chapter-item "><a href="../../pages/high/modules_list/light.html"><strong aria-hidden="true">3.2.9.</strong> Light</a></li><li class="chapter-item "><a href="../../pages/high/modules_list/servo.html"><strong aria-hidden="true">3.2.10.</strong> Servo motor</a></li><li class="chapter-item "><a href="../../pages/high/modules_list/state.html"><strong aria-hidden="true">3.2.11.</strong> State</a></li><li class="chapter-item "><a href="../../pages/high/modules_list/stepper.html"><strong aria-hidden="true">3.2.12.</strong> Stepper motor</a></li><li class="chapter-item "><a href="../../pages/high/modules_list/voltage.html"><strong aria-hidden="true">3.2.13.</strong> Voltage</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../pages/prototyping_boards/electronic-use.html"><strong aria-hidden="true">4.</strong> Prototyping boards</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../pages/prototyping_boards/electronic-use.html"><strong aria-hidden="true">4.1.</strong> Boards general use</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/quick-start.html"><strong aria-hidden="true">4.2.</strong> Quick start</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards-list.html"><strong aria-hidden="true">4.3.</strong> Boards list</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/button.html"><strong aria-hidden="true">4.3.1.</strong> Button</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/battery-power-input.html"><strong aria-hidden="true">4.3.2.</strong> Battery power input</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/controlled-motor.html"><strong aria-hidden="true">4.3.3.</strong> Controlled motor</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/dc-motor.html"><strong aria-hidden="true">4.3.4.</strong> DC motor</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/distance.html"><strong aria-hidden="true">4.3.5.</strong> Distance sensor</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/dxl.html"><strong aria-hidden="true">4.3.6.</strong> Dynamixel motor</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/gpio.html"><strong aria-hidden="true">4.3.7.</strong> GPIO</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/imu.html"><strong aria-hidden="true">4.3.8.</strong> IMU</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/jack-power-input.html"><strong aria-hidden="true">4.3.9.</strong> Jack power input</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/light.html"><strong aria-hidden="true">4.3.10.</strong> Light sensor</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/potentiometer.html"><strong aria-hidden="true">4.3.11.</strong> Potentiometer</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/power-isolator.html"><strong aria-hidden="true">4.3.12.</strong> Power isolator</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/powerpi.html"><strong aria-hidden="true">4.3.13.</strong> Power Pi</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/powerswitch.html"><strong aria-hidden="true">4.3.14.</strong> Power switch</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/rgbled.html"><strong aria-hidden="true">4.3.15.</strong> RGB LED</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/servo.html"><strong aria-hidden="true">4.3.16.</strong> Servo motor</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/stepper.html"><strong aria-hidden="true">4.3.17.</strong> Stepper motor</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/usb.html"><strong aria-hidden="true">4.3.18.</strong> USB</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/wifible.html"><strong aria-hidden="true">4.3.19.</strong> Wifi BLE</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/wire-power-input.html"><strong aria-hidden="true">4.3.20.</strong> Wire power input</a></li><li class="chapter-item "><a href="../../pages/prototyping_boards/boards_list/cables.html"><strong aria-hidden="true">4.3.21.</strong> Cables</a></li></ol></li></ol></li></ol>
+			<a class="cust_menu_item" href="https://www.luos.io" target="_blank">Go to Luos.io</a>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+				
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <a href="https://www.luos.io"><img src="/_assets/img/luos_logo_100px.png" height="50px" /></a>
+						<button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+					
+					<h1 class="menu-title">Luos.io - Documentation</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://www.luos.io" class="cust_menu_top">Luos.io</a>&nbsp;&nbsp;<a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#a-pyluos-guide" id="a-pyluos-guide">A Pyluos guide</a></h1>
+<p>Pyluos is the standard Python library to manage a Luos system with a computer. In this tutorial, you will learn how to install Pyluos in order to use Luos with Python on a computer, through a  <a href="/pages/high/modules_list/gate.html"><em>gate</em></a> module.</p>
+<h2><a class="header" href="#installation" id="installation">Installation</a></h2>
+<h3><a class="header" href="#required-installing-python-and-pip" id="required-installing-python-and-pip">Required: Installing Python and Pip</a></h3>
+<blockquote>
+<p><strong>Warning:</strong> In order to use Pyluos library, Python and the Pip packet manager must be installed on your computer.</p>
+</blockquote>
+<p><em>« Python is a programming language that lets you work more quickly and integrate your systems more effectively. » (<small><a href="https://python.org" target="_blank">Source</a></small>)</em></p>
+<p><em>« <a href="https://pip.pypa.io/en/stable/" target="_blank">Pip</a> is the standard package manager for Python. It allows you to install and manage additional packages that are not part of the Python standard library. » (<small><a href="https://realpython.com/what-is-pip/#getting-started-with-pip" target="_blank">Source</a></small>)</em></p>
+<p>If Python is not installed on you computer, download and run the last release according to your computer's OS: <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a>.</p>
+<p>To install Pip, type the following commands in a console:</p>
+<pre><code class="language-bash">curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python get-pip.py
+</code></pre>
+<h3><a class="header" href="#installing-jupyter-notebook" id="installing-jupyter-notebook">Installing Jupyter Notebook</a></h3>
+<p>The tool <em>Jupyter Notebook</em> is needed for this tutorial. Jupyter Notebook will allow you to type Python commands in an internet browser to communicate with a Luos system, via Pyluos.</p>
+<p><em>« The Jupyter Notebook App is a server-client application that allows editing and running notebook documents via a web browser. The Jupyter Notebook App can be executed on a local desktop requiring no internet access (...) or can be installed on a remote server and accessed through the internet. » (<small><a href="https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html" target="_blank">Source</a></small>)</em></p>
+<p>Type the following command in the console to install Jupyter:</p>
+<pre><code class="language-bash">pip install jupyter
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> Feel free to consult <a href="https://jupyter.readthedocs.io/en/latest/content-quickstart.html" target="_blank"><em>Jupyter Notebook</em>'s</a>.</p>
+</blockquote>
+<h3><a class="header" href="#installing-or-updating-pyluos-library" id="installing-or-updating-pyluos-library">Installing or updating Pyluos library</a></h3>
+<p>You are now ready to install Pyluos. <strong>The last Pyluos version is <code>1.2.0</code>.</strong></p>
+<p>In a console, the following command will install the <em>Pyluos</em> library using the <em>Pip packet manager</em>:</p>
+<pre><code class="language-bash">pip install pyluos
+</code></pre>
+<p>If Pyluos is already installed, it may only need to be updated:</p>
+<pre><code class="language-bash">pip install --upgrade pyluos
+</code></pre>
+<p>Pyluos also provides auto generated pre-releases for advanced developers user. You can get it using:</p>
+<pre><code class="language-bash">pip install --pre pyluos
+</code></pre>
+<h2><a class="header" href="#start-using-jupyter-notebook-and-pyluos" id="start-using-jupyter-notebook-and-pyluos">Start using Jupyter Notebook and Pyluos</a></h2>
+<p><em>Jupyter Notebook</em> can be launched through a console:</p>
+<pre><code class="language-bash">jupyter notebook
+</code></pre>
+<p>In the browser page that opened, the <code>New</code> button creates a new Python file:</p>
+<p><img src="/_assets/img/pyluos-1.png" alt="python" /></p>
+<blockquote>
+<p><strong>Note:</strong> In the previous picture, <em>Jupyter</em> use <em>Python 3</em> but you also can use <em>Python 2.7</em> depending on your computer configuration.</p>
+</blockquote>
+<p><img src="/_assets/img/pyluos-2.png" alt="Jupyter" /></p>
+<p>The Jupyter work-space looks like the following image. On the keyboard,  <code>Maj+Enter</code> executes any selected part of code.</p>
+<p>Now you are ready to code using Python.</p>
+<h3><a class="header" href="#import-pyluos" id="import-pyluos">Import Pyluos</a></h3>
+<p>The first thing to do is to call the Pyluos library along with the <code>Device</code> tool inside that library:</p>
+<pre><code class="language-python">from pyluos import Device
+</code></pre>
+<p>This line is always used while programming behaviors and should be called before any connection with the device is made.</p>
+<h3><a class="header" href="#device-connection" id="device-connection">Device connection</a></h3>
+<p>Now you should be ready to use the Pyluos library and connect to your device. To do that you have to create a device object with your device address as argument.</p>
+<p>Your device address could be an IP address (192.168.0.6 or my_device.local for example) or a serial port (COM13 on windows or /dev/cu.usbserial-DN2YEFLN on mac).</p>
+<pre><code class="language-python">device = Device('address of the device')
+</code></pre>
+<p>This line makes the connexion between the computer and the device. Python should answer with this kind of message:</p>
+<p><code>Connected to &quot;address to the device&quot;.</code><br />
+<code>Sending detection signal.</code><br />
+<code>Waiting for first state...</code><br />
+<code>Device setup.</code></p>
+<p>Only once the connection is set it is possible to start programming behaviors.</p>
+<h3><a class="header" href="#routing-table-display" id="routing-table-display">Routing table display</a></h3>
+<p><a href="/pages/low/modules/routing-table.html">Routing table</a> can be easily displayed using Pyluos.</p>
+<p>Pyluos can displays a list of all the modules by filtering the route table, and their associated characteristics (type, alias and ID).
+To display it, use the following command:</p>
+<pre><code class="language-python">device.modules
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> <code>device</code> is the name of the network.</p>
+</blockquote>
+<p>Pyluos will give you a list of all modules without any topological informations :</p>
+<pre><code class="language-AsciiDoc">-------------------------------------------------
+Type                Alias               ID
+-------------------------------------------------
+Gate                gate                1
+Voltage             analog_read_P1      2
+Voltage             analog_read_P7      3
+Voltage             analog_read_P8      4
+Voltage             analog_read_P9      5
+State               digit_read_P5       6
+State               digit_read_P6       7
+State               digit_write_P2      8
+State               digit_write_P3      9
+State               digit_write_P4      10
+Angle               potentiometer_m     11
+</code></pre>
+<p>Pyluos also can interpreate route_table and transform it into a tree. This way we can display a lot more complete information usinig the following command :</p>
+<pre><code class="language-python">device.nodes
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> <code>device</code> is the name of the network.</p>
+</blockquote>
+<p>Based on the previous example Pyluos will give you all informations about modules and topological informations :</p>
+<pre><code class="language-AsciiDoc"> root : [4653093, 1194612501, 540554032]
+        |  Type                Alias               ID
+        └&gt; Gate                gate                1
+└── 1&lt;=&gt;0 : [4456498, 1347571976, 540555569]
+            |  Type                Alias               ID
+            └&gt; Voltage             analog_read_P1      2
+            └&gt; Voltage             analog_read_P7      3
+            └&gt; Voltage             analog_read_P8      4
+            └&gt; Voltage             analog_read_P9      5
+            └&gt; State               digit_read_P5       6
+            └&gt; State               digit_read_P6       7
+            └&gt; State               digit_write_P2      8
+            └&gt; State               digit_write_P3      9
+            └&gt; State               digit_write_P4      10
+    └── 1&lt;=&gt;0 : [4653107, 1347571976, 540555569]
+                |  Type                Alias               ID
+                └&gt; Angle               potentiometer_m     11
+</code></pre>
+<p>In this example, 3 nodes (MCU) and their associated UUID are listed, along with their modules and associated characteristics (type, alias and ID).
+The characters after each set of node's modules and before the UUID's next node specify which connector is used. For example, <code>1&lt;=&gt;0</code> means the first node is connected from it's second connector (1) to the first connector (0) of the next node.</p>
+<h3><a class="header" href="#module-type" id="module-type">Module type</a></h3>
+<p>Each module has a type (eg. <code>Button</code>, <code>Led</code>, ...).
+You can either retrieve your module's type from the previous code, or with the following line:</p>
+<pre><code class="language-python">device.module_alias.type
+</code></pre>
+<p><code>module_alias</code> being the alias you got from the previous listing.</p>
+<blockquote>
+<p><strong>Note:</strong> <em>Unknown</em> module types are defaulty set for custom module types such as some <a href="/pages/low/modules/create-modules.html">Luos apps</a>.</p>
+</blockquote>
+<h3><a class="header" href="#get-and-set-modules-informations" id="get-and-set-modules-informations">Get and set modules informations</a></h3>
+<p>Once you have detected your modules, you can use these information like variables.</p>
+<p>To access values you have to address them in the device object following this rules :</p>
+<pre><code class="language-python">device.module_alias.variable
+</code></pre>
+<p>For example :</p>
+<pre><code class="language-python">device.rgb_led_mod.color = [50,80,5] # Change the color of the LED in &quot;rgb_led_mod&quot; module
+
+device.button_mod.state # Returns the status of the push button
+
+device.button_mod.type # Returns the module type of the module &quot;button_mod&quot;
+</code></pre>
+<p>If you use <em>ipython</em> or <em>Jupyter Notebook</em>, you can use auto-completion using the <code>Tab</code> key to find every available objects and variables.</p>
+<p><img src="/_assets/img/pyluos-3.png" alt="Auto-completion" /></p>
+<h3><a class="header" href="#change-a-module-name" id="change-a-module-name">Change a module name</a></h3>
+<p>The name of any module can be changed following this code. To list each module and its associated alias, refer to <a href="#list-available-modules-of-your-device">List available modules of your device</a> section.</p>
+<pre><code class="language-python">device.module_alias.rename(&quot;new_name&quot;)
+</code></pre>
+<p>For example:</p>
+<pre><code class="language-python">device.rgb_led_mod.rename(&quot;myLED&quot;)
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> You should restart your device and reconnect to it after this operation.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong> To get back to the module default name, set a void name (<code>&quot;&quot;</code>).</p>
+</blockquote>
+<h3><a class="header" href="#full-script" id="full-script">Full script</a></h3>
+<pre><code class="language-python">from pyluos import Device
+device = Device('address of the device')
+
+device.modules
+
+device.rgb_led_mod.color = [50,80,5]
+device.button_mod.state
+device.button_mod.type
+
+device.rgb_led_mod.rename(&quot;myLED&quot;)
+</code></pre>
+<div class="cust_edit_page"><a href="https://github.com/Luos-io/doc/tree/master/src/pages/first_steps/pyluos.md">Edit this page</a></div>
+
+                        <br />
+                        <div class="cust_footer">
+                            <p align="center">©2018-2020 <a href="https://www.luos.io">Luos.io</a></p>
+                        </div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../pages/high/json-api.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../../pages/high/modules_list/gate.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../../pages/high/json-api.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../../pages/high/modules_list/gate.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+        <!-- Google Analytics Tag -->
+        <script type="text/javascript">
+            var localAddrs = ["localhost", "127.0.0.1", ""];
+
+            // make sure we don't activate google analytics if the developer is
+            // inspecting the book locally...
+            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-153509818-3', 'auto');
+                ga('send', 'pageview');
+            }
+        </script>
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
