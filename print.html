@@ -1042,7 +1042,7 @@ You can use this table to find interesting project regarding specific features e
 <p>Luos provides a Python library, <a href="pages/high//pages/high/pyluos.html"><strong>Pyluos</strong></a>. If you want to use another language, you should start reading about our <a href="pages/high//pages/high/json-api.html"><strong>JSON API</strong></a>.</p>
 <div class="cust_edit_page"><a href="https://github.com/Luos-io/doc/tree/master/src/pages/high/high-level.md">Edit this page</a></div>
 <h1><a class="header" href="#json-api" id="json-api">JSON API</a></h1>
-<p>The <a href="https://en.wikipedia.org/wiki/JSON" target="blank_">JSON formated data</a> is very common and widely used by many programming languages. Luos allows you to convert low-level Luos information into JSON objects, enabling conventional programming languages to interact with you device easily.<br/>
+<p>The <a href="https://en.wikipedia.org/wiki/JSON" target="blank_">JSON formated data</a> is very common and widely used by many programming languages. Luos allows you to convert low-level Luos information into JSON objects, enabling conventional programming languages to easily interact with your device.<br/>
 To do that, you must add a specific app module called <a href="pages/high//pages/high/modules_list/gate.html">Gate</a> on your device.</p>
 <p>The <a href="pages/high//pages/high/modules_list/gate.html">Gate module</a> is an app that converts Luos messages from a device's network into JSON data format, and the other way from JSON to Luos messages.<br/>
 The Gate module can be hosted into different kinds of <span class="cust_tooltip">nodes<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several modules.</span></span> allowing you to choose the communication way fitting with your project (USB, Wifi, Bluetooth, etc.)</p>
@@ -1280,6 +1280,26 @@ This first message is really important, because it contains all the information 
 <h3><a class="header" href="#module-exclusion-messages" id="module-exclusion-messages">Module exclusion messages</a></h3>
 <p>Module can be excluded of the network if a problem occurs (See <a href="pages/high//pages/low/modules/msg-handling.html#module-exclusion">message handling</a> for more information). In this case, the Gate sends an exclusion message indicating that this module is no longer available:</p>
 <pre><code class="language-JSON">{&quot;dead_module&quot;: &quot;module_alias&quot;}
+</code></pre>
+<h2><a class="header" href="#sending-large-binary-data" id="sending-large-binary-data">Sending large binary data</a></h2>
+<p>Binary data such as, for example, a motor tarjectory can't be included into a Json file if it's too large. In order to allow this type of transmission, the size of the binary data is sent through the Json, then followed by the actual data in binary format.</p>
+<ul>
+<li>
+<p>If the data is short, it can be displayed inside the JSON as a regular value (see the different values in <a href="pages/high/json-api.html#modules-information-messages">Module's information messages section</a>), or as a table of several values (for example a motor trajectory).</p>
+</li>
+<li>
+<p>If the data is large, the defined value must be a <strong>table of one element</strong>, containing only the size of the binary data to be transfered, in bytes.</p>
+</li>
+</ul>
+<p>The following example shows a transfert of a binary data of 1024 bytes.</p>
+<pre><code class="language-JSON">{
+   &quot;modules&quot;:{
+      &quot;module_alias1&quot;:{
+         &quot;rot_position&quot;:[1024]
+      }
+   }
+}
+###BINARY_DATA###
 </code></pre>
 <div class="cust_edit_page"><a href="https://github.com/Luos-io/doc/tree/master/src/pages/high/json-api.md">Edit this page</a></div>
 <h1><a class="header" href="#a-pyluos-guide" id="a-pyluos-guide">A Pyluos guide</a></h1>
