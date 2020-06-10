@@ -381,7 +381,7 @@ int main(void)
 </blockquote>
 <h2><a class="header" href="#how-to-create-and-initialize-a-module" id="how-to-create-and-initialize-a-module">How to create and initialize a module</a></h2>
 <p>To create a module, you have to call this function:</p>
-<pre><code class="language-c">module_t* luos_module_create(void* callback, module_type_t type, char* default_alias);
+<pre><code class="language-c">module_t* luos_module_create(void* callback, module_type_t type, char* default_alias, char* firm_revision);
 </code></pre>
 <p>The returned <code>module_t*</code> is a module structure pointer that will be useful to make your module act in the network after this initialization.</p>
 <p><strong>callback</strong> is a pointer to a callback function called by Luos when your module receive messages from other modules (see <a href="pages/low/modules//pages/low/modules/rt-config.html">Real-time configuration page</a> for more details).
@@ -394,6 +394,7 @@ This function needs to have a specific format:</p>
 </ul>
 <p><strong>type</strong> is the type of the your new module represented by a number. Some basic types (e.g. <code>DISTANCE_MOD</code>, <code>VOLTAGE_MOD</code>, etc.) are already available in the <code>module_type_t</code> enum structure of Luos. You can also create your own on top of the luos one.</p>
 <p><strong>default alias</strong> is the alias by default for your new module. e.g. <code>MyModule02</code>. This alias is the one your module will take if no other alias is set by the user of your functionality hosted in your module. Aliases have a maximum size of 16 characters.</p>
+<p><strong>firm_revision</strong> is the version number of the module you are creating and which will be accessible via pyluos.</p>
 <p>Following the <a href="pages/low/modules//pages/low/modules/create-project.html#basic-modules-functions">project rules</a>, here is a code example for a button module:</p>
 <pre><code class="language-c">module_t* module_btn;
 
@@ -402,7 +403,8 @@ void rx_btn_cb(module_t *module, msg_t *msg){
 }
 
 void button_init(void) {
-    module_t* module_btn = luos_module_create(rx_btn_cb, STATE_MOD, &quot;button_mod&quot;);
+	//STRINGIFY (VERSION) is used to get the module version in the module's library.json file
+    module_t* module_btn = luos_module_create(rx_btn_cb, STATE_MOD, &quot;button_mod&quot;, STRINGIFY(VERSION));
 }
 
 void button_loop(void) {
