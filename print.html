@@ -372,7 +372,7 @@ int main(void)
 }
 
 </code></pre>
-<p>This way, it's easy to manage all your modules and to add as many of them in the <code>main()</code> file as you want.</p>
+<p>This way, it is easy to manage all your modules and to add as many of them in the <code>main()</code> file as you want.</p>
 <div class="cust_edit_page"><a href="https://github.com/Luos-io/doc/tree/master/src/pages/low/modules/create-project.md">Edit this page</a></div>
 <h1><a class="header" href="#create-luos-modules" id="create-luos-modules">Create Luos modules</a></h1>
 <p><strong>As a developer you will always develop your functionalities into modules and never into the <code>main()</code> program.</strong></p>
@@ -389,7 +389,7 @@ This function needs to have a specific format:</p>
 <pre><code class="language-c">void module_cb(module_t *module, msg_t *msg)
 </code></pre>
 <ul>
-<li><strong>module</strong> is the module pointer of the module receiving the data (basically, it's your module).</li>
+<li><strong>module</strong> is the module pointer of the module receiving the data (basically, it is your module).</li>
 <li><strong>msg</strong> is the message your module received.</li>
 </ul>
 <p><strong>type</strong> is the type of the your new module represented by a number. Some basic types (e.g. <code>DISTANCE_MOD</code>, <code>VOLTAGE_MOD</code>, etc.) are already available in the <code>module_type_t</code> enum structure of Luos. You can also create your own on top of the luos one.</p>
@@ -425,7 +425,7 @@ void button_loop(void) {
 <li>A driver module never depends or uses any other modules (driver or app).</li>
 <li>A driver module is &quot;dumb&quot;, as it can't do anything else than manage its hardware feature (but it does it very well).</li>
 </ul>
-<p>You can have multiple driver modules on the same <span class="cust_tooltip">node<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several modules.</span></span> managing different hardware functionalities of your board, it's your call to sort them depending on your design.</p>
+<p>You can have multiple driver modules on the same <span class="cust_tooltip">node<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several modules.</span></span> managing different hardware functionalities of your board, it is your call to sort them depending on your design.</p>
 <h2><a class="header" href="#apps-guidelines" id="apps-guidelines">Apps guidelines</a></h2>
 <p>An applications or app is a type of module that only manages software items such as functions or algorithms. Apps use other modules to make your device act, operate, and behave.
 Apps can be placed in any <span class="cust_tooltip"><a href="pages/low/modules/create-modules.html#node">nodes</a><span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several modules.</span></span> on a Luos network without any hardware or code modifications. However, the choice of the hosting node can impact global performances of the system.</p>
@@ -604,7 +604,7 @@ The maximum number of modules and nodes are managed by the precompilation consta
 <blockquote>
 <p><strong>Warning:</strong> Make sure to read and understand how to <a href="pages/low/modules//pages/low/modules/create-project.html">Create Luos modules</a> before reading this page.</p>
 </blockquote>
-<p>As a developer, you will have to create and use Luos messages to exchange informations between modules. In order to do that, you have to understand how messages works.</p>
+<p>As a developer, you will have to create and use Luos messages to exchange informations between <span class="cust_tooltip">modules<span class="cust_tooltiptext">Software element run by Luos that can communicate with other modules. Can be driver or app.</span></span>. In order to do that, you have to understand how messages works.</p>
 <h2><a class="header" href="#message-structure" id="message-structure">Message structure</a></h2>
 <p>Luos messages are managed by the <code>msg_t</code> structure:</p>
 <pre><code class="language-C">typedef struct{
@@ -695,6 +695,25 @@ void modules_cb(module_t *module, msg_t *msg) {
 </code></pre>
 <blockquote>
 <p><strong>Note:</strong> If you have to deal with high-frequency real-time data, please read <a href="pages/low/modules//pages/low/modules/streaming.html">the Streaming page</a>.</p>
+</blockquote>
+<h2><a class="header" href="#time-triggered-update-messages" id="time-triggered-update-messages">Time-triggered update messages</a></h2>
+<p>Luos provides a standard command to ask a module to retrieve values from a sensor, called <code>ASK_PUB_CMD</code>. However, sometimes apps need to poll values from sensors, but the act of repeatedly retriving a value using the <code>ASK_PUB_CMD</code> command may result in the use of a lot bandwidth and take useless resources.
+In this kind of polling situation, <strong>you can use the time-triggered auto-update features available from any Luos module</strong>. This feature allows you to ask a module to send you an update of any value each X milliseconds.
+To use it, you have to setup targeted module with a message containing a standard time <span class="cust_tooltip">object dictionary<span class="cust_tooltiptext">Set of objects based on SI metric system that can be transmitted through Luos messages. Any object can easily be converted in other units.</span></span>, but with a specific command associated to it.</p>
+<p>For example, to update a module each 10ms:</p>
+<pre><code class="language-C">time_luos_t time = time_from_ms(10);
+msg_t msg;
+msg.header.target = id;
+msg.header.target_mode = IDACK;
+time_to_msg(&amp;time, &amp;msg);
+msg.header.cmd = UPDATE_PUB;
+luos_send(app, &amp;msg);
+</code></pre>
+<blockquote>
+<p><strong>Info:</strong> Modules can handle only one time-triggered target, 2 modules of the same network can't ask a time-triggered value from the same module.</p>
+</blockquote>
+<blockquote>
+<p><strong>Warning:</strong> To prevent any ID movement, auto-update configuration is reseted on all modules at each detection (see <a href="pages/low/modules//pages/low/modules/routing-table.html">Routing table page</a> for more information).</p>
 </blockquote>
 <div class="cust_edit_page"><a href="https://github.com/Luos-io/doc/tree/master/src/pages/low/modules/msg-handling.md">Edit this page</a></div>
 <h1><a class="header" href="#streaming" id="streaming">Streaming</a></h1>
@@ -1297,7 +1316,7 @@ This first message is really important, because it contains all the information 
 <pre><code class="language-JSON">{&quot;dead_module&quot;: &quot;module_alias&quot;}
 </code></pre>
 <h2><a class="header" href="#sending-large-binary-data" id="sending-large-binary-data">Sending large binary data</a></h2>
-<p>Binary data such as, for example, a motor tarjectory can't be included into a Json file if it's too large. In order to allow this type of transmission, the size of the binary data is sent through the Json, then followed by the actual data in binary format.</p>
+<p>Binary data such as, for example, a motor tarjectory can't be included into a Json file if it is too large. In order to allow this type of transmission, the size of the binary data is sent through the Json, then followed by the actual data in binary format.</p>
 <ul>
 <li>
 <p>If the data is short, it can be displayed inside the JSON as a regular value (see the different values in <a href="pages/high/json-api.html#modules-information-messages">Module's information messages section</a>), or as a table of several values (for example a motor trajectory).</p>
@@ -1430,7 +1449,7 @@ Angle               potentiometer_m     11
                 └&gt; Angle               potentiometer_m     11
 </code></pre>
 <p>In this example, 3 nodes (MCU) and their associated UUID are listed, along with their modules and associated characteristics (type, alias and ID).
-The characters after each set of node's modules and before the UUID's next node specify which connector is used. For example, <code>1&lt;=&gt;0</code> means the first node is connected from it's second connector (1) to the first connector (0) of the next node.</p>
+The characters after each set of node's modules and before the UUID's next node specify which connector is used. For example, <code>1&lt;=&gt;0</code> means the first node is connected from its second connector (1) to the first connector (0) of the next node.</p>
 <h3><a class="header" href="#module-type" id="module-type">Module type</a></h3>
 <p>Each module has a type (eg. <code>Button</code>, <code>Led</code>, ...).
 You can either retrieve your module's type from the previous code, or with the following line:</p>
@@ -1541,7 +1560,7 @@ To setup your PID please refer to the example at the end of this page.</p>
 <table><thead><tr><th align="center"><strong>Variable name</strong></th><th align="center"><strong>Action</strong></th><th align="center"><strong>Type</strong></th></tr></thead><tbody>
 <tr><td align="center">positionPid</td><td align="center">Sets position PID used for rotation position mode and translation position mode</td><td align="center">read / write: [float P, float I, float D]</td></tr>
 <tr><td align="center">speedPid</td><td align="center">Sets speed PID used for rotation speed mode and translation speed mode</td><td align="center">read / write: [float P, float I, float D]</td></tr>
-<tr><td align="center">encoder_res</td><td align="center">Defines the motor sensor resolution, in steps by rotation.<br/><em>This module considers that the sensor is placed before the reduction. If it's not your case, just setup a reduction ratio of 1.</em></td><td align="center">read / write: float</td></tr>
+<tr><td align="center">encoder_res</td><td align="center">Defines the motor sensor resolution, in steps by rotation.<br/><em>This module considers that the sensor is placed before the reduction. If it is not your case, just setup a reduction ratio of 1.</em></td><td align="center">read / write: float</td></tr>
 <tr><td align="center">reduction</td><td align="center">Defines the motor reduction.<br/>Set this value to 1 if your sensor measures after the reduction.</td><td align="center">read / write: float</td></tr>
 <tr><td align="center">wheel_size</td><td align="center">Defines wheel size used for translation mode, in mm.</td><td align="center">read / write: float</td></tr>
 </tbody></table>
@@ -2033,7 +2052,7 @@ All the Luos boards can manage a voltage between 5V and 24V, up to 7A.</p>
 <p>We created an open-source <strong>Python library</strong> managing this JSON API called <a href="pages/prototyping_boards//pages/high/pyluos.html"><em>Pyluos</em></a>. Feel free to use it, copy it, and convert it into your favorite language. We are open to contribution for any programing languages. You can suggest any change or new API on the <a href="https://community.luos.io/" target="_blank">Luos' forum</a>.</p>
 <p>Get <a href="https://github.com/Luos-io/Pyluos" target="_blank">pyluos on github</a>.</p>
 <h2><a class="header" href="#update-luos-robus-and-boards-firmware" id="update-luos-robus-and-boards-firmware">Update Luos, Robus and board's firmware</a></h2>
-<p>Follow <a href="pages/prototyping_boards//pages/low/dev-env.html">this page</a>'s instruction to install Platform IO if it's not already the case.</p>
+<p>Follow <a href="pages/prototyping_boards//pages/low/dev-env.html">this page</a>'s instruction to install Platform IO if it is not already the case.</p>
 <p>To update Luos, <span class="cust_tooltip">Robus<span class="cust_tooltiptext">Core communication bus used by Luos to detect and communicate with modules in a network.</span></span> or your modules' code, you must open the librairies tab <img src="pages/prototyping_boards//_assets/img/vscode-lib-button.png" alt="" /> on PlatformIO in Visual Studio Code:</p>
 <p><img src="pages/prototyping_boards//_assets/img/Update_Luos_Robus_Modules.png" alt="" /></p>
 <p>To update the board's firmware you need to follow 3 steps:</p>
@@ -2562,7 +2581,7 @@ Password: raspberry
 <p>Please note that the Power Pi board connected to the Raspberry Pi is already powered by the Luos network, through the power boards you use (Power board or Battery board).</p>
 <p>However, <strong>the USB board can’t power the Raspberry Pi board</strong>, because several voltage transformations are applied along the network. You can also use an universal power supply (+5.1V micro USB) directly plugged to the Raspberry Pi.</p>
 <h3><a class="header" href="#communication-mode" id="communication-mode">Communication mode</a></h3>
-<p>By default, your Raspberry Pi starts a Luos service at boot called <em>pyluos-usb2ws</em>. This service creates a pipe between a <strong>websocket</strong> opened on <strong>port 9342</strong>, and the Luos system. If you send standard Luos Json data into this web socket, it's directly sent into the Luos network.</p>
+<p>By default, your Raspberry Pi starts a Luos service at boot called <em>pyluos-usb2ws</em>. This service creates a pipe between a <strong>websocket</strong> opened on <strong>port 9342</strong>, and the Luos system. If you send standard Luos Json data into this web socket, it is directly sent into the Luos network.</p>
 <p>This way, you can control your device from your computer even if it is moving or dispatched. For example, if you are using pyluos to control your device, you can start your program with:</p>
 <pre><code class="language-python">from pyluos import Device
 device = Device(&quot;raspberrypi.local&quot;)
@@ -2773,7 +2792,7 @@ As this board is not active, you can't detect it into a network.</p>
 </div>
 <h2><a class="header" href="#how-do-the-cables-work" id="how-do-the-cables-work">How do the cables work?</a></h2>
 <p>The cables are used to link the Luos bords together. There are two lengths of cables : 10 cm (3.9 in) cables and 20 cm (7.9 in) cables.
-However, it's possible to build a cable from any disired length (see the next section).</p>
+However, it is possible to build a cable from any disired length (see the next section).</p>
 <p><strong>Maximal current value:</strong> The Luos cable can handle up to 7 A.</p>
 <p><strong>Boards connection:</strong> The connectors on the board side and on the cable side have a foolproof so that they can plug together in one way only. Fore more information about plugging boards together with cables, please follow <a href="pages/prototyping_boards/boards_list//pages/prototyping_boards/electronic-use.html#plug">this link</a>.</p>
 <h2><a class="header" href="#how-to-buid-a-luos-compatible-cable" id="how-to-buid-a-luos-compatible-cable">How to buid a Luos compatible-cable?</a></h2>

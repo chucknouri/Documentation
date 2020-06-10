@@ -278,7 +278,7 @@ Password: raspberry
 <p>Please note that the Power Pi board connected to the Raspberry Pi is already powered by the Luos network, through the power boards you use (Power board or Battery board).</p>
 <p>However, <strong>the USB board can’t power the Raspberry Pi board</strong>, because several voltage transformations are applied along the network. You can also use an universal power supply (+5.1V micro USB) directly plugged to the Raspberry Pi.</p>
 <h3><a class="header" href="#communication-mode" id="communication-mode">Communication mode</a></h3>
-<p>By default, your Raspberry Pi starts a Luos service at boot called <em>pyluos-usb2ws</em>. This service creates a pipe between a <strong>websocket</strong> opened on <strong>port 9342</strong>, and the Luos system. If you send standard Luos Json data into this web socket, it's directly sent into the Luos network.</p>
+<p>By default, your Raspberry Pi starts a Luos service at boot called <em>pyluos-usb2ws</em>. This service creates a pipe between a <strong>websocket</strong> opened on <strong>port 9342</strong>, and the Luos system. If you send standard Luos Json data into this web socket, it is directly sent into the Luos network.</p>
 <p>This way, you can control your device from your computer even if it is moving or dispatched. For example, if you are using pyluos to control your device, you can start your program with:</p>
 <pre><code class="language-python">from pyluos import Device
 device = Device(&quot;raspberrypi.local&quot;)

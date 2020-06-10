@@ -208,7 +208,7 @@ To setup your PID please refer to the example at the end of this page.</p>
 <table><thead><tr><th align="center"><strong>Variable name</strong></th><th align="center"><strong>Action</strong></th><th align="center"><strong>Type</strong></th></tr></thead><tbody>
 <tr><td align="center">positionPid</td><td align="center">Sets position PID used for rotation position mode and translation position mode</td><td align="center">read / write: [float P, float I, float D]</td></tr>
 <tr><td align="center">speedPid</td><td align="center">Sets speed PID used for rotation speed mode and translation speed mode</td><td align="center">read / write: [float P, float I, float D]</td></tr>
-<tr><td align="center">encoder_res</td><td align="center">Defines the motor sensor resolution, in steps by rotation.<br/><em>This module considers that the sensor is placed before the reduction. If it's not your case, just setup a reduction ratio of 1.</em></td><td align="center">read / write: float</td></tr>
+<tr><td align="center">encoder_res</td><td align="center">Defines the motor sensor resolution, in steps by rotation.<br/><em>This module considers that the sensor is placed before the reduction. If it is not your case, just setup a reduction ratio of 1.</em></td><td align="center">read / write: float</td></tr>
 <tr><td align="center">reduction</td><td align="center">Defines the motor reduction.<br/>Set this value to 1 if your sensor measures after the reduction.</td><td align="center">read / write: float</td></tr>
 <tr><td align="center">wheel_size</td><td align="center">Defines wheel size used for translation mode, in mm.</td><td align="center">read / write: float</td></tr>
 </tbody></table>
