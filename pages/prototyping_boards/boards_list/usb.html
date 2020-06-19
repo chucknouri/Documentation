@@ -231,6 +231,79 @@ device.modules
 <p>Once the port is known, the connexion can be set on pyluos with python:</p>
 <pre><code class="language-python">device = Device('/dev/ttyS0')
 </code></pre>
+<h3><a class="header" href="#serial-connectivity-with-other-languages" id="serial-connectivity-with-other-languages">Serial connectivity with other languages</a></h3>
+<p>In order to communicate from a computer to a Luos network through a gate, a serial connection can be established. This serial connectivity must have the following parameters:</p>
+<ul>
+<li>Baudrate: 1,000,000 Bits/s</li>
+<li>8 Bits per transfer</li>
+<li>1 stop bit</li>
+<li>No parity bit</li>
+<li>Least significant bit sent first</li>
+<li>Non inverted</li>
+</ul>
+<p><img src="/_assets/img/serial-configuration.png" alt="" /></p>
+<p>Although the connection can be made with Pyluos, the Python library, other languages can be used on the computer side. Here is a C Linux serial connection example:</p>
+<pre><code class="language-C">void init_luos_comm(luos_t* m)
+{
+ m-&gt;serial_fd = open(SERIAL_PORT, O_RDWR);
+
+ // Check for errors
+ if (m-&gt;serial_fd &lt; 0)
+ {
+     printf(&quot;Error %i from open: %s\n&quot;, errno, strerror(errno));
+     return -1;
+ }
+
+ struct termios tty;
+ memset(&amp;tty, 0, sizeof tty);
+
+ if (tcgetattr(m-&gt;serial_fd, &amp;tty) != 0)
+ {
+     printf(&quot;Error %i from tcgetattr: %s\n&quot;, errno, strerror(errno));
+     return -1;
+ }
+
+ tty.c_cflag &amp;= ~PARENB;        // Disable parity
+ tty.c_cflag &amp;= ~CSTOPB;        // Clear stop field
+ tty.c_cflag |= CS8;            // 8 bits per byte
+ tty.c_cflag &amp;= ~CRTSCTS;       // Disable RTS/CTS hardware flow control
+ tty.c_cflag |= CREAD | CLOCAL; // Turn on READ &amp; ignore ctrl lines (CLOCAL = 1)
+ tty.c_lflag &amp;= ~ICANON;        // Disable canonical mode
+ tty.c_lflag &amp;= ~ECHO;          // Disable echo
+ tty.c_lflag &amp;= ~ECHOE;         // Disable erasure
+ tty.c_lflag &amp;= ~ECHONL;        // Disable new-line echo
+ tty.c_lflag &amp;= ~ISIG;          // Disable interpretation of INTR, QUIT and SUSP
+
+ // Turn off s/w flow ctrl
+ tty.c_iflag &amp;= ~(IXON | IXOFF | IXANY);
+
+ // Disable any special handling of received bytes
+ tty.c_iflag &amp;= ~(IGNBRK|BRKINT|PARMRK|ISTRIP|INLCR|IGNCR|ICRNL);
+
+ // Prevent special interpretation of output bytes (e.g. newline chars)
+ tty.c_oflag &amp;= ~OPOST;
+
+ // Prevent conversion of newline to carriage return/line feed
+ tty.c_oflag &amp;= ~ONLCR;
+
+ // Wait for up to 1s (10 deciseconds), returning as soon as any data is received.
+ tty.c_cc[VTIME] = 10;
+ tty.c_cc[VMIN] = 0;
+
+ // Set in/out baud rate to be 1000000
+ cfsetispeed(&amp;tty, B1000000);
+ cfsetospeed(&amp;tty, B1000000);
+
+ // Save tty settings
+ if (tcsetattr(m-&gt;serial_fd, TCSANOW, &amp;tty) != 0)
+ {
+     printf(&quot;Error %i from tcsetattr: %s\n&quot;, errno, strerror(errno));
+     return -1;
+ }
+ fcntl(m-&gt;serial_fd, F_SETFL, FNDELAY);
+ usleep(500000);
+}
+</code></pre>
 <h2><a class="header" href="#usb-board-power-delivery" id="usb-board-power-delivery">USB board power delivery</a></h2>
 <p>The USB board power-delivery in the Luos network is limited to <code>500 mA</code>. This board can’t power too many boards and power-demanding ones like, for example, a DC-motor board with one or two motors connected. If you experiment power issues, feel free to add a power category board like a <a href="/pages/prototyping_boards/boards_list/jack-power-input.html">Jack power input board</a>.</p>
 <div class="cust_edit_page"><a href="https://github.com/Luos-io/doc/tree/master/src/pages/prototyping_boards/boards_list/usb.md">Edit this page</a></div>

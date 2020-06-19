@@ -186,18 +186,78 @@
 <h2><a class="header" href="#introduction" id="introduction">Introduction</a></h2>
 <p>We started designing Luos with the conviction that building electronic systems should be made easier than it is today. Most of the time should be spent on designing the applications and behaviors instead of on complex and time-and-money-eating technicalities. To give a simple example, adding a new sensor —for instance a distance sensor— to an electronic device in conception should not take more than a few minutes. So you can try, test and iterate fast on a project to truly design what users want.</p>
 <p><strong>Luos works like <a href="https://en.wikipedia.org/wiki/Microservices" target="_blank">microservices architecture</a> in the software world, and a <a href="https://en.wikipedia.org/wiki/Distributed_operating_system" target="_blank">distributed operating systems</a>: it encapsulates any software or hardware function to make it communicate and work with any other encapsulated module, however it was developed, either on bare metal or on top of an embedded OS.</strong></p>
+<h3><a class="header" href="#you-are-not-familiar-with-luos-operations-follow-this-flowchart" id="you-are-not-familiar-with-luos-operations-follow-this-flowchart">You are not familiar with Luos operations? Follow this flowchart:</a></h3>
+<div id="container1">
+<figure>
+  <figcaption></figcaption>
+  <ul class="tree">
+    <li class="wf_li"><span class="cust_choice"><strong>What do you want to do?</strong></span>
+      <ul class="wf_ul">
+        <li class="wf_li"><span class="cust_basics"><a name="step2"></a><a name="step3"></a><a href="/pages/overview/general-basics.html">Begin with the basics</a></span>
+          <ul class="wf_ul">
+            <li class="wf_li"><span class="cust_choice"><strong class="cust_number">❶</strong><br />Build a Luos-ready board</span>
+              <ul class="wf_ul">
+                <li class="wf_li"><span><a href="/pages/low/electronic-design.html">Read about the electronic design rules</a></span>
+                	<ul class="wf_ul">
+                		<li class="wf_li"><span><a href="index.html#step2">Go to 2 <strong>↗</strong></a></span>
+                		</li>
+                	</ul>
+                </li>
+              </ul>
+            </li>
+           <li class="wf_li"><span class="cust_choice"><strong class="cust_number">❷</strong><br />Make drivers and apps for your hardware</span>
+              <ul class="wf_ul">
+                <li class="wf_li"><span><a href="/pages/low/dev-env.html">Choose and configure your development environment</a></span>
+                	<ul class="wf_ul">
+                		<li class="wf_li"><span><a href="/pages/low/modules.html">Read about modules and how they work
+</a></span>
+                			<ul class="wf_ul">
+                				<li class="wf_li"><span><a href="/pages/low/modules/create-project.html">Create a project</a> and <a href="/pages/low/modules/create-modules.html">and start creating modules</a></span>
+                					<ul class="wf_ul">
+                						<li class="wf_li"><span>Learn more about the tools and configurations available with Luos:<br /> 
+											➜ <a href="/pages/low/modules/od.html">Object dictionary</a><br />
+											➜ <a href="/pages/low/modules/routing-table.html">Routing table</a><br />
+											➜ <a href="/pages/low/modules/msg-handling.html">Messages handling</a><br />
+											➜ <a href="/pages/low/modules/streaming.html">Streaming</a><br />
+											➜ <a href="/pages/low/modules/rt-config.html">Real-time configuration</a></span>
+                							<ul class="wf_ul">
+                								<li class="wf_li"><span><a href="/pages/low/modules/examples.html">Read the Codes Examples</a> and <a href="index.html#">follow the bike alarm tutorial (soon)</a>
+												</span>
+													<ul class="wf_ul">
+								                		<li class="wf_li"><span><a href="index.html#step3">Go to 3 <strong>↗</strong></a></span>
+								                		</li>
+								                	</ul>
+                								</li>
+                							</ul>
+                						</li>
+                					</ul>
+                				</li>
+                			</ul>
+                		</li>
+                	</ul>
+                </li>
+              </ul>
+            </li>
+            <li class="wf_li"><span class="cust_choice"><strong class="cust_number">❸</strong><br />Use Luos-ready boards and modules</span>
+                <ul class="wf_ul">
+                	<li class="wf_li"><span><a href="/pages/high/json-api.html#">Learn how to use the JSON API</a></span>
+                		<ul class="wf_ul">
+                			<li class="wf_li"><span><a href="/pages/high/pyluos.html">Read about Pyluos and how to create behaviors</a></span>
+                			</li>
+                		</ul>
+                	</li>
+                </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</figure>
+</div>
+<p>If you have questions about a specific topic, you can refer or ask it on the <a href="https://community.luos.io" target="_blank">Luos' Forum</a>. And if you have suggestions about this documentation don't hesitate to create pull requests.</p>
 <p>Watch this video for additional details:</p>
 <iframe class="cust_video" src="https://www.youtube.com/embed/xQe3z0M_FE8?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br />
-<h3><a class="header" href="#you-are-not-familiar-with-luos-operations" id="you-are-not-familiar-with-luos-operations">You are not familiar with Luos operations?</a></h3>
-<p>→ Start reading the <a href="/pages/overview/general-basics.html">Basics</a> page.</p>
-<h3><a class="header" href="#you-want-to-make-your-own-board-with-a-hrefpageslowmodulescreate-moduleshtmlluos-modulesa" id="you-want-to-make-your-own-board-with-a-hrefpageslowmodulescreate-moduleshtmlluos-modulesa">You want to make your own board with <a href="/pages/low/modules/create-modules.html">Luos modules</a>?</a></h3>
-<p>→ Start reading how to integrate Luos in you <a href="/pages/low/dev-env.html">Development environment</a>.</p>
-<p>→ Then learn how to <a href="/pages/low/modules/create-project.html">Create a luos project</a>.</p>
-<h3><a class="header" href="#you-want-to-shape-your-device-behavior" id="you-want-to-shape-your-device-behavior">You want to shape your device behavior?</a></h3>
-<p>→ Luos provides schematics and BOM for a sets of <a href="/pages/prototyping_boards/boards-list.html">Prototyping boards</a> that you can buid and use as examples, or to develop your project.</p>
-<p>→ You can make your own embedded <a href="/pages/low/modules/create-modules.html">Luos apps</a>.</p>
-<p>→ You can control your devices through a <a href="/pages/high/modules_list/gate.html">Gate</a> module using <a href="/pages/high/pyluos.html">Pyluos</a>.</p>
-<p>If you have questions about a specific topic, you can refer or ask it on the <a href="https://community.luos.io" target="_blank">Luos' Forum</a>. And if you have suggestions about this documentation don't hesitate to create pull requests.</p>
 <p><small>Luos is free for non-commercial use. It's protected by a license that <a href="https://github.com/Luos-io/Luos/blob/master/LICENSE.md" target="_blank">you can consult here</a>.</small></p>
 <div class="cust_edit_page"><a href="https://github.com/Luos-io/doc/tree/master/src/index.md">Edit this page</a></div>
 <h1><a class="header" href="#general-guide-to-luos-technology" id="general-guide-to-luos-technology">General guide to Luos technology</a></h1>
@@ -2725,6 +2785,79 @@ device.modules
 </code></pre>
 <p>Once the port is known, the connexion can be set on pyluos with python:</p>
 <pre><code class="language-python">device = Device('/dev/ttyS0')
+</code></pre>
+<h3><a class="header" href="#serial-connectivity-with-other-languages" id="serial-connectivity-with-other-languages">Serial connectivity with other languages</a></h3>
+<p>In order to communicate from a computer to a Luos network through a gate, a serial connection can be established. This serial connectivity must have the following parameters:</p>
+<ul>
+<li>Baudrate: 1,000,000 Bits/s</li>
+<li>8 Bits per transfer</li>
+<li>1 stop bit</li>
+<li>No parity bit</li>
+<li>Least significant bit sent first</li>
+<li>Non inverted</li>
+</ul>
+<p><img src="pages/prototyping_boards/boards_list//_assets/img/serial-configuration.png" alt="" /></p>
+<p>Although the connection can be made with Pyluos, the Python library, other languages can be used on the computer side. Here is a C Linux serial connection example:</p>
+<pre><code class="language-C">void init_luos_comm(luos_t* m)
+{
+ m-&gt;serial_fd = open(SERIAL_PORT, O_RDWR);
+
+ // Check for errors
+ if (m-&gt;serial_fd &lt; 0)
+ {
+     printf(&quot;Error %i from open: %s\n&quot;, errno, strerror(errno));
+     return -1;
+ }
+
+ struct termios tty;
+ memset(&amp;tty, 0, sizeof tty);
+
+ if (tcgetattr(m-&gt;serial_fd, &amp;tty) != 0)
+ {
+     printf(&quot;Error %i from tcgetattr: %s\n&quot;, errno, strerror(errno));
+     return -1;
+ }
+
+ tty.c_cflag &amp;= ~PARENB;        // Disable parity
+ tty.c_cflag &amp;= ~CSTOPB;        // Clear stop field
+ tty.c_cflag |= CS8;            // 8 bits per byte
+ tty.c_cflag &amp;= ~CRTSCTS;       // Disable RTS/CTS hardware flow control
+ tty.c_cflag |= CREAD | CLOCAL; // Turn on READ &amp; ignore ctrl lines (CLOCAL = 1)
+ tty.c_lflag &amp;= ~ICANON;        // Disable canonical mode
+ tty.c_lflag &amp;= ~ECHO;          // Disable echo
+ tty.c_lflag &amp;= ~ECHOE;         // Disable erasure
+ tty.c_lflag &amp;= ~ECHONL;        // Disable new-line echo
+ tty.c_lflag &amp;= ~ISIG;          // Disable interpretation of INTR, QUIT and SUSP
+
+ // Turn off s/w flow ctrl
+ tty.c_iflag &amp;= ~(IXON | IXOFF | IXANY);
+
+ // Disable any special handling of received bytes
+ tty.c_iflag &amp;= ~(IGNBRK|BRKINT|PARMRK|ISTRIP|INLCR|IGNCR|ICRNL);
+
+ // Prevent special interpretation of output bytes (e.g. newline chars)
+ tty.c_oflag &amp;= ~OPOST;
+
+ // Prevent conversion of newline to carriage return/line feed
+ tty.c_oflag &amp;= ~ONLCR;
+
+ // Wait for up to 1s (10 deciseconds), returning as soon as any data is received.
+ tty.c_cc[VTIME] = 10;
+ tty.c_cc[VMIN] = 0;
+
+ // Set in/out baud rate to be 1000000
+ cfsetispeed(&amp;tty, B1000000);
+ cfsetospeed(&amp;tty, B1000000);
+
+ // Save tty settings
+ if (tcsetattr(m-&gt;serial_fd, TCSANOW, &amp;tty) != 0)
+ {
+     printf(&quot;Error %i from tcsetattr: %s\n&quot;, errno, strerror(errno));
+     return -1;
+ }
+ fcntl(m-&gt;serial_fd, F_SETFL, FNDELAY);
+ usleep(500000);
+}
 </code></pre>
 <h2><a class="header" href="#usb-board-power-delivery" id="usb-board-power-delivery">USB board power delivery</a></h2>
 <p>The USB board power-delivery in the Luos network is limited to <code>500 mA</code>. This board can’t power too many boards and power-demanding ones like, for example, a DC-motor board with one or two motors connected. If you experiment power issues, feel free to add a power category board like a <a href="pages/prototyping_boards/boards_list//pages/prototyping_boards/boards_list/jack-power-input.html">Jack power input board</a>.</p>
