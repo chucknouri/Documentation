@@ -16,7 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="shortcut icon" href="favicon.png">
+        <link rel="shortcut icon" href="">
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
@@ -47,7 +47,7 @@
             <!-- Provide site root to javascript -->
             <script type="text/javascript">
                 var path_to_root = "";
-                var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+                var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
             </script>
     		
             <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -147,6 +147,8 @@
                     <a title="Join the Luos Community" href="https://community.luos.io"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i> Community</a>
 
                     <a title="Download on Github" target="_blank" rel="noopener noreferrer" href="https://github.com/luos-io"><i class="fab fa-github fa-lg" aria-hidden="true"></i> Download</a>
+
+                    <a title="We care about you" target="_blank" rel="noopener noreferrer" href="https://www.luos.io/us/care/"><i class="fas fa-life-ring fa-lg" aria-hidden="true"></i> Support</a>
 
                     <a href="print.html" title="Print this book" aria-label="Print this book"><i id="print-button" class="fa fa-print"></i></a>
 
@@ -314,7 +316,7 @@ board = &lt;board name&gt;
 <p><em>Note:</em> More information about how Luos libs are managed into PlatformIO is available by <a href="https://community.luos.io/t/how-to-link-luos-and-robus-to-platformio/244" target="\_blank">following this post on our forum</a>.</p>
 </blockquote>
 <h3><a class="header" href="#project-examples" id="project-examples">Project examples</a></h3>
-<p>Luos shares a lot of <a href="https://github.com/Luos-io/Luos/tree/master/examples/" target="_blank">code examples</a>, feel free to use and modify them as you want.</p>
+<p>Luos shares a lot of <a href="https://github.com/Luos-io/Examples" target="_blank">code examples</a>, feel free to use and modify them as you want.</p>
 <h3><a class="header" href="#prototyping-boards" id="prototyping-boards">Prototyping boards</a></h3>
 <p>Luos created <a href="pages/low//pages/prototyping_boards/boards-list.html">a sets of boards</a> allowing to easily prototype a device.</p>
 <h2><a class="header" href="#general-integration-consideration" id="general-integration-consideration">General integration consideration</a></h2>
@@ -1138,7 +1140,7 @@ To do that, you must add a specific app module called <a href="pages/high//pages
 <p>The <a href="pages/high//pages/high/modules_list/gate.html">Gate module</a> is an app that converts Luos messages from a device's network into JSON data format, and the other way from JSON to Luos messages.<br/>
 The Gate module can be hosted into different kinds of <span class="cust_tooltip">nodes<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several modules.</span></span> allowing you to choose the communication way fitting with your project (USB, Wifi, Bluetooth, etc.)</p>
 <blockquote>
-<p><strong>Warning:</strong>: The Gate module refreshes sensors information as fast as it can, so that can be intensive to Luos bandwidth.</p>
+<p><strong>Warning:</strong> The Gate module refreshes sensors information as fast as it can, so that can be intensive to Luos bandwidth.</p>
 </blockquote>
 <h2><a class="header" href="#how-to-start-using-the-json-api" id="how-to-start-using-the-json-api">How to start using the JSON API</a></h2>
 <p>Before using your device through JSON, you have to be connected to the communication flow depending on the node type hosting your Gate module.<br/>
@@ -1339,34 +1341,37 @@ This first message is really important, because it contains all the information 
    }
 }
 </code></pre>
-<h5><a class="header" href="#specific-messages" id="specific-messages">Specific messages</a></h5>
+<h4><a class="header" href="#custom-parameters-and-specific-messages" id="custom-parameters-and-specific-messages">Custom parameters and specific messages</a></h4>
 <p>Some messages are specifically handled:</p>
 <!-- - If the type is `VOID_MOD`, the module is empty and no message is converted.-->
-<ul>
-<li>For<a href="pages/high//pages/high/modules_list/dxl.html">Dynamixel</a> and void modules:</li>
-</ul>
-<table><thead><tr><th align="center">Object</th><th align="center">Definition</th></tr></thead><tbody>
-<tr><td align="center">register</td><td align="center">Motor memory register filed with [register_number, value]</td></tr>
-<tr><td align="center">set_id</td><td align="center">A set id command</td></tr>
-<tr><td align="center">wheel_mode</td><td align="center">The wheel mode parameter for Dynamixel servomotors True or False</td></tr>
+<p>Custom parameters can be defined and sent to modules through the JSON API, either with Python (Pyluos) or any other programming language on a computer side.
+Here is an example of a C function that can be implemented in order to send commands to modules in a Luos Network, through a gate:</p>
+<pre><code class="language-C">def sendCmd(s, cmd, sleep_time=0.5):
+    cmd = cmd + '\r'
+    print(cmd)
+    s.write(cmd.encode())
+    time.sleep(sleep_time)
+s = serial.Serial(sys.argv[1], 1000000)
+# detect Luos network
+sendCmd(s, '{&quot;detection&quot;: {}}')
+# set speed mode and compliant mode
+sendCmd(s, '{&quot;modules&quot;: {&quot;controlled_moto&quot;: {&quot;parameters&quot;: 2441}}}')
+# set pid parameters
+sendCmd(s, '{&quot;modules&quot;: {&quot;controlled_moto&quot;: { &quot;pid&quot;: [20, 0.02, 90]}}}')
+# set speed mode and non compliant mode
+sendCmd(s, '{&quot;modules&quot;: {&quot;controlled_moto&quot;: {&quot;parameters&quot;: 2440}}}')
+</code></pre>
+<p>Parameters are defined by a 16-bit bitfield.</p>
+<table><thead><tr><th align="center">Object</th><th align="center">Definition</th><th align="center">Structure</th><th align="center">Module(s)</th></tr></thead><tbody>
+<tr><td align="center">parameters</td><td align="center">enabling or disabling some measurement</td><td align="center"><a href="https://github.com/Luos-io/Examples/blob/master/Drivers/Controlled_motor/controlled_motor.h#L7-L31">Link to structure (GitHub)</a></td><td align="center"><a href="pages/high//pages/high/modules_list/stepper.html">Stepper</a>, <a href="pages/high//pages/high/modules_list/controlled-motor.html">Controlled-motor</a>, <a href="pages/high//pages/high/modules_list/servo.html">Servo</a></td></tr>
+<tr><td align="center">parameters</td><td align="center">enabling or disabling some measurement</td><td align="center"><a href="https://github.com/Luos-io/Examples/blob/master/Drivers/Imu/mpu_configuration.h#L37-L56">Link to structure (GitHub)</a></td><td align="center"><a href="pages/high//pages/high/modules_list/imu.html">Imu</a></td></tr>
 </tbody></table>
-<ul>
-<li>For <a href="pages/high//pages/high/modules_list/stepper.html">Stepper</a>, <a href="pages/high//pages/high/modules_list/controlled-motor.html">Controlled-motor</a> and <a href="pages/high//pages/high/modules_list/servo.html">Servo</a> modules:</li>
-</ul>
-<table><thead><tr><th align="center">Object</th><th align="center">Definition</th></tr></thead><tbody>
-<tr><td align="center">parameters</td><td align="center">enabling or disabling some measurement</td></tr>
-</tbody></table>
-<ul>
-<li>For <a href="pages/high//pages/high/modules_list/imu.html">Imu</a> module:</li>
-</ul>
-<table><thead><tr><th align="center">Object</th><th align="center">Definition</th></tr></thead><tbody>
-<tr><td align="center">parameters</td><td align="center">enabling or disabling some measurement</td></tr>
-</tbody></table>
-<ul>
-<li>For <a href="pages/high//pages/high/modules_list/gate.html">Gate</a> module:</li>
-</ul>
-<table><thead><tr><th align="center">Object</th><th align="center">Definition</th></tr></thead><tbody>
-<tr><td align="center">delay</td><td align="center">reduce modules refresh rate</td></tr>
+<p>Other specific messages:</p>
+<table><thead><tr><th align="center">Object</th><th align="center">Definition</th><th align="center">Module(s)</th></tr></thead><tbody>
+<tr><td align="center">register</td><td align="center">Motor memory register filed with [register_number, value]</td><td align="center"><a href="pages/high//pages/high/modules_list/dxl.html">Dynamixel</a>, void</td></tr>
+<tr><td align="center">set_id</td><td align="center">A set id command</td><td align="center"><a href="pages/high//pages/high/modules_list/dxl.html">Dynamixel</a>, void</td></tr>
+<tr><td align="center">wheel_mode</td><td align="center">The wheel mode parameter for Dynamixel servomotors True or False</td><td align="center"><a href="pages/high//pages/high/modules_list/dxl.html">Dynamixel</a>, void</td></tr>
+<tr><td align="center">delay</td><td align="center">reduce modules refresh rate</td><td align="center"><a href="pages/high//pages/high/modules_list/gate.html">Gate</a></td></tr>
 </tbody></table>
 <h3><a class="header" href="#module-exclusion-messages" id="module-exclusion-messages">Module exclusion messages</a></h3>
 <p>Module can be excluded of the network if a problem occurs (See <a href="pages/high//pages/low/modules/msg-handling.html#module-exclusion">message handling</a> for more information). In this case, the Gate sends an exclusion message indicating that this module is no longer available:</p>
@@ -3023,10 +3028,6 @@ However, it is possible to build a cable from any disired length (see the next s
 
             
             
-            
-            <script type="text/javascript">
-                window.playpen_copyable = true;
-            </script>
             
 
             
