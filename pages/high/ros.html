@@ -14,7 +14,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="shortcut icon" href="../../">
+        <link rel="shortcut icon" type="image/png" href="../../favicon.png">
+        <!--<link rel="shortcut icon" type="image/png" href="../../">-->
         <link rel="stylesheet" href="../../css/variables.css">
         <link rel="stylesheet" href="../../css/general.css">
         <link rel="stylesheet" href="../../css/chrome.css">
@@ -182,21 +183,22 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#luos-with-ros1-and-ros2" id="luos-with-ros1-and-ros2">Luos with ROS1 and ROS2</a></h1>
-<p>Luos comes with a package for the <a href="https://www.ros.org/">Robot Operating System</a>.</p>
-<p>ROS 2 is the default version but backward compatibility with ROS 1 is ensured via the official ROS 1 bridge. You can get an example of an application using Luos modules in ROS 2 with the <a href="https://github.com/aubrune/luos_bike_alarm_example">bike sharing example</a>.</p>
+                            <img src="/_assets/img/ros-logo.png">
+<h1><a class="header" href="#using-luos-with-ros1-and-ros2" id="using-luos-with-ros1-and-ros2">Using Luos with ROS1 and ROS2</a></h1>
+<p>Luos comes with a package for the <a href="https://www.ros.org/" target="_blank">Robot Operating System</a>.</p>
+<p>ROS 2 is the default version but backward compatibility with ROS 1 is ensured via the official ROS 1 bridge. You can get an example of an application using Luos modules in ROS 2 with the <a href="https://github.com/aubrune/luos_bike_alarm_example" target="_blank">bike sharing example</a>.</p>
 <p>In this tutorial, we will assume you're using ROS 2. If you want to communicate with a ROS 1 ecosystem, follow this quickstart anyway since ROS 2 needs to be installed and then refer to the <a href="./ros/ros1.html">Retrocompatibility with ROS 1</a> page.</p>
-<h2><a class="header" href="#a-few-ros-applied-to-luos-concepts" id="a-few-ros-applied-to-luos-concepts">A few ROS-applied-to-Luos concepts</a></h2>
+<h2><a class="header" href="#basics-a-few-ros-applied-to-luos-concepts" id="basics-a-few-ros-applied-to-luos-concepts">Basics: a few ROS-applied-to-Luos concepts</a></h2>
 <p>Here is a summary of core concepts in ROS:</p>
 <ul>
-<li><strong>ROS workspace</strong>: this is the directory in which you download all ROS software that is built from sourcecode. You will likely setup your own projects there but it is also common to download dependencies there, such as <code>luos_ros2</code>. Here we assume your workspace is <code>~/ros2_ws</code></li>
+<li><strong>ROS workspace</strong>: this is the directory in which you download all the ROS software that is built from sourcecode. You will likely setup your own projects here but it is also common to download dependencies here, such as <code>luos_ros2</code>. Here we assume your workspace is <code>~/ros2_ws</code></li>
 <li><strong>ROS node</strong>: this is the name given to a single program or script being executed</li>
-<li><strong>ROS launchfile</strong>: this is a file that launches multiple nodes at once
-several nodes communicate with each other exchanging information in the form of structured pieces of data called <strong>messages</strong>, being exchanged through named communication channels called <strong>topics</strong>. Just like the filesystem of your hardrive, topics are hierarchised. E.g. <code>/something/into/something/else/data</code></li>
-<li><strong>ROS package</strong>: a package is a folder that contains resources such as nodes, launchfiles, messages, ... here we have 2 packages named <code>luos_msgs</code> and <code>luos_interface</code></li>
+<li><strong>ROS launchfile</strong>: this is a file that launches multiple nodes at once.
+Several nodes communicate with each other exchanging information in the form of structured pieces of data called <strong>messages</strong>, being exchanged through named communication channels called <strong>topics</strong>. Just like the filesystem of your hardrive, topics are hierarchised. E.g. <code>/something/into/something/else/data</code></li>
+<li><strong>ROS package</strong>: a package is a folder that contains resources such as nodes, launchfiles, messages, ... Here we have 2 packages named <code>luos_msgs</code> and <code>luos_interface</code>.</li>
 </ul>
 <p>With Luos, data coming from/to Luos modules are messages sent on topics. Some messages representing popular types of data comply to existing message formats, e.g. <code>sensor_msgs/Imu</code> representing IMU data: this message is provided by the <code>sensor_msgs</code> package. Some other messages are Luos-specific and are provided by the <code>luos_msgs</code> package.</p>
-<p>There is a particular node whose role is to connect the Luos ecosystem with the ROS ecosystem: the <strong>broker</strong>, provided by the <code>luos_interface</code> package. The broker is strongly associated to a Luos gate since it connects to 1 (and only 1) gate, and ensures the communication seamlessly. A broker can be launched with the command <code>ros2 launch luos_interface broker.launch.py</code>, which then attempts to connect to a serial Luos gate.</p>
+<p>There is a particular node whose role is to connect the Luos ecosystem with the ROS ecosystem: the <strong>broker</strong>, provided by the <code>luos_interface</code> package. The broker is strongly associated to a Luos gate since it connects to one (and only one) gate, and ensures the communication seamlessly. A broker can be launched with the command <code>ros2 launch luos_interface broker.launch.py</code>, which then attempts to connect to a serial Luos gate.</p>
 <p>With Luos, topics names all start with a prefix being the module's alias and end with suffixes:</p>
 <ul>
 <li><code>.../read</code>: this topic is read-only and a <code>.../write</code> topic exists</li>
@@ -204,11 +206,10 @@ several nodes communicate with each other exchanging information in the form of 
 <li>no suffix: this topic is read-only and no other related topic exists</li>
 </ul>
 <p>As an example, <code>/Imu_mod/variables/pedometer/read</code> allows to read-only the current pedometer variable from the IMU module named <code>Imu_mod</code>.</p>
-<p>Now you know the basics, let's put in practice...</p>
 <h2><a class="header" href="#install-ros-2-and-luos" id="install-ros-2-and-luos">Install ROS 2 and Luos</a></h2>
-<p>First install <a href="https://index.ros.org/doc/ros2/Installation/Foxy/">ROS 2 Foxy</a> for your OS with FastRTPS. Also install <a href="https://index.ros.org/doc/ros2/Tutorials/Colcon-Tutorial/#install-colcon"><code>colcon</code></a> as advised in the guidelines. If you are not familiar with ROS, you should go on with a couple of ROS 2 tutorials to get started.</p>
+<p>First install <a href="https://index.ros.org/doc/ros2/Installation/Foxy/" target="_blank">ROS 2 Foxy</a> for your OS with FastRTPS. Also install <a href="https://index.ros.org/doc/ros2/Tutorials/Colcon-Tutorial/#install-colcon" target="_blank"><code>colcon</code></a> as advised in the guidelines. If you are not familiar with ROS, you should go on with a couple of ROS 2 tutorials to get started.</p>
 <p>Then clone <code>luos_ros2</code> to your workspace and compile it with colcon:</p>
-<pre><code>cd ros2_ws/src/    # Or replace by your ROS 2 workspace name, maybe also dev_ws/src
+<pre><code class="language-bash">cd ros2_ws/src/    # Or replace by your ROS 2 workspace name, maybe also dev_ws/src
 git clone https://github.com/aubrune/luos_ros2.git
 cd luos_ros2/luos_interface
 pip3 install --no-warn-script-location .
@@ -216,8 +217,8 @@ cd ~/ros2_ws &amp;&amp; colcon build --symlink-install
 source ~/ros2_ws/install/setup.bash
 </code></pre>
 <h2><a class="header" href="#get-started-with-luos-in-ros-2" id="get-started-with-luos-in-ros-2">Get started with Luos in ROS 2</a></h2>
-<p>Just plug in your Luos gate and other modules, such as Imu, Color or State, and run the broker. It will output the detected modules: </p>
-<pre><code>~$ ros2 launch luos_interface broker.launch.py
+<p>Plug in your Luos gate and other modules, such as Imu, Color or State, and run the broker. It will return the detected modules: </p>
+<pre><code class="language-bash">~$ ros2 launch luos_interface broker.launch.py
 [INFO] [luos_broker]: Connecting to /dev/ttyUSB0...
 [INFO] [luos_broker]: Found modules:
 -------------------------------------------------
@@ -228,12 +229,14 @@ Imu                 Imu_mod             2
 State               button_mod          3    
 Color               rgb_led_mod         5    
 </code></pre>
+<blockquote>
 <p><strong>Note:</strong> If you have several Luos gates, you need several brokers. Specify a port and a <strong>unique</strong> name for each of them:</p>
-<pre><code>ros2 launch luos_interface broker.launch.py device:=/dev/ttyUSB1 name:=brokerUSB1
+<pre><code class="language-bash">ros2 launch luos_interface broker.launch.py device:=/dev/ttyUSB1 name:=brokerUSB1
 </code></pre>
-<p>According the modules you have plugged-in, the broker will automatically publish the relevant topics in the namespace of your modules' aliases.
+</blockquote>
+<p>According to the modules you have plugged-in, the broker will automatically publish the relevant topics in the namespace of your modules' aliases.
 Here we have plugged a <code>State</code> module (alias <code>button_mod</code>), a <code>Imu</code> module (alias <code>Imu_mod</code>) and a <code>Color</code> module (alias <code>rgb_led_mod</code>) to the gate; thus the broker publishes the following topics:</p>
-<pre><code>~$ ros2 topic list
+<pre><code class="language-bash">~$ ros2 topic list
 /Imu_mod/acceleration
 /Imu_mod/compass
 /Imu_mod/imu
@@ -257,9 +260,9 @@ Here we have plugged a <code>State</code> module (alias <code>button_mod</code>)
 /rgb_led_mod/variables/time/write
 /rosout
 </code></pre>
-<p>Most variables advertise both <code>/read</code> and <code>/write</code> topics, to get data, write data, or (de)activate this data source. Other types of data might be aggregates of Luos variables (such as the imu) or Luos events.</p>
-<p>In order to echo messages from the terminal, use a regular ROS subscriber. For instance here is the current IMU data:</p>
-<pre><code>~$ ros2 topic echo /Imu_mod/imu
+<p>Most variables advertise both <code>/read</code> and <code>/write</code> topics to get data, write data, or (de)activate this data source. Other types of data might be aggregates of Luos variables (such as the imu) or Luos events.</p>
+<p>In order to echo messages from the terminal, use a regular ROS subscriber. For instance, here is the current IMU data:</p>
+<pre><code class="language-bash">~$ ros2 topic echo /Imu_mod/imu
 header:
   stamp:
     sec: 1581267954
@@ -284,14 +287,15 @@ linear_acceleration_covariance: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 ---
 </code></pre>
 <p>In order to publish messages to the Luos modules, use a regular ROS publisher. For instance, here is how to light up the Luos RGB module, in a pink color:</p>
-<pre><code>ros2 topic pub /rgb_led_mod/variables/color/write std_msgs/msg/ColorRGBA &quot;{r: 64, g: 0, b: 64}&quot; --once
+<pre><code class="language-bash">ros2 topic pub /rgb_led_mod/variables/color/write std_msgs/msg/ColorRGBA &quot;{r: 64, g: 0, b: 64}&quot; --once
 </code></pre>
 <h2><a class="header" href="#get-started-with-my-own-ros2-package-using-luos-in-python" id="get-started-with-my-own-ros2-package-using-luos-in-python">Get started with my own ROS2 package using Luos in Python</a></h2>
-<p>This command lines will create a new package <code>my_luos_ros2_package</code> relying on <code>luos_interface</code>:</p>
-<pre><code>cd ~/ros2_ws/src
+<p>These command lines will create a new package <code>my_luos_ros2_package</code> relying on <code>luos_interface</code>:</p>
+<pre><code class="language-bash">cd ~/ros2_ws/src
 ros2 pkg create my_luos_ros2_package --build-type ament_python --dependencies luos_interface
 </code></pre>
 <p>You can then add your ROS Python scripts, by taking example on the <a href="./ros/bike_alarm.html">bike sharing example</a> page.</p>
+<div class="cust_edit_page"><a href="https://github.com/Luos-io/doc/tree/master/src/pages/high/ros.md">Edit this page</a></div>
 
                             <br />
                             

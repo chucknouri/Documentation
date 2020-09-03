@@ -14,7 +14,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="shortcut icon" href="../../../">
+        <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+        <!--<link rel="shortcut icon" type="image/png" href="../../../">-->
         <link rel="stylesheet" href="../../../css/variables.css">
         <link rel="stylesheet" href="../../../css/general.css">
         <link rel="stylesheet" href="../../../css/chrome.css">
@@ -196,16 +197,17 @@
 <h2><a class="header" href="#test-the-example" id="test-the-example">Test the example</a></h2>
 <p>This example package relies on <code>luos_interface</code>, make sure you first installed it by following <a href="../ros.html">its own procedure</a>.</p>
 <p>Then, download the example package and build your workspace with <code>colcon</code>:</p>
-<pre><code>~/ros2_ws/src/$ git clone https://github.com/aubrune/luos_bike_alarm_example.git
+<pre><code class="language-bash">~/ros2_ws/src/$ git clone https://github.com/aubrune/luos_bike_alarm_example.git
 
 ~/ros2_ws/$ colcon build --symlink-install    # Build the ROS workspace
 ~/ros2_ws/$ source ~/.bashrc                  # Source all new launches messages and resources
 </code></pre>
-<p>Plug at least a Luos Imu node and a Gate to your computer, as well as optional RGB and State modules. The expected Luos modules' aliases are the default, if they are not, update the <a href="https://github.com/aubrune/luos_bike_alarm_example/blob/master/luos_bike_alarm_example/bike_alarm.py#L12-L15">topic names</a> with your custom aliases.</p>
+<p>Plug at least a Luos Imu node and a Gate to your computer, as well as optional RGB and State modules. The expected Luos modules' aliases are the default. If they are not, update the <a href="https://github.com/aubrune/luos_bike_alarm_example/blob/master/luos_bike_alarm_example/bike_alarm.py#L12-L15" target="_blank">topic names</a> with your custom aliases.</p>
 <p>Then, start the bike example from its launchfile:</p>
-<pre><code>~/ros2_ws/$ ros2 launch luos_bike_alarm_example example.launch.py
+<pre><code class="language-bash">~/ros2_ws/$ ros2 launch luos_bike_alarm_example example.launch.py
 </code></pre>
-<p>RViz2 will pop up and show a bike, shake the Luos Imu node in order to update the RViz2 view in real time. If the bike is displayed but does not actuate, make sure that Imu data comes from the expected topic <code>/Imu_mod/imu</code>, or change the topic name.</p>
+<p><code>RViz2</code> will pop up and show a 3D bike. Shake the Luos Imu node in order to update the RViz2 view in real time. If the bike is displayed but does not actuate, make sure that Imu data comes from the expected topic <code>/Imu_mod/imu</code>, or try to change the topic name.</p>
+<div class="cust_edit_page"><a href="https://github.com/Luos-io/doc/tree/master/src/pages/high/ros/bike_alarm.md">Edit this page</a></div>
 
                             <br />
                             
