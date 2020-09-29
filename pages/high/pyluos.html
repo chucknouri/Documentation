@@ -205,7 +205,7 @@ python get-pip.py
 <pre><code class="language-bash">pip install jupyter
 </code></pre>
 <blockquote>
-<p><strong>Note:</strong> Feel free to consult <a href="https://jupyter.readthedocs.io/en/latest/content-quickstart.html" target="_blank"><em>Jupyter Notebook</em>'s</a>.</p>
+<p><strong>Note:</strong> Feel free to consult <a href="https://jupyter.readthedocs.io/en/latest/content-quickstart.html" target="_blank"><em>Jupyter Notebook</em>'s</a> documentation.</p>
 </blockquote>
 <h3><a class="header" href="#installing-or-updating-pyluos-library" id="installing-or-updating-pyluos-library">Installing or updating Pyluos library</a></h3>
 <p>You are now ready to install Pyluos. <strong>The last Pyluos version is <code>1.2.0</code>.</strong></p>
@@ -236,8 +236,21 @@ python get-pip.py
 </code></pre>
 <p>This line is always used while programming behaviors and should be called before any connection with the device is made.</p>
 <h3><a class="header" href="#device-connection" id="device-connection">Device connection</a></h3>
-<p>Now you should be ready to use the Pyluos library and connect to your device. To do that you have to create a device object with your device address as argument.</p>
-<p>Your device address could be an IP address (192.168.0.6 or my_device.local for example) or a serial port (COM13 on windows or /dev/cu.usbserial-DN2YEFLN on mac).</p>
+<p>Connect your device to your computer through a <a href="/pages/prototyping_boards/boards_list/usb.html">Gate</a> with a USB cable.</p>
+<h4><a class="header" href="#configuring-usb-transfer-sizes-and-latency-timer" id="configuring-usb-transfer-sizes-and-latency-timer">Configuring USB transfer sizes and latency timer</a></h4>
+<p>Some devices may not work properly with the default USB transfer sizes and latency timer for COM ports on Windows. These parameters can be set to lower values in order to use your device properly while connected to your computer from a <a href="/pages/prototyping_boards/boards_list/usb.html">Gate</a>.</p>
+<p><strong>USB Transfer Sizes</strong>: Default value is 4096 Bytes, however if you have issues to use your connected device, you should try the minimum possible values both for <code>Receive</code> and <code>Transmit</code>.</p>
+<p><strong>Latency Timer</strong>: Default value is 16 msec, but you can rise lower it to the minimal value of 1 msc.</p>
+<p>To access to these parameters, open the Device Manager in Windows, and right-click on the <em>USB Serial Port (COMX)</em> where your device is connected, then click on <em>Properties</em>.</p>
+<p><img src="/_assets/img/device-manager.png" alt="" /></p>
+<p>Click on <em>Port Settings</em> tab and click on <em>Advanced...</em> button.</p>
+<p><img src="/_assets/img/serial-properties.png" alt="" /></p>
+<p>Change the desired values.</p>
+<p><img src="/_assets/img/com-port-adv-settings.png" alt="" /></p>
+<p>These values can give you better results, for example if your device has motors to control.</p>
+<h4><a class="header" href="#connection-to-the-device" id="connection-to-the-device">Connection to the device</a></h4>
+<p>Now you should be ready to use the Pyluos library and connect to your device. To do that, you have to create a device object with your device address as an argument.</p>
+<p>Your device address can be an IP address (<code>192.168.0.6</code> or <code>my_device.local</code> for example) or a serial port (<code>COM13</code> on Windows or <code>/dev/cu.usbserial-DN2YEFLN</code> on Mac).</p>
 <pre><code class="language-python">device = Device('address of the device')
 </code></pre>
 <p>This line makes the connexion between the computer and the device. Python should answer with this kind of message:</p>
