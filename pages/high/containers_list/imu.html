@@ -207,7 +207,7 @@
 <li>walk time – Duration (second) of the walk</li>
 </ul>
 <p>By default, the container will send only quaternions to keep a low number of data and avoid bus congestion. Retrieving any other types of measures requires to enable them first.</p>
-<p>The easiest way to enable a measure is by using it, as pyluos automatically enables a called measure. For example, to retrieve the linear acceleration value when it’s disabled, you can execute:</p>
+<p>The easiest way to enable a measure is by using it, as Pyluos automatically enables a called measure. For example, to retrieve the linear acceleration value when it’s disabled, you can execute:</p>
 <pre><code class="language-python">device.Imu_mod.linear_acceleration
 </code></pre>
 <p>This command doesn’t allow you to disable the value after using it in order to keep your device responsive. Another way to enable or disable a value is to set it to <code>True</code> or <code>False</code>. For example, if you want to disable the linear acceleration measure previously activated, you can execute:</p>

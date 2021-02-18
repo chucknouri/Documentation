@@ -275,7 +275,7 @@
 <iframe class="cust_video" src="https://www.youtube.com/embed/xQe3z0M_FE8?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br />
 <p><small>Luos is free for non-commercial use. It's protected by a license that <a href="https://github.com/Luos-io/Luos/blob/master/LICENSE.md" target="_blank">you can consult here</a>.</small></p>
 <h1><a class="header" href="#general-guide-to-luos-technology" id="general-guide-to-luos-technology">General guide to Luos technology</a></h1>
-<p>Luos is a simple and lightweight containerization platform dedicated to embedded systems enabling <a href="https://en.wikipedia.org/wiki/Microservices" target="_blank">microservices</a> architecture for electronics. It's a powerful tool using modularity to simplify and link any hardware component or application code together as a <a href="https://en.wikipedia.org/wiki/Single_system_image" target="_blank">single system image</a>.</p>
+<p>Luos is a simple and lightweight containerization platform dedicated to embedded systems enabling a <a href="https://en.wikipedia.org/wiki/Microservices" target="_blank">microservices</a> architecture for electronics. It's a powerful tool using modularity to simplify and link any hardware component or application code together as a <a href="https://en.wikipedia.org/wiki/Single_system_image" target="_blank">single system image</a>.</p>
 <p>This guide contains all the basic notions you will need to use, create and understand Luos technology.</p>
 <p>Luos is a low-level software technology uploaded into every board's (<span class="cust_tooltip"><a href="pages/overview/general-basics.html#what-is-a-node"><strong>node</strong></a><span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several containers.</span></span>) of a device.
 You can use Luos as a <strong>bare metal</strong> lib or as a driver into your <strong>embedded OS</strong>.</p>
@@ -292,18 +292,18 @@ In the Luos philosophy, each node has to carry the necessary programs (container
 <p>For example, the <a href="pages/overview/../demo_boards/boards_list/dxl.html">Dynamixel board</a> provided by Luos can dynamically create and manage Dynamixel containers depending on the number of Dynamixel motors linked to it. Any Dynamixel containers can get or set values to other Dynamixel containers on the same node or to any other containers in any other nodes in the network.</p>
 <p><a href="pages/overview/../low/containers.html">Go to Containers page</a>.</p>
 <h2><a class="header" href="#messages" id="messages">Messages</a></h2>
-<p>All containers can share and receive datas using messages.</p>
+<p>All containers can share and receive data using messages.</p>
 <p><a href="pages/overview/../low/containers/msg-handling.html">Go to Messages handling page</a>.</p>
 <h2><a class="header" href="#routing-table" id="routing-table">Routing table</a></h2>
-<p>A routing table is a &quot;service&quot; managed by the Luos network and available for any containers in any nodes. This service lists all the containers and allows to any containers to get and use basic information of any other containers. The routing table's data can be loaded or auto-generated during detection.</p>
+<p>A routing table is a &quot;service&quot; managed by the Luos network and available for any containers on any nodes. This service lists all the containers on the network and allows any containers to access and use basic information of any other containers. The routing table's data can be loaded or auto-generated during detection.</p>
 <p><a href="pages/overview/../low/containers/routing-table.html">Go to Routing table page</a>.</p>
 <h2><a class="header" href="#container-detection" id="container-detection">Container detection</a></h2>
 <p>The container detection assigns IDs to containers depending on their node's physical position in the network, and generates a routing table.</p>
 <p>IDs are assigned from the nearest to the furthest node branch by branch, from the point of view of the container running the detection. Following this logic, the container running the detection will have the ID 1, the next one will have the ID 2, etc.</p>
 <blockquote>
-<p><em>Note:</em> Multiple detection by different containers at the same time is not allowed.</p>
+<p><em>Note:</em> Multiple detections by different containers at the same time is not allowed.</p>
 </blockquote>
-<p>It's possible to detect the network frequently in order to dynamically discover included or excluded containers while running. Go to <a href="pages/overview/../low/containers/routing-table.html">Routing table</a> page for more informations.</p>
+<p>It is possible to execute a detection on the network frequently in order to dynamically discover included or excluded containers while running. Go to <a href="pages/overview/../low/containers/routing-table.html">Routing table</a> page for more information.</p>
 <h1><a class="header" href="#low-level" id="low-level">Low level</a></h1>
 <p>This part of the Luos documentation is dedicated to people designing their own electronic boards or their specific embedded code.</p>
 <p>Let's start by setting up your <a href="pages/low/./dev-env.html"><strong>development environment</strong></a>, then you can start your <a href="pages/low/./physical_bus/electronic-design.html"><strong>electronic design</strong></a> and your <a href="pages/low/./containers.html"><strong>containers</strong></a> creation.</p>
@@ -311,7 +311,7 @@ In the Luos philosophy, each node has to carry the necessary programs (container
 <p>Before starting developing with Luos, you need to have an operational development environment.
 At Luos, we use PlatformIO to share all our examples and to make our lib integration easy, but of course you can use your favorite IDE and integrate our libs by yourself.</p>
 <h2><a class="header" href="#setup-a-luos-platformio-project" id="setup-a-luos-platformio-project">Setup a Luos PlatformIO project</a></h2>
-<p><a href="https://platformio.org/" target="_blank">PlatformIO</a> is a cross-platform, cross-architecture, multiple framework, professional tool for embedded systems engineers and for software developers who write applications for embedded products. You can put it as a plug-in in a lot of <a href="https://docs.platformio.org/en/latest/integration/ide/index.html#desktop-ide" target="_blank">different editors</a>.</p>
+<p><a href="https://platformio.org/" target="_blank">PlatformIO</a> is a cross-platform, cross-architecture, multiple framework, professional tool for embedded systems engineers and for software developers who write applications for embedded products. It can be used as a plug-in in a lot of <a href="https://docs.platformio.org/en/latest/integration/ide/index.html#desktop-ide" target="_blank">different editors</a>.</p>
 <h3><a class="header" href="#getting-started" id="getting-started">Getting Started</a></h3>
 <ol>
 <li>Install Platform IO on VSCode by following the instructions on <a href="https://platformio.org/platformio-ide" target="_blank">this page</a>.</li>
@@ -326,26 +326,26 @@ board = &lt;board name&gt;
 <p><em>Note:</em> More information about how Luos libs are managed into PlatformIO is available by <a href="https://community.luos.io/t/how-to-link-luos-with-platformio/303" target="\_blank">following this post on our forum</a>.</p>
 </blockquote>
 <h3><a class="header" href="#project-examples" id="project-examples">Project examples</a></h3>
-<p>Luos shares a lot of <a href="https://github.com/Luos-io/Examples" target="_blank">code examples</a>, feel free to use and modify them as you want.</p>
+<p>Luos provides a lot of <a href="https://github.com/Luos-io/Examples" target="_blank">code examples</a>, feel free to use and modify them as you want.</p>
 <h3><a class="header" href="#demonstration-boards" id="demonstration-boards">Demonstration boards</a></h3>
-<p>Luos created <a href="pages/low/../demo_boards/boards-list.html">a sets of boards</a> allowing to easily test the technology.</p>
+<p>Luos created <a href="pages/low/../demo_boards/boards-list.html">a sets of boards</a> to allow you to easily test the technology.</p>
 <h2><a class="header" href="#general-integration-consideration" id="general-integration-consideration">General integration consideration</a></h2>
 <p>Luos works as a code library running on nodes. To match Luos library with your hardware, Luos offers a <em>Hardware Abstraction Layer</em> for a lot of devices in <span class="cust_tooltip">LuosHAL<span class="cust_tooltiptext">Hardware Abstraction Layer used to fit Luos with various hardware designs.</span></span>.</p>
 <ul>
-<li><a href="https://github.com/Luos-io/LuosHAL" target="_blank">LuosHAL</a>: This repository gives you a list of family device covers to match Luos library with your hardware.</li>
+<li><a href="https://github.com/Luos-io/LuosHAL" target="_blank">LuosHAL</a>: This repository provides a list of family devices coverd to match the Luos library with your hardware.</li>
 <li><a href="https://github.com/Luos-io/Luos/tree/master/luos" target="_blank">Luos</a>: This is the main library you will be working with.</li>
 </ul>
 <p>To make it work on your environment, you have to:</p>
 <ul>
-<li>Include Luos lib folders in your project compilation;</li>
-<li>Select the right LuosHAL from your family device in LuosHAL folder, and include <code>luos_hal.c</code>, <code>luos_hal.h</code> and <code>luos_hal_config.h</code> in your project;</li>
+<li>Include the Luos lib folders in your project compilation;</li>
+<li>Select the right LuosHAL for your device family in LuosHAL folder, and include <code>luos_hal.c</code>, <code>luos_hal.h</code> and <code>luos_hal_config.h</code> in your project;</li>
 <li>Change, if necessary, <code>luos_hal_config.h</code> in you project, the default configuration created by Luos (before including <code>luos.h</code>) in order to match LuosHAL with your hardware (eg: match pins with your design);</li>
 <li>Include <code>luos.h</code> on your source file.</li>
 </ul>
 <h1><a class="header" href="#use-a-physical-bus" id="use-a-physical-bus">Use a physical bus</a></h1>
 <p>Luos uses a communication protocol called <span class="cust_tooltip">Robus<span class="cust_tooltiptext">Bus communication protocol used by Luos.</span></span> to communicate with other containers. 
 Luos can work on a single node or create a network for the communication between containers located on different nodes. This communication goes through a physical layer, which must be adapted to your own design (through the file <code>luos_hal_config.h</code>). </p>
-<p>To create a Luos network, many serial bus technologies can be chosen to fit with your design, however Luos provides a default reference designed to faciliate Luos Library integration and easy network creation. this design is based on RS485, responding to many technical issues of a serial bus like multimastering, speed, Robus and safety, etc.</p>
+<p>To create a Luos network, many serial bus technologies can be chosen to fit your design, however Luos provides a default reference designed to faciliate Luos Library integration and easy network creation. This design is based on RS485, responding to many technical issues of a serial bus like multimastering, speed, robustness and safety, etc.</p>
 <h1><a class="header" href="#integrating-luos-into-an-electronic-board" id="integrating-luos-into-an-electronic-board">Integrating Luos into an electronic board</a></h1>
 <p>To create and match with the default reference design, electronic boards must respect some design rules in order to properly work in a Luos network.</p>
 <h2><a class="header" href="#electronic-design" id="electronic-design">Electronic design</a></h2>
@@ -358,26 +358,26 @@ Luos can work on a single node or create a network for the communication between
 <li><strong>At least 2 connectors</strong>: They allow to link boards together into a Luos network (Luos' official connector is: <a href="https://octopart.com/df11-8dp-2ds%2824%29-hirose-39521447" target="_blank"><em>DF11-8DP-2DS(24)</em></a>).</li>
 </ul>
 <h2><a class="header" href="#compatible-mcus" id="compatible-mcus">Compatible MCUs</a></h2>
-<p>Luos manages any type of microcontrollers, but they need to be added manually to the library. If your microcontroller is not managed yet, please contact us:</p>
+<p>Luos manages any type of microcontrollers, but they need to be added manually to the library. If your microcontroller is not yet supported, please contact us:</p>
 <ul>
 <li>by mail: <a href="mailto:hello@luos.io">hello@luos.io</a></li>
 <li>on <a href="https://github.com/Luos-io/Luos/issues/new?assignees=nicolas-rabault&labels=porting&template=porting-request.md&title=%5BMCU+PORTING%5D+" target="_blank">GitHub</a></li>
 </ul>
 <h1><a class="header" href="#luos-hardware-abstraction-layer" id="luos-hardware-abstraction-layer">Luos Hardware Abstraction Layer</a></h1>
 <h2><a class="header" href="#luos-library-robus-communication-protocol-physical-bus" id="luos-library-robus-communication-protocol-physical-bus">Luos Library, Robus communication protocol, physical bus</a></h2>
-<p>Luos can work on a single node or creates a network for the communication between containers located on different nodes. This communication should be defined and hardware-configured to fit with the chosen MCU. luos_hal.c and luos_hal.h define all functions needed by Luos library to send messages through the bus and create the initialization of all hardware MCU componants.
-luos_hal_config.h file is a default config for a MCU family and can be redefined in your project to fit with your design.</p>
-<h2><a class="header" href="#luos-hal" id="luos-hal">Luos hal</a></h2>
-<p>List all the functions using Hardware componant relative to protocol communication and physical bus.</p>
+<p>Luos can work on a single node or it can create a network for communication between containers located on different nodes. This communication should be defined and hardware-configured to fit with the chosen MCU. The files luos_hal.c and luos_hal.h define all the functions needed by the Luos library to send messages through the bus and create the initialization of all hardware MCU components.
+The file luos_hal_config.h file contains a default config for an MCU family and can be redefined in your project to fit with your design.</p>
+<h2><a class="header" href="#luos-hal" id="luos-hal">Luos HAL</a></h2>
+<p>Lists all the functions using Hardware componant relative to protocol communication and physical bus.</p>
 <ul>
 <li><strong>CRC</strong>: Validate messages. CRC can be generated by hardware or software</li>
-<li><strong>PORT</strong>: Define necessary pin, PTP lines, Rx/Tx, enable/disable </li>
+<li><strong>PORT</strong>: Define necessary pins, PTP lines, Rx/Tx, enable/disable </li>
 <li><strong>FLASH</strong>: Storing alias of container in the system</li>
-<li><strong>TIMER</strong>: Define timeout of the communication</li>
-<li><strong>COM</strong>: serial bus</li>
+<li><strong>TIMER</strong>: Defines timeouts for communications</li>
+<li><strong>COM</strong>: Serial bus</li>
 </ul>
-<h2><a class="header" href="#luos-hal-config" id="luos-hal-config">Luos hal config</a></h2>
-<p>Define a default configuration pinout, serial bus for a MCU Family.</p>
+<h2><a class="header" href="#luos-hal-config" id="luos-hal-config">Luos HAL config</a></h2>
+<p>Defines a default configuration pinout, using a serial bus for an MCU Family.</p>
 <p>Luos covers a lot of <a href="https://github.com/Luos-io/LuosHAL" target="_blank">Hardware Abstraction Layers for MCU Families</a>, choose the right one for your MCU.
 To match pinout and fonctionality with your design, you can create a file &quot;hardware_config.h&quot; in main.c for example and include the file in your project before including luos.h:</p>
 <pre><code class="language-C">#include &quot;hardware_config.h&quot;
@@ -416,15 +416,15 @@ For example, using USART3 in your design instead of USART1 defined by luos_hal_c
 <p>There are many possible configurations that you can change, not all of them being necessary for your design:</p>
 <table><thead><tr><th align="center">Function</th><th align="center">Description</th><th align="center">Relative</th></tr></thead><tbody>
 <tr><td align="center">PORT_CLOCK_ENABLE</td><td align="center">Activate clock for GPIO</td><td align="center">Depends on port</td></tr>
-<tr><td align="center">RX_EN_PIN/TX_EN_PIN</td><td align="center">Choose pinout to activate Rx/Tx com</td><td align="center">Necessary for special com</td></tr>
-<tr><td align="center">COM_LVL_DOWN_PIN/COM_LVL_UP_PIN</td><td align="center">Choose pinout to pull com</td><td align="center">Necessary for special com</td></tr>
-<tr><td align="center">COM_TX_PIN/COM_RX_PIN</td><td align="center">Choose pinout for Rx/Tx com</td><td align="center">Adapt to the serial bus chosen</td></tr>
-<tr><td align="center">PTPX_PIN/PTPX_IRQ/PINOUT_IRQHANDLER</td><td align="center">Choose pinout, IRQ and callback for PTP line</td><td align="center">Necessary for topology detection</td></tr>
-<tr><td align="center">LUOS_COM_CLOCK_ENABLE</td><td align="center">Activate clock for serial</td><td align="center">Depends on serial bus</td></tr>
+<tr><td align="center">RX_EN_PIN/TX_EN_PIN</td><td align="center">Choose pinout to activate Rx/Tx comms</td><td align="center">Necessary for special comms</td></tr>
+<tr><td align="center">COM_LVL_DOWN_PIN/COM_LVL_UP_PIN</td><td align="center">Choose pinout to pull comms</td><td align="center">Necessary for special comms</td></tr>
+<tr><td align="center">COM_TX_PIN/COM_RX_PIN</td><td align="center">Choose pinout for Rx/Tx comms</td><td align="center">Adapt to the serial bus chosen</td></tr>
+<tr><td align="center">PTPX_PIN/PTPX_IRQ/PINOUT_IRQHANDLER</td><td align="center">Choose pinout, IRQ and callback for the PTP line</td><td align="center">Necessary for topology detection</td></tr>
+<tr><td align="center">LUOS_COM_CLOCK_ENABLE</td><td align="center">Activates clock for serial</td><td align="center">Depends on serial bus</td></tr>
 <tr><td align="center">LUOS_COM/LUOS_COM_IRQ/LUOS_COM_IRQHANDLER</td><td align="center">Choose serial bus, IRQ and callback</td><td align="center">Adapt to the serial bus chosen</td></tr>
 <tr><td align="center">LUOS_TIMER_LOCK_ENABLE</td><td align="center">Activate clock for Timeout</td><td align="center">Necessary for Timeout</td></tr>
 <tr><td align="center">LUOS_TIMER/LUOS_TIMER_IRQ/LUOS_TIMER_IRQHANDLER</td><td align="center">Choose Timer, IRQ and callback</td><td align="center">Necessary for Timeout</td></tr>
-<tr><td align="center">PAGE_SIZE/ADRESS_LAST_PAGE</td><td align="center">Define space in flash for alias</td><td align="center">Necessary to rename container alias</td></tr>
+<tr><td align="center">PAGE_SIZE/ADRESS_LAST_PAGE</td><td align="center">Defines space in flash for alias</td><td align="center">Necessary to rename container alias</td></tr>
 </tbody></table>
 <h1><a class="header" href="#containers" id="containers">Containers</a></h1>
 <p>A container is a block of code which is able to communicate with any other containers in the Luos network. </p>
@@ -433,7 +433,7 @@ For example, using USART3 in your design instead of USART1 defined by luos_hal_c
 Each container is hosted in a single <span class="cust_tooltip">node<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several containers.</span></span> (MCU), but a node can handle several containers at the same time and manage communication between them and between other containers hosted in other nodes, using the same interface.</p>
 <p><strong>As a developer you will always develop your functionalities into containers, and never into the <code>main()</code> program.</strong> The only information that should be put on the <code>main()</code> code are MCU setup parameters and containers' run functions.</p>
 <h2><a class="header" href="#container-properties" id="container-properties">Container properties</a></h2>
-<p>To properly work, each container owns some properties allowing to other containers to recognize and access it:</p>
+<p>To properly work, each container has some properties allowing other containers to recognize and access it:</p>
 <table><thead><tr><th align="center">Name</th><th align="center">Description</th><th align="center">Format</th></tr></thead><tbody>
 <tr><td align="center"><strong>ID</strong></td><td align="center">The ID is a unique number given to each container depending on their physical position. The system automatically assigns each ID during the <a href="pages/low/../overview/general-basics.html#container-detection">detection phase</a>. If you move a container from a microcontroller A to a microcontroller B on a given device, the ID will change. In the same way, if you change the wiring order of a microcontroler on the network on a given device, the ID will change too.</td><td align="center">Integer<br />e.g. <code>Id=1</code></td></tr>
 <tr><td align="center"><strong>TYPE</strong></td><td align="center">The type defines the container purpose. A few types are predefined and can be used, or new ones can be created. The container type can't be changed after container initialization.</td><td align="center">String<br />e.g. <code>type=DISTANCE_MOD</code></td></tr>
@@ -464,7 +464,7 @@ int main(void)
 </blockquote>
 <h3><a class="header" href="#how-to-add-containers-in-your-project" id="how-to-add-containers-in-your-project">How to add containers in your project</a></h3>
 <p>A node can host multiple containers, and a container has to be as portable as possible. In order to do that, containers have to be independent code folders that can be easily copied and pasted in another project.<br/>
-To make it at Luos we always use the same way to organize our projects: we put the containers into a <code>containers</code> folder and name the containers' code files with the name of each container:</p>
+When designing projects at Luos we always use the same way to organize our code: we put the containers into a <code>containers</code> folder and name the containers' code files with the name of each container:</p>
 <pre><code class="language-AsciiDoc"> Project
     │
     ├─── containers
@@ -504,9 +504,9 @@ int main(void)
 }
 
 </code></pre>
-<p>This way, it is easy to manage all your containers and to add as many of them in the <code>main()</code> file as you want.</p>
+<p>This way, it is easy to manage all of your containers and to add as many of them as you want in to <code>main()</code>.</p>
 <h3><a class="header" href="#how-to-use-luos-hardware-abstraction-layer" id="how-to-use-luos-hardware-abstraction-layer">How to use Luos hardware abstraction layer</a></h3>
-<p>To ease the use of Luos Library on a specific target, Luos compagny provides luos_hal.c, luos_hal.h and luos_hal_config.h from LuosHAL folder for a lot of different MCU families. The purpose of these files is to make Los communcation to work directly on the chosen MCU. however, this default configuration for a MCU Family should be adapted to fit with your design. See how to do it on <a href="pages/low/containers/../physical_bus/luos-hal.html">Luos HAL</a> page.</p>
+<p>To ease the use of Luos Library on a specific target, the Luos company provides <code>luos_hal.c</code>, <code>luos_hal.h</code> and <code>luos_hal_config.h</code> from the LuosHAL folder for a lot of different MCU families. The purpose of these files is to make Luos communcations work directly on the chosen MCU. However, this default configuration for a MCU Family should be adapted to fit your design. See how to do it on the <a href="pages/low/containers/../physical_bus/luos-hal.html">Luos HAL</a> page.</p>
 <h1><a class="header" href="#create-luos-containers" id="create-luos-containers">Create Luos containers</a></h1>
 <p><strong>As a developer you will always develop your functionalities into containers and never into the <code>main()</code> program.</strong></p>
 <blockquote>
@@ -525,9 +525,9 @@ This function needs to have a specific format:</p>
 <li><strong>container</strong> is the container pointer of the container receiving the data (basically, it is your container).</li>
 <li><strong>msg</strong> is the message your container received.</li>
 </ul>
-<p><strong>type</strong> is the type of the your new container represented by a number. Some basic types (e.g. <code>DISTANCE_MOD</code>, <code>VOLTAGE_MOD</code>, etc.) are already available in the <code>container_type_t</code> enum structure of Luos. You can also create your own on top of the luos one.</p>
-<p><strong>default alias</strong> is the alias by default for your new container. e.g. <code>Mycontainer02</code>. This alias is the one your container will take if no other alias is set by the user of your functionality hosted in your container. Aliases have a maximum size of 16 characters.</p>
-<p><strong>revision</strong> is the revision number of the container you are creating and which will be accessible via pyluos.</p>
+<p><strong>type</strong> is the type of the your new container represented by a number. Some basic types (e.g. <code>DISTANCE_MOD</code>, <code>VOLTAGE_MOD</code>, etc.) are already available in the <code>container_type_t</code> enum structure of Luos. You can also create your own on top of the Luos one.</p>
+<p><strong>default alias</strong> is the alias by default for your new container. e.g. <code>Mycontainer02</code>. This alias is the one your container will use if no other alias is set by the user of your functionality hosted in your container. Aliases have a maximum size of 16 characters.</p>
+<p><strong>revision</strong> is the revision number of the container you are creating and which will be accessible via Pyluos.</p>
 <p>Following the <a href="pages/low/containers/./create-project.html#basic-containers-functions">project rules</a>, here is a code example for a button container:</p>
 <pre><code class="language-c">revision_t ButtonRevision = {.unmap = {0,0,7}};
 container_t* container_btn;
@@ -550,17 +550,17 @@ void Button_Loop(void) {
 <p>To make your development as clean as possible, you have to understand in which category (<a href="pages/low/containers/create-containers.html#drivers-guidelines"><strong>Driver</strong></a> or <a href="pages/low/containers/create-containers.html#apps-guidelines"><strong>App</strong></a>) each container of the project is.</p>
 <p>By following the categories guidelines, you will be able to make clean and reusable functionalities.</p>
 <h2><a class="header" href="#drivers-guidelines" id="drivers-guidelines">Drivers guidelines</a></h2>
-<p>A driver is a type of container that drives hardware. Motors, distance sensors, LEDs are all drivers.</p>
+<p>A driver is a type of container that handles hardware. Motors, distance sensors, LEDs are all drivers.</p>
 <p>By designing a driver, you have to keep the following rules in mind:</p>
 <ul>
 <li>A driver container always uses a standard Luos type to be usable by any other containers.</li>
 <li>A driver container always uses standard <span class="cust_tooltip">object dictionary<span class="cust_tooltiptext">Set of objects based on SI metric system that can be transmitted through Luos messages. Any object can easily be converted in other units.</span></span> structures to be usable by any other containers.</li>
-<li>A driver container never depends or uses any other containers (driver or app).</li>
+<li>A driver container never depends on or uses any other containers (driver or app).</li>
 <li>A driver container is &quot;dumb&quot;, as it can't do anything else than manage its hardware feature (but it does it very well).</li>
 </ul>
-<p>You can have multiple driver containers on the same <span class="cust_tooltip">node<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several containers.</span></span> managing different hardware functionalities of your board, it is your call to sort them depending on your design.</p>
+<p>You can have multiple driver containers on the same <span class="cust_tooltip">node<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several containers.</span></span> managing different hardware functionalities of your board, it is up to you to sort them depending on your design.</p>
 <h2><a class="header" href="#apps-guidelines" id="apps-guidelines">Apps guidelines</a></h2>
-<p>An applications or app is a type of container that only manages software items such as functions or algorithms. Apps use other containers to make your device act, operate, and behave.
+<p>An application or app is a type of container that only manages software items such as functions or algorithms. Apps use other containers to make your device act, operate, and behave.
 Apps can be placed in any <span class="cust_tooltip"><a href="pages/low/containers/../../overview/general-basics.html#what-is-a-node">nodes</a><span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several containers.</span></span> on a Luos network without any hardware or code modifications. However, the choice of the hosting node can impact global performances of the system.</p>
 <p>By designing an app, you have to keep the following rules in mind:</p>
 <ul>
@@ -568,11 +568,11 @@ Apps can be placed in any <span class="cust_tooltip"><a href="pages/low/containe
 <li>An app can use custom container types.</li>
 <li>An app must use standard <span class="cust_tooltip">object dictionary<span class="cust_tooltiptext">Set of objects based on SI metric system that can be transmitted through Luos messages. Any object can easily be converted in other units.</span></span> structures. If the structures used are not standard, Gate containers could be completely unable to manage them.</li>
 </ul>
-<p>Apps are the embedded smartness of your device, and at least one of them should run a network detection in order to map every containers in every nodes in your device and make it work properly. Go to <a href="pages/low/containers/./routing-table.html">Routing table</a> page for more informations.</p>
+<p>Apps are the embedded smartness of your device, and at least one of them should run a network detection in order to map every containers in every nodes in your device and make it work properly. Go to the <a href="pages/low/containers/./routing-table.html">Routing table</a> page for more information.</p>
 <h1><a class="header" href="#object-dictionary" id="object-dictionary">Object Dictionary</a></h1>
 <p>To keep interoperability between <span class="cust_tooltip">containers<span class="cust_tooltiptext">Software element run by Luos that can communicate with other containers. It can be a driver or an app. (Initially called a module)</span></span>, Luos provides an Object Dictionary (OD).</p>
 <h2><a class="header" href="#what-is-od" id="what-is-od">What is OD?</a></h2>
-<p>An Object Dictionary (OD) allows different developers of different containers to make them interoperate regardless of the unit they uses on the container.</p>
+<p>An Object Dictionary (OD) allows different developers of different containers to make them interoperate regardless of the unit they use on the container.</p>
 <p>Let's take an example: If container1 uses an angle as radians and container2 uses degrees, what is the unit they should use to share the angle information?</p>
 <p>An Object Dictionary defines a set of typical objects that can be transmitted through Luos messages. It allows to send these objects with a predefined type and to use it in the units the user want.</p>
 <h2><a class="header" href="#how-is-it-managed-in-luos" id="how-is-it-managed-in-luos">How is it managed in Luos?</a></h2>
@@ -605,7 +605,7 @@ linear_position_t LinearOD_PositionFrom_mm(float mm);
 float LinearOD_PositionTo_mm(linear_position_t linear_position); 
 </code></pre>
 <h3><a class="header" href="#messages-conversions" id="messages-conversions">Messages conversions</a></h3>
-<p>The same both way of conversion are available for messages (OD type from message and OD type to message):</p>
+<p>In the same way, both conversion are available for messages (OD type from message and OD type to message):</p>
 <ul>
 <li><strong><code>from</code> conversion:</strong> Gets a type from a message. Format: <code>[type]FromMsg([type_var], msg)</code></li>
 </ul>
@@ -642,10 +642,10 @@ void LinearOD_PositionToMsg(linear_position_t* linear_position, msg_t* msg);
 <blockquote>
 <p><strong>Warning:</strong> Make sure to read and understand how to <a href="pages/low/containers/./create-containers.html">Create Luos containers</a> before reading this page.</p>
 </blockquote>
-<p>The routing table is a feature of Luos allowing every <span class="cust_tooltip"><a href="pages/low/containers/../../overview/general-basics.html#container">containers</a><span class="cust_tooltiptext">Software element run by Luos that can communicate with other containers. It can be a driver or an app. (Initially called a module)</span></span> to own a &quot;map&quot; (or topology) of the entire network of your device. This map allows containers to know their physical position and to search and interact with other containers easily.<br/>
+<p>The routing table is a feature of Luos allowing every <span class="cust_tooltip"><a href="pages/low/containers/../../overview/general-basics.html#container">container</a><span class="cust_tooltiptext">Software element run by Luos that can communicate with other containers. It can be a driver or an app. (Initially called a module)</span></span> to own a &quot;map&quot; (or topology) of the entire network of your device. This map allows containers to know their physical position and to search and interact with other containers easily.<br/>
 This feature is particularly used by apps containers to find other containers they need to interact with. The routing table is shared by the container which launches the detection to other containers, but only apps containers store the routing table internaly.</p>
 <h2><a class="header" href="#detection" id="detection">Detection</a></h2>
-<p>Routing table is automatically generated when a network detections is initiate by a container and shared with other containers at the end of the detection. A detection can be initiated by any container, but driver containers should not be able to run it and this kind of features should be only used on app containers by including routingTable.h an using this routing table API.</p>
+<p>The routing table is automatically generated when a network detections is initiated by a container and shared with other containers at the end of the detection. A detection can be initiated by any container, but driver containers should not be able to run it and this kind of features should be only used on app containers by including routingTable.h an using this routing table API.</p>
 <p>To run a detection, type:</p>
 <pre><code class="language-C">RoutingTB_DetectContainers(app);
 </code></pre>
@@ -702,9 +702,9 @@ The maximum number of containers and nodes are managed by the precompilation con
 <p>For more information, please refer to the <a href="pages/low/containers/../containers.html">containers</a> page of this documentation.</p>
 <h3><a class="header" href="#node-entry-mode" id="node-entry-mode">Node entry mode</a></h3>
 <p>This mode gives physical information of your devices.</p>
-<p>The <strong>node_id</strong> is the unique number that you can use to identify each one of your nodes. At the beginning or when a reset detection is perfomed, all node ID are set to 0. When RoutingTB_DetectContainers API is called, Luos gives to nodes and containers a unique ID according to your system topology.</p>
+<p>The <strong>node_id</strong> is the unique number that you can use to identify each one of your nodes. At the beginning (or when a reset detection is perfomed), all node IDs are set to 0. When the RoutingTB_DetectContainers API is called, Luos assigns a unique ID to nodes and containers in your system topology.</p>
 <p>The <strong>certified</strong> Luos node can be certified for your system by including Luos licencing number in your product (feature in progress).</p>
-<p>The <strong>port_table</strong> allows to share topological information of your network. Each element of this table corresponds to a physical Luos port of the node and indicates which node is connected to it by sharing a node's <code>id</code>.</p>
+<p>The <strong>port_table</strong> allows sharing of topological information of your network. Each element of this table corresponds to a physical Luos port of the node and indicates which node is connected to it by sharing a node's <code>id</code>.</p>
 <p>Here is an example:</p>
 <img src="pages/low/containers/../../../_assets/img/routing-table.png" title="Routing table">
 <p>As shown on this image, elements of the <code>port_table</code> indicate the first or last container id of the connected node through a given port.</p>
@@ -748,7 +748,7 @@ The maximum number of containers and nodes are managed by the precompilation con
 <blockquote>
 <p><strong>Warning:</strong> Make sure to read and understand how to <a href="pages/low/containers/./create-project.html">Create Luos containers</a> before reading this page.</p>
 </blockquote>
-<p>As a developer, you will have to create and use Luos messages to exchange informations between <span class="cust_tooltip">containers<span class="cust_tooltiptext">Software element run by Luos that can communicate with other containers. It can be a driver or an app. (Initially called a module)</span></span>. In order to do that, you have to understand how messages works.</p>
+<p>As a developer, you will have to create and use Luos messages to exchange information between <span class="cust_tooltip">containers<span class="cust_tooltiptext">Software element run by Luos that can communicate with other containers. It can be a driver or an app. (Initially called a module)</span></span>. In order to do that, you have to understand how messages work.</p>
 <h2><a class="header" href="#message-structure" id="message-structure">Message structure</a></h2>
 <p>Luos messages are managed by the <code>msg_t</code> structure:</p>
 <pre><code class="language-C">typedef struct{
@@ -757,12 +757,12 @@ The maximum number of containers and nodes are managed by the precompilation con
 }msg_t;
 </code></pre>
 <p>All messages have a header. A header is a 7-byte field containing all information allowing containers to understand messages context. All containers on the network catch and decode the header of each sent and received message.</p>
-<p><code>data</code> is a table containing informations.</p>
+<p><code>data</code> is a table containing data.</p>
 <blockquote>
 <p><strong>Info:</strong> MAX_DATA_MSG_SIZE represenst the maximum size of messages (default value is 128 bytes);</p>
 </blockquote>
 <h2><a class="header" href="#header" id="header">Header</a></h2>
-<p>To send data to any containers you want, you will have to fill some information on the header.</p>
+<p>To send data to any containers you want, you will have to first fill out some information on the header.</p>
 <p>here is the <code>header_t</code> structure:</p>
 <pre><code class="language-C">typedef struct{
     uint16_t protocol : 4;    /*!&lt; Protocol version. */
@@ -814,9 +814,9 @@ The maximum number of containers and nodes are managed by the precompilation con
     }
 }
 </code></pre>
-<h2><a class="header" href="#container-exclusion" id="container-exclusion">container exclusion</a></h2>
+<h2><a class="header" href="#container-exclusion" id="container-exclusion">Container exclusion</a></h2>
 <p>Luos includes an acknowledgement management using the <strong>ID_ACK</strong> target_mode. This mode guaranties the proper reception of critical messages.</p>
-<p>If Luos fails to reach its target using ID_ACK, it will retries 10 times. If the acknowledgement still fails, the targeted container is declared excluded. Excluded containers are removed from the routing table to avoid any messaging by any containers, preserving bandwidth for the rest of the system.</p>
+<p>If Luos fails to reach its target using ID_ACK, it will retry, sending up to 10 times. If the acknowledgement still fails, the targeted container is declared excluded. Excluded containers are removed from the routing table to avoid any messaging by any containers, preserving bandwidth for the rest of the system.</p>
 <h2><a class="header" href="#large-data" id="large-data">Large data</a></h2>
 <p>You will sometimes have to deal with large data that could be larger than the maximum 128-byte data on a Luos message. Fortunately, Luos is able to automatically fragment and de-fragment the data above this side. To do that, you will have to use another send function that will take care of setting the messages' size, and the data fields.</p>
 <p>For example, here is how to send a picture:</p>
@@ -841,7 +841,7 @@ void containers_MsgHandler(container_t *container, msg_t *msg) {
 <p><strong>Note:</strong> If you have to deal with high-frequency real-time data, please read <a href="pages/low/containers/./streaming.html">the Streaming page</a>.</p>
 </blockquote>
 <h2><a class="header" href="#time-triggered-update-messages" id="time-triggered-update-messages">Time-triggered update messages</a></h2>
-<p>Luos provides a standard command to ask a container to retrieve values from a sensor, called <code>ASK_PUB_CMD</code>. However, sometimes apps need to poll values from sensors, but the act of repeatedly retriving a value using the <code>ASK_PUB_CMD</code> command may result in the use of a lot bandwidth and take useless resources.
+<p>Luos provides a standard command to ask a container to retrieve values from a sensor, called <code>ASK_PUB_CMD</code>. However, sometimes apps need to poll values from sensors, but the act of repeatedly retriving a value using the <code>ASK_PUB_CMD</code> command may result in the use of a lot bandwidth and take up valuable resources.
 In this kind of polling situation, <strong>you can use the time-triggered auto-update features available from any Luos container</strong>. This feature allows you to ask a container to send you an update of any value each X milliseconds.
 To use it, you have to setup targeted container with a message containing a standard time <span class="cust_tooltip">object dictionary<span class="cust_tooltiptext">Set of objects based on SI metric system that can be transmitted through Luos messages. Any object can easily be converted in other units.</span></span>, but with a specific command associated to it.</p>
 <p>For example, to update a container each 10ms:</p>
@@ -857,19 +857,19 @@ Luos_SendMsg(app, &amp;msg);
 <p><strong>Info:</strong> containers can handle only one time-triggered target, 2 containers of the same network can't ask a time-triggered value from the same container.</p>
 </blockquote>
 <blockquote>
-<p><strong>Warning:</strong> To prevent any ID movement, auto-update configuration is reseted on all containers at each detection (see <a href="pages/low/containers/./routing-table.html">Routing table page</a> for more information).</p>
+<p><strong>Warning:</strong> To prevent any ID movement, auto-update configuration is reset on all containers on each detection (see <a href="pages/low/containers/./routing-table.html">Routing table page</a> for more information).</p>
 </blockquote>
 <h1><a class="header" href="#luos-self-healing-capabilities" id="luos-self-healing-capabilities">Luos self-healing capabilities</a></h1>
 <blockquote>
 <p><strong>Warning:</strong> Make sure to read and understand how to <a href="pages/low/containers/./create-project.html">create Luos containers</a> before reading this page.</p>
 </blockquote>
 <p>As a developer, you will have bugs. 😲</p>
-<p>Finding, understanding, and managing bugs on multiple boards running multiple containers can be really hard. To make your life easier, Luos allows you to get some basic information about the defaults of your system allowing you to react to it.</p>
+<p>Finding, understanding, and managing bugs on multiple boards running multiple containers can be really hard. To make your life easier, Luos allows you to get some basic information about any problems in your system allowing you to adapt to them.</p>
 <h2><a class="header" href="#container-exclusion-1" id="container-exclusion-1">Container exclusion</a></h2>
 <p>Luos includes an <a href="pages/low/containers/./msg-handling.html">acknowledgement management using the <strong>ID_ACK</strong> target_mode</a>. This mode guaranties the proper reception of critical messages.</p>
 <p>If Luos fails to reach its target using ID_ACK, it will retry 10 times. If the acknowledgement still fails, the targeted container is declared excluded. Excluded containers are removed from the routing table to avoid any messaging from any containers, preserving bandwidth for the rest of the system.</p>
 <blockquote>
-<p><strong>Note:</strong> Gates containers can report container exclusion through Json.</p>
+<p><strong>Note:</strong> Gates containers can report container exclusion through JSON.</p>
 </blockquote>
 <blockquote>
 <p><strong>Note:</strong> Pyluos can report container exclusion through Gates.</p>
@@ -877,13 +877,13 @@ Luos_SendMsg(app, &amp;msg);
 <h2><a class="header" href="#luos-statistics" id="luos-statistics">Luos statistics</a></h2>
 <p>Luos monitors some values representing the sanity of your nodes and containers.</p>
 <blockquote>
-<p><strong>Note:</strong> Gates containers can report statistics trough Json.</p>
+<p><strong>Note:</strong> Gates containers can report statistics trough JSON.</p>
 </blockquote>
 <blockquote>
 <p><strong>Note:</strong> Pyluos can display statistics trough Gates.</p>
 </blockquote>
 <h3><a class="header" href="#node-statistics" id="node-statistics">Node statistics</a></h3>
-<p>In any container you can have access to the host node's statistics values using the <code>luos_stats_t</code> structure.
+<p>Inside any container, you can have access to the host node's statistics values using the <code>luos_stats_t</code> structure.
 This structure gives you access to several values:</p>
 <ul>
 <li><strong>memory</strong>: Mmory statisctics information
@@ -907,7 +907,7 @@ This structure gives you access to several values:</p>
 <p>You can access node statistics by using <code>container.statistics</code>.</p>
 <h2><a class="header" href="#assert" id="assert">Assert</a></h2>
 <p>Luos allows you to declare to an entire network a critical failure on a container.
-To manage it, Luos exposes a <code>LUOS_ASSERT</code> macro that allows you to test some conditions on it to prevent wrong values.
+To handle it, Luos exposes a <code>LUOS_ASSERT</code> macro that allows you to test some conditions on it to prevent wrong values.
 for example:</p>
 <pre><code class="language-C"> LUOS_ASSERT(arg_ptr != NULL);
 </code></pre>
@@ -919,25 +919,25 @@ for example:</p>
 <p><strong>Note:</strong> Pyluos can display assert trough Gates.</p>
 </blockquote>
 <h1><a class="header" href="#streaming" id="streaming">Streaming</a></h1>
-<p>In occasion, you will have to deal with high-frequency small data with strong time constraints.</p>
+<p>On occasion, you will have to deal with high-frequency small data with strong time constraints.</p>
 <p>To make it easy, Luos manages streaming channels trough ring buffers.</p>
-<p>A streaming channel allows you to reduce drastically the time constraints of your Luos network thanks to 2 effects:</p>
+<p>A streaming channel allows you to drastically reduce the time constraints of your Luos network thanks to 2 factors:</p>
 <ol>
 <li>
-<p>The first effect is a method which allows you to have a <em>no-real-time</em> container dealing with a strict-real-time one. Both side have their own loop frequency and time precision.</p>
+<p>The first factor is a method which allows you to have a <em>no-real-time</em> container dealing with a strict-real-time one. Both sides have their own loop frequency and time precision.</p>
 <ul>
 <li>The real-time one is the container opening the streaming channel. It has a high-frequency function called at a precise <strong>sampling frequency</strong>.</li>
-<li>The no-real-time one has a slower and unprecise timed function which is called at each <strong>chunk_time</strong>.</li>
+<li>The non-real-time one has a slower and unprecise timed function which is called at each <strong>chunk_time</strong>.</li>
 </ul>
 </li>
 <li>
-<p>By using streaming channels, you will be able to use big data chunks at low frequency to optimize the data rate efficiency of the bus. The idea is to exchange big chunks of data between containers instead of a tons of time-constrained small messages flooding all containers.</p>
+<p>By using streaming channels, you will be able to use big data chunks at low frequency to optimize the data rate efficiency of the bus. The idea is to exchange big chunks of data between containers instead of large amounts of time-constrained small messages flooding all containers.</p>
 </li>
 </ol>
 <h2><a class="header" href="#example" id="example">Example</a></h2>
 <p>A motor-driver container has strict real-time constraints. If you want to have a smooth positioning movement or measurement you have to update the motor position at high-frequency (<strong>sampling frequency</strong>).<br/>
 First, you have to define the <strong>sampling frequency</strong> allowing you to have a smooth movement or measurement on the motor. Let's take 200Hz in this example.</p>
-<p>In the no-real-time side (the container commanding the motor), you can't have a 200Hz loop because it probably has other things to do and perhaps doesn't have a sufficient time precision. To simplify it you will have to send trajectory chunks regularly (<strong>chunk time</strong>), let's say approximately each 1 second.</p>
+<p>In the non-real-time side (the container commanding the motor), you can't have a 200Hz loop because it probably has other things to do and perhaps doesn't have a sufficient time precision. To simplify it you will have to send trajectory chunks regularly (<strong>chunk time</strong>), let's say approximately every 1 second.</p>
 <p>Based on those numbers, your data chunk size will be:</p>
 <pre><code class="language-AsciiDoc">chunk_size = chunk_time(s) x sampling_frequency(Hz)
 chunk_size = 1 x 200 = 200 samples
@@ -947,20 +947,20 @@ chunk_size = 1 x 200 = 200 samples
 <img src="pages/low/containers/../../../_assets/img/streaming.png"/></p>
 <ol>
 <li>The container who sends the trajectory has to make sure that the motor container always has data to consume. To do that you have to bootstrap your streaming flux by sending 2 data chunks to start and then send a new data chunk each <em>chunk_time</em>.
-This way, receiver always has at least one data chunk (1s in this example) ready to be consumed.</li>
-<li>When data chunks are received, receiver can start consuming data at its <em>sampling frequency</em>.</li>
-<li>One data chunk later (1s in our example), receiver has consumed the first data chunk, and the sender can start to compute the next one.</li>
-<li>At the end of the data chunk computation, sender sends the chunk. Luos adds it to the ring buffer.</li>
-<li>At each second, the sender sends the next data chunk and Luos add it to the ring buffer. At the end of the buffer, Luos puts extra data at the begining. The consumer pointer also goes back to the begining of the buffer when it reaches the end. This way we have infinite data stream without any discontinuity.</li>
-<li>You can continue this way indefinitely.</li>
+This way, the receiver always has at least one data chunk (1s in this example) ready to be consumed.</li>
+<li>When data chunks are received, the receiver can start consuming data at its <em>sampling frequency</em>.</li>
+<li>One data chunk later (1s in our example), the receiver has consumed the first data chunk, and the sender can start to compute the next one.</li>
+<li>At the end of the data chunk computation, the sender sends the chunk. Luos adds it to the ring buffer.</li>
+<li>At each second, the sender sends the next data chunk and Luos adds it to the ring buffer. At the end of the buffer, Luos puts extra data at the begining. The consumer pointer also goes back to the begining of the buffer when it reaches the end. This way we have infinite data stream without any discontinuity.</li>
+<li>You can continue to do this indefinitely.</li>
 </ol>
 <blockquote>
-<p><strong>Note:</strong> You can play pause, stop or record stream flux with the standard <strong>CONTROL</strong> command using the <strong>control_type_t</strong> structure.</p>
+<p><strong>Note:</strong> You can play, pause, stop or record a stream flux with the standard <strong>CONTROL</strong> command using the <strong>control_type_t</strong> structure.</p>
 </blockquote>
 <h2><a class="header" href="#how-to-use-it" id="how-to-use-it">How to use it</a></h2>
-<p><strong>A streaming channel is always created by the strict real-time container.</strong> The other container (the no-real-time one) will just send or receive its data chunks using <a href="pages/low/containers/./msg-handling.html#large-data">large data messages</a>.</p>
+<p><strong>A streaming channel is always created by the strict real-time container.</strong> The other container (the non-real-time one) will just send or receive its data chunks using <a href="pages/low/containers/./msg-handling.html#large-data">large data messages</a>.</p>
 <h3><a class="header" href="#streaming-channel-creation" id="streaming-channel-creation">Streaming channel creation</a></h3>
-<p>Before starting using streaming method, you have to create a streaming channel linked to a buffer into the init function of your real-time container:</p>
+<p>Before starting to use the streaming method, you have to create a streaming channel linked to a buffer into the init function of your real-time container:</p>
 <pre><code class="language-c">#define BUFFER_SIZE 1024
 volatile angular_position_t trajectory_ring_buf[BUFFER_SIZE];
 streaming_channel_t trajectory;
@@ -972,8 +972,8 @@ void Motor_Init(void) {
 </code></pre>
 <p>Now you can use this channel to receive or transmit a streaming flux:</p>
 <ul>
-<li><strong>reception</strong> is adapted to make our motor move smoothly. A no-real-time container will send us parts of trajectory approximately each second and our motor will consume angular position at 200Hz.</li>
-<li><strong>transmission</strong> is adapted to measure precisely the movements of the motor. We can use it to send in a no-real-time way real-time data. In our motor it could be angular position measurement at 200Hz for example.</li>
+<li><strong>reception</strong> is suited to make our motor move smoothly. A no-real-time container will send us parts of trajectory approximately each second and our motor will consume angular position at 200Hz.</li>
+<li><strong>transmission</strong> is suited to measure precisely the movements of the motor. We can use it to send in a non-real-time way real-time data. In our motor it could be angular position measurement at 200Hz for example.</li>
 </ul>
 <h3><a class="header" href="#streaming-reception" id="streaming-reception">Streaming reception</a></h3>
 <p>This is used to make the motor move.<br/>
@@ -999,7 +999,7 @@ First you have to put values into your streaming channel at 200Hz:</p>
     Stream_PutSample(&amp;trajectory, &amp;motor.angular_position);
 }
 </code></pre>
-<p>This way, samples are buffered into your ring buffer, and you can send this real-time information as you want. For example only when someone ask you to:</p>
+<p>This way, samples are buffered into your ring buffer, and you can send this real-time information as you want:</p>
 <pre><code class="language-C">void Motor_MsgHandler(container_t *container, msg_t *msg) {
    msg_t pub_msg;
    // check message command
@@ -1012,7 +1012,7 @@ First you have to put values into your streaming channel at 200Hz:</p>
    }
 }
 </code></pre>
-<p>The <code>Luos_SendStreaming</code> function sends data available on your streaming channel. You can continue to feed your channel with samples at the same time.</p>
+<p>The <code>Luos_SendStreaming</code> function sends available data on your streaming channel. You can continue to feed your channel with samples at the same time.</p>
 <blockquote>
 <p><strong>Warning:</strong> This example doesn't work if your container is configured as real-time. Please read <a href="pages/low/containers/./rt-config.html">Message Handling configuration page</a> for more informations.</p>
 </blockquote>
@@ -1020,7 +1020,7 @@ First you have to put values into your streaming channel at 200Hz:</p>
 <blockquote>
 <p><strong>Warning:</strong> Make sure to read and understand how to <a href="pages/low/containers/./create-containers.html">Create Luos containers</a> before reading this page.</p>
 </blockquote>
-<p>Message callbacks of containers can be really difficult to use when a project include high real-time constraints.<br/>
+<p>Message callbacks of containers can be really difficult to use when a project has high real-time constraints.<br/>
 Luos provides two different configurations allowing you to choose the best way for you to deal with messages.
 The message handling configuration is set during the <a href="pages/low/containers/./create-containers.html">initialization of a container</a>.</p>
 <table><thead><tr><th align="center">Configuration</th><th align="center">execution type</th></tr></thead><tbody>
@@ -1057,8 +1057,8 @@ void Button_Loop(void) {
 }
 </code></pre>
 <h2><a class="header" href="#polling-configuration" id="polling-configuration">Polling configuration</a></h2>
-<p>This configuration is often used into Arduino libraries to receive information in a basic way. This method allows to manage the messages only when the user wants to do it on the loop of the container.</p>
-<p>To setup this configuration, you have to create your container without any callback.</p>
+<p>This configuration is often used in Arduino libraries to receive information in a basic way. This method allows you handle messages only when the user wants to do it in the loop of the container.</p>
+<p>To setup this configuration, you have to create your container without any callbacks.</p>
 <p>See the following code as an example, with a button:</p>
 <pre><code class="language-c">container_t* container;
 void Button_Init(void) {
@@ -1233,7 +1233,7 @@ You can use this table to find interesting project regarding specific features e
 <img class="print-break" src="pages/high/../../_assets/img/json-logo.png" height="100px">
 <h1 class="no-break"><a href="pages/high/json-api.html#json-api" class="header" id="json-api">JSON API</a></h1>
 <p>The <a href="https://en.wikipedia.org/wiki/JSON" target="blank_">JSON formated data</a> is very common and widely used by many programming languages. Luos allows you to convert low-level Luos information into JSON objects, enabling conventional programming languages to easily interact with your device.<br/>
-To do that, you must add a specific app container called <a href="pages/high/./containers_list/gate.html">Gate</a> on your device.</p>
+To do that, you must add a specific app container called a <a href="pages/high/./containers_list/gate.html">Gate</a> on your device.</p>
 <p>The <a href="pages/high/./containers_list/gate.html">Gate container</a> is an app that converts Luos messages from a device's network into JSON data format, and the other way from JSON to Luos messages.<br/>
 The Gate container can be hosted into different kinds of <span class="cust_tooltip">nodes<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several containers.</span></span> allowing you to choose the communication way fitting with your project (USB, Wifi, Bluetooth, etc.)</p>
 <blockquote>
@@ -1289,7 +1289,7 @@ This first message is really important, because it contains all the information 
 <p><strong>Note:</strong> To understand the meanings of <em>uuid</em> and <em>port_table</em>, please refer to the <a href="pages/high/../low/containers/routing-table.html">routing table page</a>.</p>
 </blockquote>
 <h4><a class="header" href="#containers-1" id="containers-1">Containers</a></h4>
-<p>Each listed container of a node has basics containers information:</p>
+<p>Each listed container of a node has basic containers information:</p>
 <pre><code class="language-JSON">{ // container 1
    &quot;type&quot;:&quot;Type&quot;,
    &quot;id&quot;:1,
@@ -1490,11 +1490,11 @@ sendCmd(s, '{&quot;containers&quot;: {&quot;controller_moto&quot;: {&quot;parame
 <tr><td align="center">delay</td><td align="center">reduce containers refresh rate</td><td align="center"><a href="pages/high/./containers_list/gate.html">Gate</a></td></tr>
 </tbody></table>
 <h3><a class="header" href="#containers-exclusion-messages" id="containers-exclusion-messages">Containers exclusion messages</a></h3>
-<p>Containers can be excluded of the network if a problem occurs (see <a href="pages/high/../low/containers/self-healing.html#container-exclusion">self-healing</a> for more information). In this case, the Gate sends an exclusion message indicating that this container is no longer available:</p>
+<p>Containers can be excluded from the network if a problem occurs (see <a href="pages/high/../low/containers/self-healing.html#container-exclusion">self-healing</a> for more information). In this case, the Gate sends an exclusion message indicating that this container is no longer available:</p>
 <pre><code class="language-JSON">{&quot;dead_container&quot;: &quot;container_alias&quot;}
 </code></pre>
 <h3><a class="header" href="#node-assert-messages" id="node-assert-messages">Node assert messages</a></h3>
-<p>Nodes can assert if a critical issue occurs (see <a href="pages/high/../low/containers/self-healing.html#assert">self-healing</a> for more information). In this case, the Gate sends an assertion message indicating that this node is no longer available and some detail about the crash:</p>
+<p>Nodes can assert if a critical issue occurs (see <a href="pages/high/../low/containers/self-healing.html#assert">self-healing</a> for more information). In this case, the Gate sends an assertion message indicating that this node is no longer available and some details about the crash:</p>
 <pre><code class="language-JSON">{
    &quot;assert&quot;:{
       &quot;node_id&quot;:3,
@@ -1504,7 +1504,7 @@ sendCmd(s, '{&quot;containers&quot;: {&quot;controller_moto&quot;: {&quot;parame
 }
 </code></pre>
 <h2><a class="header" href="#sending-large-binary-data" id="sending-large-binary-data">Sending large binary data</a></h2>
-<p>Binary data such as, for example, a motor tarjectory can't be included into a Json file if it is too large. In order to allow this type of transmission, the size of the binary data is sent through the Json, then followed by the actual data in binary format.</p>
+<p>Binary data such as, for example, a motor tarjectory can't be included into a JSON file if it is too large. In order to allow this type of transmission, the size of the binary data is sent through the JSON, then followed by the actual data in binary format.</p>
 <ul>
 <li>
 <p>If the data is short, it can be displayed inside the JSON as a regular value (see the different values in <a href="pages/high/json-api.html#containers-information-messages">Container's information messages section</a>), or as a table of several values (for example a motor trajectory).</p>
@@ -1529,11 +1529,11 @@ sendCmd(s, '{&quot;containers&quot;: {&quot;controller_moto&quot;: {&quot;parame
 <h2><a class="header" href="#installation" id="installation">Installation</a></h2>
 <h3><a class="header" href="#required-installing-python-and-pip" id="required-installing-python-and-pip">Required: Installing Python and Pip</a></h3>
 <blockquote>
-<p><strong>Warning:</strong> In order to use Pyluos library, Python and the Pip packet manager must be installed on your computer.</p>
+<p><strong>Warning:</strong> In order to use Pyluos library, Python and the Pip package manager must be installed on your computer.</p>
 </blockquote>
 <p><em>« Python is a programming language that lets you work more quickly and integrate your systems more effectively. » (<small><a href="https://python.org" target="_blank">Source</a></small>)</em></p>
 <p><em>« <a href="https://pip.pypa.io/en/stable/" target="_blank">Pip</a> is the standard package manager for Python. It allows you to install and manage additional packages that are not part of the Python standard library. » (<small><a href="https://realpython.com/what-is-pip/#getting-started-with-pip" target="_blank">Source</a></small>)</em></p>
-<p>If Python is not installed on you computer, download and run the last release according to your computer's OS: <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a>.</p>
+<p>If Python is not installed on your computer, download and run the last release according to your computer's OS: <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a>.</p>
 <p>To install Pip, type the following commands in a console:</p>
 <pre><code class="language-bash">curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python get-pip.py
@@ -1549,7 +1549,7 @@ python get-pip.py
 </blockquote>
 <h3><a class="header" href="#installing-or-updating-pyluos-library" id="installing-or-updating-pyluos-library">Installing or updating Pyluos library</a></h3>
 <p>You are now ready to install Pyluos. <strong>The last Pyluos version is <code>1.4.0</code>.</strong></p>
-<p>In a console, the following command will install the <em>Pyluos</em> library using the <em>Pip packet manager</em>:</p>
+<p>In a console, the following command will install the <em>Pyluos</em> library using the <em>Pip package manager</em>:</p>
 <pre><code class="language-bash">pip install pyluos
 </code></pre>
 <p>If Pyluos is already installed, it may only need to be updated:</p>
@@ -1568,7 +1568,7 @@ python get-pip.py
 <p><strong>Note:</strong> In the previous picture, <em>Jupyter</em> use <em>Python 3</em> but you also can use <em>Python 2.7</em> depending on your computer configuration.</p>
 </blockquote>
 <p><img src="pages/high/../../_assets/img/pyluos-2.png" alt="Jupyter" /></p>
-<p>The Jupyter work-space looks like the following image. On the keyboard,  <code>Maj+Enter</code> executes any selected part of code.</p>
+<p>The Jupyter work-space looks like the following image. On the keyboard,  <code>Shift+Enter</code> executes any selected part of code.</p>
 <p>Now you are ready to code using Python.</p>
 <h3><a class="header" href="#import-pyluos" id="import-pyluos">Import Pyluos</a></h3>
 <p>The first thing to do is to call the Pyluos library along with the <code>Device</code> tool inside that library:</p>
@@ -1580,7 +1580,7 @@ python get-pip.py
 <h4><a class="header" href="#configuring-usb-transfer-sizes-and-latency-timer" id="configuring-usb-transfer-sizes-and-latency-timer">Configuring USB transfer sizes and latency timer</a></h4>
 <p>Some devices may not work properly with the default USB transfer sizes and latency timer for COM ports on Windows. These parameters can be set to lower values in order to use your device properly while connected to your computer from a <a href="pages/high/../demo_boards/boards_list/usb.html">Gate</a>.</p>
 <p><strong>USB Transfer Sizes</strong>: Default value is 4096 Bytes, however if you have issues to use your connected device, you should try the minimum possible values both for <code>Receive</code> and <code>Transmit</code>.</p>
-<p><strong>Latency Timer</strong>: Default value is 16 msec, but you can rise lower it to the minimal value of 1 msc.</p>
+<p><strong>Latency Timer</strong>: Default value is 16 msec, but you can rise lower it to the minimal value of 1 msec.</p>
 <p>To access to these parameters, open the Device Manager in Windows, and right-click on the <em>USB Serial Port (COMX)</em> where your device is connected, then click on <em>Properties</em>.</p>
 <p><img src="pages/high/../../_assets/img/device-manager.png" alt="" /></p>
 <p>Click on <em>Port Settings</em> tab and click on <em>Advanced...</em> button.</p>
@@ -1685,7 +1685,7 @@ device.button_mod.robus_revision # Returns the version of robus
 <p>If you use <em>ipython</em> or <em>Jupyter Notebook</em>, you can use auto-completion using the <code>Tab</code> key to find every available objects and variables.</p>
 <p><img src="pages/high/../../_assets/img/pyluos-3.png" alt="Auto-completion" /></p>
 <h3><a class="header" href="#change-a-container-name" id="change-a-container-name">Change a container name</a></h3>
-<p>The name of any container can be changed following this code. </p>
+<p>The name of any container can be changed by using this code: </p>
 <pre><code class="language-python">device.container_alias.rename(&quot;new_name&quot;)
 </code></pre>
 <p>For example:</p>
@@ -2147,7 +2147,7 @@ Default is <code>luos_broker</code> but can be changed by passing an argument to
 <li>walk time – Duration (second) of the walk</li>
 </ul>
 <p>By default, the container will send only quaternions to keep a low number of data and avoid bus congestion. Retrieving any other types of measures requires to enable them first.</p>
-<p>The easiest way to enable a measure is by using it, as pyluos automatically enables a called measure. For example, to retrieve the linear acceleration value when it’s disabled, you can execute:</p>
+<p>The easiest way to enable a measure is by using it, as Pyluos automatically enables a called measure. For example, to retrieve the linear acceleration value when it’s disabled, you can execute:</p>
 <pre><code class="language-python">device.Imu_mod.linear_acceleration
 </code></pre>
 <p>This command doesn’t allow you to disable the value after using it in order to keep your device responsive. Another way to enable or disable a value is to set it to <code>True</code> or <code>False</code>. For example, if you want to disable the linear acceleration measure previously activated, you can execute:</p>
@@ -2427,7 +2427,7 @@ time.sleep(0.05)
 <h1 class="no-break"><a href="pages/high/ros.html#ros" class="header" id="ros">Using Luos with ROS1 and ROS2</a></h1>
 <p>Luos comes with a package for the <a href="https://www.ros.org/" target="_blank">Robot Operating System</a>.</p>
 <p>ROS 2 is the default version but backward compatibility with ROS 1 is ensured via the official ROS 1 bridge. You can get an example of an application using Luos containers in ROS 2 with the <a href="https://github.com/aubrune/luos_bike_alarm_example" target="_blank">bike sharing example</a>.</p>
-<p>In this tutorial, we will assume you're using ROS 2. If you want to communicate with a ROS 1 ecosystem, follow this quickstart anyway since ROS 2 needs to be installed and then refer to the <a href="pages/high/./ros/ros1.html">Retrocompatibility with ROS 1</a> page.</p>
+<p>In this tutorial, we will assume you're using ROS 2. If you want to communicate with a ROS 1 ecosystem, begin with this quickstart since ROS 2 needs to be installed, and then refer to the <a href="pages/high/./ros/ros1.html">Retrocompatibility with ROS 1</a> page.</p>
 <h2><a class="header" href="#basics-a-few-ros-applied-to-luos-concepts" id="basics-a-few-ros-applied-to-luos-concepts">Basics: a few ROS-applied-to-Luos concepts</a></h2>
 <p>Here is a summary of core concepts in ROS:</p>
 <ul>
@@ -2457,7 +2457,7 @@ cd ~/ros2_ws &amp;&amp; colcon build --symlink-install
 source ~/ros2_ws/install/setup.bash
 </code></pre>
 <h2><a class="header" href="#get-started-with-luos-in-ros-2" id="get-started-with-luos-in-ros-2">Get started with Luos in ROS 2</a></h2>
-<p>Plug in your Luos gate and other containers, such as Imu, Color or State, and run the broker. It will return the detected containers: </p>
+<p>Plug in your Luos gate and other containers, such as IMU, Color or State, and run the broker. It will return the detected containers: </p>
 <pre><code class="language-bash">~$ ros2 launch luos_interface broker.launch.py
 [INFO] [luos_broker]: Connecting to /dev/ttyUSB0...
 [INFO] [luos_broker]: Found containers:
@@ -2606,7 +2606,7 @@ These examples are available on Github and contain a schematic file and a Kicad 
 <p>Luos library has been designed to run on low-cost hardware. It works with all Arm microcontrollers, starting with the smallest and cheapest one: the <a href="https://developer.arm.com/ip-products/processors/cortex-m/cortex-m0" target="_blank">Cortex-M0</a>. </p>
 <p>The demonstration boards are a set of small electronic boards examples, each one hosting Luos and providing with an electronic function (motor, distance sensor, battery, LED, potentiometer, etc.). These boards can be used to test the technology, or to quickly develop an electronic device prototype in order to prove a concept without any knowledge in electronics: demonstration boards are connected together with cables, behaviors can be programmed through a <a href="pages/demo_boards/./boards_list/usb.html">gate</a> board on a computer, and the device can be tested in a matter of minutes!</p>
 <blockquote>
-<p><strong>Warning:</strong> All examples codes of this documentation use the pyluos Python library and are adapted to be used with Jupyter Notebook.</p>
+<p><strong>Warning:</strong> All examples codes of this documentation use the Pyluos Python library and are adapted to be used with Jupyter Notebook.</p>
 </blockquote>
 <h2><a class="header" href="#boards-general-specifications" id="boards-general-specifications">Boards general specifications</a></h2>
 <p>Almost every demonstration board in the provided examples is composed of a motherboard and a shield board. The motherboard, called L0, has a <span class="cust_tooltip">node<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several containers.</span></span> that hosts Luos. The shield board is added to a L0 to type it with an electronic function.</p>
@@ -2634,7 +2634,7 @@ These examples are available on Github and contain a schematic file and a Kicad 
 <p><strong>Below is the list of the six categories:</strong></p>
 <table><thead><tr><th align="left">Sensor</th><th align="left">Actuator</th><th align="left">Communication</th></tr></thead><tbody>
 <tr><td align="left"><img src="pages/demo_boards/../../_assets/img/sticker-sensor.png" height="80" /></td><td align="left"><img src="pages/demo_boards/../../_assets/img/sticker-actuation.png" height="80" /></td><td align="left"><img src="pages/demo_boards/../../_assets/img/sticker-communication.png" height="80" /></td></tr>
-<tr><td align="left">Sensor boards are able to measure physical world environment.</td><td align="left">Actuation boards are able to act on the physical world.</td><td align="left">Communication boards (also called gates) are able to share your system’s inputs, outputs and configurations outside of your device, using a JSON API.</td></tr>
+<tr><td align="left">Sensor boards are able to measure the physical world.</td><td align="left">Actuation boards are able to act on the physical world.</td><td align="left">Communication boards (also called gates) are able to share your system’s inputs, outputs and configurations outside of your device, using a JSON API.</td></tr>
 </tbody></table>
 <table><thead><tr><th align="left">Cognition</th><th align="left">Interface</th><th align="left">Power</th></tr></thead><tbody>
 <tr><td align="left"><img src="pages/demo_boards/../../_assets/img/sticker-cognition.png" height="80" /></td><td align="left"><img src="pages/demo_boards/../../_assets/img/sticker-interface.png" height="80" /></td><td align="left"><img src="pages/demo_boards/../../_assets/img/sticker-power.png" height="80" /></td></tr>
@@ -2642,7 +2642,7 @@ These examples are available on Github and contain a schematic file and a Kicad 
 </tbody></table>
 <p><a name="plug"></a></p>
 <h2><a class="header" href="#plugging-boards-together" id="plugging-boards-together">Plugging boards together</a></h2>
-<p>Luos boards have at least 2 connection ports in their design. All connectors are the same, so that any board can be connected to another one using any of these ports. Just avoid to make a loop circuit, otherwise you will damage the communication between containers.</p>
+<p>Luos boards have at least 2 connection ports in their design. All connectors are the same, so that any board can be connected to another one using any of these ports. Just avoid to make a loop circuit, otherwise you will inhibit communication between containers.</p>
 <p>There is a correct side to plug a cable’s connector to a board. The small tab on the connector must face upward to plug correctly, as shown on the following pictures:</p>
 <table><thead><tr><th align="left"><img src="pages/demo_boards/../../_assets/img/plug-no.png" alt="Wrong side img" /></th><th align="left"><img src="pages/demo_boards/../../_assets/img/plug-yes.png" alt="Right side img" /></th></tr></thead><tbody>
 <tr><td align="left">Wrong side, the upper surface is flat</td><td align="left">Right side, the tab is visible on the upper surface</td></tr>
@@ -2652,13 +2652,13 @@ These examples are available on Github and contain a schematic file and a Kicad 
 All the Luos boards can manage a voltage between 5V and 24V, up to 7A.</p>
 <p>In a Luos network, <strong>you can have multiple power category boards</strong>. In this case, <strong>the power board with the highest voltage takes over</strong> and shares its power with other boards.</p>
 <p>For example, for a device using a 12V motor and an USB board: The USB board belongs to the power category, so it can share its 5V into the network's wires. But you need 12V for your motor, so you will have to add a 12V AC plug board in your network to supply the motor. In this case, the USB board doesn’t share its power, only the AC plug board does, because 5V &lt; 12V.</p>
-<p>Some component needs specific voltage to work properly. For example, in order to use standard servomotor, you have to feed the Luos network with 5V or 7V. If you need to combine 7V and 12V motors in a system, for example, you can manage multiple voltages on the same network using a <a href="pages/demo_boards/./boards_list/power-isolator.html">power isolator board</a>.</p>
+<p>Some components needs a specific voltage to work properly. For example, in order to use standard servomotor, you have to feed the Luos network with 5V or 7V. If you need to combine 7V and 12V motors in a system, for example, you can manage multiple voltages on the same network using a <a href="pages/demo_boards/./boards_list/power-isolator.html">power isolator board</a>.</p>
 <h2><a class="header" href="#external-communication-management" id="external-communication-management">External communication management</a></h2>
 <p>The boards from the Communication category allow you to easily control a Luos network. These boards host a container called &quot;gate&quot;, they can communicate using different kinds of technologies and reach devices outside the device.<br/>To start using Luos technology, you have to use at least one of these gates to be able to program your machine's behaviors.</p>
-<p>The &quot;gate&quot; container's task is to stream the Luos network activity into a standard Json format file, and on the oposite to allow an external device to easily interact with any device in the network.</p>
+<p>The &quot;gate&quot; container's task is to stream the Luos network activity into a standard JSON format file, and on the oposite to allow an external device to easily interact with any device in the network.</p>
 <p>This way, it’s <strong>easy to use</strong> your favorite device and language to interact and control your device.</p>
 <p>We created an open-source <strong>Python library</strong> managing this JSON API called <a href="pages/demo_boards/../high/pyluos.html"><em>Pyluos</em></a>. Feel free to use it, copy it, and convert it into your favorite language. We are open to contribution for any programing languages. You can suggest any change or new API on the <a href="https://community.luos.io/" target="_blank">Luos' forum</a>.</p>
-<p>Get <a href="https://github.com/Luos-io/Pyluos" target="_blank">pyluos on github</a>.</p>
+<p>Get <a href="https://github.com/Luos-io/Pyluos" target="_blank">Pyluos on github</a>.</p>
 <h2><a class="header" href="#update-luos-robus-and-boards-firmware" id="update-luos-robus-and-boards-firmware">Update Luos, Robus and board's firmware</a></h2>
 <p><a href="pages/demo_boards/../low/dev-env.html">Instal PlatformIO</a> if you don't have it yet and clone the <a href="https://github.com/Luos-io/Examples">Examples</a> repository.</p>
 <p>To update Luos, <span class="cust_tooltip">Robus<span class="cust_tooltiptext">Bus communication protocol used by Luos.</span></span> or your containers' code, you must open the librairies tab <img src="pages/demo_boards/../../_assets/img/vscode-lib-button.png" alt="" /> on PlatformIO in Visual Studio Code:</p>
@@ -2669,17 +2669,17 @@ All the Luos boards can manage a voltage between 5V and 24V, up to 7A.</p>
 <h3><a class="header" href="#2-compile-it-to-ensure-there-is-no-error" id="2-compile-it-to-ensure-there-is-no-error">2. Compile it to ensure there is no error</a></h3>
 <p>To compile your code, you must click on the <em>Compile</em> button <img src="pages/demo_boards/../../_assets/img/compile-button.png" alt="" /> at the bottom of your window:</p>
 <p><img src="pages/demo_boards/../../_assets/img/compile.png" alt="" /></p>
-<p>If your terminal goes like this, it means that your download was successful:</p>
+<p>If your terminal looks like this, it means that your download was successful:</p>
 <p><img src="pages/demo_boards/../../_assets/img/compile_success.png" alt="" /></p>
-<p>If the compilation goes wrong in spite of your code having been perfectly compiled, do a cleaning by clicking on the ant button <img src="pages/demo_boards/../../_assets/img/vscode-ant-button.png" alt="" /> and choosing <em>Clean</em> in the list of project tasks:</p>
+<p>If the compilation goes wrong in spite of your code having been perfectly compiled, perform a clean-up by clicking on the ant button <img src="pages/demo_boards/../../_assets/img/vscode-ant-button.png" alt="" /> and choosing <em>Clean</em> in the list of project tasks:</p>
 <p><img src="pages/demo_boards/../../_assets/img/clean.png" alt="" /></p>
 <h3><a class="header" href="#3-upload-the-new-code-into-the-board" id="3-upload-the-new-code-into-the-board">3. Upload the new code into the board</a></h3>
 <p>To upload the new code into the board you must click on the <em>Upload</em> button <img src="pages/demo_boards/../../_assets/img/upload-button.png" alt="" />:</p>
 <p><img src="pages/demo_boards/../../_assets/img/upload.png" alt="" /></p>
-<p>If your terminal goes like this, it means that your download was successful:</p>
+<p>If your terminal looks like this, it means that your download was successful:</p>
 <p><img src="pages/demo_boards/../../_assets/img/upload_success.png" alt="" /></p>
 <h3><a class="header" href="#troubleshooting" id="troubleshooting">Troubleshooting</a></h3>
-<p>If the upload goes wrong, it may be because your driver is not up-to-date. The fix depends on your OS:</p>
+<p>If the upload does not go as planned, it may be because your driver is not up-to-date. The fix depends on your OS:</p>
 <h4><a class="header" href="#windows" id="windows">Windows</a></h4>
 <p>You need to install and run <em>Zadig</em> by following <a href="https://github.com/profezzorn/ProffieOS/wiki/zadig" target="blank_">this tutorial</a> on github.</p>
 <h4><a class="header" href="#linux" id="linux">Linux</a></h4>
@@ -2701,7 +2701,7 @@ All the Luos boards can manage a voltage between 5V and 24V, up to 7A.</p>
 <h3><a class="header" href="#steps" id="steps">STEPS</a></h3>
 <h4><a class="header" href="#1-configure-your-computer" id="1-configure-your-computer">1. Configure your computer</a></h4>
 <p>The default tool we use to control a Luos network is a board hosting a <a href="pages/demo_boards/../high/containers_list/gate.html">Gate</a> container, with a Python lib called <a href="pages/demo_boards/../high/pyluos.html">Pyluos</a>.</p>
-<p>To begin, you have to install Python and Pyluos library, following the <a href="pages/demo_boards/../high/pyluos.html">pyluos documentation page</a>.</p>
+<p>To begin, you have to install Python and Pyluos library, following the <a href="pages/demo_boards/../high/pyluos.html">Pyluos documentation page</a>.</p>
 <h4><a class="header" href="#2-plug-the-boards-together" id="2-plug-the-boards-together">2. Plug the boards together</a></h4>
 <p>Plug together all the boards with <a href="pages/demo_boards/./boards_list/cables.html">cables</a>. You can plug them to any of the two connectors of each board, in any order.</p>
 <blockquote>
@@ -2930,7 +2930,7 @@ The Battery power input board can provide 5V to 24V DC.</p>
 <p>When your Dynamixel motors are properly configured, you can connect them to the Luos network. Be sure to respect the following order to have a proper start-up:</p>
 <ol>
 <li>Connect the  board to the Luos network and to the Dynamixel motors.</li>
-<li>Connect the correct power supply to the luos network.</li>
+<li>Connect the correct power supply to the Luos network.</li>
 <li>Connect the USB board to your computer.</li>
 <li>Wait for the blue LED at the back of the board to turn off.</li>
 </ol>
@@ -3117,7 +3117,7 @@ The Power Pi board supports 5V to 24V DC input.</p>
 <h2><a class="header" href="#how-to-easily-start-to-create-your-code-using-this-board" id="how-to-easily-start-to-create-your-code-using-this-board">How to easily start to create your code using this board</a></h2>
 <p>Coding on a Raspberry Pi in a device can be quite boring. Generally, you can't connect any screen and keyboard to work properly.
 That's why we created a small piece of code allowing to convert the Gate container stream into Web Socket messages.
-By using this Web Socket, you can connect pyluos or any other lib you created to your Raspberry Pi. This way you can create and execute your device's behaviors directly on your computer.
+By using this Web Socket, you can connect Pyluos or any other lib you created to your Raspberry Pi. This way you can create and execute your device's behaviors directly on your computer.
 When your behavior is complete and tested on your device, you just have to copy it into your Raspberry Pi to obtain an autonomous device.</p>
 <p>To setup this pipe on your Raspberry Pi, please <a href="https://community.luos.io/t/create-a-web-socket-pipe-to-luos-network-using-raspberry-pi/197" target="_blank">follow the tutorial on our forum</a>.</p>
 <h2><a class="header" href="#how-to-setup-your-power-pis-gate" id="how-to-setup-your-power-pis-gate">How to setup your Power Pi's Gate</a></h2>
@@ -3185,7 +3185,7 @@ Password: raspberry
 <p>However, <strong>the USB board can’t power the Raspberry Pi board</strong>, because several voltage transformations are applied along the network. You can also use an universal power supply (+5.1V micro USB) directly plugged to the Raspberry Pi.</p>
 <h3><a class="header" href="#communication-mode" id="communication-mode">Communication mode</a></h3>
 <p>By default, your Raspberry Pi starts a Luos service at boot called <em>pyluos-usb2ws</em>. This service creates a pipe between a <strong>websocket</strong> opened on <strong>port 9342</strong>, and the Luos system. If you send standard Luos Json data into this web socket, it is directly sent into the Luos network.</p>
-<p>This way, you can control your device from your computer even if it is moving or dispatched. For example, if you are using pyluos to control your device, you can start your program with:</p>
+<p>This way, you can control your device from your computer even if it is moving or dispatched. For example, if you are using Pyluos to control your device, you can start your program with:</p>
 <pre><code class="language-python">from pyluos import Device
 device = Device(&quot;raspberrypi.local&quot;)
 device.containers
@@ -3314,7 +3314,7 @@ Refer to the <a href="pages/demo_boards/boards_list/../../high/containers_list/c
 <p><img src="pages/demo_boards/boards_list/../../../_assets/img/usb-1.jpg" alt="USB board" /></p>
 <h2><a class="header" href="#how-to-use-the-usb-board" id="how-to-use-the-usb-board">How to use the USB board</a></h2>
 <p>Luos' USB board acts like a serial port on your system.
-To control your device, you have to get and set Json data into the serial port opened by the USB board. In order do that with pyluos, you can use the following python code:</p>
+To control your device, you have to get and set Json data into the serial port opened by the USB board. In order do that with Pyluos, you can use the following python code:</p>
 <pre><code class="language-python">from pyluos import Device
 device = Device('COM13')
 device.containers
@@ -3322,21 +3322,21 @@ device.containers
 <h3><a class="header" href="#on-windows" id="on-windows">On Windows</a></h3>
 <p>On Windows, a <em>COM</em> port is usually used (like <code>COM1</code>, <code>COM2</code>, <code>COM3</code>, etc.). It can be found in <em>Device Manager</em> (right-click on <em>Start</em> button), after it’s plugged:</p>
 <p><img src="pages/demo_boards/boards_list/../../../_assets/img/usb-2.png" alt="Port COM" /></p>
-<p>Once the port is known, the connexion can be set on pyluos with python:</p>
+<p>Once the port is known, the connexion can be set on Pyluos with python:</p>
 <pre><code class="language-python">device = Device('COM27')
 </code></pre>
 <h3><a class="header" href="#on-macos" id="on-macos">On MacOS</a></h3>
 <p>To list the available serial ports, use the following command line:</p>
 <pre><code class="language-bash">ls /dev/cu.usbserial-*
 </code></pre>
-<p>Once the port is known, the connexion can be set on pyluos with python:</p>
+<p>Once the port is known, the connexion can be set on Pyluos with python:</p>
 <pre><code class="language-python">device = Device('/dev/cu.usbserial-DN30VKKB')
 </code></pre>
 <h3><a class="header" href="#on-linux" id="on-linux">On Linux</a></h3>
 <p>To list the available serial ports, type the following in a terminal:</p>
 <pre><code class="language-bash">dmesg | grep tty
 </code></pre>
-<p>Once the port is known, the connexion can be set on pyluos with python:</p>
+<p>Once the port is known, the connexion can be set on Pyluos with python:</p>
 <pre><code class="language-python">device = Device('/dev/ttyS0')
 </code></pre>
 <h3><a class="header" href="#serial-connectivity-with-other-languages" id="serial-connectivity-with-other-languages">Serial connectivity with other languages</a></h3>

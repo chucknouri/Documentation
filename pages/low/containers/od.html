@@ -192,7 +192,7 @@
                             <h1><a class="header" href="#object-dictionary" id="object-dictionary">Object Dictionary</a></h1>
 <p>To keep interoperability between <span class="cust_tooltip">containers<span class="cust_tooltiptext">Software element run by Luos that can communicate with other containers. It can be a driver or an app. (Initially called a module)</span></span>, Luos provides an Object Dictionary (OD).</p>
 <h2><a class="header" href="#what-is-od" id="what-is-od">What is OD?</a></h2>
-<p>An Object Dictionary (OD) allows different developers of different containers to make them interoperate regardless of the unit they uses on the container.</p>
+<p>An Object Dictionary (OD) allows different developers of different containers to make them interoperate regardless of the unit they use on the container.</p>
 <p>Let's take an example: If container1 uses an angle as radians and container2 uses degrees, what is the unit they should use to share the angle information?</p>
 <p>An Object Dictionary defines a set of typical objects that can be transmitted through Luos messages. It allows to send these objects with a predefined type and to use it in the units the user want.</p>
 <h2><a class="header" href="#how-is-it-managed-in-luos" id="how-is-it-managed-in-luos">How is it managed in Luos?</a></h2>
@@ -225,7 +225,7 @@ linear_position_t LinearOD_PositionFrom_mm(float mm);
 float LinearOD_PositionTo_mm(linear_position_t linear_position); 
 </code></pre>
 <h3><a class="header" href="#messages-conversions" id="messages-conversions">Messages conversions</a></h3>
-<p>The same both way of conversion are available for messages (OD type from message and OD type to message):</p>
+<p>In the same way, both conversion are available for messages (OD type from message and OD type to message):</p>
 <ul>
 <li><strong><code>from</code> conversion:</strong> Gets a type from a message. Format: <code>[type]FromMsg([type_var], msg)</code></li>
 </ul>

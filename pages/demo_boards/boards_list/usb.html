@@ -215,7 +215,7 @@
 <p><img src="../../../_assets/img/usb-1.jpg" alt="USB board" /></p>
 <h2><a class="header" href="#how-to-use-the-usb-board" id="how-to-use-the-usb-board">How to use the USB board</a></h2>
 <p>Luos' USB board acts like a serial port on your system.
-To control your device, you have to get and set Json data into the serial port opened by the USB board. In order do that with pyluos, you can use the following python code:</p>
+To control your device, you have to get and set Json data into the serial port opened by the USB board. In order do that with Pyluos, you can use the following python code:</p>
 <pre><code class="language-python">from pyluos import Device
 device = Device('COM13')
 device.containers
@@ -223,21 +223,21 @@ device.containers
 <h3><a class="header" href="#on-windows" id="on-windows">On Windows</a></h3>
 <p>On Windows, a <em>COM</em> port is usually used (like <code>COM1</code>, <code>COM2</code>, <code>COM3</code>, etc.). It can be found in <em>Device Manager</em> (right-click on <em>Start</em> button), after it’s plugged:</p>
 <p><img src="../../../_assets/img/usb-2.png" alt="Port COM" /></p>
-<p>Once the port is known, the connexion can be set on pyluos with python:</p>
+<p>Once the port is known, the connexion can be set on Pyluos with python:</p>
 <pre><code class="language-python">device = Device('COM27')
 </code></pre>
 <h3><a class="header" href="#on-macos" id="on-macos">On MacOS</a></h3>
 <p>To list the available serial ports, use the following command line:</p>
 <pre><code class="language-bash">ls /dev/cu.usbserial-*
 </code></pre>
-<p>Once the port is known, the connexion can be set on pyluos with python:</p>
+<p>Once the port is known, the connexion can be set on Pyluos with python:</p>
 <pre><code class="language-python">device = Device('/dev/cu.usbserial-DN30VKKB')
 </code></pre>
 <h3><a class="header" href="#on-linux" id="on-linux">On Linux</a></h3>
 <p>To list the available serial ports, type the following in a terminal:</p>
 <pre><code class="language-bash">dmesg | grep tty
 </code></pre>
-<p>Once the port is known, the connexion can be set on pyluos with python:</p>
+<p>Once the port is known, the connexion can be set on Pyluos with python:</p>
 <pre><code class="language-python">device = Device('/dev/ttyS0')
 </code></pre>
 <h3><a class="header" href="#serial-connectivity-with-other-languages" id="serial-connectivity-with-other-languages">Serial connectivity with other languages</a></h3>

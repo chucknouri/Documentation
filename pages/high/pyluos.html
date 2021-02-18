@@ -195,11 +195,11 @@
 <h2><a class="header" href="#installation" id="installation">Installation</a></h2>
 <h3><a class="header" href="#required-installing-python-and-pip" id="required-installing-python-and-pip">Required: Installing Python and Pip</a></h3>
 <blockquote>
-<p><strong>Warning:</strong> In order to use Pyluos library, Python and the Pip packet manager must be installed on your computer.</p>
+<p><strong>Warning:</strong> In order to use Pyluos library, Python and the Pip package manager must be installed on your computer.</p>
 </blockquote>
 <p><em>« Python is a programming language that lets you work more quickly and integrate your systems more effectively. » (<small><a href="https://python.org" target="_blank">Source</a></small>)</em></p>
 <p><em>« <a href="https://pip.pypa.io/en/stable/" target="_blank">Pip</a> is the standard package manager for Python. It allows you to install and manage additional packages that are not part of the Python standard library. » (<small><a href="https://realpython.com/what-is-pip/#getting-started-with-pip" target="_blank">Source</a></small>)</em></p>
-<p>If Python is not installed on you computer, download and run the last release according to your computer's OS: <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a>.</p>
+<p>If Python is not installed on your computer, download and run the last release according to your computer's OS: <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a>.</p>
 <p>To install Pip, type the following commands in a console:</p>
 <pre><code class="language-bash">curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python get-pip.py
@@ -215,7 +215,7 @@ python get-pip.py
 </blockquote>
 <h3><a class="header" href="#installing-or-updating-pyluos-library" id="installing-or-updating-pyluos-library">Installing or updating Pyluos library</a></h3>
 <p>You are now ready to install Pyluos. <strong>The last Pyluos version is <code>1.4.0</code>.</strong></p>
-<p>In a console, the following command will install the <em>Pyluos</em> library using the <em>Pip packet manager</em>:</p>
+<p>In a console, the following command will install the <em>Pyluos</em> library using the <em>Pip package manager</em>:</p>
 <pre><code class="language-bash">pip install pyluos
 </code></pre>
 <p>If Pyluos is already installed, it may only need to be updated:</p>
@@ -234,7 +234,7 @@ python get-pip.py
 <p><strong>Note:</strong> In the previous picture, <em>Jupyter</em> use <em>Python 3</em> but you also can use <em>Python 2.7</em> depending on your computer configuration.</p>
 </blockquote>
 <p><img src="../../_assets/img/pyluos-2.png" alt="Jupyter" /></p>
-<p>The Jupyter work-space looks like the following image. On the keyboard,  <code>Maj+Enter</code> executes any selected part of code.</p>
+<p>The Jupyter work-space looks like the following image. On the keyboard,  <code>Shift+Enter</code> executes any selected part of code.</p>
 <p>Now you are ready to code using Python.</p>
 <h3><a class="header" href="#import-pyluos" id="import-pyluos">Import Pyluos</a></h3>
 <p>The first thing to do is to call the Pyluos library along with the <code>Device</code> tool inside that library:</p>
@@ -246,7 +246,7 @@ python get-pip.py
 <h4><a class="header" href="#configuring-usb-transfer-sizes-and-latency-timer" id="configuring-usb-transfer-sizes-and-latency-timer">Configuring USB transfer sizes and latency timer</a></h4>
 <p>Some devices may not work properly with the default USB transfer sizes and latency timer for COM ports on Windows. These parameters can be set to lower values in order to use your device properly while connected to your computer from a <a href="../demo_boards/boards_list/usb.html">Gate</a>.</p>
 <p><strong>USB Transfer Sizes</strong>: Default value is 4096 Bytes, however if you have issues to use your connected device, you should try the minimum possible values both for <code>Receive</code> and <code>Transmit</code>.</p>
-<p><strong>Latency Timer</strong>: Default value is 16 msec, but you can rise lower it to the minimal value of 1 msc.</p>
+<p><strong>Latency Timer</strong>: Default value is 16 msec, but you can rise lower it to the minimal value of 1 msec.</p>
 <p>To access to these parameters, open the Device Manager in Windows, and right-click on the <em>USB Serial Port (COMX)</em> where your device is connected, then click on <em>Properties</em>.</p>
 <p><img src="../../_assets/img/device-manager.png" alt="" /></p>
 <p>Click on <em>Port Settings</em> tab and click on <em>Advanced...</em> button.</p>
@@ -351,7 +351,7 @@ device.button_mod.robus_revision # Returns the version of robus
 <p>If you use <em>ipython</em> or <em>Jupyter Notebook</em>, you can use auto-completion using the <code>Tab</code> key to find every available objects and variables.</p>
 <p><img src="../../_assets/img/pyluos-3.png" alt="Auto-completion" /></p>
 <h3><a class="header" href="#change-a-container-name" id="change-a-container-name">Change a container name</a></h3>
-<p>The name of any container can be changed following this code. </p>
+<p>The name of any container can be changed by using this code: </p>
 <pre><code class="language-python">device.container_alias.rename(&quot;new_name&quot;)
 </code></pre>
 <p>For example:</p>

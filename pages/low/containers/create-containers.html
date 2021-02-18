@@ -207,9 +207,9 @@ This function needs to have a specific format:</p>
 <li><strong>container</strong> is the container pointer of the container receiving the data (basically, it is your container).</li>
 <li><strong>msg</strong> is the message your container received.</li>
 </ul>
-<p><strong>type</strong> is the type of the your new container represented by a number. Some basic types (e.g. <code>DISTANCE_MOD</code>, <code>VOLTAGE_MOD</code>, etc.) are already available in the <code>container_type_t</code> enum structure of Luos. You can also create your own on top of the luos one.</p>
-<p><strong>default alias</strong> is the alias by default for your new container. e.g. <code>Mycontainer02</code>. This alias is the one your container will take if no other alias is set by the user of your functionality hosted in your container. Aliases have a maximum size of 16 characters.</p>
-<p><strong>revision</strong> is the revision number of the container you are creating and which will be accessible via pyluos.</p>
+<p><strong>type</strong> is the type of the your new container represented by a number. Some basic types (e.g. <code>DISTANCE_MOD</code>, <code>VOLTAGE_MOD</code>, etc.) are already available in the <code>container_type_t</code> enum structure of Luos. You can also create your own on top of the Luos one.</p>
+<p><strong>default alias</strong> is the alias by default for your new container. e.g. <code>Mycontainer02</code>. This alias is the one your container will use if no other alias is set by the user of your functionality hosted in your container. Aliases have a maximum size of 16 characters.</p>
+<p><strong>revision</strong> is the revision number of the container you are creating and which will be accessible via Pyluos.</p>
 <p>Following the <a href="./create-project.html#basic-containers-functions">project rules</a>, here is a code example for a button container:</p>
 <pre><code class="language-c">revision_t ButtonRevision = {.unmap = {0,0,7}};
 container_t* container_btn;
@@ -232,17 +232,17 @@ void Button_Loop(void) {
 <p>To make your development as clean as possible, you have to understand in which category (<a href="#drivers-guidelines"><strong>Driver</strong></a> or <a href="#apps-guidelines"><strong>App</strong></a>) each container of the project is.</p>
 <p>By following the categories guidelines, you will be able to make clean and reusable functionalities.</p>
 <h2><a class="header" href="#drivers-guidelines" id="drivers-guidelines">Drivers guidelines</a></h2>
-<p>A driver is a type of container that drives hardware. Motors, distance sensors, LEDs are all drivers.</p>
+<p>A driver is a type of container that handles hardware. Motors, distance sensors, LEDs are all drivers.</p>
 <p>By designing a driver, you have to keep the following rules in mind:</p>
 <ul>
 <li>A driver container always uses a standard Luos type to be usable by any other containers.</li>
 <li>A driver container always uses standard <span class="cust_tooltip">object dictionary<span class="cust_tooltiptext">Set of objects based on SI metric system that can be transmitted through Luos messages. Any object can easily be converted in other units.</span></span> structures to be usable by any other containers.</li>
-<li>A driver container never depends or uses any other containers (driver or app).</li>
+<li>A driver container never depends on or uses any other containers (driver or app).</li>
 <li>A driver container is &quot;dumb&quot;, as it can't do anything else than manage its hardware feature (but it does it very well).</li>
 </ul>
-<p>You can have multiple driver containers on the same <span class="cust_tooltip">node<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several containers.</span></span> managing different hardware functionalities of your board, it is your call to sort them depending on your design.</p>
+<p>You can have multiple driver containers on the same <span class="cust_tooltip">node<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several containers.</span></span> managing different hardware functionalities of your board, it is up to you to sort them depending on your design.</p>
 <h2><a class="header" href="#apps-guidelines" id="apps-guidelines">Apps guidelines</a></h2>
-<p>An applications or app is a type of container that only manages software items such as functions or algorithms. Apps use other containers to make your device act, operate, and behave.
+<p>An application or app is a type of container that only manages software items such as functions or algorithms. Apps use other containers to make your device act, operate, and behave.
 Apps can be placed in any <span class="cust_tooltip"><a href="../../overview/general-basics.html#what-is-a-node">nodes</a><span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several containers.</span></span> on a Luos network without any hardware or code modifications. However, the choice of the hosting node can impact global performances of the system.</p>
 <p>By designing an app, you have to keep the following rules in mind:</p>
 <ul>
@@ -250,7 +250,7 @@ Apps can be placed in any <span class="cust_tooltip"><a href="../../overview/gen
 <li>An app can use custom container types.</li>
 <li>An app must use standard <span class="cust_tooltip">object dictionary<span class="cust_tooltiptext">Set of objects based on SI metric system that can be transmitted through Luos messages. Any object can easily be converted in other units.</span></span> structures. If the structures used are not standard, Gate containers could be completely unable to manage them.</li>
 </ul>
-<p>Apps are the embedded smartness of your device, and at least one of them should run a network detection in order to map every containers in every nodes in your device and make it work properly. Go to <a href="./routing-table.html">Routing table</a> page for more informations.</p>
+<p>Apps are the embedded smartness of your device, and at least one of them should run a network detection in order to map every containers in every nodes in your device and make it work properly. Go to the <a href="./routing-table.html">Routing table</a> page for more information.</p>
 
 
                             <div class="cust_edit_page"><a id="gh_link">Contribute to this page</a>&nbsp;|&nbsp;<a id="feedback" style="cursor: pointer; color: #FF0000" onclick="openFeedback()">This page wasn't helpful? &#128078;</a></div><div align="right" style="float: right; height: 30px; width: 400px; position: relative; top: -18px;"><a class="github-button" href="https://github.com/Luos-io" data-show-count="true" aria-label="Follow @Luos-io on GitHub">Follow @Luos-io</a>&nbsp;<a class="github-button" href="https://github.com/Luos-io/Luos/subscription" data-icon="octicon-eye" data-show-count="true" aria-label="Watch Luos-io/Luos on GitHub">Watch</a>&nbsp;<a class="github-button" href="https://github.com/Luos-io/Luos" data-icon="octicon-star" data-show-count="true" aria-label="Star Luos-io/Luos on GitHub">Star</a></div>

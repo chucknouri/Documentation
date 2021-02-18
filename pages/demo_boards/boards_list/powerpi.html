@@ -220,7 +220,7 @@ The Power Pi board supports 5V to 24V DC input.</p>
 <h2><a class="header" href="#how-to-easily-start-to-create-your-code-using-this-board" id="how-to-easily-start-to-create-your-code-using-this-board">How to easily start to create your code using this board</a></h2>
 <p>Coding on a Raspberry Pi in a device can be quite boring. Generally, you can't connect any screen and keyboard to work properly.
 That's why we created a small piece of code allowing to convert the Gate container stream into Web Socket messages.
-By using this Web Socket, you can connect pyluos or any other lib you created to your Raspberry Pi. This way you can create and execute your device's behaviors directly on your computer.
+By using this Web Socket, you can connect Pyluos or any other lib you created to your Raspberry Pi. This way you can create and execute your device's behaviors directly on your computer.
 When your behavior is complete and tested on your device, you just have to copy it into your Raspberry Pi to obtain an autonomous device.</p>
 <p>To setup this pipe on your Raspberry Pi, please <a href="https://community.luos.io/t/create-a-web-socket-pipe-to-luos-network-using-raspberry-pi/197" target="_blank">follow the tutorial on our forum</a>.</p>
 <h2><a class="header" href="#how-to-setup-your-power-pis-gate" id="how-to-setup-your-power-pis-gate">How to setup your Power Pi's Gate</a></h2>
@@ -288,7 +288,7 @@ Password: raspberry
 <p>However, <strong>the USB board can’t power the Raspberry Pi board</strong>, because several voltage transformations are applied along the network. You can also use an universal power supply (+5.1V micro USB) directly plugged to the Raspberry Pi.</p>
 <h3><a class="header" href="#communication-mode" id="communication-mode">Communication mode</a></h3>
 <p>By default, your Raspberry Pi starts a Luos service at boot called <em>pyluos-usb2ws</em>. This service creates a pipe between a <strong>websocket</strong> opened on <strong>port 9342</strong>, and the Luos system. If you send standard Luos Json data into this web socket, it is directly sent into the Luos network.</p>
-<p>This way, you can control your device from your computer even if it is moving or dispatched. For example, if you are using pyluos to control your device, you can start your program with:</p>
+<p>This way, you can control your device from your computer even if it is moving or dispatched. For example, if you are using Pyluos to control your device, you can start your program with:</p>
 <pre><code class="language-python">from pyluos import Device
 device = Device(&quot;raspberrypi.local&quot;)
 device.containers

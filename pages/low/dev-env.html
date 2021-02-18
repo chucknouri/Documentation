@@ -193,7 +193,7 @@
 <p>Before starting developing with Luos, you need to have an operational development environment.
 At Luos, we use PlatformIO to share all our examples and to make our lib integration easy, but of course you can use your favorite IDE and integrate our libs by yourself.</p>
 <h2><a class="header" href="#setup-a-luos-platformio-project" id="setup-a-luos-platformio-project">Setup a Luos PlatformIO project</a></h2>
-<p><a href="https://platformio.org/" target="_blank">PlatformIO</a> is a cross-platform, cross-architecture, multiple framework, professional tool for embedded systems engineers and for software developers who write applications for embedded products. You can put it as a plug-in in a lot of <a href="https://docs.platformio.org/en/latest/integration/ide/index.html#desktop-ide" target="_blank">different editors</a>.</p>
+<p><a href="https://platformio.org/" target="_blank">PlatformIO</a> is a cross-platform, cross-architecture, multiple framework, professional tool for embedded systems engineers and for software developers who write applications for embedded products. It can be used as a plug-in in a lot of <a href="https://docs.platformio.org/en/latest/integration/ide/index.html#desktop-ide" target="_blank">different editors</a>.</p>
 <h3><a class="header" href="#getting-started" id="getting-started">Getting Started</a></h3>
 <ol>
 <li>Install Platform IO on VSCode by following the instructions on <a href="https://platformio.org/platformio-ide" target="_blank">this page</a>.</li>
@@ -208,19 +208,19 @@ board = &lt;board name&gt;
 <p><em>Note:</em> More information about how Luos libs are managed into PlatformIO is available by <a href="https://community.luos.io/t/how-to-link-luos-with-platformio/303" target="\_blank">following this post on our forum</a>.</p>
 </blockquote>
 <h3><a class="header" href="#project-examples" id="project-examples">Project examples</a></h3>
-<p>Luos shares a lot of <a href="https://github.com/Luos-io/Examples" target="_blank">code examples</a>, feel free to use and modify them as you want.</p>
+<p>Luos provides a lot of <a href="https://github.com/Luos-io/Examples" target="_blank">code examples</a>, feel free to use and modify them as you want.</p>
 <h3><a class="header" href="#demonstration-boards" id="demonstration-boards">Demonstration boards</a></h3>
-<p>Luos created <a href="../demo_boards/boards-list.html">a sets of boards</a> allowing to easily test the technology.</p>
+<p>Luos created <a href="../demo_boards/boards-list.html">a sets of boards</a> to allow you to easily test the technology.</p>
 <h2><a class="header" href="#general-integration-consideration" id="general-integration-consideration">General integration consideration</a></h2>
 <p>Luos works as a code library running on nodes. To match Luos library with your hardware, Luos offers a <em>Hardware Abstraction Layer</em> for a lot of devices in <span class="cust_tooltip">LuosHAL<span class="cust_tooltiptext">Hardware Abstraction Layer used to fit Luos with various hardware designs.</span></span>.</p>
 <ul>
-<li><a href="https://github.com/Luos-io/LuosHAL" target="_blank">LuosHAL</a>: This repository gives you a list of family device covers to match Luos library with your hardware.</li>
+<li><a href="https://github.com/Luos-io/LuosHAL" target="_blank">LuosHAL</a>: This repository provides a list of family devices coverd to match the Luos library with your hardware.</li>
 <li><a href="https://github.com/Luos-io/Luos/tree/master/luos" target="_blank">Luos</a>: This is the main library you will be working with.</li>
 </ul>
 <p>To make it work on your environment, you have to:</p>
 <ul>
-<li>Include Luos lib folders in your project compilation;</li>
-<li>Select the right LuosHAL from your family device in LuosHAL folder, and include <code>luos_hal.c</code>, <code>luos_hal.h</code> and <code>luos_hal_config.h</code> in your project;</li>
+<li>Include the Luos lib folders in your project compilation;</li>
+<li>Select the right LuosHAL for your device family in LuosHAL folder, and include <code>luos_hal.c</code>, <code>luos_hal.h</code> and <code>luos_hal_config.h</code> in your project;</li>
 <li>Change, if necessary, <code>luos_hal_config.h</code> in you project, the default configuration created by Luos (before including <code>luos.h</code>) in order to match LuosHAL with your hardware (eg: match pins with your design);</li>
 <li>Include <code>luos.h</code> on your source file.</li>
 </ul>

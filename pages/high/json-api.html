@@ -192,7 +192,7 @@
                             <img class="print-break" src="../../_assets/img/json-logo.png" height="100px">
 <h1 class="no-break"><a href="#json-api" class="header" id="json-api">JSON API</a></h1>
 <p>The <a href="https://en.wikipedia.org/wiki/JSON" target="blank_">JSON formated data</a> is very common and widely used by many programming languages. Luos allows you to convert low-level Luos information into JSON objects, enabling conventional programming languages to easily interact with your device.<br/>
-To do that, you must add a specific app container called <a href="./containers_list/gate.html">Gate</a> on your device.</p>
+To do that, you must add a specific app container called a <a href="./containers_list/gate.html">Gate</a> on your device.</p>
 <p>The <a href="./containers_list/gate.html">Gate container</a> is an app that converts Luos messages from a device's network into JSON data format, and the other way from JSON to Luos messages.<br/>
 The Gate container can be hosted into different kinds of <span class="cust_tooltip">nodes<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several containers.</span></span> allowing you to choose the communication way fitting with your project (USB, Wifi, Bluetooth, etc.)</p>
 <blockquote>
@@ -248,7 +248,7 @@ This first message is really important, because it contains all the information 
 <p><strong>Note:</strong> To understand the meanings of <em>uuid</em> and <em>port_table</em>, please refer to the <a href="../low/containers/routing-table.html">routing table page</a>.</p>
 </blockquote>
 <h4><a class="header" href="#containers" id="containers">Containers</a></h4>
-<p>Each listed container of a node has basics containers information:</p>
+<p>Each listed container of a node has basic containers information:</p>
 <pre><code class="language-JSON">{ // container 1
    &quot;type&quot;:&quot;Type&quot;,
    &quot;id&quot;:1,
@@ -449,11 +449,11 @@ sendCmd(s, '{&quot;containers&quot;: {&quot;controller_moto&quot;: {&quot;parame
 <tr><td align="center">delay</td><td align="center">reduce containers refresh rate</td><td align="center"><a href="./containers_list/gate.html">Gate</a></td></tr>
 </tbody></table>
 <h3><a class="header" href="#containers-exclusion-messages" id="containers-exclusion-messages">Containers exclusion messages</a></h3>
-<p>Containers can be excluded of the network if a problem occurs (see <a href="../low/containers/self-healing.html#container-exclusion">self-healing</a> for more information). In this case, the Gate sends an exclusion message indicating that this container is no longer available:</p>
+<p>Containers can be excluded from the network if a problem occurs (see <a href="../low/containers/self-healing.html#container-exclusion">self-healing</a> for more information). In this case, the Gate sends an exclusion message indicating that this container is no longer available:</p>
 <pre><code class="language-JSON">{&quot;dead_container&quot;: &quot;container_alias&quot;}
 </code></pre>
 <h3><a class="header" href="#node-assert-messages" id="node-assert-messages">Node assert messages</a></h3>
-<p>Nodes can assert if a critical issue occurs (see <a href="../low/containers/self-healing.html#assert">self-healing</a> for more information). In this case, the Gate sends an assertion message indicating that this node is no longer available and some detail about the crash:</p>
+<p>Nodes can assert if a critical issue occurs (see <a href="../low/containers/self-healing.html#assert">self-healing</a> for more information). In this case, the Gate sends an assertion message indicating that this node is no longer available and some details about the crash:</p>
 <pre><code class="language-JSON">{
    &quot;assert&quot;:{
       &quot;node_id&quot;:3,
@@ -463,7 +463,7 @@ sendCmd(s, '{&quot;containers&quot;: {&quot;controller_moto&quot;: {&quot;parame
 }
 </code></pre>
 <h2><a class="header" href="#sending-large-binary-data" id="sending-large-binary-data">Sending large binary data</a></h2>
-<p>Binary data such as, for example, a motor tarjectory can't be included into a Json file if it is too large. In order to allow this type of transmission, the size of the binary data is sent through the Json, then followed by the actual data in binary format.</p>
+<p>Binary data such as, for example, a motor tarjectory can't be included into a JSON file if it is too large. In order to allow this type of transmission, the size of the binary data is sent through the JSON, then followed by the actual data in binary format.</p>
 <ul>
 <li>
 <p>If the data is short, it can be displayed inside the JSON as a regular value (see the different values in <a href="#containers-information-messages">Container's information messages section</a>), or as a table of several values (for example a motor trajectory).</p>

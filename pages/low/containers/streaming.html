@@ -190,25 +190,25 @@
                     <div id="content" class="content">
                         <main>
                             <h1><a class="header" href="#streaming" id="streaming">Streaming</a></h1>
-<p>In occasion, you will have to deal with high-frequency small data with strong time constraints.</p>
+<p>On occasion, you will have to deal with high-frequency small data with strong time constraints.</p>
 <p>To make it easy, Luos manages streaming channels trough ring buffers.</p>
-<p>A streaming channel allows you to reduce drastically the time constraints of your Luos network thanks to 2 effects:</p>
+<p>A streaming channel allows you to drastically reduce the time constraints of your Luos network thanks to 2 factors:</p>
 <ol>
 <li>
-<p>The first effect is a method which allows you to have a <em>no-real-time</em> container dealing with a strict-real-time one. Both side have their own loop frequency and time precision.</p>
+<p>The first factor is a method which allows you to have a <em>no-real-time</em> container dealing with a strict-real-time one. Both sides have their own loop frequency and time precision.</p>
 <ul>
 <li>The real-time one is the container opening the streaming channel. It has a high-frequency function called at a precise <strong>sampling frequency</strong>.</li>
-<li>The no-real-time one has a slower and unprecise timed function which is called at each <strong>chunk_time</strong>.</li>
+<li>The non-real-time one has a slower and unprecise timed function which is called at each <strong>chunk_time</strong>.</li>
 </ul>
 </li>
 <li>
-<p>By using streaming channels, you will be able to use big data chunks at low frequency to optimize the data rate efficiency of the bus. The idea is to exchange big chunks of data between containers instead of a tons of time-constrained small messages flooding all containers.</p>
+<p>By using streaming channels, you will be able to use big data chunks at low frequency to optimize the data rate efficiency of the bus. The idea is to exchange big chunks of data between containers instead of large amounts of time-constrained small messages flooding all containers.</p>
 </li>
 </ol>
 <h2><a class="header" href="#example" id="example">Example</a></h2>
 <p>A motor-driver container has strict real-time constraints. If you want to have a smooth positioning movement or measurement you have to update the motor position at high-frequency (<strong>sampling frequency</strong>).<br/>
 First, you have to define the <strong>sampling frequency</strong> allowing you to have a smooth movement or measurement on the motor. Let's take 200Hz in this example.</p>
-<p>In the no-real-time side (the container commanding the motor), you can't have a 200Hz loop because it probably has other things to do and perhaps doesn't have a sufficient time precision. To simplify it you will have to send trajectory chunks regularly (<strong>chunk time</strong>), let's say approximately each 1 second.</p>
+<p>In the non-real-time side (the container commanding the motor), you can't have a 200Hz loop because it probably has other things to do and perhaps doesn't have a sufficient time precision. To simplify it you will have to send trajectory chunks regularly (<strong>chunk time</strong>), let's say approximately every 1 second.</p>
 <p>Based on those numbers, your data chunk size will be:</p>
 <pre><code class="language-AsciiDoc">chunk_size = chunk_time(s) x sampling_frequency(Hz)
 chunk_size = 1 x 200 = 200 samples
@@ -218,20 +218,20 @@ chunk_size = 1 x 200 = 200 samples
 <img src="../../../_assets/img/streaming.png"/></p>
 <ol>
 <li>The container who sends the trajectory has to make sure that the motor container always has data to consume. To do that you have to bootstrap your streaming flux by sending 2 data chunks to start and then send a new data chunk each <em>chunk_time</em>.
-This way, receiver always has at least one data chunk (1s in this example) ready to be consumed.</li>
-<li>When data chunks are received, receiver can start consuming data at its <em>sampling frequency</em>.</li>
-<li>One data chunk later (1s in our example), receiver has consumed the first data chunk, and the sender can start to compute the next one.</li>
-<li>At the end of the data chunk computation, sender sends the chunk. Luos adds it to the ring buffer.</li>
-<li>At each second, the sender sends the next data chunk and Luos add it to the ring buffer. At the end of the buffer, Luos puts extra data at the begining. The consumer pointer also goes back to the begining of the buffer when it reaches the end. This way we have infinite data stream without any discontinuity.</li>
-<li>You can continue this way indefinitely.</li>
+This way, the receiver always has at least one data chunk (1s in this example) ready to be consumed.</li>
+<li>When data chunks are received, the receiver can start consuming data at its <em>sampling frequency</em>.</li>
+<li>One data chunk later (1s in our example), the receiver has consumed the first data chunk, and the sender can start to compute the next one.</li>
+<li>At the end of the data chunk computation, the sender sends the chunk. Luos adds it to the ring buffer.</li>
+<li>At each second, the sender sends the next data chunk and Luos adds it to the ring buffer. At the end of the buffer, Luos puts extra data at the begining. The consumer pointer also goes back to the begining of the buffer when it reaches the end. This way we have infinite data stream without any discontinuity.</li>
+<li>You can continue to do this indefinitely.</li>
 </ol>
 <blockquote>
-<p><strong>Note:</strong> You can play pause, stop or record stream flux with the standard <strong>CONTROL</strong> command using the <strong>control_type_t</strong> structure.</p>
+<p><strong>Note:</strong> You can play, pause, stop or record a stream flux with the standard <strong>CONTROL</strong> command using the <strong>control_type_t</strong> structure.</p>
 </blockquote>
 <h2><a class="header" href="#how-to-use-it" id="how-to-use-it">How to use it</a></h2>
-<p><strong>A streaming channel is always created by the strict real-time container.</strong> The other container (the no-real-time one) will just send or receive its data chunks using <a href="./msg-handling.html#large-data">large data messages</a>.</p>
+<p><strong>A streaming channel is always created by the strict real-time container.</strong> The other container (the non-real-time one) will just send or receive its data chunks using <a href="./msg-handling.html#large-data">large data messages</a>.</p>
 <h3><a class="header" href="#streaming-channel-creation" id="streaming-channel-creation">Streaming channel creation</a></h3>
-<p>Before starting using streaming method, you have to create a streaming channel linked to a buffer into the init function of your real-time container:</p>
+<p>Before starting to use the streaming method, you have to create a streaming channel linked to a buffer into the init function of your real-time container:</p>
 <pre><code class="language-c">#define BUFFER_SIZE 1024
 volatile angular_position_t trajectory_ring_buf[BUFFER_SIZE];
 streaming_channel_t trajectory;
@@ -243,8 +243,8 @@ void Motor_Init(void) {
 </code></pre>
 <p>Now you can use this channel to receive or transmit a streaming flux:</p>
 <ul>
-<li><strong>reception</strong> is adapted to make our motor move smoothly. A no-real-time container will send us parts of trajectory approximately each second and our motor will consume angular position at 200Hz.</li>
-<li><strong>transmission</strong> is adapted to measure precisely the movements of the motor. We can use it to send in a no-real-time way real-time data. In our motor it could be angular position measurement at 200Hz for example.</li>
+<li><strong>reception</strong> is suited to make our motor move smoothly. A no-real-time container will send us parts of trajectory approximately each second and our motor will consume angular position at 200Hz.</li>
+<li><strong>transmission</strong> is suited to measure precisely the movements of the motor. We can use it to send in a non-real-time way real-time data. In our motor it could be angular position measurement at 200Hz for example.</li>
 </ul>
 <h3><a class="header" href="#streaming-reception" id="streaming-reception">Streaming reception</a></h3>
 <p>This is used to make the motor move.<br/>
@@ -270,7 +270,7 @@ First you have to put values into your streaming channel at 200Hz:</p>
     Stream_PutSample(&amp;trajectory, &amp;motor.angular_position);
 }
 </code></pre>
-<p>This way, samples are buffered into your ring buffer, and you can send this real-time information as you want. For example only when someone ask you to:</p>
+<p>This way, samples are buffered into your ring buffer, and you can send this real-time information as you want:</p>
 <pre><code class="language-C">void Motor_MsgHandler(container_t *container, msg_t *msg) {
    msg_t pub_msg;
    // check message command
@@ -283,7 +283,7 @@ First you have to put values into your streaming channel at 200Hz:</p>
    }
 }
 </code></pre>
-<p>The <code>Luos_SendStreaming</code> function sends data available on your streaming channel. You can continue to feed your channel with samples at the same time.</p>
+<p>The <code>Luos_SendStreaming</code> function sends available data on your streaming channel. You can continue to feed your channel with samples at the same time.</p>
 <blockquote>
 <p><strong>Warning:</strong> This example doesn't work if your container is configured as real-time. Please read <a href="./rt-config.html">Message Handling configuration page</a> for more informations.</p>
 </blockquote>

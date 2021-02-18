@@ -190,7 +190,7 @@
                     <div id="content" class="content">
                         <main>
                             <h1><a class="header" href="#general-guide-to-luos-technology" id="general-guide-to-luos-technology">General guide to Luos technology</a></h1>
-<p>Luos is a simple and lightweight containerization platform dedicated to embedded systems enabling <a href="https://en.wikipedia.org/wiki/Microservices" target="_blank">microservices</a> architecture for electronics. It's a powerful tool using modularity to simplify and link any hardware component or application code together as a <a href="https://en.wikipedia.org/wiki/Single_system_image" target="_blank">single system image</a>.</p>
+<p>Luos is a simple and lightweight containerization platform dedicated to embedded systems enabling a <a href="https://en.wikipedia.org/wiki/Microservices" target="_blank">microservices</a> architecture for electronics. It's a powerful tool using modularity to simplify and link any hardware component or application code together as a <a href="https://en.wikipedia.org/wiki/Single_system_image" target="_blank">single system image</a>.</p>
 <p>This guide contains all the basic notions you will need to use, create and understand Luos technology.</p>
 <p>Luos is a low-level software technology uploaded into every board's (<span class="cust_tooltip"><a href="#what-is-a-node"><strong>node</strong></a><span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several containers.</span></span>) of a device.
 You can use Luos as a <strong>bare metal</strong> lib or as a driver into your <strong>embedded OS</strong>.</p>
@@ -207,18 +207,18 @@ In the Luos philosophy, each node has to carry the necessary programs (container
 <p>For example, the <a href="../demo_boards/boards_list/dxl.html">Dynamixel board</a> provided by Luos can dynamically create and manage Dynamixel containers depending on the number of Dynamixel motors linked to it. Any Dynamixel containers can get or set values to other Dynamixel containers on the same node or to any other containers in any other nodes in the network.</p>
 <p><a href="../low/containers.html">Go to Containers page</a>.</p>
 <h2><a class="header" href="#messages" id="messages">Messages</a></h2>
-<p>All containers can share and receive datas using messages.</p>
+<p>All containers can share and receive data using messages.</p>
 <p><a href="../low/containers/msg-handling.html">Go to Messages handling page</a>.</p>
 <h2><a class="header" href="#routing-table" id="routing-table">Routing table</a></h2>
-<p>A routing table is a &quot;service&quot; managed by the Luos network and available for any containers in any nodes. This service lists all the containers and allows to any containers to get and use basic information of any other containers. The routing table's data can be loaded or auto-generated during detection.</p>
+<p>A routing table is a &quot;service&quot; managed by the Luos network and available for any containers on any nodes. This service lists all the containers on the network and allows any containers to access and use basic information of any other containers. The routing table's data can be loaded or auto-generated during detection.</p>
 <p><a href="../low/containers/routing-table.html">Go to Routing table page</a>.</p>
 <h2><a class="header" href="#container-detection" id="container-detection">Container detection</a></h2>
 <p>The container detection assigns IDs to containers depending on their node's physical position in the network, and generates a routing table.</p>
 <p>IDs are assigned from the nearest to the furthest node branch by branch, from the point of view of the container running the detection. Following this logic, the container running the detection will have the ID 1, the next one will have the ID 2, etc.</p>
 <blockquote>
-<p><em>Note:</em> Multiple detection by different containers at the same time is not allowed.</p>
+<p><em>Note:</em> Multiple detections by different containers at the same time is not allowed.</p>
 </blockquote>
-<p>It's possible to detect the network frequently in order to dynamically discover included or excluded containers while running. Go to <a href="../low/containers/routing-table.html">Routing table</a> page for more informations.</p>
+<p>It is possible to execute a detection on the network frequently in order to dynamically discover included or excluded containers while running. Go to <a href="../low/containers/routing-table.html">Routing table</a> page for more information.</p>
 
 
                             <div class="cust_edit_page"><a id="gh_link">Contribute to this page</a>&nbsp;|&nbsp;<a id="feedback" style="cursor: pointer; color: #FF0000" onclick="openFeedback()">This page wasn't helpful? &#128078;</a></div><div align="right" style="float: right; height: 30px; width: 400px; position: relative; top: -18px;"><a class="github-button" href="https://github.com/Luos-io" data-show-count="true" aria-label="Follow @Luos-io on GitHub">Follow @Luos-io</a>&nbsp;<a class="github-button" href="https://github.com/Luos-io/Luos/subscription" data-icon="octicon-eye" data-show-count="true" aria-label="Watch Luos-io/Luos on GitHub">Watch</a>&nbsp;<a class="github-button" href="https://github.com/Luos-io/Luos" data-icon="octicon-star" data-show-count="true" aria-label="Star Luos-io/Luos on GitHub">Star</a></div>
