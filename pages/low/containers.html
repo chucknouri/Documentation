@@ -186,13 +186,13 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#containers" id="containers">Containers</a></h1>
+                            <h1 id="containers"><a class="header" href="#containers">Containers</a></h1>
 <p>A container is a block of code which will provide functionality. Containers are able to communicate with any other containers present in the Luos network. </p>
 <p>A container can be an <a href="./containers/create-containers.html#apps-guidelines">application</a> or a <a href="./containers/create-containers.html#drivers-guidelines">driver</a>.</p>
 <p>Each container provides a particular set of tasks such as managing a motor, handling a laser range finder, or more complex operations like computing an inverse-kinematics.</p>
 <p>Each container is hosted in a single <span class="cust_tooltip">node<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several containers.</span></span> (MCU), but a node can handle several containers at the same time and manage communication between them and between other containers hosted in other nodes, using the same network interface.</p>
 <p><strong>As a developer you will always develop your functionalities into containers, and never into the <code>main()</code> program.</strong> The only information that should be put on the <code>main()</code> code are MCU setup parameters and containers' run functions.</p>
-<h2><a class="header" href="#container-properties" id="container-properties">Container properties</a></h2>
+<h2 id="container-properties"><a class="header" href="#container-properties">Container properties</a></h2>
 <p>To properly work, each container has some properties allowing other containers to recognize and access it:</p>
 <table><thead><tr><th align="center">Name</th><th align="center">Description</th><th align="center">Format</th></tr></thead><tbody>
 <tr><td align="center"><strong>ID</strong></td><td align="center">The ID is a unique number given to each container depending on their physical position. The system automatically assigns each ID during the <a href="../overview/general-basics.html#container-detection">detection phase</a>. If you move a container from a microcontroller A to a microcontroller B on a given device, the ID will change. In the same way, if you change the wiring order of a microcontroler on the network on a given device, the ID will change too.</td><td align="center">Integer<br />e.g. <code>Id=1</code></td></tr>

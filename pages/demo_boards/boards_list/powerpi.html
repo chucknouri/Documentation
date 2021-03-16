@@ -186,7 +186,7 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#power-pi-board" id="power-pi-board">Power Pi board</a></h1>
+                            <h1 id="power-pi-board"><a class="header" href="#power-pi-board">Power Pi board</a></h1>
 <div class="cust_sheet" markdown="1">
 <p class="cust_sheet-title" markdown="1"><strong>Default Alias:</strong> gate</p>
 <p class="cust_sheet-title" markdown="1"><strong>Type:</strong> <a href="../../high/containers_list/gate.html">Gate</a></p>
@@ -202,10 +202,10 @@
 <p class="cust_sheet-title" markdown="1"><strong>Project source </strong></p>
 <a class="github-button" data-size="large" aria-label="Star Luos-io/Luos on GitHub" href="https://github.com/Luos-io/Examples/blob/master/Projects/l0/Gate" target="_blank">Gate</a>
 </div>
-<h2><a class="header" href="#power-pi-board-1" id="power-pi-board-1">Power Pi board</a></h2>
+<h2 id="power-pi-board-1"><a class="header" href="#power-pi-board-1">Power Pi board</a></h2>
 <p>The Power Pi board links any Raspberry Pi-like board to a Luos network. This board allows you to convert the Luos network power into 5V and up to 2A in order to power your Raspberry Pi or Odroid without any other power source. This board hosts a Gate container allowing to your Raspberry Pi to control your entire Luos network using Pyluos or any other language as a <a href="https://en.wikipedia.org/wiki/Single_system_image" target="_blank">single system image</a>.
 The Power Pi board supports 5V to 24V DC input.</p>
-<h2><a class="header" href="#connection-of-power-pi-board-to-a-raspberry-pi" id="connection-of-power-pi-board-to-a-raspberry-pi">Connection of Power Pi board to a Raspberry Pi</a></h2>
+<h2 id="connection-of-power-pi-board-to-a-raspberry-pi"><a class="header" href="#connection-of-power-pi-board-to-a-raspberry-pi">Connection of Power Pi board to a Raspberry Pi</a></h2>
 <p>The connection of the Power Pi board to an ODrive board or to a Raspberry Pi board is made according to the following images.</p>
 <blockquote>
 <p><strong>Warning:</strong> Be sure to plug the board on the right pins of the Raspberry Pi, and facing the right side. A bad connection may damage both boards.</p>
@@ -214,17 +214,17 @@ The Power Pi board supports 5V to 24V DC input.</p>
 <em>Red rectangles show where to plug the Power Pi board on an ODrive board (left) and on a Raspberry Pi board (right).</em></p>
 <p><img src="../../../_assets/img/power-pi-2.png" alt="Preview" /><br />
 <em>On the left, a Power Pi board connected to an ODrive board; on the right, a Power Pi board connected to a Raspberry Pi board.</em></p>
-<h2><a class="header" href="#how-to-easily-start-to-create-your-code-using-this-board" id="how-to-easily-start-to-create-your-code-using-this-board">How to easily start to create your code using this board</a></h2>
+<h2 id="how-to-easily-start-to-create-your-code-using-this-board"><a class="header" href="#how-to-easily-start-to-create-your-code-using-this-board">How to easily start to create your code using this board</a></h2>
 <p>Coding on a Raspberry Pi in a device can be quite boring. Generally, you can't connect any screen and keyboard to work properly.
 That's why we created a small piece of code allowing to convert the Gate container stream into Web Socket messages.
 By using this Web Socket, you can connect Pyluos or any other lib you created to your Raspberry Pi. This way you can create and execute your device's behaviors directly on your computer.
 When your behavior is complete and tested on your device, you just have to copy it into your Raspberry Pi to obtain an autonomous device.</p>
 <p>To setup this pipe on your Raspberry Pi, please <a href="https://community.luos.io/t/create-a-web-socket-pipe-to-luos-network-using-raspberry-pi/197" target="_blank">follow the tutorial on our forum</a>.</p>
-<h2><a class="header" href="#how-to-setup-your-power-pis-gate" id="how-to-setup-your-power-pis-gate">How to setup your Power Pi's Gate</a></h2>
+<h2 id="how-to-setup-your-power-pis-gate"><a class="header" href="#how-to-setup-your-power-pis-gate">How to setup your Power Pi's Gate</a></h2>
 <p>You need to setup the Power Pi board before to start using it.</p>
 <p>First, you have to connect your Raspberry Pi to the Gate network.</p>
 <p>Several solution exist to configure the Raspberry Pi’s Gate, we provide you with two of them according to your setup:</p>
-<h3><a class="header" href="#first-solution-with-a-computer-and-the-raspberry-pis-sd-card" id="first-solution-with-a-computer-and-the-raspberry-pis-sd-card">First solution: with a computer and the Raspberry Pi’s SD card</a></h3>
+<h3 id="first-solution-with-a-computer-and-the-raspberry-pis-sd-card"><a class="header" href="#first-solution-with-a-computer-and-the-raspberry-pis-sd-card">First solution: with a computer and the Raspberry Pi’s SD card</a></h3>
 <p>You will need the following parts:</p>
 <ul>
 <li>A micro SD to SD card adapter</li>
@@ -248,7 +248,7 @@ network={
 <p>Choose the country according to where you live, and replace <code>SSID-Internet-box</code> by the SSID of your internet device, and <code>Secured-key</code> by the password.</p>
 <p>Save the file and eject the SD card. Replace it into the Raspberry Pi’s slot.</p>
 <p>The Raspberry Pi can be located with the expression <code>raspberrypi.local</code>, thanks to the software <em>Bonjour</em>.</p>
-<h3><a class="header" href="#second-solution-with-a-screen-and-a-keyboard" id="second-solution-with-a-screen-and-a-keyboard">Second solution: with a screen and a keyboard</a></h3>
+<h3 id="second-solution-with-a-screen-and-a-keyboard"><a class="header" href="#second-solution-with-a-screen-and-a-keyboard">Second solution: with a screen and a keyboard</a></h3>
 <p><img src="../../../_assets/img/rpi-setup.jpg" alt="Raspberry-Pi connection" /></p>
 <p>In order to establish a connection, you will need:</p>
 <ul>
@@ -279,11 +279,11 @@ Password: raspberry
 <blockquote>
 <p><strong>Warning:</strong> The Power Pi board doesn’t belong to the Power category. Using the power input of your Raspberry Pi doesn’t allow you to supply the others boards in the Luos network. In order to make it work properly, please use a power board on your system.</p>
 </blockquote>
-<h2><a class="header" href="#how-to-use-your-power-pi-board" id="how-to-use-your-power-pi-board">How to use your Power Pi board</a></h2>
-<h3><a class="header" href="#power" id="power">Power</a></h3>
+<h2 id="how-to-use-your-power-pi-board"><a class="header" href="#how-to-use-your-power-pi-board">How to use your Power Pi board</a></h2>
+<h3 id="power"><a class="header" href="#power">Power</a></h3>
 <p>Please note that the Power Pi board connected to the Raspberry Pi is already powered by the Luos network, through the power boards you use (Power board or Battery board).</p>
 <p>However, <strong>the USB board can’t power the Raspberry Pi board</strong>, because several voltage transformations are applied along the network. You can also use an universal power supply (+5.1V micro USB) directly plugged to the Raspberry Pi.</p>
-<h3><a class="header" href="#communication-mode" id="communication-mode">Communication mode</a></h3>
+<h3 id="communication-mode"><a class="header" href="#communication-mode">Communication mode</a></h3>
 <p>By default, your Raspberry Pi starts a Luos service at boot called <em>pyluos-usb2ws</em>. This service creates a pipe between a <strong>websocket</strong> opened on <strong>port 9342</strong>, and the Luos system. If you send standard Luos Json data into this web socket, it is directly sent into the Luos network.</p>
 <p>This way, you can control your device from your computer even if it is moving or dispatched. For example, if you are using Pyluos to control your device, you can start your program with:</p>
 <pre><code class="language-python">from pyluos import Device
@@ -292,7 +292,7 @@ device.containers
 </code></pre>
 <p>In this example, you can replace <code>raspberrypi.local</code> by your Raspberry Pi’s IP or hostname.</p>
 <p>You should see the list of containers connected to the Power Pi board.</p>
-<h3><a class="header" href="#cognition-mode" id="cognition-mode">Cognition mode</a></h3>
+<h3 id="cognition-mode"><a class="header" href="#cognition-mode">Cognition mode</a></h3>
 <p>Also, you can use your Raspberry Pi like an embedded computer for your device.</p>
 <p>To send your Json data to your network, please use the serial port <code>/dev/ttyAMA0</code> of your Raspberry Pi, as you can do it with the USB board.</p>
 

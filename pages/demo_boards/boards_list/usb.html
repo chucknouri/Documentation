@@ -186,7 +186,7 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#usb-board" id="usb-board">USB board</a></h1>
+                            <h1 id="usb-board"><a class="header" href="#usb-board">USB board</a></h1>
 <div class="cust_sheet" markdown="1">
 <p class="cust_sheet-title" markdown="1"><strong>Default Alias:</strong> gate</p>
 <p class="cust_sheet-title" markdown="1"><strong>Type:</strong> <a href="../../high/containers_list/gate.html">Gate</a></p>
@@ -201,43 +201,43 @@
 <p class="cust_sheet-title" markdown="1"><strong>Project source </strong></p>
 <a class="github-button" data-size="large" aria-label="Star Luos-io/Luos on GitHub" href="https://github.com/Luos-io/Examples/blob/master/Projects/l0/Gate" target="_blank">Gate</a>
 </div>
-<h2><a class="header" href="#driver-installation" id="driver-installation">Driver installation</a></h2>
+<h2 id="driver-installation"><a class="header" href="#driver-installation">Driver installation</a></h2>
 <p>With Windows, you must install <code>VCP</code> and <code>D2XX</code> drivers first. They are available for download on these pages:</p>
 <p><a href="https://www.ftdichip.com/Drivers/VCP.htm" target="_blank">https://www.ftdichip.com/Drivers/VCP.htm</a></p>
 <p><a href="https://www.ftdichip.com/Drivers/D2XX.htm" target="_blank">https://www.ftdichip.com/Drivers/D2XX.htm</a></p>
 <p>Select the files to download according to your system (x86 or x64) and install them on your computer.</p>
-<h2><a class="header" href="#how-to-connect-the-usb-board-to-your-computer" id="how-to-connect-the-usb-board-to-your-computer">How to connect the USB board to your computer</a></h2>
+<h2 id="how-to-connect-the-usb-board-to-your-computer"><a class="header" href="#how-to-connect-the-usb-board-to-your-computer">How to connect the USB board to your computer</a></h2>
 <p>There are 2 micro-USB ports, but one of them is only used to manually update the board. The other one is the one we will use in this page.</p>
 <p>The right USB port used on this page is the one at the opposite of the 2 Luos connectors.</p>
 <p><img src="../../../_assets/img/usb-1.jpg" alt="USB board" /></p>
-<h2><a class="header" href="#how-to-use-the-usb-board" id="how-to-use-the-usb-board">How to use the USB board</a></h2>
+<h2 id="how-to-use-the-usb-board"><a class="header" href="#how-to-use-the-usb-board">How to use the USB board</a></h2>
 <p>Luos' USB board acts like a serial port on your system.
 To control your device, you have to get and set Json data into the serial port opened by the USB board. In order do that with Pyluos, you can use the following python code:</p>
 <pre><code class="language-python">from pyluos import Device
 device = Device('COM13')
 device.containers
 </code></pre>
-<h3><a class="header" href="#on-windows" id="on-windows">On Windows</a></h3>
+<h3 id="on-windows"><a class="header" href="#on-windows">On Windows</a></h3>
 <p>On Windows, a <em>COM</em> port is usually used (like <code>COM1</code>, <code>COM2</code>, <code>COM3</code>, etc.). It can be found in <em>Device Manager</em> (right-click on <em>Start</em> button), after it’s plugged:</p>
 <p><img src="../../../_assets/img/usb-2.png" alt="Port COM" /></p>
 <p>Once the port is known, the connexion can be set on Pyluos with python:</p>
 <pre><code class="language-python">device = Device('COM27')
 </code></pre>
-<h3><a class="header" href="#on-macos" id="on-macos">On MacOS</a></h3>
+<h3 id="on-macos"><a class="header" href="#on-macos">On MacOS</a></h3>
 <p>To list the available serial ports, use the following command line:</p>
 <pre><code class="language-bash">ls /dev/cu.usbserial-*
 </code></pre>
 <p>Once the port is known, the connexion can be set on Pyluos with python:</p>
 <pre><code class="language-python">device = Device('/dev/cu.usbserial-DN30VKKB')
 </code></pre>
-<h3><a class="header" href="#on-linux" id="on-linux">On Linux</a></h3>
+<h3 id="on-linux"><a class="header" href="#on-linux">On Linux</a></h3>
 <p>To list the available serial ports, type the following in a terminal:</p>
 <pre><code class="language-bash">dmesg | grep tty
 </code></pre>
 <p>Once the port is known, the connexion can be set on Pyluos with python:</p>
 <pre><code class="language-python">device = Device('/dev/ttyS0')
 </code></pre>
-<h3><a class="header" href="#serial-connectivity-with-other-languages" id="serial-connectivity-with-other-languages">Serial connectivity with other languages</a></h3>
+<h3 id="serial-connectivity-with-other-languages"><a class="header" href="#serial-connectivity-with-other-languages">Serial connectivity with other languages</a></h3>
 <p>In order to communicate from a computer to a Luos network through a gate, a serial connection can be established. This serial connectivity must have the following parameters:</p>
 <ul>
 <li>Baudrate: 1,000,000 Bits/s</li>
@@ -310,7 +310,7 @@ device.containers
  usleep(500000);
 }
 </code></pre>
-<h2><a class="header" href="#usb-board-power-delivery" id="usb-board-power-delivery">USB board power delivery</a></h2>
+<h2 id="usb-board-power-delivery"><a class="header" href="#usb-board-power-delivery">USB board power delivery</a></h2>
 <p>The USB board power-delivery in the Luos network is limited to <code>500 mA</code>. This board can’t power too many boards and power-demanding ones like, for example, a DC-motor board with one or two motors connected. If you experiment power issues, feel free to add a power category board like a <a href="./jack-power-input.html">Jack power input board</a>.</p>
 
 

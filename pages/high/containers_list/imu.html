@@ -186,7 +186,7 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#imu-container-type" id="imu-container-type">Imu container type</a></h1>
+                            <h1 id="imu-container-type"><a class="header" href="#imu-container-type">Imu container type</a></h1>
 <p>The Imu container handles an inertial sensor.</p>
 <p>Its type has access to all common capabilities.</p>
 <p>Imu containers can measure:</p>
@@ -211,11 +211,11 @@
 <pre><code class="language-python">device.Imu_mod.linear_acceleration = False
 </code></pre>
 <hr />
-<h2><a class="header" href="#functions" id="functions">Functions</a></h2>
+<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
 <table><thead><tr><th align="center"><strong>Function name and parameters</strong></th><th align="center"><strong>Action</strong></th><th align="center"><strong>Comment</strong></th></tr></thead><tbody>
 <tr><td align="center">control(self)</td><td align="center">Displays container type graphical interface</td><td align="center">Only available using Jupyter notebook</td></tr>
 </tbody></table>
-<h2><a class="header" href="#variables" id="variables">Variables</a></h2>
+<h2 id="variables"><a class="header" href="#variables">Variables</a></h2>
 <table><thead><tr><th align="center"><strong>Variable name</strong></th><th align="center"><strong>Action</strong></th><th align="center"><strong>Type</strong></th></tr></thead><tbody>
 <tr><td align="center">compass</td><td align="center">Magnetic field data in micro-tesla on each axis</td><td align="center">read only: [Float, Float, Float]</td></tr>
 <tr><td align="center">compass</td><td align="center">Starts/Stops compass measurement actualization</td><td align="center">write only: Boolean (True or False)</td></tr>
@@ -240,7 +240,7 @@
 <tr><td align="center">walk_time</td><td align="center">Duration (second) of the walk</td><td align="center">read only: Float</td></tr>
 <tr><td align="center">walk_time</td><td align="center">Starts/Stops walk_time measurement actualization</td><td align="center">write only: Boolean (True or False)</td></tr>
 </tbody></table>
-<h2><a class="header" href="#ros-topics" id="ros-topics">ROS topics</a></h2>
+<h2 id="ros-topics"><a class="header" href="#ros-topics">ROS topics</a></h2>
 <table><thead><tr><th align="left"><strong>Topic name</strong></th><th align="center"><strong>Message type</strong></th></tr></thead><tbody>
 <tr><td align="left">/Imu_mod/variables/pedometer/read</td><td align="center">std_msgs/msg/UInt32</td></tr>
 <tr><td align="left">/Imu_mod/variables/pedometer/write</td><td align="center">std_msgs/msg/Bool</td></tr>
@@ -254,7 +254,7 @@
 <tr><td align="left">/Imu_mod/imu</td><td align="center">sensor_msgs/msg/Imu</td></tr>
 <tr><td align="left">/Imu_mod/compass</td><td align="center">sensor_msgs/msg/MagneticField</td></tr>
 </tbody></table>
-<h2><a class="header" href="#example-of-use-of-your-imu-container-using-jupyter-notebook" id="example-of-use-of-your-imu-container-using-jupyter-notebook">Example of use of your IMU container using Jupyter notebook</a></h2>
+<h2 id="example-of-use-of-your-imu-container-using-jupyter-notebook"><a class="header" href="#example-of-use-of-your-imu-container-using-jupyter-notebook">Example of use of your IMU container using Jupyter notebook</a></h2>
 <p>In this example, we will display in 3D the rotation sensor by using quaternions. In order to do that, we will use the <em>pythreejs</em> lib and <em>jupyter notebook</em>.</p>
 <p>First, install and enable this library by typing these commands in a terminal:</p>
 <pre><code class="language-bash">pip install pythreejs

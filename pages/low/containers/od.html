@@ -186,15 +186,15 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#object-dictionary" id="object-dictionary">Object Dictionary</a></h1>
+                            <h1 id="object-dictionary"><a class="header" href="#object-dictionary">Object Dictionary</a></h1>
 <p>To keep interoperability between <span class="cust_tooltip">containers<span class="cust_tooltiptext">Software element run by Luos that can communicate with other containers. It can be a driver or an app. (Initially called a module)</span></span>, Luos provides an Object Dictionary (OD).</p>
-<h2><a class="header" href="#what-is-od" id="what-is-od">What is OD?</a></h2>
+<h2 id="what-is-od"><a class="header" href="#what-is-od">What is OD?</a></h2>
 <p>An Object Dictionary (OD) allows different developers of different containers to make them interoperate regardless of the unit they use on the container.</p>
 <p>Let's take an example: If container1 uses an angle as radians and container2 uses degrees, what is the unit they should use to share the angle information?</p>
 <p>An Object Dictionary defines a set of typical objects that can be transmitted through Luos messages. It allows to send these objects with a predefined type and to use it in the units the user want.</p>
-<h2><a class="header" href="#how-is-it-managed-in-luos" id="how-is-it-managed-in-luos">How is it managed in Luos?</a></h2>
+<h2 id="how-is-it-managed-in-luos"><a class="header" href="#how-is-it-managed-in-luos">How is it managed in Luos?</a></h2>
 <p>Luos defines objects based on physical values following the SI standard.</p>
-<h3><a class="header" href="#object-and-types" id="object-and-types">Object and types</a></h3>
+<h3 id="object-and-types"><a class="header" href="#object-and-types">Object and types</a></h3>
 <p>Each object in the Object Dictionary has a specific Type. For example:</p>
 <pre><code class="language-c">// Define object angular_position as an angular_position_t type
 angular_position_t angular_position; 
@@ -205,9 +205,9 @@ angular_position_t angular_position = AngularOD_PositionTo_deg (12.0);
 </code></pre>
 <p>Following this rule, everybody will be able to use your values.</p>
 <p>All the types are listed in the <a href="#types-and-units-table-summary">table summary</a> at the end of this page.</p>
-<h2><a class="header" href="#conversions" id="conversions">Conversions</a></h2>
+<h2 id="conversions"><a class="header" href="#conversions">Conversions</a></h2>
 <p>As many units exist, many conversion functions are available. As a result, they follow a <strong>logic naming rules</strong> in order to easily find a desired function without having to search for it.</p>
-<h3><a class="header" href="#unit-conversions" id="unit-conversions">Unit conversions</a></h3>
+<h3 id="unit-conversions"><a class="header" href="#unit-conversions">Unit conversions</a></h3>
 <p>There are two types of unit conversion: in one way (OD type from desired unit), and in the other way (OD type to desired unit):</p>
 <ul>
 <li><strong><code>from</code> conversion:</strong> Converts a value with a defined unit into a desired OD type. Format:  <code>[type_var] = [type]From_[unit]([value])</code></li>
@@ -221,7 +221,7 @@ linear_position_t LinearOD_PositionFrom_mm(float mm);
 <pre><code class="language-c">// convert the variable linear_position into a mm
 float LinearOD_PositionTo_mm(linear_position_t linear_position); 
 </code></pre>
-<h3><a class="header" href="#messages-conversions" id="messages-conversions">Messages conversions</a></h3>
+<h3 id="messages-conversions"><a class="header" href="#messages-conversions">Messages conversions</a></h3>
 <p>In the same way, both conversion are available for messages (OD type from message and OD type to message):</p>
 <ul>
 <li><strong><code>from</code> conversion:</strong> Gets a type from a message. Format: <code>[type]FromMsg([type_var], msg)</code></li>
@@ -235,7 +235,7 @@ void LinearOD_PositionFromMsg(linear_position_t* linear_position, msg_t* msg);
 <pre><code class="language-c">// insert the linear_position into the message msg
 void LinearOD_PositionToMsg(linear_position_t* linear_position, msg_t* msg);
 </code></pre>
-<h2><a class="header" href="#types-and-units-table-summary" id="types-and-units-table-summary">Types and units table summary</a></h2>
+<h2 id="types-and-units-table-summary"><a class="header" href="#types-and-units-table-summary">Types and units table summary</a></h2>
 <p>Here are listed the existing types:</p>
 <table><thead><tr><th align="center">Type</th><th align="center">Available prefix and other units</th></tr></thead><tbody>
 <tr><td align="center">linear_position</td><td align="center">nm, μm, mm, cm, m, km, in, ft, mi</td></tr>

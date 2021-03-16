@@ -186,10 +186,10 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#a-hrefpyluos-classheader-idpyluosimg-src_assetsimgpython-logopng-width80px--a-pyluos-guidea" id="a-hrefpyluos-classheader-idpyluosimg-src_assetsimgpython-logopng-width80px--a-pyluos-guidea"><a href="#pyluos" class="header" id="pyluos"><img src="../../_assets/img/python-logo.png" width="80px"> / A Pyluos guide</a></a></h1>
+                            <h1 id="a-hrefpyluos-classheader-idpyluosimg-src_assetsimgpython-logopng-width80px--a-pyluos-guidea"><a class="header" href="#a-hrefpyluos-classheader-idpyluosimg-src_assetsimgpython-logopng-width80px--a-pyluos-guidea"><a href="#pyluos" class="header" id="pyluos"><img src="../../_assets/img/python-logo.png" width="80px"> / A Pyluos guide</a></a></h1>
 <p>Pyluos is the standard Python library to manage a Luos system with a computer. In this tutorial, you will learn how to install Pyluos in order to use Luos with Python on a computer, through a  <a href="./containers_list/gate.html"><em>gate</em></a> container.</p>
-<h2><a class="header" href="#installation" id="installation">Installation</a></h2>
-<h3><a class="header" href="#required-installing-python-and-pip" id="required-installing-python-and-pip">Required: Installing Python and Pip</a></h3>
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
+<h3 id="required-installing-python-and-pip"><a class="header" href="#required-installing-python-and-pip">Required: Installing Python and Pip</a></h3>
 <blockquote>
 <p><strong>Warning:</strong> In order to use Pyluos library, Python and the Pip package manager must be installed on your computer.</p>
 </blockquote>
@@ -200,7 +200,7 @@
 <pre><code class="language-bash">curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python get-pip.py
 </code></pre>
-<h3><a class="header" href="#installing-jupyter-notebook" id="installing-jupyter-notebook">Installing Jupyter Notebook</a></h3>
+<h3 id="installing-jupyter-notebook"><a class="header" href="#installing-jupyter-notebook">Installing Jupyter Notebook</a></h3>
 <p>The tool <em>Jupyter Notebook</em> is needed for this tutorial. Jupyter Notebook will allow you to type Python commands in an internet browser to communicate with a Luos system, via Pyluos.</p>
 <p><em>« The Jupyter Notebook App is a server-client application that allows editing and running notebook documents via a web browser. The Jupyter Notebook App can be executed on a local desktop requiring no internet access (...) or can be installed on a remote server and accessed through the internet. » (<small><a href="https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html" target="_blank">Source</a></small>)</em></p>
 <p>Type the following command in the console to install Jupyter:</p>
@@ -209,7 +209,7 @@ python get-pip.py
 <blockquote>
 <p><strong>Note:</strong> Feel free to consult <a href="https://jupyter.readthedocs.io/en/latest/content-quickstart.html" target="_blank"><em>Jupyter Notebook</em>'s</a> documentation.</p>
 </blockquote>
-<h3><a class="header" href="#installing-or-updating-pyluos-library" id="installing-or-updating-pyluos-library">Installing or updating Pyluos library</a></h3>
+<h3 id="installing-or-updating-pyluos-library"><a class="header" href="#installing-or-updating-pyluos-library">Installing or updating Pyluos library</a></h3>
 <p>You are now ready to install Pyluos. <strong>The last Pyluos version is <code>1.4.0</code>.</strong></p>
 <p>In a console, the following command will install the <em>Pyluos</em> library using the <em>Pip package manager</em>:</p>
 <pre><code class="language-bash">pip install pyluos
@@ -220,7 +220,7 @@ python get-pip.py
 <p>Pyluos also provides auto generated pre-releases for advanced developers user. You can get it using:</p>
 <pre><code class="language-bash">pip install --pre pyluos
 </code></pre>
-<h2><a class="header" href="#start-using-jupyter-notebook-and-pyluos" id="start-using-jupyter-notebook-and-pyluos">Start using Jupyter Notebook and Pyluos</a></h2>
+<h2 id="start-using-jupyter-notebook-and-pyluos"><a class="header" href="#start-using-jupyter-notebook-and-pyluos">Start using Jupyter Notebook and Pyluos</a></h2>
 <p><em>Jupyter Notebook</em> can be launched through a console:</p>
 <pre><code class="language-bash">jupyter notebook
 </code></pre>
@@ -232,14 +232,14 @@ python get-pip.py
 <p><img src="../../_assets/img/pyluos-2.png" alt="Jupyter" /></p>
 <p>The Jupyter work-space looks like the following image. On the keyboard,  <code>Shift+Enter</code> executes any selected part of code.</p>
 <p>Now you are ready to code using Python.</p>
-<h3><a class="header" href="#import-pyluos" id="import-pyluos">Import Pyluos</a></h3>
+<h3 id="import-pyluos"><a class="header" href="#import-pyluos">Import Pyluos</a></h3>
 <p>The first thing to do is to call the Pyluos library along with the <code>Device</code> tool inside that library:</p>
 <pre><code class="language-python">from pyluos import Device
 </code></pre>
 <p>This line is always used while programming behaviors and should be called before any connection with the device is made.</p>
-<h3><a class="header" href="#device-connection" id="device-connection">Device connection</a></h3>
+<h3 id="device-connection"><a class="header" href="#device-connection">Device connection</a></h3>
 <p>Connect your device to your computer through a <a href="../demo_boards/boards_list/usb.html">Gate</a> with a USB cable.</p>
-<h4><a class="header" href="#configuring-usb-transfer-sizes-and-latency-timer" id="configuring-usb-transfer-sizes-and-latency-timer">Configuring USB transfer sizes and latency timer</a></h4>
+<h4 id="configuring-usb-transfer-sizes-and-latency-timer"><a class="header" href="#configuring-usb-transfer-sizes-and-latency-timer">Configuring USB transfer sizes and latency timer</a></h4>
 <p>Some devices may not work properly with the default USB transfer sizes and latency timer for COM ports on Windows. These parameters can be set to lower values in order to use your device properly while connected to your computer from a <a href="../demo_boards/boards_list/usb.html">Gate</a>.</p>
 <p><strong>USB Transfer Sizes</strong>: Default value is 4096 Bytes, however if you have issues to use your connected device, you should try the minimum possible values both for <code>Receive</code> and <code>Transmit</code>.</p>
 <p><strong>Latency Timer</strong>: Default value is 16 msec, but you can rise lower it to the minimal value of 1 msec.</p>
@@ -250,7 +250,7 @@ python get-pip.py
 <p>Change the desired values.</p>
 <p><img src="../../_assets/img/com-port-adv-settings.png" alt="" /></p>
 <p>These values can give you better results, for example if your device has motors to control.</p>
-<h4><a class="header" href="#connection-to-the-device" id="connection-to-the-device">Connection to the device</a></h4>
+<h4 id="connection-to-the-device"><a class="header" href="#connection-to-the-device">Connection to the device</a></h4>
 <p>Now you should be ready to use the Pyluos library and connect to your device. To do that, you have to create a device object with your device address as an argument.</p>
 <p>Your device address can be an IP address (<code>192.168.0.6</code> or <code>my_device.local</code> for example) or a serial port (<code>COM13</code> on Windows or <code>/dev/cu.usbserial-DN2YEFLN</code> on Mac).</p>
 <pre><code class="language-python">device = Device('address of the device')
@@ -261,7 +261,7 @@ python get-pip.py
 <code>Waiting for first state...</code><br />
 <code>Device setup.</code></p>
 <p>Only once the connection is set it is possible to start programming behaviors.</p>
-<h3><a class="header" href="#routing-table-display" id="routing-table-display">Routing table display</a></h3>
+<h3 id="routing-table-display"><a class="header" href="#routing-table-display">Routing table display</a></h3>
 <p><a href="../low/containers/routing-table.html">Routing table</a> can be easily displayed using Pyluos.</p>
 <p>Pyluos can displays a list of all the containers by filtering the routing table, and their associated characteristics (type, alias and ID).
 To display it, use the following command:</p>
@@ -319,7 +319,7 @@ Angle               potentiometer_m     11
 </code></pre>
 <p>In this example, 3 nodes (MCU) and their associated UUID are listed, along with their containers and associated characteristics (type, alias and ID).
 The characters after each set of node's containers and before the UUID's next node specify which connector is used. For example, <code>1&lt;=&gt;0</code> means the first node is connected from its second connector (1) to the first connector (0) of the next node.</p>
-<h3><a class="header" href="#container-type" id="container-type">Container type</a></h3>
+<h3 id="container-type"><a class="header" href="#container-type">Container type</a></h3>
 <p>Each container has a type (eg. <code>Button</code>, <code>Led</code>, ...).
 You can either retrieve your container's type from the previous code, or with the following line:</p>
 <pre><code class="language-python">device.container_alias.type
@@ -328,7 +328,7 @@ You can either retrieve your container's type from the previous code, or with th
 <blockquote>
 <p><strong>Note:</strong> <em>Unknown</em> container types are defaulty set for custom container types such as some <a href="../low/containers/create-containers.html">Luos apps</a>.</p>
 </blockquote>
-<h3><a class="header" href="#get-and-set-containers-informations" id="get-and-set-containers-informations">Get and set containers informations</a></h3>
+<h3 id="get-and-set-containers-informations"><a class="header" href="#get-and-set-containers-informations">Get and set containers informations</a></h3>
 <p>Once you have detected your containers, you can use these information like variables.</p>
 <p>To access values you have to address them in the device object following this rules :</p>
 <pre><code class="language-python">device.container_alias.variable
@@ -346,7 +346,7 @@ device.button_mod.robus_revision # Returns the version of robus
 </code></pre>
 <p>If you use <em>ipython</em> or <em>Jupyter Notebook</em>, you can use auto-completion using the <code>Tab</code> key to find every available objects and variables.</p>
 <p><img src="../../_assets/img/pyluos-3.png" alt="Auto-completion" /></p>
-<h3><a class="header" href="#change-a-container-name" id="change-a-container-name">Change a container name</a></h3>
+<h3 id="change-a-container-name"><a class="header" href="#change-a-container-name">Change a container name</a></h3>
 <p>The name of any container can be changed by using this code: </p>
 <pre><code class="language-python">device.container_alias.rename(&quot;new_name&quot;)
 </code></pre>
@@ -359,7 +359,7 @@ device.button_mod.robus_revision # Returns the version of robus
 <blockquote>
 <p><strong>Note:</strong> To get back to the container default name, set a void name (<code>&quot;&quot;</code>).</p>
 </blockquote>
-<h3><a class="header" href="#get-a-node-statistics" id="get-a-node-statistics">Get a node statistics</a></h3>
+<h3 id="get-a-node-statistics"><a class="header" href="#get-a-node-statistics">Get a node statistics</a></h3>
 <p>Nodes are able to send back some values representing the sanity of a node. You can use it to evaluate the Luos needs depending on your particular configuration.
 The RAM usage of Luos depends on the number of messages the node has to treat and the max Luos loop delay.</p>
 <pre><code class="language-python">device.container_alias.luos_statistics
@@ -391,7 +391,7 @@ The RAM usage of Luos depends on the number of messages the node has to treat an
 <p>The RAM occupation and message drop number is also related to <strong>Max luos loop delay</strong>. If <strong>Max luos loop delay</strong> is too big, Luos has to buffer more messages between loop executions and consumes more RAM. So you can reduce the RAM consumption and messages dropping by reducing the <strong>Max luos loop delay</strong>. To do that, you have to call the <code>Luos_Loop()</code> function more frequently.</p>
 </li>
 </ul>
-<h3><a class="header" href="#full-script" id="full-script">Full script</a></h3>
+<h3 id="full-script"><a class="header" href="#full-script">Full script</a></h3>
 <pre><code class="language-python">from pyluos import Device
 device = Device('address of the device')
 

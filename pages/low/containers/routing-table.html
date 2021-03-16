@@ -186,13 +186,13 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#routing-table" id="routing-table">Routing Table</a></h1>
+                            <h1 id="routing-table"><a class="header" href="#routing-table">Routing Table</a></h1>
 <blockquote>
 <p><strong>Warning:</strong> Make sure to read and understand how to <a href="./create-containers.html">Create Luos containers</a> before reading this page.</p>
 </blockquote>
 <p>The routing table is a feature of Luos allowing every <span class="cust_tooltip"><a href="../../overview/general-basics.html#container">container</a><span class="cust_tooltiptext">Software element run by Luos that can communicate with other containers. It can be a driver or an app. (Initially called a module)</span></span> to own a &quot;map&quot; (or topology) of the entire network of your device. This map allows containers to know their physical position and to search and interact with other containers easily.<br/>
 This feature is particularly used by apps containers to find other containers they need to interact with. The routing table is shared by the container which launches the detection to other containers, but only apps containers store the routing table internaly.</p>
-<h2><a class="header" href="#detection" id="detection">Detection</a></h2>
+<h2 id="detection"><a class="header" href="#detection">Detection</a></h2>
 <p>The routing table is automatically generated when a network detections is initiated by a container and shared with other containers at the end of the detection. A detection can be initiated by any container, but driver containers should not be able to run it and this kind of features should be only used on app containers by including routingTable.h an using this routing table API.</p>
 <p>To run a detection, type:</p>
 <pre><code class="language-C">RoutingTB_DetectContainers(app);
@@ -205,7 +205,7 @@ When each container in the network has an attributed ID, the detection algorithm
 <blockquote>
 <p><strong>Warning:</strong> Be careful that during a detection, a container can change ID depending on the container running this detection. Do not consider your container's ID fixed. Also, be aware that every containers remove their auto-update configuration during the detection to prevent any ID movement.</p>
 </blockquote>
-<h2><a class="header" href="#modes" id="modes">Modes</a></h2>
+<h2 id="modes"><a class="header" href="#modes">Modes</a></h2>
 <p>As explained in <a href="../../overview/general-basics.html#what-is-a-node">this page</a>, <span class="cust_tooltip">nodes<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several containers.</span></span> can host multiple containers. To get the topology of your device, the routing table references physical connexions between your nodes and lists all the containers in each one of them.</p>
 <p>The routing table is a table of a <code>routing_table_t</code> structure containing nodes or containers information.
 The maximum number of containers and nodes are managed by the precompilation constant <code>MAX_containerS_NUMBER</code> (set to 40 by default).</p>
@@ -240,7 +240,7 @@ The maximum number of containers and nodes are managed by the precompilation con
     };
 } routing_table_t;
 </code></pre>
-<h3><a class="header" href="#container-entry-mode" id="container-entry-mode">container entry mode</a></h3>
+<h3 id="container-entry-mode"><a class="header" href="#container-entry-mode">container entry mode</a></h3>
 <p>This mode allows <code>routing_table</code> to contain:</p>
 <ul>
 <li>id: container's unique id</li>
@@ -248,7 +248,7 @@ The maximum number of containers and nodes are managed by the precompilation con
 <li>alias: container's alias</li>
 </ul>
 <p>For more information, please refer to the <a href="../containers.html">containers</a> page of this documentation.</p>
-<h3><a class="header" href="#node-entry-mode" id="node-entry-mode">Node entry mode</a></h3>
+<h3 id="node-entry-mode"><a class="header" href="#node-entry-mode">Node entry mode</a></h3>
 <p>This mode gives physical information of your devices.</p>
 <p>The <strong>node_id</strong> is the unique number that you can use to identify each one of your nodes. At the beginning (or when a reset detection is perfomed), all node IDs are set to 0. When the RoutingTB_DetectContainers API is called, Luos assigns a unique ID to nodes and containers in your system topology.</p>
 <p>The <strong>certified</strong> Luos node can be certified for your system by including Luos licencing number in your product (feature in progress).</p>
@@ -264,7 +264,7 @@ The maximum number of containers and nodes are managed by the precompilation con
 <blockquote>
 <p><strong>Note:</strong> Routing tables can be easily displayed using <a href="../../high/pyluos.html">Pyluos</a> through a <a href="../../high/containers_list/gate.html">USB gate</a>. Please refer to the <a href="../../high/pyluos.html#routing-table-display">Pyluos routing table section</a> for more information.</p>
 </blockquote>
-<h2><a class="header" href="#search-tools" id="search-tools">Search tools</a></h2>
+<h2 id="search-tools"><a class="header" href="#search-tools">Search tools</a></h2>
 <p>The routing table library provides the following search tools to find containers and nodes' information into a Luos network:</p>
 <table><thead><tr><th align="center">Description</th><th align="center">Function</th><th align="center">Return</th></tr></thead><tbody>
 <tr><td align="center">Find a container's id from its alias</td><td align="center"><code>RoutingTB_IDFromAlias(char* alias);</code></td><td align="center"><code>uint16_t</code></td></tr>
@@ -278,7 +278,7 @@ The maximum number of containers and nodes are managed by the precompilation con
 <tr><td align="center">Get the number of nodes in a Luos network</td><td align="center"><code>RoutingTB_GetNodeNB(void);</code></td><td align="center"><code>uint16_t</code></td></tr>
 <tr><td align="center">Get a node's id</td><td align="center"><code>RoutingTB_GetNodeID(unsigned short index);</code></td><td align="center"><code>uint16_t</code></td></tr>
 </tbody></table>
-<h2><a class="header" href="#management-tools" id="management-tools">Management tools</a></h2>
+<h2 id="management-tools"><a class="header" href="#management-tools">Management tools</a></h2>
 <p>Here are the management tools provided by the routing table library:</p>
 <table><thead><tr><th align="center">Description</th><th align="center">Function</th><th align="center">Return</th></tr></thead><tbody>
 <tr><td align="center">Compute the rooting table</td><td align="center"><code>RoutingTB_ComputeRoutingTableEntryNB(void);</code></td><td align="center"><code>void</code></td></tr>

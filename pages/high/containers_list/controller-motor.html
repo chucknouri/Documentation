@@ -186,12 +186,12 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#controller-motor-container-type" id="controller-motor-container-type">Controller-motor container type</a></h1>
+                            <h1 id="controller-motor-container-type"><a class="header" href="#controller-motor-container-type">Controller-motor container type</a></h1>
 <p>This container type allows to control a motor with a reduction and a sensor (usually called motor-reducer or speed-reducer).
 This container computes PID for speed, position and motion planning.</p>
 <p>You can find basic information about PID control here: <a href="https://medium.com/luosdeviceics/an-introduction-to-pid-control-with-dc-motor-1fa3b26ec661" target="_blank">An introduction to PID control with DC motor</a>, and a code example to tune your PID at the end of this page.</p>
 <p>Its type has access to all common capabilities.</p>
-<h3><a class="header" href="#containerss-type-settings" id="containerss-type-settings">containers’s type settings:</a></h3>
+<h3 id="containerss-type-settings"><a class="header" href="#containerss-type-settings">containers’s type settings:</a></h3>
 <blockquote>
 <p><strong>Warning:</strong> This container doesn't save any of the following parameters, they must be set each time your container reboots.</p>
 </blockquote>
@@ -204,13 +204,13 @@ To setup your PID please refer to the example at the end of this page.</p>
 </blockquote>
 <p>Now that everything is configured, you can enable the control modes you want to use. You can use position and speed mode simultaneously. Power mode is only usable alone. The Controller-motor is now ready to use, you can disable compliance to start moving the motor.</p>
 <hr />
-<h2><a class="header" href="#functions" id="functions">Functions</a></h2>
+<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
 <table><thead><tr><th align="center"><strong>Function name and parameters</strong></th><th align="center"><strong>Action</strong></th><th align="center"><strong>Comment</strong></th></tr></thead><tbody>
 <tr><td align="center">setToZero(self)</td><td align="center">Resets current position of the motor to 0</td><td align="center">You can use it to initialize the position of the motor</td></tr>
 <tr><td align="center">control(self)</td><td align="center">Displays container type graphical interface</td><td align="center">Only available using Jupyter notebook</td></tr>
 </tbody></table>
-<h2><a class="header" href="#variables" id="variables">Variables</a></h2>
-<h3><a class="header" href="#motor-settings" id="motor-settings">Motor settings</a></h3>
+<h2 id="variables"><a class="header" href="#variables">Variables</a></h2>
+<h3 id="motor-settings"><a class="header" href="#motor-settings">Motor settings</a></h3>
 <table><thead><tr><th align="center"><strong>Variable name</strong></th><th align="center"><strong>Action</strong></th><th align="center"><strong>Type</strong></th></tr></thead><tbody>
 <tr><td align="center">positionPid</td><td align="center">Sets position PID used for rotation position mode and translation position mode</td><td align="center">read / write: [float P, float I, float D]</td></tr>
 <tr><td align="center">speedPid</td><td align="center">Sets speed PID used for rotation speed mode and translation speed mode</td><td align="center">read / write: [float P, float I, float D]</td></tr>
@@ -218,7 +218,7 @@ To setup your PID please refer to the example at the end of this page.</p>
 <tr><td align="center">reduction</td><td align="center">Defines the motor reduction.<br/>Set this value to 1 if your sensor measures after the reduction.</td><td align="center">read / write: float</td></tr>
 <tr><td align="center">wheel_size</td><td align="center">Defines wheel size used for translation mode, in mm.</td><td align="center">read / write: float</td></tr>
 </tbody></table>
-<h3><a class="header" href="#motor-control-modes" id="motor-control-modes">Motor control modes</a></h3>
+<h3 id="motor-control-modes"><a class="header" href="#motor-control-modes">Motor control modes</a></h3>
 <table><thead><tr><th align="center"><strong>Variable name</strong></th><th align="center"><strong>Action</strong></th><th align="center"><strong>Type</strong></th></tr></thead><tbody>
 <tr><td align="center">compliant</td><td align="center">- True: disables the motor driver, you can use it to move the motor by hand.<br/> - False: Enables the motor driver.</td><td align="center">read / write: Boolean (True or False)</td></tr>
 <tr><td align="center">power_mode</td><td align="center">Enables/Disables the power control mode.<br/><em>Disables any other control mode if enabled.</em></td><td align="center">read / write: Boolean (True or False)</td></tr>
@@ -227,7 +227,7 @@ To setup your PID please refer to the example at the end of this page.</p>
 <tr><td align="center">trans_position_mode</td><td align="center">Enables/Disables the motor translation position control mode.<br/><em>Disables power mode and rotation position mode if enabled.</em><br/><em>Doesn't work if no position PID configured.</em></td><td align="center">read / write: Boolean (True or False)</td></tr>
 <tr><td align="center">trans_speed_mode</td><td align="center">Enables/Disables the motor translation speed control mode.<br/><em>Disables power mode and rotation speed mode if enabled.</em><br/><em>Doesn't work if no speed PID configured.</em></td><td align="center">read / write: Boolean (True or False)</td></tr>
 </tbody></table>
-<h3><a class="header" href="#motor-sensing" id="motor-sensing">Motor sensing</a></h3>
+<h3 id="motor-sensing"><a class="header" href="#motor-sensing">Motor sensing</a></h3>
 <table><thead><tr><th align="center"><strong>Variable name</strong></th><th align="center"><strong>Action</strong></th><th align="center"><strong>Type</strong></th></tr></thead><tbody>
 <tr><td align="center">rot_position</td><td align="center">Reads rotation position in °<br/><em>Reading it auto-Enables actualization.</em></td><td align="center">read only: float</td></tr>
 <tr><td align="center">rot_position</td><td align="center">Starts/Stops rotation position measurement actualization</td><td align="center">write only: Boolean (True or False)</td></tr>
@@ -240,7 +240,7 @@ To setup your PID please refer to the example at the end of this page.</p>
 <tr><td align="center">current</td><td align="center">Reads the current consumption in A<br/><em>Reading it auto-enables actualization.</em></td><td align="center">read only: float</td></tr>
 <tr><td align="center">current</td><td align="center">Starts/Stops current measurement actualization</td><td align="center">write only: Boolean (True or False)</td></tr>
 </tbody></table>
-<h3><a class="header" href="#motor-commands" id="motor-commands">Motor commands</a></h3>
+<h3 id="motor-commands"><a class="header" href="#motor-commands">Motor commands</a></h3>
 <table><thead><tr><th align="center"><strong>Variable name</strong></th><th align="center"><strong>Action</strong></th><th align="center"><strong>Type</strong></th></tr></thead><tbody>
 <tr><td align="center">power_ratio</td><td align="center">Sets the power quantity send to the motor between -100% and 100%.</td><td align="center">read / write: float</td></tr>
 <tr><td align="center">target_rot_position</td><td align="center">Sets the target rotation position to reach in °.</td><td align="center">read / write: float</td></tr>
@@ -248,7 +248,7 @@ To setup your PID please refer to the example at the end of this page.</p>
 <tr><td align="center">target_trans_position</td><td align="center">Sets the target translation position to reach in mm.</td><td align="center">read / write: float</td></tr>
 <tr><td align="center">target_trans_speed</td><td align="center">Sets the target translation speed to reach in mm/s.</td><td align="center">read / write: float</td></tr>
 </tbody></table>
-<h2><a class="header" href="#ros-topics" id="ros-topics">ROS topics</a></h2>
+<h2 id="ros-topics"><a class="header" href="#ros-topics">ROS topics</a></h2>
 <table><thead><tr><th align="left"><strong>Topic name</strong></th><th align="center"><strong>Message type</strong></th><th align="center"><strong>Comment</strong></th></tr></thead><tbody>
 <tr><td align="left">/mod/variables/positionPid/read</td><td align="center">geometry_msgs/msg/Vector3</td><td align="center"></td></tr>
 <tr><td align="left">/mod/variables/positionPid/write</td><td align="center">geometry_msgs/msg/Vector3</td><td align="center"></td></tr>
@@ -293,8 +293,8 @@ To setup your PID please refer to the example at the end of this page.</p>
 <tr><td align="left">/mod/variables/target_trans_speed/read</td><td align="center">std_msgs/msg/Float32</td><td align="center"></td></tr>
 <tr><td align="left">/mod/variables/target_trans_speed/write</td><td align="center">std_msgs/msg/Float32</td><td align="center"></td></tr>
 </tbody></table>
-<h2><a class="header" href="#example-code" id="example-code">Example code</a></h2>
-<h3><a class="header" href="#pid-setting-example-code" id="pid-setting-example-code">PID Setting example code</a></h3>
+<h2 id="example-code"><a class="header" href="#example-code">Example code</a></h2>
+<h3 id="pid-setting-example-code"><a class="header" href="#pid-setting-example-code">PID Setting example code</a></h3>
 <p>The PID values allow your motor to stick to the target command as fast as possible. The quality of a set of PID values depends on time to reach the target position and position precision.
 Tuning a PID is something difficult and takes a lot of practice. It's really important to have simple ways to evaluate PID values impact on your motor before starting to tune these values.
 Here is the code we use at Luos to tune a PID by ourself. Use it with Jupyter notebook to get your plot instantly.</p>
@@ -401,7 +401,7 @@ run_speed_test(100.0)
 container.positionPid = [4.0,0.02,100] # position PID [P, I, D]
 run_pos_test(100.0)
 </code></pre>
-<h3><a class="header" href="#example-command-from-ros-topics" id="example-command-from-ros-topics">Example command from ROS topics</a></h3>
+<h3 id="example-command-from-ros-topics"><a class="header" href="#example-command-from-ros-topics">Example command from ROS topics</a></h3>
 <p>By publishing on 3 topics you will take control over the Controller-motor named <code>controller_moto</code> to a velocity command of 1.57 rad/s:</p>
 <pre><code class="language-bash"># Launch the broker. Note: warnings will be displayed, please ignore them
 ros2 launch luos_interface broker.launch.py

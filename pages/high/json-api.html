@@ -186,7 +186,7 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#a-hrefjson-api-classheader-idjson-apiimg-src_assetsimgjson-logopng-width80px--json-apia" id="a-hrefjson-api-classheader-idjson-apiimg-src_assetsimgjson-logopng-width80px--json-apia"><a href="#json-api" class="header" id="json-api"><img src="../../_assets/img/json-logo.png" width="80px"> / JSON API</a></a></h1>
+                            <h1 id="a-hrefjson-api-classheader-idjson-apiimg-src_assetsimgjson-logopng-width80px--json-apia"><a class="header" href="#a-hrefjson-api-classheader-idjson-apiimg-src_assetsimgjson-logopng-width80px--json-apia"><a href="#json-api" class="header" id="json-api"><img src="../../_assets/img/json-logo.png" width="80px"> / JSON API</a></a></h1>
 <p>The <a href="https://en.wikipedia.org/wiki/JSON" target="blank_">JSON formated data</a> is very common and widely used by many programming languages. Luos allows you to convert low-level Luos information into JSON objects, enabling conventional programming languages to easily interact with your device.<br/>
 To do that, you must add a specific app container called a <a href="./containers_list/gate.html">Gate</a> on your device.</p>
 <p>The <a href="./containers_list/gate.html">Gate container</a> is an app that converts Luos messages from a device's network into JSON data format, and the other way from JSON to Luos messages.<br/>
@@ -194,19 +194,19 @@ The Gate container can be hosted into different kinds of <span class="cust_toolt
 <blockquote>
 <p><strong>Warning:</strong> The Gate container refreshes sensors information as fast as it can, so that can be intensive to Luos bandwidth.</p>
 </blockquote>
-<h2><a class="header" href="#how-to-start-using-the-json-api" id="how-to-start-using-the-json-api">How to start using the JSON API</a></h2>
+<h2 id="how-to-start-using-the-json-api"><a class="header" href="#how-to-start-using-the-json-api">How to start using the JSON API</a></h2>
 <p>Before using your device through JSON, you have to be connected to the communication flow depending on the node type hosting your Gate container.<br/>
 Then you can start the Gate by sending:</p>
 <pre><code class="language-JSON">{&quot;detection&quot;: {}}\r
 </code></pre>
 <p>This command asks the Gate to start a topological detection, create a routing table, convert it into JSON and send it back to you.</p>
-<h2><a class="header" href="#routing-table-messages" id="routing-table-messages">Routing table messages</a></h2>
+<h2 id="routing-table-messages"><a class="header" href="#routing-table-messages">Routing table messages</a></h2>
 <blockquote>
 <p><strong>Warning:</strong> Make sure to read and understand how <a href="../low/containers/routing-table.html">routing table</a> works before reading this part.</p>
 </blockquote>
 <p>After the Gate starts, the first message you receive is a routing table.<br/>
 This first message is really important, because it contains all the information allowing you to create a code object for your device, containing all its features.</p>
-<h3><a class="header" href="#routing-table-structure" id="routing-table-structure">Routing table structure</a></h3>
+<h3 id="routing-table-structure"><a class="header" href="#routing-table-structure">Routing table structure</a></h3>
 <p>A routing table in JSON consists in a list of the nodes present in the Luos network:</p>
 <pre><code class="language-JSON">{
    &quot;routing_table&quot;:[
@@ -223,7 +223,7 @@ This first message is really important, because it contains all the information 
    ]
 }
 </code></pre>
-<h4><a class="header" href="#nodes-information" id="nodes-information">Nodes information</a></h4>
+<h4 id="nodes-information"><a class="header" href="#nodes-information">Nodes information</a></h4>
 <p>Each listed node of the network has basic node information and a list of hosted containers:</p>
 <pre><code class="language-JSON">{ // node 1
    &quot;node_id&quot;:1,
@@ -243,7 +243,7 @@ This first message is really important, because it contains all the information 
 <blockquote>
 <p><strong>Note:</strong> To understand the meanings of <em>uuid</em> and <em>port_table</em>, please refer to the <a href="../low/containers/routing-table.html">routing table page</a>.</p>
 </blockquote>
-<h4><a class="header" href="#containers" id="containers">Containers</a></h4>
+<h4 id="containers"><a class="header" href="#containers">Containers</a></h4>
 <p>Each listed container of a node has basic containers information:</p>
 <pre><code class="language-JSON">{ // container 1
    &quot;type&quot;:&quot;Type&quot;,
@@ -254,7 +254,7 @@ This first message is really important, because it contains all the information 
 <blockquote>
 <p><strong>Note:</strong> To understand the meanings of <em>type</em>, <em>id</em> and <em>alias</em>, please refer to the <a href="../low/containers.html">container page</a>.</p>
 </blockquote>
-<h4><a class="header" href="#full-routing-table-example" id="full-routing-table-example">Full routing table example</a></h4>
+<h4 id="full-routing-table-example"><a class="header" href="#full-routing-table-example">Full routing table example</a></h4>
 <pre><code class="language-JSON">{
    &quot;routing_table&quot;:[
       {
@@ -320,7 +320,7 @@ This first message is really important, because it contains all the information 
 </code></pre>
 <p>Below is a visual representation of this routing table:</p>
 <p><img src="../../_assets/img/luos-network-ex.png" alt="" /></p>
-<h3><a class="header" href="#containers-information-messages" id="containers-information-messages">Container's information messages</a></h3>
+<h3 id="containers-information-messages"><a class="header" href="#containers-information-messages">Container's information messages</a></h3>
 <p>When the JSON routing table is transmitted, the Gate starts to update and stream your network data with <strong>containers information</strong>.</p>
 <p>This JSON is a &quot;container&quot; object listing all the containers by their alias and the values they send:</p>
 <pre><code class="language-JSON">{
@@ -412,7 +412,7 @@ This first message is really important, because it contains all the information 
    }
 }
 </code></pre>
-<h4><a class="header" href="#custom-parameters-and-specific-messages" id="custom-parameters-and-specific-messages">Custom parameters and specific messages</a></h4>
+<h4 id="custom-parameters-and-specific-messages"><a class="header" href="#custom-parameters-and-specific-messages">Custom parameters and specific messages</a></h4>
 <p>Some messages are specifically handled:</p>
 <!-- - If the type is `VOID_MOD`, the container is empty and no message is converted.-->
 <p>Custom parameters can be defined and sent to containers through the JSON API, either with Python (Pyluos) or any other programming language on a computer side.
@@ -444,11 +444,11 @@ sendCmd(s, '{&quot;containers&quot;: {&quot;controller_moto&quot;: {&quot;parame
 <tr><td align="center">wheel_mode</td><td align="center">The wheel mode parameter for Dynamixel servomotors True or False</td><td align="center"><a href="./containers_list/dxl.html">Dynamixel</a>, void</td></tr>
 <tr><td align="center">delay</td><td align="center">reduce containers refresh rate</td><td align="center"><a href="./containers_list/gate.html">Gate</a></td></tr>
 </tbody></table>
-<h3><a class="header" href="#containers-exclusion-messages" id="containers-exclusion-messages">Containers exclusion messages</a></h3>
+<h3 id="containers-exclusion-messages"><a class="header" href="#containers-exclusion-messages">Containers exclusion messages</a></h3>
 <p>Containers can be excluded from the network if a problem occurs (see <a href="../low/containers/self-healing.html#container-exclusion">self-healing</a> for more information). In this case, the Gate sends an exclusion message indicating that this container is no longer available:</p>
 <pre><code class="language-JSON">{&quot;dead_container&quot;: &quot;container_alias&quot;}
 </code></pre>
-<h3><a class="header" href="#node-assert-messages" id="node-assert-messages">Node assert messages</a></h3>
+<h3 id="node-assert-messages"><a class="header" href="#node-assert-messages">Node assert messages</a></h3>
 <p>Nodes can assert if a critical issue occurs (see <a href="../low/containers/self-healing.html#assert">self-healing</a> for more information). In this case, the Gate sends an assertion message indicating that this node is no longer available and some details about the crash:</p>
 <pre><code class="language-JSON">{
    &quot;assert&quot;:{
@@ -458,7 +458,7 @@ sendCmd(s, '{&quot;containers&quot;: {&quot;controller_moto&quot;: {&quot;parame
    }
 }
 </code></pre>
-<h2><a class="header" href="#sending-large-binary-data" id="sending-large-binary-data">Sending large binary data</a></h2>
+<h2 id="sending-large-binary-data"><a class="header" href="#sending-large-binary-data">Sending large binary data</a></h2>
 <p>Binary data such as, for example, a motor tarjectory can't be included into a JSON file if it is too large. In order to allow this type of transmission, the size of the binary data is sent through the JSON, then followed by the actual data in binary format.</p>
 <ul>
 <li>

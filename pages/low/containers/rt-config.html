@@ -186,7 +186,7 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#message-handling-configuration" id="message-handling-configuration">Message Handling configuration</a></h1>
+                            <h1 id="message-handling-configuration"><a class="header" href="#message-handling-configuration">Message Handling configuration</a></h1>
 <blockquote>
 <p><strong>Warning:</strong> Make sure to read and understand how to <a href="./create-containers.html">Create Luos containers</a> before reading this page.</p>
 </blockquote>
@@ -198,7 +198,7 @@ The message handling configuration is set during the <a href="./create-container
 <tr><td align="center"><a href="#polling-configuration">Polling</a></td><td align="center">no callback</td></tr>
 </tbody></table>
 <p>The following sections detail how the different configurations work.</p>
-<h2><a class="header" href="#callback-configuration" id="callback-configuration">Callback configuration</a></h2>
+<h2 id="callback-configuration"><a class="header" href="#callback-configuration">Callback configuration</a></h2>
 <p>This configuration is the default and most common setup. In this configuration, Luos directly calls the container callback during runtime. The time between the physical reception of a message and the callback may vary depending on the <code>luos_loop()</code> function call frequency.<br/>
 With this configuration, you have no real constraints on the callback's time of execution, you can reply to a message directly on the callback.</p>
 <p>To setup this configuration you have to simply setup the callback at container creation.</p>
@@ -226,7 +226,7 @@ void Button_Init(void) {
 void Button_Loop(void) {
 }
 </code></pre>
-<h2><a class="header" href="#polling-configuration" id="polling-configuration">Polling configuration</a></h2>
+<h2 id="polling-configuration"><a class="header" href="#polling-configuration">Polling configuration</a></h2>
 <p>This configuration is often used in Arduino libraries to receive information in a basic way. This method allows you handle messages only when the user wants to do it in the loop of the container.</p>
 <p>To setup this configuration, you have to create your container without any callbacks.</p>
 <p>See the following code as an example, with a button:</p>

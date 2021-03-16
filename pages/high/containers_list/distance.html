@@ -186,21 +186,21 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#distance-container-type" id="distance-container-type">Distance container type</a></h1>
+                            <h1 id="distance-container-type"><a class="header" href="#distance-container-type">Distance container type</a></h1>
 <p>The Distance container handles a sensor measuring a distance in mm.</p>
 <p>Its type has access to all common capabilities.</p>
 <hr />
-<h2><a class="header" href="#variables" id="variables">Variables</a></h2>
+<h2 id="variables"><a class="header" href="#variables">Variables</a></h2>
 <table><thead><tr><th align="center"><strong>Variable name</strong></th><th align="center"><strong>Action</strong></th><th align="center"><strong>Type</strong></th></tr></thead><tbody>
 <tr><td align="center">distance</td><td align="center">Reads the measured distance in mm</td><td align="center">read only: Float</td></tr>
 <tr><td align="center">threshold</td><td align="center">Thresholds distance variation before filter_changed event trigers. Default value 10 mm.</td><td align="center">read / write: Float</td></tr>
 </tbody></table>
-<h2><a class="header" href="#events" id="events">Events</a></h2>
+<h2 id="events"><a class="header" href="#events">Events</a></h2>
 <table><thead><tr><th align="center"><strong>Event name</strong></th><th align="center"><strong>Trigger</strong></th></tr></thead><tbody>
 <tr><td align="center">changed</td><td align="center">Any movement on the distance measurement</td></tr>
 <tr><td align="center">filter_changed</td><td align="center">Movement bigger than <em>threshold</em></td></tr>
 </tbody></table>
-<h2><a class="header" href="#ros-topics" id="ros-topics">ROS topics</a></h2>
+<h2 id="ros-topics"><a class="header" href="#ros-topics">ROS topics</a></h2>
 <table><thead><tr><th align="left"><strong>Topic name</strong></th><th align="center"><strong>Message type</strong></th></tr></thead><tbody>
 <tr><td align="left">/mod/variables/distance/read</td><td align="center">std_msgs/msg/Float32</td></tr>
 <tr><td align="left">/mod/variables/threshold/read</td><td align="center">std_msgs/msg/Float32</td></tr>

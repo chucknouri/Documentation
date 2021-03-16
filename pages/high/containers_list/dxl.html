@@ -186,18 +186,18 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#dynamixel-container-type" id="dynamixel-container-type">Dynamixel container type</a></h1>
+                            <h1 id="dynamixel-container-type"><a class="header" href="#dynamixel-container-type">Dynamixel container type</a></h1>
 <p>The Dynamixel container allows to control Dynamixel motors.</p>
 <p>Its type has access to all common capabilities.</p>
 <hr />
-<h2><a class="header" href="#functions" id="functions">Functions</a></h2>
+<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
 <table><thead><tr><th align="center"><strong>Function name and parameters</strong></th><th align="center"><strong>Action</strong></th><th align="center"><strong>Comment</strong></th></tr></thead><tbody>
 <tr><td align="center">set_id(self, id)</td><td align="center">Changes motor ID</td><td align="center">This new Id will be saved by the Dynamixel motor. You have to detect motors again to make it work after this change.</td></tr>
 <tr><td align="center">detect(self)</td><td align="center">Launches a motor detection</td><td align="center">You have to run a luos detection to include or exclude new motors.</td></tr>
 <tr><td align="center">register(self, register, val)</td><td align="center">Sets a Dynamixel register value.</td><td align="center">This register only manage <em>word</em> size register. Use it only if you know what you do.</td></tr>
 <tr><td align="center">control(self)</td><td align="center">Displays container type graphical interface</td><td align="center">Only available using Jupyter notebook</td></tr>
 </tbody></table>
-<h2><a class="header" href="#variables" id="variables">Variables</a></h2>
+<h2 id="variables"><a class="header" href="#variables">Variables</a></h2>
 <table><thead><tr><th align="center"><strong>Variable name</strong></th><th align="center"><strong>Action</strong></th><th align="center"><strong>Type</strong></th></tr></thead><tbody>
 <tr><td align="center">compliant</td><td align="center">- True: disables the motor power, you can use it to move the motor by hand.<br/> - False: Enables the motor power.</td><td align="center">read / write: Boolean (True or False)</td></tr>
 <tr><td align="center">target_rot_position</td><td align="center">Sets the target rotation position to reach in °.</td><td align="center">read / write: Float</td></tr>
@@ -209,7 +209,7 @@
 <tr><td align="center">power_ratio_limit</td><td align="center">Max power limit in %.</td><td align="center">read / write: Float</td></tr>
 <tr><td align="center">rot_position_limit</td><td align="center">Min and Max rotation position limit in °.</td><td align="center">read / write: [Float(min), Float(max)]</td></tr>
 </tbody></table>
-<h2><a class="header" href="#ros-topics" id="ros-topics">ROS topics</a></h2>
+<h2 id="ros-topics"><a class="header" href="#ros-topics">ROS topics</a></h2>
 <table><thead><tr><th align="left"><strong>Topic name</strong></th><th align="center"><strong>Message type</strong></th><th align="center"><strong>Comment</strong></th></tr></thead><tbody>
 <tr><td align="left">/dxl_1/variables/compliant/read</td><td align="center">std_msgs/msg/Boolean</td><td align="center"></td></tr>
 <tr><td align="left">/dxl_1/variables/compliant/write</td><td align="center">std_msgs/msg/Boolean</td><td align="center"></td></tr>
@@ -230,8 +230,8 @@
 <tr><td align="left">/dxl_1/variables/rot_position_limit/read</td><td align="center">geometry_msgs/msg/Vector3</td><td align="center">(x=min, y=max, z=<unused>)</td></tr>
 <tr><td align="left">/dxl_1/variables/rot_position_limit/write</td><td align="center">geometry_msgs/msg/Vector3</td><td align="center">(x=min, y=max, z=<unused>)</td></tr>
 </tbody></table>
-<h2><a class="header" href="#example-code" id="example-code">Example code</a></h2>
-<h3><a class="header" href="#example-commands-from-ros-topics" id="example-commands-from-ros-topics">Example commands from ROS topics</a></h3>
+<h2 id="example-code"><a class="header" href="#example-code">Example code</a></h2>
+<h3 id="example-commands-from-ros-topics"><a class="header" href="#example-commands-from-ros-topics">Example commands from ROS topics</a></h3>
 <p>Plot the real time angular position with RQT plot:</p>
 <pre><code class="language-bash">ros2 run rqt_plot rqt_plot /dxl_1/variables/rot_position/read
 </code></pre>

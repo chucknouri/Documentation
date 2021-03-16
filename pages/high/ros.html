@@ -186,11 +186,11 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#a-hrefros-classheader-idrosimg-src_assetsimgros-logopng-width80px--using-luos-with-ros1-and-ros2a" id="a-hrefros-classheader-idrosimg-src_assetsimgros-logopng-width80px--using-luos-with-ros1-and-ros2a"><a href="#ros" class="header" id="ros"><img src="../../_assets/img/ros-logo.png" width="80px"> / Using Luos with ROS1 and ROS2</a></a></h1>
+                            <h1 id="a-hrefros-classheader-idrosimg-src_assetsimgros-logopng-width80px--using-luos-with-ros1-and-ros2a"><a class="header" href="#a-hrefros-classheader-idrosimg-src_assetsimgros-logopng-width80px--using-luos-with-ros1-and-ros2a"><a href="#ros" class="header" id="ros"><img src="../../_assets/img/ros-logo.png" width="80px"> / Using Luos with ROS1 and ROS2</a></a></h1>
 <p>Luos comes with a package for the <a href="https://www.ros.org/" target="_blank">Robot Operating System</a>.</p>
 <p>ROS 2 is the default version but backward compatibility with ROS 1 is ensured via the official ROS 1 bridge. You can get an example of an application using Luos containers in ROS 2 with the <a href="https://github.com/aubrune/luos_bike_alarm_example" target="_blank">bike sharing example</a>.</p>
 <p>In this tutorial, we will assume you're using ROS 2. If you want to communicate with a ROS 1 ecosystem, begin with this quickstart since ROS 2 needs to be installed, and then refer to the <a href="./ros/ros1.html">Retrocompatibility with ROS 1</a> page.</p>
-<h2><a class="header" href="#basics-a-few-ros-applied-to-luos-concepts" id="basics-a-few-ros-applied-to-luos-concepts">Basics: a few ROS-applied-to-Luos concepts</a></h2>
+<h2 id="basics-a-few-ros-applied-to-luos-concepts"><a class="header" href="#basics-a-few-ros-applied-to-luos-concepts">Basics: a few ROS-applied-to-Luos concepts</a></h2>
 <p>Here is a summary of core concepts in ROS:</p>
 <ul>
 <li><strong>ROS workspace</strong>: this is the directory in which you download all the ROS software that is built from sourcecode. You will likely setup your own projects here but it is also common to download dependencies here, such as <code>luos_ros2</code>. Here we assume your workspace is <code>~/ros2_ws</code></li>
@@ -208,7 +208,7 @@ Several nodes communicate with each other exchanging information in the form of 
 <li>no suffix: this topic is read-only and no other related topic exists</li>
 </ul>
 <p>As an example, <code>/Imu_mod/variables/pedometer/read</code> allows to read-only the current pedometer variable from the IMU container named <code>Imu_mod</code>.</p>
-<h2><a class="header" href="#install-ros-2-and-luos" id="install-ros-2-and-luos">Install ROS 2 and Luos</a></h2>
+<h2 id="install-ros-2-and-luos"><a class="header" href="#install-ros-2-and-luos">Install ROS 2 and Luos</a></h2>
 <p>First install <a href="https://index.ros.org/doc/ros2/Installation/Foxy/" target="_blank">ROS 2 Foxy</a> for your OS with FastRTPS. Also install <a href="https://index.ros.org/doc/ros2/Tutorials/Colcon-Tutorial/#install-colcon" target="_blank"><code>colcon</code></a> as advised in the guidelines. If you are not familiar with ROS, you should go on with a couple of ROS 2 tutorials to get started.</p>
 <p>Then clone <code>luos_ros2</code> to your workspace and compile it with colcon:</p>
 <pre><code class="language-bash">cd ros2_ws/src/    # Or replace by your ROS 2 workspace name, maybe also dev_ws/src
@@ -218,7 +218,7 @@ pip3 install --no-warn-script-location .
 cd ~/ros2_ws &amp;&amp; colcon build --symlink-install
 source ~/ros2_ws/install/setup.bash
 </code></pre>
-<h2><a class="header" href="#get-started-with-luos-in-ros-2" id="get-started-with-luos-in-ros-2">Get started with Luos in ROS 2</a></h2>
+<h2 id="get-started-with-luos-in-ros-2"><a class="header" href="#get-started-with-luos-in-ros-2">Get started with Luos in ROS 2</a></h2>
 <p>Plug in your Luos gate and other containers, such as IMU, Color or State, and run the broker. It will return the detected containers: </p>
 <pre><code class="language-bash">~$ ros2 launch luos_interface broker.launch.py
 [INFO] [luos_broker]: Connecting to /dev/ttyUSB0...
@@ -291,7 +291,7 @@ linear_acceleration_covariance: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 <p>In order to publish messages to the Luos containers, use a regular ROS publisher. For instance, here is how to light up the Luos RGB container, in a pink color:</p>
 <pre><code class="language-bash">ros2 topic pub /rgb_led_mod/variables/color/write std_msgs/msg/ColorRGBA &quot;{r: 64, g: 0, b: 64}&quot; --once
 </code></pre>
-<h2><a class="header" href="#get-started-with-my-own-ros2-package-using-luos-in-python" id="get-started-with-my-own-ros2-package-using-luos-in-python">Get started with my own ROS2 package using Luos in Python</a></h2>
+<h2 id="get-started-with-my-own-ros2-package-using-luos-in-python"><a class="header" href="#get-started-with-my-own-ros2-package-using-luos-in-python">Get started with my own ROS2 package using Luos in Python</a></h2>
 <p>These command lines will create a new package <code>my_luos_ros2_package</code> relying on <code>luos_interface</code>:</p>
 <pre><code class="language-bash">cd ~/ros2_ws/src
 ros2 pkg create my_luos_ros2_package --build-type ament_python --dependencies luos_interface

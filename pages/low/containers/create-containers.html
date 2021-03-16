@@ -186,12 +186,12 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#create-luos-containers" id="create-luos-containers">Create Luos containers</a></h1>
+                            <h1 id="create-luos-containers"><a class="header" href="#create-luos-containers">Create Luos containers</a></h1>
 <p><strong>As a developer you will always develop your functionalities into containers and never into the <code>main()</code> program.</strong></p>
 <blockquote>
 <p><strong>Warning:</strong> Make sure to read and understand how to <a href="./create-project.html">Create Luos projects</a> before reading this page.</p>
 </blockquote>
-<h2><a class="header" href="#how-to-create-and-initialize-a-container" id="how-to-create-and-initialize-a-container">How to create and initialize a container</a></h2>
+<h2 id="how-to-create-and-initialize-a-container"><a class="header" href="#how-to-create-and-initialize-a-container">How to create and initialize a container</a></h2>
 <p>To create a container, you have to call this function:</p>
 <pre><code class="language-c">container_t* Luos_CreateContainer(void* callback, container_type_t type, char* default_alias, revision_t revision);
 </code></pre>
@@ -225,10 +225,10 @@ void Button_Loop(void) {
 <blockquote>
 <p><strong>Note:</strong> According to the real-time configuration you chose, an additional line of code may be necessary. See <a href="./rt-config.html">Message Handling configuration page</a> for more details.</p>
 </blockquote>
-<h2><a class="header" href="#containers-categories" id="containers-categories">Containers categories</a></h2>
+<h2 id="containers-categories"><a class="header" href="#containers-categories">Containers categories</a></h2>
 <p>To make your development as clean as possible, you have to understand in which category (<a href="#drivers-guidelines"><strong>Driver</strong></a> or <a href="#apps-guidelines"><strong>App</strong></a>) each container of the project is.</p>
 <p>By following the categories guidelines, you will be able to make clean and reusable functionalities.</p>
-<h2><a class="header" href="#drivers-guidelines" id="drivers-guidelines">Drivers guidelines</a></h2>
+<h2 id="drivers-guidelines"><a class="header" href="#drivers-guidelines">Drivers guidelines</a></h2>
 <p>A driver is a type of container that handles hardware. Motors, distance sensors, LEDs are all drivers.</p>
 <p>By designing a driver, you have to keep the following rules in mind:</p>
 <ul>
@@ -238,7 +238,7 @@ void Button_Loop(void) {
 <li>A driver container is &quot;dumb&quot;, as it can't do anything else than manage its hardware feature (but it does it very well).</li>
 </ul>
 <p>You can have multiple driver containers on the same <span class="cust_tooltip">node<span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several containers.</span></span> managing different hardware functionalities of your board, it is up to you to sort them depending on your design.</p>
-<h2><a class="header" href="#apps-guidelines" id="apps-guidelines">Apps guidelines</a></h2>
+<h2 id="apps-guidelines"><a class="header" href="#apps-guidelines">Apps guidelines</a></h2>
 <p>An application or app is a type of container that only manages software items such as functions or algorithms. Apps use other containers to make your device act, operate, and behave.
 Apps can be placed in any <span class="cust_tooltip"><a href="../../overview/general-basics.html#what-is-a-node">nodes</a><span class="cust_tooltiptext">Hardware element (MCU) hosting and running Luos and hosting one or several containers.</span></span> on a Luos network without any hardware or code modifications. However, the choice of the hosting node can impact global performances of the system.</p>
 <p>By designing an app, you have to keep the following rules in mind:</p>

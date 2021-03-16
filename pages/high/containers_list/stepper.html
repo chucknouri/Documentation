@@ -186,27 +186,27 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#stepper-container-type" id="stepper-container-type">Stepper container type</a></h1>
+                            <h1 id="stepper-container-type"><a class="header" href="#stepper-container-type">Stepper container type</a></h1>
 <p>This container type allows to control a stepper motor. It computes micro-stepping and motion planning.</p>
 <p>Its type has access to all common capabilities.</p>
-<h3><a class="header" href="#containerss-type-settings" id="containerss-type-settings">containers’s type settings:</a></h3>
+<h3 id="containerss-type-settings"><a class="header" href="#containerss-type-settings">containers’s type settings:</a></h3>
 <blockquote>
 <p><strong>Warning:</strong> This container doesn't save any of the following parameters, they must be set each time your container reboots.</p>
 </blockquote>
 <p>The number of steps per turn must be defined, as well as the wheel diameter at the output of the motor if you wahnt to use translation. These specs may figure in your motor’s datasheet.</p>
 <hr />
-<h2><a class="header" href="#functions" id="functions">Functions</a></h2>
+<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
 <table><thead><tr><th align="center"><strong>Function name and parameters</strong></th><th align="center"><strong>Action</strong></th><th align="center"><strong>Comment</strong></th></tr></thead><tbody>
 <tr><td align="center">setToZero(self)</td><td align="center">Resets current position of the motor to 0</td><td align="center">You can use it to initialize the position of the motor</td></tr>
 <tr><td align="center">control(self)</td><td align="center">Displays container type graphical interface</td><td align="center">Only available using Jupyter notebook</td></tr>
 </tbody></table>
-<h2><a class="header" href="#variables" id="variables">Variables</a></h2>
-<h3><a class="header" href="#motor-settings" id="motor-settings">Motor settings</a></h3>
+<h2 id="variables"><a class="header" href="#variables">Variables</a></h2>
+<h3 id="motor-settings"><a class="header" href="#motor-settings">Motor settings</a></h3>
 <table><thead><tr><th align="center"><strong>Variable name</strong></th><th align="center"><strong>Action</strong></th><th align="center"><strong>Type</strong></th></tr></thead><tbody>
 <tr><td align="center">stepPerTurn</td><td align="center">Defines the stepper resolution</td><td align="center">read / write: float</td></tr>
 <tr><td align="center">wheel_size</td><td align="center">Defines wheel size used for translation mode</td><td align="center">read / write: float</td></tr>
 </tbody></table>
-<h3><a class="header" href="#motor-control-modes" id="motor-control-modes">Motor control modes</a></h3>
+<h3 id="motor-control-modes"><a class="header" href="#motor-control-modes">Motor control modes</a></h3>
 <table><thead><tr><th align="center"><strong>Variable name</strong></th><th align="center"><strong>Action</strong></th><th align="center"><strong>Type</strong></th></tr></thead><tbody>
 <tr><td align="center">compliant</td><td align="center">- True: disables the motor driver, you can use it to move the motor by hand.<br/> - False: Enables the motor driver.</td><td align="center">read / write: Boolean (True or False)</td></tr>
 <tr><td align="center">rot_position_mode</td><td align="center">Enables/Disables the motor rotation position control mode.<br/><em>Disables power mode and translation position mode if enabled.</em><br/><em>Doesn't work if no position PID is configured.</em></td><td align="center">read / write: Boolean (True or False)</td></tr>
@@ -214,14 +214,14 @@
 <tr><td align="center">trans_position_mode</td><td align="center">Enables/Disables the motor translation position control mode.<br/><em>Disables power mode and rotation position mode if enabled.</em><br/><em>Doesn't work if no position PID configured.</em></td><td align="center">read / write: Boolean (True or False)</td></tr>
 <tr><td align="center">trans_speed_mode</td><td align="center">Enables/Disables the motor translation speed control mode.<br/><em>Disables power mode and rotation speed mode if enabled.</em><br/><em>Doesn't work if no speed PID configured.</em></td><td align="center">read / write: Boolean (True or False)</td></tr>
 </tbody></table>
-<h3><a class="header" href="#motor-commands" id="motor-commands">Motor commands</a></h3>
+<h3 id="motor-commands"><a class="header" href="#motor-commands">Motor commands</a></h3>
 <table><thead><tr><th align="center"><strong>Variable name</strong></th><th align="center"><strong>Action</strong></th><th align="center"><strong>Type</strong></th></tr></thead><tbody>
 <tr><td align="center">target_rot_position</td><td align="center">Sets the target rotation position to reach in °.</td><td align="center">read / write: float</td></tr>
 <tr><td align="center">target_rot_speed</td><td align="center">Sets the target rotation speed to reach in °/s.</td><td align="center">read / write: float</td></tr>
 <tr><td align="center">target_trans_position</td><td align="center">Sets the target translation position to reach in mm.</td><td align="center">read / write: float</td></tr>
 <tr><td align="center">target_trans_speed</td><td align="center">Sets the target translation speed to reach in mm/s.</td><td align="center">read / write: float</td></tr>
 </tbody></table>
-<h2><a class="header" href="#ros-topics" id="ros-topics">ROS topics</a></h2>
+<h2 id="ros-topics"><a class="header" href="#ros-topics">ROS topics</a></h2>
 <table><thead><tr><th align="left"><strong>Topic name</strong></th><th align="center"><strong>Message type</strong></th><th align="center"><strong>Comment</strong></th></tr></thead><tbody>
 <tr><td align="left">/stepper_1/variables/stepPerTurn/read</td><td align="center">std_msgs/msg/Float32</td><td align="center"></td></tr>
 <tr><td align="left">/stepper_1/variables/stepPerTurn/write</td><td align="center">std_msgs/msg/Float32</td><td align="center"></td></tr>

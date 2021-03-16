@@ -186,13 +186,13 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#luos-self-healing-capabilities" id="luos-self-healing-capabilities">Luos self-healing capabilities</a></h1>
+                            <h1 id="luos-self-healing-capabilities"><a class="header" href="#luos-self-healing-capabilities">Luos self-healing capabilities</a></h1>
 <blockquote>
 <p><strong>Warning:</strong> Make sure to read and understand how to <a href="./create-project.html">create Luos containers</a> before reading this page.</p>
 </blockquote>
 <p>As a developer, you will have bugs. 😲</p>
 <p>Finding, understanding, and managing bugs on multiple boards running multiple containers can be really hard. To make your life easier, Luos allows you to get some basic information about any problems in your system allowing you to adapt to them.</p>
-<h2><a class="header" href="#container-exclusion" id="container-exclusion">Container exclusion</a></h2>
+<h2 id="container-exclusion"><a class="header" href="#container-exclusion">Container exclusion</a></h2>
 <p>Luos includes an <a href="./msg-handling.html">acknowledgement management using the <strong>ID_ACK</strong> target_mode</a>. This mode guaranties the proper reception of critical messages.</p>
 <p>If Luos fails to reach its target using ID_ACK, it will retry 10 times. If the acknowledgement still fails, the targeted container is declared excluded. Excluded containers are removed from the routing table to avoid any messaging from any containers, preserving bandwidth for the rest of the system.</p>
 <blockquote>
@@ -201,7 +201,7 @@
 <blockquote>
 <p><strong>Note:</strong> Pyluos can report container exclusion through Gates.</p>
 </blockquote>
-<h2><a class="header" href="#luos-statistics" id="luos-statistics">Luos statistics</a></h2>
+<h2 id="luos-statistics"><a class="header" href="#luos-statistics">Luos statistics</a></h2>
 <p>Luos monitors some values representing the sanity of your nodes and containers.</p>
 <blockquote>
 <p><strong>Note:</strong> Gates containers can report statistics trough JSON.</p>
@@ -209,7 +209,7 @@
 <blockquote>
 <p><strong>Note:</strong> Pyluos can display statistics trough Gates.</p>
 </blockquote>
-<h3><a class="header" href="#node-statistics" id="node-statistics">Node statistics</a></h3>
+<h3 id="node-statistics"><a class="header" href="#node-statistics">Node statistics</a></h3>
 <p>Inside any container, you can have access to the host node's statistics values using the <code>luos_stats_t</code> structure.
 This structure gives you access to several values:</p>
 <ul>
@@ -223,7 +223,7 @@ This structure gives you access to several values:</p>
 <li><strong>max_loop_time_ms</strong>: Maximum time in ms between luos_loop executions.</li>
 </ul>
 <p>You can access to node statistics by using <code>container.node_statistics</code>.</p>
-<h3><a class="header" href="#container-statistics" id="container-statistics">Container statistics</a></h3>
+<h3 id="container-statistics"><a class="header" href="#container-statistics">Container statistics</a></h3>
 <p>In any container you have access to statistics values using the <code>container_stats_t</code> structure.
 This structure gives you access to several values:</p>
 <ul>
@@ -232,7 +232,7 @@ This structure gives you access to several values:</p>
 <li><strong>max_nak_retry</strong>: Maximum number of retries due to a NAK of another container</li>
 </ul>
 <p>You can access node statistics by using <code>container.statistics</code>.</p>
-<h2><a class="header" href="#assert" id="assert">Assert</a></h2>
+<h2 id="assert"><a class="header" href="#assert">Assert</a></h2>
 <p>Luos allows you to declare to an entire network a critical failure on a container.
 To handle it, Luos exposes a <code>LUOS_ASSERT</code> macro that allows you to test some conditions on it to prevent wrong values.
 for example:</p>

@@ -186,7 +186,7 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#streaming" id="streaming">Streaming</a></h1>
+                            <h1 id="streaming"><a class="header" href="#streaming">Streaming</a></h1>
 <p>On occasion, you will have to deal with high-frequency small data with strong time constraints.</p>
 <p>To make it easy, Luos manages streaming channels trough ring buffers.</p>
 <p>A streaming channel allows you to drastically reduce the time constraints of your Luos network thanks to 2 factors:</p>
@@ -202,7 +202,7 @@
 <p>By using streaming channels, you will be able to use big data chunks at low frequency to optimize the data rate efficiency of the bus. The idea is to exchange big chunks of data between containers instead of large amounts of time-constrained small messages flooding all containers.</p>
 </li>
 </ol>
-<h2><a class="header" href="#example" id="example">Example</a></h2>
+<h2 id="example"><a class="header" href="#example">Example</a></h2>
 <p>A motor-driver container has strict real-time constraints. If you want to have a smooth positioning movement or measurement you have to update the motor position at high-frequency (<strong>sampling frequency</strong>).<br/>
 First, you have to define the <strong>sampling frequency</strong> allowing you to have a smooth movement or measurement on the motor. Let's take 200Hz in this example.</p>
 <p>In the non-real-time side (the container commanding the motor), you can't have a 200Hz loop because it probably has other things to do and perhaps doesn't have a sufficient time precision. To simplify it you will have to send trajectory chunks regularly (<strong>chunk time</strong>), let's say approximately every 1 second.</p>
@@ -225,9 +225,9 @@ This way, the receiver always has at least one data chunk (1s in this example) r
 <blockquote>
 <p><strong>Note:</strong> You can play, pause, stop or record a stream flux with the standard <strong>CONTROL</strong> command using the <strong>control_type_t</strong> structure.</p>
 </blockquote>
-<h2><a class="header" href="#how-to-use-it" id="how-to-use-it">How to use it</a></h2>
+<h2 id="how-to-use-it"><a class="header" href="#how-to-use-it">How to use it</a></h2>
 <p><strong>A streaming channel is always created by the strict real-time container.</strong> The other container (the non-real-time one) will just send or receive its data chunks using <a href="./msg-handling.html#large-data">large data messages</a>.</p>
-<h3><a class="header" href="#streaming-channel-creation" id="streaming-channel-creation">Streaming channel creation</a></h3>
+<h3 id="streaming-channel-creation"><a class="header" href="#streaming-channel-creation">Streaming channel creation</a></h3>
 <p>Before starting to use the streaming method, you have to create a streaming channel linked to a buffer into the init function of your real-time container:</p>
 <pre><code class="language-c">#define BUFFER_SIZE 1024
 volatile angular_position_t trajectory_ring_buf[BUFFER_SIZE];
@@ -243,7 +243,7 @@ void Motor_Init(void) {
 <li><strong>reception</strong> is suited to make our motor move smoothly. A no-real-time container will send us parts of trajectory approximately each second and our motor will consume angular position at 200Hz.</li>
 <li><strong>transmission</strong> is suited to measure precisely the movements of the motor. We can use it to send in a non-real-time way real-time data. In our motor it could be angular position measurement at 200Hz for example.</li>
 </ul>
-<h3><a class="header" href="#streaming-reception" id="streaming-reception">Streaming reception</a></h3>
+<h3 id="streaming-reception"><a class="header" href="#streaming-reception">Streaming reception</a></h3>
 <p>This is used to make the motor move.<br/>
 When your streaming channel has been created, you can feed it with received messages on your reception callback:</p>
 <pre><code class="language-C">void Motor_MsgHandler(container_t *container, msg_t *msg) {
@@ -259,7 +259,7 @@ When your streaming channel has been created, you can feed it with received mess
     Stream_GetSample(&amp;trajectory, &amp;motor.target_angular_position);
 }
 </code></pre>
-<h3><a class="header" href="#streaming-transmission" id="streaming-transmission">Streaming transmission</a></h3>
+<h3 id="streaming-transmission"><a class="header" href="#streaming-transmission">Streaming transmission</a></h3>
 <p>This is used to measure the motor movements.<br/>
 To go the other way and send a sampled signal such as a position measurement, you have to use your streaming channel in reception.
 First you have to put values into your streaming channel at 200Hz:</p>

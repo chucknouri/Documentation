@@ -186,12 +186,12 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#containers-communication-handling-messages" id="containers-communication-handling-messages">Containers communication handling messages</a></h1>
+                            <h1 id="containers-communication-handling-messages"><a class="header" href="#containers-communication-handling-messages">Containers communication handling messages</a></h1>
 <blockquote>
 <p><strong>Warning:</strong> Make sure to read and understand how to <a href="./create-project.html">Create Luos containers</a> before reading this page.</p>
 </blockquote>
 <p>As a developer, you will have to create and use Luos messages to exchange information between <span class="cust_tooltip">containers<span class="cust_tooltiptext">Software element run by Luos that can communicate with other containers. It can be a driver or an app. (Initially called a module)</span></span>. In order to do that, you have to understand how messages work.</p>
-<h2><a class="header" href="#message-structure" id="message-structure">Message structure</a></h2>
+<h2 id="message-structure"><a class="header" href="#message-structure">Message structure</a></h2>
 <p>Luos messages are managed by the <code>msg_t</code> structure:</p>
 <pre><code class="language-C">typedef struct{
     header_t header;
@@ -203,7 +203,7 @@
 <blockquote>
 <p><strong>Info:</strong> MAX_DATA_MSG_SIZE represenst the maximum size of messages (default value is 128 bytes);</p>
 </blockquote>
-<h2><a class="header" href="#header" id="header">Header</a></h2>
+<h2 id="header"><a class="header" href="#header">Header</a></h2>
 <p>To send data to any containers you want, you will have to first fill out some information on the header.</p>
 <p>here is the <code>header_t</code> structure:</p>
 <pre><code class="language-C">typedef struct{
@@ -230,7 +230,7 @@
 <li><strong>CMD (8 bits)</strong>: The command defines the transmitted data's type.</li>
 <li><strong>Size (16 bits)</strong>: Size of the incoming data.</li>
 </ul>
-<h1><a class="header" href="#receive-and-send-a-basic-message" id="receive-and-send-a-basic-message">Receive and send a basic message</a></h1>
+<h1 id="receive-and-send-a-basic-message"><a class="header" href="#receive-and-send-a-basic-message">Receive and send a basic message</a></h1>
 <p>To send a message you have to:</p>
 <ol>
 <li>Create a message variable</li>
@@ -256,10 +256,10 @@
     }
 }
 </code></pre>
-<h2><a class="header" href="#container-exclusion" id="container-exclusion">Container exclusion</a></h2>
+<h2 id="container-exclusion"><a class="header" href="#container-exclusion">Container exclusion</a></h2>
 <p>Luos includes an acknowledgement management using the <strong>ID_ACK</strong> target_mode. This mode guaranties the proper reception of critical messages.</p>
 <p>If Luos fails to reach its target using ID_ACK, it will retry, sending up to 10 times. If the acknowledgement still fails, the targeted container is declared excluded. Excluded containers are removed from the routing table to avoid any messaging by any containers, preserving bandwidth for the rest of the system.</p>
-<h2><a class="header" href="#large-data" id="large-data">Large data</a></h2>
+<h2 id="large-data"><a class="header" href="#large-data">Large data</a></h2>
 <p>You will sometimes have to deal with large data that could be larger than the maximum 128-byte data on a Luos message. Fortunately, Luos is able to automatically fragment and de-fragment the data above this side. To do that, you will have to use another send function that will take care of setting the messages' size, and the data fields.</p>
 <p>For example, here is how to send a picture:</p>
 <pre><code class="language-c">// fill the large message info
@@ -282,7 +282,7 @@ void containers_MsgHandler(container_t *container, msg_t *msg) {
 <blockquote>
 <p><strong>Note:</strong> If you have to deal with high-frequency real-time data, please read <a href="./streaming.html">the Streaming page</a>.</p>
 </blockquote>
-<h2><a class="header" href="#time-triggered-update-messages" id="time-triggered-update-messages">Time-triggered update messages</a></h2>
+<h2 id="time-triggered-update-messages"><a class="header" href="#time-triggered-update-messages">Time-triggered update messages</a></h2>
 <p>Luos provides a standard command to ask a container to retrieve values from a sensor, called <code>ASK_PUB_CMD</code>. However, sometimes apps need to poll values from sensors, but the act of repeatedly retriving a value using the <code>ASK_PUB_CMD</code> command may result in the use of a lot bandwidth and take up valuable resources.
 In this kind of polling situation, <strong>you can use the time-triggered auto-update features available from any Luos container</strong>. This feature allows you to ask a container to send you an update of any value each X milliseconds.
 To use it, you have to setup targeted container with a message containing a standard time <span class="cust_tooltip">object dictionary<span class="cust_tooltiptext">Set of objects based on SI metric system that can be transmitted through Luos messages. Any object can easily be converted in other units.</span></span>, but with a specific command associated to it.</p>

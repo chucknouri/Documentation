@@ -186,16 +186,16 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#luos-with-ros-1" id="luos-with-ros-1">Luos with ROS 1</a></h1>
+                            <h1 id="luos-with-ros-1"><a class="header" href="#luos-with-ros-1">Luos with ROS 1</a></h1>
 <p>The <code>ROS 1 Bridge</code> allows ROS 2 packages such as <code>luos_ros2</code> to communicate with a ROS 1 ecosystem. However, both ROS 1 and 2 need to be installed and the bridge takes care of the translation. 
 This procedure has been tested with ROS 1 Noetic + ROS 2 Foxy and Python 3.8.2 in Ubuntu. It might work with older distributions although it has not been tested.</p>
-<h2><a class="header" href="#1-install-ros-2-and-luos" id="1-install-ros-2-and-luos">1. Install ROS 2 and Luos</a></h2>
+<h2 id="1-install-ros-2-and-luos"><a class="header" href="#1-install-ros-2-and-luos">1. Install ROS 2 and Luos</a></h2>
 <p>Make sure you have first <a href="../ros.html">installed ROS 2</a> and managed to run the broker in ROS 2 with the command <code>ros2 launch luos_interface broker.launch.py</code>.
 We assume your ROS 2 workspace is <code>~/ros2_ws</code>.</p>
-<h2><a class="header" href="#2-install-ros-1-and-the-ros-1-bridge" id="2-install-ros-1-and-the-ros-1-bridge">2. Install ROS 1 and the ROS 1 bridge</a></h2>
+<h2 id="2-install-ros-1-and-the-ros-1-bridge"><a class="header" href="#2-install-ros-1-and-the-ros-1-bridge">2. Install ROS 1 and the ROS 1 bridge</a></h2>
 <p>Then install <a href="http://wiki.ros.org/noetic/Installation/Ubuntu" target="_blank">ROS 1 Noetic on Ubuntu 20.04</a>.
 We assume your ROS 1 workspace is <code>~/ros_ws</code>.</p>
-<h2><a class="header" href="#3-initialize-the-bridge" id="3-initialize-the-bridge">3. Initialize the bridge</a></h2>
+<h2 id="3-initialize-the-bridge"><a class="header" href="#3-initialize-the-bridge">3. Initialize the bridge</a></h2>
 <p>The bridge has its own workspace that is to be compiled with colcon (ROS 2):</p>
 <pre><code class="language-bash">mkdir -p ~/ros1_bridge_ws/src
 cd ~/ros1_bridge_ws/src
@@ -205,21 +205,21 @@ source ~/ros2_ws/install/setup.bash
 cd ~/ros1_bridge_ws
 colcon build --packages-select ros1_bridge --cmake-force-configure --cmake-args -DBUILD_TESTING=FALSE
 </code></pre>
-<h2><a class="header" href="#4-start-luos-in-ros-1" id="4-start-luos-in-ros-1">4. Start Luos in ROS 1</a></h2>
-<h3><a class="header" href="#in-terminal-1-ros-core-in-workspace-ros_ws" id="in-terminal-1-ros-core-in-workspace-ros_ws">In terminal 1: ROS Core in workspace <code>~/ros_ws</code></a></h3>
+<h2 id="4-start-luos-in-ros-1"><a class="header" href="#4-start-luos-in-ros-1">4. Start Luos in ROS 1</a></h2>
+<h3 id="in-terminal-1-ros-core-in-workspace-ros_ws"><a class="header" href="#in-terminal-1-ros-core-in-workspace-ros_ws">In terminal 1: ROS Core in workspace <code>~/ros_ws</code></a></h3>
 <pre><code class="language-bash">source ~/ros_ws/devel/setup.bash
 roscore
 </code></pre>
-<h3><a class="header" href="#in-terminal-2-ros-1-bridge-in-workspace-ros1_bridge_ws" id="in-terminal-2-ros-1-bridge-in-workspace-ros1_bridge_ws">In terminal 2: ROS 1 Bridge in workspace <code>~/ros1_bridge_ws</code></a></h3>
+<h3 id="in-terminal-2-ros-1-bridge-in-workspace-ros1_bridge_ws"><a class="header" href="#in-terminal-2-ros-1-bridge-in-workspace-ros1_bridge_ws">In terminal 2: ROS 1 Bridge in workspace <code>~/ros1_bridge_ws</code></a></h3>
 <pre><code class="language-bash">source ~/ros1_bridge_ws/install/setup.bash
 ros2 run ros1_bridge dynamic_bridge --bridge-all-2to1-topics
 </code></pre>
-<h3><a class="header" href="#in-terminal-3-luos-broker-in-workspace-ros2_ws" id="in-terminal-3-luos-broker-in-workspace-ros2_ws">In terminal 3: Luos broker in workspace <code>~/ros2_ws</code></a></h3>
+<h3 id="in-terminal-3-luos-broker-in-workspace-ros2_ws"><a class="header" href="#in-terminal-3-luos-broker-in-workspace-ros2_ws">In terminal 3: Luos broker in workspace <code>~/ros2_ws</code></a></h3>
 <p>Plug some Luos containers before starting the broker.</p>
 <pre><code class="language-bash">source ~/ros2_ws/install/setup.bash
 ros2 launch luos_interface broker.launch.py
 </code></pre>
-<h3><a class="header" href="#in-terminal-1-your-ros-1-app-in-workspace-ros_ws" id="in-terminal-1-your-ros-1-app-in-workspace-ros_ws">In terminal 1: Your ROS 1 app in workspace <code>~/ros_ws</code></a></h3>
+<h3 id="in-terminal-1-your-ros-1-app-in-workspace-ros_ws"><a class="header" href="#in-terminal-1-your-ros-1-app-in-workspace-ros_ws">In terminal 1: Your ROS 1 app in workspace <code>~/ros_ws</code></a></h3>
 <p>Let us consider here that <code>rostopic</code> is the ROS 1 app you want to run with Luos containers.</p>
 <pre><code class="language-bash">source ~/ros_ws/devel/setup.bash
 rostopic list

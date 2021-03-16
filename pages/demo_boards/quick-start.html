@@ -186,11 +186,11 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#getting-started" id="getting-started">Getting started</a></h1>
+                            <h1 id="getting-started"><a class="header" href="#getting-started">Getting started</a></h1>
 <p>This page provides quick and easy tutorials to get started with Luos demonstration boards.</p>
-<h2><a class="header" href="#tutorial-1" id="tutorial-1">Tutorial #1</a></h2>
+<h2 id="tutorial-1"><a class="header" href="#tutorial-1">Tutorial #1</a></h2>
 <p>On the following steps, you will learn how to make a simple behavior with a <a href="./boards_list/rgbled.html">RGB LED</a> board and a <a href="./boards_list/button.html">Button</a> board step-by-step.</p>
-<h3><a class="header" href="#what-you-will-need" id="what-you-will-need">What you will need</a></h3>
+<h3 id="what-you-will-need"><a class="header" href="#what-you-will-need">What you will need</a></h3>
 <p>In the following example, we will make a LED turn on and off by pushing and releasing a button. You will need the following boards and accessories:</p>
 <ul>
 <li>1x Luos <a href="./boards_list/rgbled.html">LED board</a></li>
@@ -198,23 +198,23 @@
 <li>1x Luos <a href="./boards_list/usb.html">USB board</a> and an USB cable</li>
 <li>2x Luos <a href="./boards_list/cables.html">cables</a></li>
 </ul>
-<h3><a class="header" href="#steps" id="steps">STEPS</a></h3>
-<h4><a class="header" href="#1-configure-your-computer" id="1-configure-your-computer">1. Configure your computer</a></h4>
+<h3 id="steps"><a class="header" href="#steps">STEPS</a></h3>
+<h4 id="1-configure-your-computer"><a class="header" href="#1-configure-your-computer">1. Configure your computer</a></h4>
 <p>The default tool we use to control a Luos network is a board hosting a <a href="../high/containers_list/gate.html">Gate</a> container, with a Python lib called <a href="../high/pyluos.html">Pyluos</a>.</p>
 <p>To begin, you have to install Python and Pyluos library, following the <a href="../high/pyluos.html">Pyluos documentation page</a>.</p>
-<h4><a class="header" href="#2-plug-the-boards-together" id="2-plug-the-boards-together">2. Plug the boards together</a></h4>
+<h4 id="2-plug-the-boards-together"><a class="header" href="#2-plug-the-boards-together">2. Plug the boards together</a></h4>
 <p>Plug together all the boards with <a href="./boards_list/cables.html">cables</a>. You can plug them to any of the two connectors of each board, in any order.</p>
 <blockquote>
 <p><strong>Warning:</strong> Don't close a loop with the boards at each extremity.</p>
 </blockquote>
 <p><img src="../../_assets/img/quickstart-1.png" alt="Boards" /><br />
 <em>From left to right: LED, Button, and USB . The plug order doesn’t matter.</em></p>
-<h4><a class="header" href="#3-connect-the-device-to-a-computer" id="3-connect-the-device-to-a-computer">3. Connect the device to a computer</a></h4>
+<h4 id="3-connect-the-device-to-a-computer"><a class="header" href="#3-connect-the-device-to-a-computer">3. Connect the device to a computer</a></h4>
 <p>Plug the USB board to a computer with micro-USB to USB cable.</p>
 <p><em>In this particular example there is no high consumption component so we can use the power given by USB.</em></p>
 <p>Your device is now powered and connected. All the low-level code and electronics is ready to use to help you program your own behaviors.</p>
 <p><img src="../../_assets/img/quickstart-2.png" alt="USB board" /><br /></p>
-<h4><a class="header" href="#4-interact-with-the-device" id="4-interact-with-the-device">4. Interact with the device</a></h4>
+<h4 id="4-interact-with-the-device"><a class="header" href="#4-interact-with-the-device">4. Interact with the device</a></h4>
 <p><em>The USB node handle a specific container called &quot;<a href="../high/containers_list/gate.html">Gate</a>&quot;. There are other boards hosting &quot;Gate&quot; container and using different connection than USB. These particular containers convert Luos containers data into something easier to understand and manage, using <a href="../high/json-api.html">JSON API</a>.</em></p>
 <p>Interacting with the Luos system and program behaviors will require to spot the USB connection on your computer. The following steps are explained on the <a href="./electronic-use.html">General board use page</a> with more details. In the following example, the associated port is <code>COM13</code>.</p>
 <p>Once you know the port, you can connect using:</p>
@@ -246,7 +246,7 @@ In the following example we can control the led color using RGB values. Type and
 <p>The LED turns on.</p>
 <p>Changing to the value <code>[0, 0, 0]</code> will turn it off.</p>
 <p>More details are provided on the page <a href="./electronic-use.html">Luos boards general use</a>.</p>
-<h4><a class="header" href="#5-write-a-simple-beahvior" id="5-write-a-simple-beahvior">5. Write a simple beahvior</a></h4>
+<h4 id="5-write-a-simple-beahvior"><a class="header" href="#5-write-a-simple-beahvior">5. Write a simple beahvior</a></h4>
 <p>You can now write a simple behavior that makes the LED to turn on when pushing the button and turn off when releasing it.</p>
 <pre><code class="language-python"># Import libraries
 from pyluos import Device
@@ -263,11 +263,11 @@ while 1:
 <p>Test your behavior by executing the code.</p>
 <p><img src="../../_assets/img/quickstart-3.png" alt="LED board" /></p>
 <hr />
-<h2><a class="header" href="#tutorial-2" id="tutorial-2">Tutorial #2</a></h2>
+<h2 id="tutorial-2"><a class="header" href="#tutorial-2">Tutorial #2</a></h2>
 <p>The following video shows a basic tutorial explaining how to make a LED and a servomotor be responsive to a potentiometer.</p>
 <iframe width="800" height="450" src="https://www.youtube.com/embed/ula16zdZgDk?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br /><br />
 <hr />
-<h2><a class="header" href="#whats-next" id="whats-next">What’s next?</a></h2>
+<h2 id="whats-next"><a class="header" href="#whats-next">What’s next?</a></h2>
 <p>These were simple tutorials to get you on tracks.</p>
 <p>Now you just have to create awesome projects and share them with <a href="https://community.luos.io" target="_blank">the community</a>.</p>
 

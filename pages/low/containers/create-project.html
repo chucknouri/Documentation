@@ -186,9 +186,9 @@
 
                     <div id="content" class="content">
                         <main>
-                            <h1><a class="header" href="#create-luos-projects" id="create-luos-projects">Create Luos Projects</a></h1>
-<h2><a class="header" href="#how-to-properly-organize-your-luos-projects" id="how-to-properly-organize-your-luos-projects">How to properly organize your Luos projects</a></h2>
-<h3><a class="header" href="#how-to-run-luos" id="how-to-run-luos">How to run Luos</a></h3>
+                            <h1 id="create-luos-projects"><a class="header" href="#create-luos-projects">Create Luos Projects</a></h1>
+<h2 id="how-to-properly-organize-your-luos-projects"><a class="header" href="#how-to-properly-organize-your-luos-projects">How to properly organize your Luos projects</a></h2>
+<h3 id="how-to-run-luos"><a class="header" href="#how-to-run-luos">How to run Luos</a></h3>
 <p>Luos is like a task that has to be run regularly. So you will have to run it by adding <code>luos_init()</code> and <code>luos_loop()</code> in the <code>main()</code> of your program.<br/>
 Basically, your <code>main()</code> will look like this:</p>
 <pre><code class="language-C">#include &quot;luos.h&quot;
@@ -209,7 +209,7 @@ int main(void)
 <blockquote>
 <p><strong>Note:</strong> The only information that should be put on the <code>main()</code> code are MCU setup parameters and containers' run functions.</p>
 </blockquote>
-<h3><a class="header" href="#how-to-add-containers-in-your-project" id="how-to-add-containers-in-your-project">How to add containers in your project</a></h3>
+<h3 id="how-to-add-containers-in-your-project"><a class="header" href="#how-to-add-containers-in-your-project">How to add containers in your project</a></h3>
 <p>A node can host multiple containers, and a container has to be as portable as possible. In order to do that, containers have to be independent code folders that can be easily copied and pasted in another project.<br/>
 When designing projects at Luos we always use the same way to organize our code: we put the containers into a <code>containers</code> folder and name the containers' code files with the name of each container:</p>
 <pre><code class="language-AsciiDoc"> Project
@@ -229,7 +229,7 @@ When designing projects at Luos we always use the same way to organize our code:
     └─── Src
          └─── Main.c
 </code></pre>
-<h3><a class="header" href="#basic-containers-functions" id="basic-containers-functions">Basic containers functions</a></h3>
+<h3 id="basic-containers-functions"><a class="header" href="#basic-containers-functions">Basic containers functions</a></h3>
 <p>We choose to put the public functions of our containers in the <code>container.h</code> file. Like Luos, containers are similar to tasks that need to be run regularly, so we choose to use the exact same stategy as presented for Luos functions by providing a <code>Container_Init()</code> and a <code>Container_Loop()</code> functions and to add them in the <code>main()</code>.
 Following the previous folder organization, the <code>main()</code> code looks like this:</p>
 <pre><code class="language-C">#include &quot;luos.h&quot;
@@ -252,7 +252,7 @@ int main(void)
 
 </code></pre>
 <p>This way, it is easy to manage all of your containers and to add as many of them as you want in to <code>main()</code>.</p>
-<h3><a class="header" href="#how-to-use-luos-hardware-abstraction-layer" id="how-to-use-luos-hardware-abstraction-layer">How to use Luos hardware abstraction layer</a></h3>
+<h3 id="how-to-use-luos-hardware-abstraction-layer"><a class="header" href="#how-to-use-luos-hardware-abstraction-layer">How to use Luos hardware abstraction layer</a></h3>
 <p>To ease the use of Luos Library on a specific target, the Luos company provides <code>luos_hal.c</code>, <code>luos_hal.h</code> and <code>luos_hal_config.h</code> from the LuosHAL folder for a lot of different MCU families. The purpose of these files is to make Luos communcations work directly on the chosen MCU. However, this default configuration for a MCU Family should be adapted to fit your design. See how to do it on the <a href="../hardware_topics/luos-hal.html">Luos HAL</a> page.</p>
 
 
