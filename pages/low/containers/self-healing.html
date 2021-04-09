@@ -53,7 +53,8 @@
 
         <link href="../../../_assets/css/form.css" rel="stylesheet" type="text/css">
         <script src="../../../_assets/js/validation.js"></script>
-
+        
+        <div style="position:fixed;top:calc(50% - 250px);right:0;transition:width 300ms ease-out;width:0; z-index: 99;" data-qa="side_panel"> <a class="typeform-share button" href="https://form.typeform.com/to/KqtBEb6N?typeform-medium=embed-snippet" data-mode="side_panel" style="box-sizing:border-box;position:absolute;top:300px;width:230px;height:48px;padding:0 20px;margin:0;cursor:pointer;background:#75DBC7;border-radius:4px 4px 0px 0px;box-shadow:0px 2px 12px rgba(0, 0, 0, 0.06), 0px 2px 4px rgba(0, 0, 0, 0.08);display:flex;align-items:center;justify-content:flex-start;transform:rotate(-90deg);transform-origin:bottom left;color:white;text-decoration:none;z-index:9999;" data-hide-headers="true" data-hide-footer="true" data-width="320" data-height="500" target="_blank"> <span class="icon" style="width:32px;position:relative;text-align:center;transform:rotate(90deg) scale(0.85);left:-8px;"> <img alt="" src="https://images.typeform.com/images/9agMH7QtgJsU" style="max-width:24px;max-height:24px;margin-top:10px;" /> </span> <span style="text-decoration:none;font-size:18px;font-family:Helvetica,Arial,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;text-align:center;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;">Is Luos for me? 🤔</span> </a> </div> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm_share", b="https://embed.typeform.com/"; if(!gi.call(d,id)){ js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script>
     </head>
     <body>
 
@@ -213,11 +214,13 @@
 <p>Inside any container, you can have access to the host node's statistics values using the <code>luos_stats_t</code> structure.
 This structure gives you access to several values:</p>
 <ul>
-<li><strong>memory</strong>: Mmory statisctics information
+<li><strong>memory</strong>: Memory statisctics information.
 <ul>
-<li><strong>msg_stack_ratio</strong>: Prcentage of memory occupation of message management tasks</li>
-<li><strong>luos_stack_ratio</strong>: pPercentage of memory occupation of luos tasks</li>
-<li><strong>msg_drop_number</strong>: Number of messages dropped due to a lack of memory (older messages are dropped to be replaced by new ones)</li>
+<li><strong>rx_msg_stack_ratio</strong>: Percentage of memory occupation of Rx message management tasks.</li>
+<li><strong>luos_stack_ratio</strong>: Percentage of memory occupation of Luos tasks.</li>
+<li><strong>tx_msg_stack_ratio</strong>: Percentage of memory occupation of Tx message management tasks.</li>
+<li><strong>buffer_occupation_ratio</strong>: Percentage of memory occupation of the message buffer.</li>
+<li><strong>msg_drop_number</strong>: Number of messages dropped due to a lack of memory (older messages are dropped to be replaced by new ones).</li>
 </ul>
 </li>
 <li><strong>max_loop_time_ms</strong>: Maximum time in ms between luos_loop executions.</li>
@@ -225,11 +228,9 @@ This structure gives you access to several values:</p>
 <p>You can access to node statistics by using <code>container.node_statistics</code>.</p>
 <h3 id="container-statistics"><a class="header" href="#container-statistics">Container statistics</a></h3>
 <p>In any container you have access to statistics values using the <code>container_stats_t</code> structure.
-This structure gives you access to several values:</p>
+This structure gives you access to a specific container's statistic value:</p>
 <ul>
-<li><strong>msg_fail_ratio</strong>: Percentage of failed messages transmission</li>
-<li><strong>max_collision_retry</strong>: Maximum number of retries due to collision on the network</li>
-<li><strong>max_nak_retry</strong>: Maximum number of retries due to a NAK of another container</li>
+<li><strong>max_retry</strong>: Maximum number of sent retries due to a NAK or collision with another container.</li>
 </ul>
 <p>You can access node statistics by using <code>container.statistics</code>.</p>
 <h2 id="assert"><a class="header" href="#assert">Assert</a></h2>

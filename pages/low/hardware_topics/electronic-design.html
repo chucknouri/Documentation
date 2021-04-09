@@ -53,7 +53,8 @@
 
         <link href="../../../_assets/css/form.css" rel="stylesheet" type="text/css">
         <script src="../../../_assets/js/validation.js"></script>
-
+        
+        <div style="position:fixed;top:calc(50% - 250px);right:0;transition:width 300ms ease-out;width:0; z-index: 99;" data-qa="side_panel"> <a class="typeform-share button" href="https://form.typeform.com/to/KqtBEb6N?typeform-medium=embed-snippet" data-mode="side_panel" style="box-sizing:border-box;position:absolute;top:300px;width:230px;height:48px;padding:0 20px;margin:0;cursor:pointer;background:#75DBC7;border-radius:4px 4px 0px 0px;box-shadow:0px 2px 12px rgba(0, 0, 0, 0.06), 0px 2px 4px rgba(0, 0, 0, 0.08);display:flex;align-items:center;justify-content:flex-start;transform:rotate(-90deg);transform-origin:bottom left;color:white;text-decoration:none;z-index:9999;" data-hide-headers="true" data-hide-footer="true" data-width="320" data-height="500" target="_blank"> <span class="icon" style="width:32px;position:relative;text-align:center;transform:rotate(90deg) scale(0.85);left:-8px;"> <img alt="" src="https://images.typeform.com/images/9agMH7QtgJsU" style="max-width:24px;max-height:24px;margin-top:10px;" /> </span> <span style="text-decoration:none;font-size:18px;font-family:Helvetica,Arial,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;text-align:center;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;">Is Luos for me? 🤔</span> </a> </div> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm_share", b="https://embed.typeform.com/"; if(!gi.call(d,id)){ js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script>
     </head>
     <body>
 
@@ -194,7 +195,7 @@
 <p>A Luos-friendly electronic board must contain <em>at least</em> the following elements:</p>
 <ul>
 <li><strong>1</strong> <a href="https://en.wikipedia.org/wiki/Microcontroller" target="_blank"><strong>MCU</strong></a> (microcontroller unit): It hosts, as a node, the Luos firmware along with the different <span class="cust_tooltip">containers<span class="cust_tooltiptext">Software element run by Luos that can communicate with other containers. It can be a driver or an app. (Initially called a module)</span></span> (drivers and apps).</li>
-<li><strong>At least 2 connectors</strong>: They allow to link boards together into a Luos network as a daisy-chain.</li>
+<li><strong>At least 2 connectors</strong>: They allow to link boards together into a Luos network as a daisy-chain. Through PTP pins, nodes know if there is another node connected to the connector. This is used when the user wants to make a topology detection of the system.</li>
 </ul>
 <h2 id="one-wire-reference-design"><a class="header" href="#one-wire-reference-design">One-wire reference design</a></h2>
 <p><img src="../../../_assets/img/Luos_Network_Interface_OW.png" alt="" />
@@ -208,6 +209,14 @@ Luos' RS485 official connector is: <a href="https://octopart.com/df11-8dp-2ds%28
 <li>by mail: <a href="mailto:hello@luos.io">hello@luos.io</a></li>
 <li>on <a href="https://github.com/Luos-io/Luos/issues/new?assignees=nicolas-rabault&labels=porting&template=porting-request.md&title=%5BMCU+PORTING%5D+" target="_blank">GitHub</a></li>
 </ul>
+<h2 id="ptp"><a class="header" href="#ptp">PTP</a></h2>
+<p>Peer-to-peer connection between nodes for topology detection.</p>
+<h3 id="daisy-chain"><a class="header" href="#daisy-chain">Daisy-chain</a></h3>
+<p>With 2 PTP pins per board, you must chained you device as below:
+<img src="../../../_assets/img/daisy_chain.png" alt="" /></p>
+<h3 id="star-mounting"><a class="header" href="#star-mounting">Star Mounting</a></h3>
+<p>With at least 3 PTP pins per board, you can create a star mounting configuration:
+<img src="../../../_assets/img/star_mounting.png" alt="" /></p>
 
 
                             <div class="cust_edit_page"><a id="gh_link">Contribute to this page</a>&nbsp;|&nbsp;<a id="feedback" class="cust_red_link" onclick="openFeedback()">This page wasn't helpful? &#128078;</a></div><div align="right" style="float: right; height: 30px; width: 400px; position: relative; top: -18px;"><a class="github-button" href="https://github.com/Luos-io" data-show-count="true" aria-label="Follow @Luos-io on GitHub">Follow @Luos-io</a>&nbsp;<a class="github-button" href="https://github.com/Luos-io/Luos/subscription" data-icon="octicon-eye" data-show-count="true" aria-label="Watch Luos-io/Luos on GitHub">Watch</a>&nbsp;<a class="github-button" href="https://github.com/Luos-io/Luos" data-icon="octicon-star" data-show-count="true" aria-label="Star Luos-io/Luos on GitHub">Star</a></div>

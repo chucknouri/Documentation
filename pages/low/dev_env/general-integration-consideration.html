@@ -53,7 +53,8 @@
 
         <link href="../../../_assets/css/form.css" rel="stylesheet" type="text/css">
         <script src="../../../_assets/js/validation.js"></script>
-
+        
+        <div style="position:fixed;top:calc(50% - 250px);right:0;transition:width 300ms ease-out;width:0; z-index: 99;" data-qa="side_panel"> <a class="typeform-share button" href="https://form.typeform.com/to/KqtBEb6N?typeform-medium=embed-snippet" data-mode="side_panel" style="box-sizing:border-box;position:absolute;top:300px;width:230px;height:48px;padding:0 20px;margin:0;cursor:pointer;background:#75DBC7;border-radius:4px 4px 0px 0px;box-shadow:0px 2px 12px rgba(0, 0, 0, 0.06), 0px 2px 4px rgba(0, 0, 0, 0.08);display:flex;align-items:center;justify-content:flex-start;transform:rotate(-90deg);transform-origin:bottom left;color:white;text-decoration:none;z-index:9999;" data-hide-headers="true" data-hide-footer="true" data-width="320" data-height="500" target="_blank"> <span class="icon" style="width:32px;position:relative;text-align:center;transform:rotate(90deg) scale(0.85);left:-8px;"> <img alt="" src="https://images.typeform.com/images/9agMH7QtgJsU" style="max-width:24px;max-height:24px;margin-top:10px;" /> </span> <span style="text-decoration:none;font-size:18px;font-family:Helvetica,Arial,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;text-align:center;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;">Is Luos for me? 🤔</span> </a> </div> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm_share", b="https://embed.typeform.com/"; if(!gi.call(d,id)){ js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script>
     </head>
     <body>
 
@@ -201,16 +202,16 @@
 <li>Include <code>luos.h</code> on your source file.</li>
 </ul>
 <h2 id="configuration"><a class="header" href="#configuration">Configuration</a></h2>
-<p>Through a configuration file, Luos allows user to customize many parameters needed for the library. these parameters can be set as compiler variables listed above:</p>
+<p>Through the configuration file <a href="https://github.com/Luos-io/Luos/tree/master/Robus/inc/config.h" target="_blank">config.h</a>, Luos allows users to customize many parameters needed for the library. These parameters can be set as compiler variables listed above:</p>
 <table><thead><tr><th align="center">Parameters</th><th align="center">Defaults value</th><th align="center">Description</th></tr></thead><tbody>
-<tr><td align="center">PROTOCOL_REVISION</td><td align="center">0</td><td align="center">Luos protocol version</td></tr>
-<tr><td align="center">DEFAULTBAUDRATE</td><td align="center">1Mbps</td><td align="center">Default network bauderate</td></tr>
-<tr><td align="center">MAX_DATA_MSG_SIZE</td><td align="center">128</td><td align="center">Number of bytes of the data field</td></tr>
-<tr><td align="center">NBR_NAK_RETRY</td><td align="center">10</td><td align="center">Number of retries to send after a received NAK</td></tr>
-<tr><td align="center">MAX_CONTAINER_NUMBER</td><td align="center">5</td><td align="center">Number of containers in the node (memory optimisation)</td></tr>
-<tr><td align="center">MSG_BUFFER_SIZE</td><td align="center">3*size_msg</td><td align="center">Message buffer size (3 * (7 bytes header + 128 bytes data + 2 bytes CRC))</td></tr>
-<tr><td align="center">MAX_MSG_NB</td><td align="center">2*MAX_CONTAINER_NUMBER</td><td align="center">Number of tasks that can be created (every message can create one or more tasks)</td></tr>
-<tr><td align="center">NBR_PORT</td><td align="center">2</td><td align="center">Number of PTP on the node ( max 8)</td></tr>
+<tr><td align="center">PROTOCOL_REVISION</td><td align="center">0</td><td align="center">Luos protocol version.</td></tr>
+<tr><td align="center">DEFAULTBAUDRATE</td><td align="center">1Mbps</td><td align="center">Default network bauderate.</td></tr>
+<tr><td align="center">MAX_DATA_MSG_SIZE</td><td align="center">128</td><td align="center">Number of bytes of the data field.</td></tr>
+<tr><td align="center">NBR_NAK_RETRY</td><td align="center">10</td><td align="center">Number of retries to send after a received NAK.</td></tr>
+<tr><td align="center">MAX_CONTAINER_NUMBER</td><td align="center">5</td><td align="center">Number of containers in the node (memory optimisation).</td></tr>
+<tr><td align="center">MSG_BUFFER_SIZE</td><td align="center">3*size_msg</td><td align="center">Message buffer size. Max size of a message (3 * (7 bytes header + 128 bytes data + 2 bytes CRC)).</td></tr>
+<tr><td align="center">MAX_MSG_NB</td><td align="center">2*MAX_CONTAINER_NUMBER</td><td align="center">Max number of messages for a container that can be buffered.</td></tr>
+<tr><td align="center">NBR_PORT</td><td align="center">2</td><td align="center">Number of PTP on the node ( max 8). See <a href="../hardware_topics/electronic-design.html">electronic design</a> page.</td></tr>
 </tbody></table>
 
 

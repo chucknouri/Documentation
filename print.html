@@ -55,7 +55,8 @@
 
         <link href="_assets/css/form.css" rel="stylesheet" type="text/css">
         <script src="_assets/js/validation.js"></script>
-
+        
+        <div style="position:fixed;top:calc(50% - 250px);right:0;transition:width 300ms ease-out;width:0; z-index: 99;" data-qa="side_panel"> <a class="typeform-share button" href="https://form.typeform.com/to/KqtBEb6N?typeform-medium=embed-snippet" data-mode="side_panel" style="box-sizing:border-box;position:absolute;top:300px;width:230px;height:48px;padding:0 20px;margin:0;cursor:pointer;background:#75DBC7;border-radius:4px 4px 0px 0px;box-shadow:0px 2px 12px rgba(0, 0, 0, 0.06), 0px 2px 4px rgba(0, 0, 0, 0.08);display:flex;align-items:center;justify-content:flex-start;transform:rotate(-90deg);transform-origin:bottom left;color:white;text-decoration:none;z-index:9999;" data-hide-headers="true" data-hide-footer="true" data-width="320" data-height="500" target="_blank"> <span class="icon" style="width:32px;position:relative;text-align:center;transform:rotate(90deg) scale(0.85);left:-8px;"> <img alt="" src="https://images.typeform.com/images/9agMH7QtgJsU" style="max-width:24px;max-height:24px;margin-top:10px;" /> </span> <span style="text-decoration:none;font-size:18px;font-family:Helvetica,Arial,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;text-align:center;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;">Is Luos for me? 🤔</span> </a> </div> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm_share", b="https://embed.typeform.com/"; if(!gi.call(d,id)){ js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script>
     </head>
     <body>
 
@@ -189,7 +190,7 @@
                     <div id="content" class="content">
                         <main>
                             <h1 class="no-break"><a href="index.html#welcome" class="header" id="welcome">Welcome to Luos documentation</a></h1>
-<p><small><a href="https://github.com/Luos-io/Luos" target="blank">Luos revision: 1.1.1</a></small></p>
+<p><small><a href="https://github.com/Luos-io/Luos" target="blank">Luos revision: 1.2.0</a></small></p>
 <h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
 <p>We started designing Luos with the conviction that building electronic systems should be made easier than it is today. Most of the time should be spent on designing the applications and behaviors instead of on complex and time-and-money-eating technicalities. To give a simple example, adding a new sensor —for instance a distance sensor— to an electronic device in conception should not take more than a few minutes. So you can try, test and iterate fast on a project to truly design what users want.</p>
 <p><strong>Luos works like a <a href="https://en.wikipedia.org/wiki/Microservices" target="_blank">microservices architecture</a> in the software world, and a containerization platform: it encapsulates any software or hardware function to make it communicate and work with any other encapsulated container, however it was developed, either on bare metal or on top of an embedded OS.</strong></p>
@@ -335,16 +336,16 @@ At Luos, we use PlatformIO to share all our examples and to make our lib integra
 <li>Include <code>luos.h</code> on your source file.</li>
 </ul>
 <h2 id="configuration"><a class="header" href="#configuration">Configuration</a></h2>
-<p>Through a configuration file, Luos allows user to customize many parameters needed for the library. these parameters can be set as compiler variables listed above:</p>
+<p>Through the configuration file <a href="https://github.com/Luos-io/Luos/tree/master/Robus/inc/config.h" target="_blank">config.h</a>, Luos allows users to customize many parameters needed for the library. These parameters can be set as compiler variables listed above:</p>
 <table><thead><tr><th align="center">Parameters</th><th align="center">Defaults value</th><th align="center">Description</th></tr></thead><tbody>
-<tr><td align="center">PROTOCOL_REVISION</td><td align="center">0</td><td align="center">Luos protocol version</td></tr>
-<tr><td align="center">DEFAULTBAUDRATE</td><td align="center">1Mbps</td><td align="center">Default network bauderate</td></tr>
-<tr><td align="center">MAX_DATA_MSG_SIZE</td><td align="center">128</td><td align="center">Number of bytes of the data field</td></tr>
-<tr><td align="center">NBR_NAK_RETRY</td><td align="center">10</td><td align="center">Number of retries to send after a received NAK</td></tr>
-<tr><td align="center">MAX_CONTAINER_NUMBER</td><td align="center">5</td><td align="center">Number of containers in the node (memory optimisation)</td></tr>
-<tr><td align="center">MSG_BUFFER_SIZE</td><td align="center">3*size_msg</td><td align="center">Message buffer size (3 * (7 bytes header + 128 bytes data + 2 bytes CRC))</td></tr>
-<tr><td align="center">MAX_MSG_NB</td><td align="center">2*MAX_CONTAINER_NUMBER</td><td align="center">Number of tasks that can be created (every message can create one or more tasks)</td></tr>
-<tr><td align="center">NBR_PORT</td><td align="center">2</td><td align="center">Number of PTP on the node ( max 8)</td></tr>
+<tr><td align="center">PROTOCOL_REVISION</td><td align="center">0</td><td align="center">Luos protocol version.</td></tr>
+<tr><td align="center">DEFAULTBAUDRATE</td><td align="center">1Mbps</td><td align="center">Default network bauderate.</td></tr>
+<tr><td align="center">MAX_DATA_MSG_SIZE</td><td align="center">128</td><td align="center">Number of bytes of the data field.</td></tr>
+<tr><td align="center">NBR_NAK_RETRY</td><td align="center">10</td><td align="center">Number of retries to send after a received NAK.</td></tr>
+<tr><td align="center">MAX_CONTAINER_NUMBER</td><td align="center">5</td><td align="center">Number of containers in the node (memory optimisation).</td></tr>
+<tr><td align="center">MSG_BUFFER_SIZE</td><td align="center">3*size_msg</td><td align="center">Message buffer size. Max size of a message (3 * (7 bytes header + 128 bytes data + 2 bytes CRC)).</td></tr>
+<tr><td align="center">MAX_MSG_NB</td><td align="center">2*MAX_CONTAINER_NUMBER</td><td align="center">Max number of messages for a container that can be buffered.</td></tr>
+<tr><td align="center">NBR_PORT</td><td align="center">2</td><td align="center">Number of PTP on the node ( max 8). See <a href="pages/low/dev_env/../hardware_topics/electronic-design.html">electronic design</a> page.</td></tr>
 </tbody></table>
 <h1 id="setup-a-luos-platformio-project"><a class="header" href="#setup-a-luos-platformio-project">Setup a Luos PlatformIO project</a></h1>
 <p><a href="https://platformio.org/" target="_blank">PlatformIO</a> is a cross-platform, cross-architecture, multiple framework, professional tool for embedded systems engineers and for software developers who write applications for embedded products. It can be used as a plug-in in a lot of <a href="https://docs.platformio.org/en/latest/integration/ide/index.html#desktop-ide" target="_blank">different editors</a>.</p>
@@ -405,7 +406,7 @@ Luos can work on a single node or create a network for the communication between
 <p>List of advantages and drawbacks for each bus:</p>
 <table><thead><tr><th align="center">Network</th><th align="center">Advantages</th><th align="center">Drawbacks</th></tr></thead><tbody>
 <tr><td align="center">One-wire</td><td align="center">Needs only 4 GPIO; Simple; 100% Collision detection</td><td align="center">No recessive bit and no collision avoidance; Short distance wires; Less nodes connectable to network; 1 Mbps</td></tr>
-<tr><td align="center">RS485</td><td align="center">Noise immunity; Long distance wires; 256 nodes connectable to network; 10 Mbps</td><td align="center">Needs 6 GPIO and a RS485 tranceiver; Collision avoidance not secured</td></tr>
+<tr><td align="center">RS485</td><td align="center">Noise immunity; Long distance wires; 256 nodes connectable to network; 10 Mbps</td><td align="center">Needs 5 GPIO and a RS485 tranceiver; Collision avoidance not secured</td></tr>
 </tbody></table>
 <h1 id="minimum-requirements"><a class="header" href="#minimum-requirements">Minimum requirements</a></h1>
 <p>Luos Library uses hardware and software MCU ressources. Here are the minimum requirements to make Luos Library work properly:</p>
@@ -415,15 +416,15 @@ Luos can work on a single node or create a network for the communication between
 <tr><td align="center">RAM</td><td align="center">Luos Library uses at least 2 kB of RAM for Library usage and protocol message buffering</td></tr>
 <tr><td align="center">Stack</td><td align="center">512 B</td></tr>
 <tr><td align="center">Heap</td><td align="center">0 needed</td></tr>
-<tr><td align="center">GPIO</td><td align="center">4 in one wire / 6 in RS485</td></tr>
+<tr><td align="center">GPIO</td><td align="center">4 in one wire / 5 in RS485</td></tr>
 <tr><td align="center">Ressources</td><td align="center">1 USART, 1 Timer (option : DMA and CRC)</td></tr>
 </tbody></table>
 <h2 id="network-consideration"><a class="header" href="#network-consideration">Network consideration</a></h2>
 <table><thead><tr><th align="center">MCU frequency</th><th align="center">Bus frequency</th></tr></thead><tbody>
-<tr><td align="center">&gt;=48 Mhz</td><td align="center">1 Mbps</td></tr>
-<tr><td align="center">&gt;=32 Mhz</td><td align="center">500 kbps</td></tr>
-<tr><td align="center">&gt;=16 Mhz</td><td align="center">250 kbps</td></tr>
-<tr><td align="center">&gt;=8 Mhz</td><td align="center">100 kbps</td></tr>
+<tr><td align="center">&gt;=48 MHz</td><td align="center">1 Mbps</td></tr>
+<tr><td align="center">&gt;=32 MHz</td><td align="center">500 kbps</td></tr>
+<tr><td align="center">&gt;=16 MHz</td><td align="center">250 kbps</td></tr>
+<tr><td align="center">&gt;=8 MHz</td><td align="center">100 kbps</td></tr>
 </tbody></table>
 <h1 id="integrating-luos-into-an-electronic-board"><a class="header" href="#integrating-luos-into-an-electronic-board">Integrating Luos into an electronic board</a></h1>
 <p>To create and match with a default reference design, electronic boards must respect some design rules in order to properly work in a Luos network.</p>
@@ -433,7 +434,7 @@ Luos can work on a single node or create a network for the communication between
 <p>A Luos-friendly electronic board must contain <em>at least</em> the following elements:</p>
 <ul>
 <li><strong>1</strong> <a href="https://en.wikipedia.org/wiki/Microcontroller" target="_blank"><strong>MCU</strong></a> (microcontroller unit): It hosts, as a node, the Luos firmware along with the different <span class="cust_tooltip">containers<span class="cust_tooltiptext">Software element run by Luos that can communicate with other containers. It can be a driver or an app. (Initially called a module)</span></span> (drivers and apps).</li>
-<li><strong>At least 2 connectors</strong>: They allow to link boards together into a Luos network as a daisy-chain.</li>
+<li><strong>At least 2 connectors</strong>: They allow to link boards together into a Luos network as a daisy-chain. Through PTP pins, nodes know if there is another node connected to the connector. This is used when the user wants to make a topology detection of the system.</li>
 </ul>
 <h2 id="one-wire-reference-design"><a class="header" href="#one-wire-reference-design">One-wire reference design</a></h2>
 <p><img src="pages/low/hardware_topics/../../../_assets/img/Luos_Network_Interface_OW.png" alt="" />
@@ -447,6 +448,14 @@ Luos' RS485 official connector is: <a href="https://octopart.com/df11-8dp-2ds%28
 <li>by mail: <a href="mailto:hello@luos.io">hello@luos.io</a></li>
 <li>on <a href="https://github.com/Luos-io/Luos/issues/new?assignees=nicolas-rabault&labels=porting&template=porting-request.md&title=%5BMCU+PORTING%5D+" target="_blank">GitHub</a></li>
 </ul>
+<h2 id="ptp"><a class="header" href="#ptp">PTP</a></h2>
+<p>Peer-to-peer connection between nodes for topology detection.</p>
+<h3 id="daisy-chain"><a class="header" href="#daisy-chain">Daisy-chain</a></h3>
+<p>With 2 PTP pins per board, you must chained you device as below:
+<img src="pages/low/hardware_topics/../../../_assets/img/daisy_chain.png" alt="" /></p>
+<h3 id="star-mounting"><a class="header" href="#star-mounting">Star Mounting</a></h3>
+<p>With at least 3 PTP pins per board, you can create a star mounting configuration:
+<img src="pages/low/hardware_topics/../../../_assets/img/star_mounting.png" alt="" /></p>
 <h1 id="luos-hardware-abstraction-layer"><a class="header" href="#luos-hardware-abstraction-layer">Luos Hardware Abstraction Layer</a></h1>
 <h2 id="luos-library-robus-communication-protocol-and-physical-bus"><a class="header" href="#luos-library-robus-communication-protocol-and-physical-bus">Luos library, Robus communication protocol, and physical bus</a></h2>
 <p>Luos can work on a single node or it can create a network for communication between containers located on different nodes. This communication should be defined and hardware-configured to fit with the chosen MCU. The files luos_hal.c and luos_hal.h define all the functions needed by the Luos library to send messages through the bus and create the initialization of all hardware MCU components.
@@ -454,11 +463,12 @@ The file luos_hal_config.h file contains a default config for an MCU family and 
 <h2 id="luos-hal"><a class="header" href="#luos-hal">Luos HAL</a></h2>
 <p>Lists of all the functions using hardware components relative to protocol communication and physical bus:</p>
 <ul>
-<li><strong>CRC</strong>: Validates messages. CRC can be generated by hardware or software</li>
-<li><strong>PORT</strong>: Defines necessary pins, PTP lines, Rx/Tx, enable/disable </li>
-<li><strong>FLASH</strong>: Storing of containers' aliases in the system</li>
+<li><strong>PORT</strong>: Defines necessary pins, PTP lines, Rx/Tx, enable/disable</li>
 <li><strong>TIMER</strong>: Defines timeouts for communications</li>
 <li><strong>COM</strong>: Serial bus</li>
+<li><strong>CRC</strong>: Validates messages. CRC can be generated by hardware or software</li>
+<li><strong>DMA</strong>: Used by default with COM but can be disabled</li>
+<li><strong>FLASH</strong>: Storing of containers' aliases in the system</li>
 </ul>
 <h2 id="luos-hal-configuration"><a class="header" href="#luos-hal-configuration">Luos HAL configuration</a></h2>
 <p><code>luos_hal_config.h</code> defines a default configuration pinout, serial bus for a MCU Family.</p>
@@ -481,7 +491,7 @@ int main(void)
 
 </code></pre>
 <p>This way you are able to predefine hardware configuration for Luos in the file <code>hardware_config.h</code>.
-For example, using USART3 in your design instead of USART1 defined by <code>luos_hal_config.h</code> is defined as followed: </p>
+For example, using USART3 in your design instead of USART1 defined by <code>luos_hal_config.h</code> is defined as followed:</p>
 <pre><code class="language-C">#define COM_TX_PIN                  10
 #define COM_TX_PORT                 GPIOA
 #define COM_TX_AF                   GPIO_AF1_USART3
@@ -498,16 +508,27 @@ For example, using USART3 in your design instead of USART1 defined by <code>luos
 
 </code></pre>
 <p>There are many possible configurations that you can change, not all of them being necessary for your design:</p>
+<h3 id="pinout"><a class="header" href="#pinout">Pinout</a></h3>
 <table><thead><tr><th align="center">Function</th><th align="center">Description</th><th align="center">Comments</th></tr></thead><tbody>
 <tr><td align="center">PORT_CLOCK_ENABLE</td><td align="center">Activates clock for GPIO</td><td align="center">Depends on port</td></tr>
 <tr><td align="center">RX_EN_PIN/TX_EN_PIN</td><td align="center">Chooses pinout to activate Rx/Tx comms</td><td align="center">Necessary for special comms</td></tr>
-<tr><td align="center">COM_LVL_DOWN_PIN/COM_LVL_UP_PIN</td><td align="center">Chooses pinout to pull comms</td><td align="center">Necessary for special comms</td></tr>
 <tr><td align="center">COM_TX_PIN/COM_RX_PIN</td><td align="center">Chooses pinout for Rx/Tx comms</td><td align="center">Adapts to the chosen serial bus</td></tr>
 <tr><td align="center">PTPX_PIN/PTPX_IRQ/PINOUT_IRQHANDLER</td><td align="center">Chooses pinout, IRQ and callback for the PTP line</td><td align="center">Necessary for topology detection</td></tr>
+</tbody></table>
+<h3 id="communication"><a class="header" href="#communication">Communication</a></h3>
+<table><thead><tr><th align="center">Function</th><th align="center">Description</th><th align="center">Comments</th></tr></thead><tbody>
 <tr><td align="center">LUOS_COM_CLOCK_ENABLE</td><td align="center">Activates clock for serial</td><td align="center">Depends on serial bus</td></tr>
-<tr><td align="center">LUOS_COM/LUOS_COM_IRQ/LUOS_COM_IRQHANDLER</td><td align="center">Choose serial bus, IRQ and callback</td><td align="center">Adapt to the serial bus chosen</td></tr>
-<tr><td align="center">LUOS_TIMER_LOCK_ENABLE</td><td align="center">Activate clock for Timeout</td><td align="center">Necessary for Timeout</td></tr>
-<tr><td align="center">LUOS_TIMER/LUOS_TIMER_IRQ/LUOS_TIMER_IRQHANDLER</td><td align="center">Choose Timer, IRQ and callback</td><td align="center">Necessary for Timeout</td></tr>
+<tr><td align="center">LUOS_COM/LUOS_COM_IRQ/LUOS_COM_IRQHANDLER</td><td align="center">Chooses serial bus, IRQ and callback</td><td align="center">Adapts to the serial bus chosen</td></tr>
+<tr><td align="center">LUOS_DMA_CLOCK_ENABLE</td><td align="center">Activates clock for DMA</td><td align="center">Necessary for for Tx</td></tr>
+<tr><td align="center">LUOS_DMA_CHANNEL</td><td align="center">Chooses Channel</td><td align="center">Send Tx</td></tr>
+</tbody></table>
+<h3 id="timer"><a class="header" href="#timer">Timer</a></h3>
+<table><thead><tr><th align="center">Function</th><th align="center">Description</th><th align="center">Comments</th></tr></thead><tbody>
+<tr><td align="center">LUOS_TIMER_CLOCK_ENABLE</td><td align="center">Activates clock for Timeout</td><td align="center">Necessary for Timeout</td></tr>
+<tr><td align="center">LUOS_TIMER/LUOS_TIMER_IRQ/LUOS_TIMER_IRQHANDLER</td><td align="center">Chooses Timer, IRQ and callback</td><td align="center">Necessary for Timeout</td></tr>
+</tbody></table>
+<h3 id="flash"><a class="header" href="#flash">Flash</a></h3>
+<table><thead><tr><th align="center">Function</th><th align="center">Description</th><th align="center">Comments</th></tr></thead><tbody>
 <tr><td align="center">PAGE_SIZE/ADRESS_LAST_PAGE</td><td align="center">Defines space in flash for alias</td><td align="center">Necessary to rename container alias</td></tr>
 </tbody></table>
 <h1 id="containers"><a class="header" href="#containers">Containers</a></h1>
@@ -883,7 +904,7 @@ The maximum number of containers and nodes are managed by the precompilation con
 <li>Set your data</li>
 <li>Send it.</li>
 </ol>
-<p>Here is a basic reply example that you can find in a container reception callback:</p>
+<p>Below is a basic reply example that you can find in a container reception callback. For more information on handling a message received, see <a href="pages/low/containers/./rt-config.html">Real-time configuration</a> page.</p>
 <pre><code class="language-c">void containers_MsgHandler(container_t *container, msg_t *msg) {
     if (msg-&gt;header.cmd == ASK_PUB_CMD) {
         // fill the message info
@@ -897,6 +918,11 @@ The maximum number of containers and nodes are managed by the precompilation con
         return;
     }
 }
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> the function <em>Luos_SendMsg</em> return an error_status that informw user if the message was stored in buffer and is ready to be sent. User can monitor the return value and make a blocking statement to be sure that the message is ready to be sent.</p>
+</blockquote>
+<pre><code class="language-c">while(Luos_SendMsg(container, &amp;pub_msg) ! SUCCEED);
 </code></pre>
 <h2 id="container-exclusion"><a class="header" href="#container-exclusion">Container exclusion</a></h2>
 <p>Luos includes an acknowledgement management using the <strong>ID_ACK</strong> target_mode. This mode guaranties the proper reception of critical messages.</p>
@@ -970,11 +996,13 @@ Luos_SendMsg(app, &amp;msg);
 <p>Inside any container, you can have access to the host node's statistics values using the <code>luos_stats_t</code> structure.
 This structure gives you access to several values:</p>
 <ul>
-<li><strong>memory</strong>: Mmory statisctics information
+<li><strong>memory</strong>: Memory statisctics information.
 <ul>
-<li><strong>msg_stack_ratio</strong>: Prcentage of memory occupation of message management tasks</li>
-<li><strong>luos_stack_ratio</strong>: pPercentage of memory occupation of luos tasks</li>
-<li><strong>msg_drop_number</strong>: Number of messages dropped due to a lack of memory (older messages are dropped to be replaced by new ones)</li>
+<li><strong>rx_msg_stack_ratio</strong>: Percentage of memory occupation of Rx message management tasks.</li>
+<li><strong>luos_stack_ratio</strong>: Percentage of memory occupation of Luos tasks.</li>
+<li><strong>tx_msg_stack_ratio</strong>: Percentage of memory occupation of Tx message management tasks.</li>
+<li><strong>buffer_occupation_ratio</strong>: Percentage of memory occupation of the message buffer.</li>
+<li><strong>msg_drop_number</strong>: Number of messages dropped due to a lack of memory (older messages are dropped to be replaced by new ones).</li>
 </ul>
 </li>
 <li><strong>max_loop_time_ms</strong>: Maximum time in ms between luos_loop executions.</li>
@@ -982,11 +1010,9 @@ This structure gives you access to several values:</p>
 <p>You can access to node statistics by using <code>container.node_statistics</code>.</p>
 <h3 id="container-statistics"><a class="header" href="#container-statistics">Container statistics</a></h3>
 <p>In any container you have access to statistics values using the <code>container_stats_t</code> structure.
-This structure gives you access to several values:</p>
+This structure gives you access to a specific container's statistic value:</p>
 <ul>
-<li><strong>msg_fail_ratio</strong>: Percentage of failed messages transmission</li>
-<li><strong>max_collision_retry</strong>: Maximum number of retries due to collision on the network</li>
-<li><strong>max_nak_retry</strong>: Maximum number of retries due to a NAK of another container</li>
+<li><strong>max_retry</strong>: Maximum number of sent retries due to a NAK or collision with another container.</li>
 </ul>
 <p>You can access node statistics by using <code>container.statistics</code>.</p>
 <h2 id="assert"><a class="header" href="#assert">Assert</a></h2>
@@ -1512,7 +1538,7 @@ This first message is really important, because it contains all the information 
 <tr><td align="center">pedometer</td><td align="center">Steps number value</td></tr>
 <tr><td align="center">walk_time</td><td align="center">Walk time value</td></tr>
 <tr><td align="center">luos_revision</td><td align="center">Luos's version</td></tr>
-<tr><td align="center">luos_statistics</td><td align="center">Luos's memory usage statistics [Message stack, Luos stack, Dropped messages, Loop delay, Fail ratio, Nak max number, Collision max number]</td></tr>
+<tr><td align="center">luos_statistics</td><td align="center">Luos's memory usage statistics [Rx stack, Luos stack, Tx stack, Dropped messages, Loop delay, Send retry max number]</td></tr>
 </tbody></table>
 <p>Here is an exemple of a message sent by a Potentiometer container about the rotation angle of the associated potentiometer:</p>
 <pre><code class="language-JSON">{
@@ -1630,7 +1656,7 @@ python get-pip.py
 <p><strong>Note:</strong> Feel free to consult <a href="https://jupyter.readthedocs.io/en/latest/content-quickstart.html" target="_blank"><em>Jupyter Notebook</em>'s</a> documentation.</p>
 </blockquote>
 <h3 id="installing-or-updating-pyluos-library"><a class="header" href="#installing-or-updating-pyluos-library">Installing or updating Pyluos library</a></h3>
-<p>You are now ready to install Pyluos. <strong>The last Pyluos version is <code>1.4.0</code>.</strong></p>
+<p>You are now ready to install Pyluos. <strong>The last Pyluos version is <code>1.4.2</code>.</strong></p>
 <p>In a console, the following command will install the <em>Pyluos</em> library using the <em>Pip package manager</em>:</p>
 <pre><code class="language-bash">pip install pyluos
 </code></pre>
