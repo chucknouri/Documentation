@@ -102,6 +102,7 @@ device = Device('COM13')
 
 # Use an infinite loop to put the behavior inside
 while 1:
+    time.sleep (0.4) #A sending delay
     if (device.button_mod.pressed == True): # if the button is pushed
         device.rgb_led_mod.color = [0,15,15] # Assigns a color to the LED
     else: # If the button is released or idle
